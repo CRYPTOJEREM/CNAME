@@ -55,6 +55,13 @@
             cursor: pointer;
         }
 
+        .logo-video {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
         .nav-links {
             display: flex;
             gap: 40px;
@@ -898,6 +905,346 @@
             margin-bottom: 30px;
         }
 
+        /* Modules Telegram */
+        .telegram-modules {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .telegram-card {
+            background: linear-gradient(135deg, #0D1229 0%, #1A1F3A 100%);
+            border-radius: 20px;
+            padding: 40px 30px;
+            border: 2px solid;
+            position: relative;
+            text-align: left;
+            transition: all 0.3s;
+        }
+
+        .telegram-card.free {
+            border-color: rgba(0, 217, 255, 0.3);
+        }
+
+        .telegram-card.vip {
+            border-color: rgba(255, 215, 0, 0.5);
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.05) 0%, #1A1F3A 100%);
+        }
+
+        .telegram-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 217, 255, 0.3);
+        }
+
+        .telegram-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            background: rgba(0, 217, 255, 0.2);
+            color: #00D9FF;
+        }
+
+        .telegram-badge.vip-badge {
+            background: rgba(255, 215, 0, 0.2);
+            color: #FFD700;
+        }
+
+        .telegram-card h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            color: #FFFFFF;
+            margin-bottom: 15px;
+        }
+
+        .telegram-card p {
+            color: #B8C5D6;
+            margin-bottom: 20px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .telegram-features {
+            list-style: none;
+            margin: 25px 0;
+            padding: 0;
+        }
+
+        .telegram-features li {
+            color: #B8C5D6;
+            padding: 8px 0;
+            font-size: 14px;
+            border-bottom: 1px solid rgba(123, 47, 247, 0.1);
+        }
+
+        .telegram-btn {
+            display: block;
+            width: 100%;
+            padding: 16px 30px;
+            border-radius: 12px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .telegram-btn.free-btn {
+            background: linear-gradient(135deg, #00D9FF, #7B2FF7);
+            color: #0A0E27;
+        }
+
+        .telegram-btn.vip-btn {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #0A0E27;
+        }
+
+        .telegram-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.4);
+        }
+
+        /* Page Assistance */
+        .assistance-section {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 40px;
+        }
+
+        .assistance-container {
+            padding: 40px 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, rgba(255, 51, 102, 0.1), rgba(255, 153, 0, 0.1));
+            border: 2px solid rgba(255, 51, 102, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            display: flex;
+            gap: 30px;
+        }
+
+        .warning-icon {
+            font-size: 48px;
+            flex-shrink: 0;
+        }
+
+        .warning-content h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            color: #FF3366;
+            margin-bottom: 15px;
+        }
+
+        .warning-content p {
+            color: #E0E6F0;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+
+        .warning-content strong {
+            color: #FFD700;
+        }
+
+        .assistance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 50px 0;
+        }
+
+        .assistance-card {
+            background: linear-gradient(135deg, #0D1229 0%, #1A1F3A 100%);
+            border-radius: 20px;
+            padding: 35px 25px;
+            border: 1px solid rgba(123, 47, 247, 0.2);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .assistance-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 217, 255, 0.2);
+            border-color: rgba(0, 217, 255, 0.4);
+        }
+
+        .assistance-icon {
+            font-size: 48px;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .assistance-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            color: #00D9FF;
+            margin-bottom: 12px;
+        }
+
+        .assistance-card p {
+            color: #B8C5D6;
+            margin-bottom: 20px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .assistance-btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: rgba(0, 217, 255, 0.1);
+            color: #00D9FF;
+            text-decoration: none;
+            border-radius: 10px;
+            border: 2px solid #00D9FF;
+            font-weight: 600;
+            transition: all 0.3s;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .assistance-btn:hover {
+            background: rgba(0, 217, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* FAQ */
+        .faq-item {
+            background: rgba(26, 31, 58, 0.4);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 15px;
+            border-left: 4px solid #00D9FF;
+        }
+
+        .faq-question {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            color: #FFFFFF;
+            margin-bottom: 12px;
+        }
+
+        .faq-answer {
+            color: #B8C5D6;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        /* Sections Légales */
+        .legal-section {
+            margin: 60px 0;
+        }
+
+        .legal-section h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 32px;
+            color: #00D9FF;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .legal-box {
+            background: rgba(26, 31, 58, 0.4);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(123, 47, 247, 0.2);
+        }
+
+        .legal-box h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            color: #FFD700;
+            margin-bottom: 15px;
+        }
+
+        .legal-box p, .legal-box ul {
+            color: #B8C5D6;
+            line-height: 1.8;
+            font-size: 14px;
+        }
+
+        .legal-box ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .legal-box li {
+            margin-bottom: 8px;
+        }
+
+        .legal-box strong {
+            color: #00D9FF;
+        }
+
+        .final-warning {
+            background: linear-gradient(135deg, rgba(255, 51, 102, 0.15), rgba(255, 153, 0, 0.15));
+            border: 3px solid rgba(255, 51, 102, 0.5);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 50px 0;
+            text-align: center;
+        }
+
+        .final-warning h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 28px;
+            color: #FF3366;
+            margin-bottom: 20px;
+        }
+
+        .final-warning p {
+            color: #E0E6F0;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .final-warning strong {
+            color: #FFD700;
+            font-size: 18px;
+        }
+
+        .contact-final {
+            text-align: center;
+            padding: 30px;
+            background: rgba(26, 31, 58, 0.4);
+            border-radius: 16px;
+            margin-top: 40px;
+        }
+
+        .contact-final p {
+            color: #B8C5D6;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+        .contact-final a {
+            color: #00D9FF;
+            text-decoration: none;
+        }
+
+        .contact-final a:hover {
+            text-decoration: underline;
+        }
+
         .social-links {
             display: flex;
             gap: 20px;
@@ -1116,6 +1463,17 @@
             margin-top: 80px;
         }
 
+        .footer-warning {
+            background: rgba(255, 51, 102, 0.1);
+            border: 1px solid rgba(255, 51, 102, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         footer p {
             color: #7B8BA8;
             font-size: 14px;
@@ -1142,13 +1500,17 @@
     <nav>
         <div class="nav-container">
             <div class="logo" onclick="showTab('accueil')">
-                <span>📊</span>
+                <video autoplay loop muted playsinline class="logo-video">
+                    <source src="logo-lasphere.mp4" type="video/mp4">
+                    📊
+                </video>
                 <span>LA SPHERE</span>
             </div>
             <ul class="nav-links">
                 <li><button onclick="showTab('accueil')" id="btn-accueil" class="active">Accueil</button></li>
                 <li><button onclick="showTab('calendrier')" id="btn-calendrier">Calendrier Éco</button></li>
                 <li><button onclick="showTab('dashboard')" id="btn-dashboard">Dashboard Crypto</button></li>
+                <li><button onclick="showTab('assistance')" id="btn-assistance">Assistance</button></li>
                 <li><button onclick="showTab('fonctionnalites')" id="btn-fonctionnalites">Fonctionnalités</button></li>
             </ul>
         </div>
@@ -1319,13 +1681,48 @@
 
                 <div class="cta-ecosystem">
                     <h3>Rejoignez la Communauté</h3>
-                    <p>Suivez-nous sur nos réseaux sociaux et rejoignez des milliers de passionnés de crypto</p>
+                    <p>Choisissez votre niveau d'accès et rejoignez des milliers de passionnés de crypto</p>
+                    
+                    <div class="telegram-modules">
+                        <div class="telegram-card free">
+                            <div class="telegram-badge">🆓 GRATUIT</div>
+                            <h4>Groupe Telegram Gratuit</h4>
+                            <p>Accès aux discussions communautaires, partage d'analyses et actualités crypto</p>
+                            <ul class="telegram-features">
+                                <li>✅ Discussions en temps réel</li>
+                                <li>✅ Partage d'analyses</li>
+                                <li>✅ Actualités crypto</li>
+                                <li>✅ Entraide communautaire</li>
+                            </ul>
+                            <a href="https://t.me/votre-groupe-gratuit" target="_blank" class="telegram-btn free-btn">
+                                <span>📱</span> Rejoindre Gratuitement
+                            </a>
+                        </div>
+                        
+                        <div class="telegram-card vip">
+                            <div class="telegram-badge vip-badge">⭐ VIP</div>
+                            <h4>Groupe Telegram VIP</h4>
+                            <p>Accès premium avec signaux exclusifs, analyses approfondies et support prioritaire</p>
+                            <ul class="telegram-features">
+                                <li>✅ Signaux de trading exclusifs</li>
+                                <li>✅ Analyses techniques avancées</li>
+                                <li>✅ Support prioritaire 24/7</li>
+                                <li>✅ Alertes en temps réel</li>
+                                <li>✅ Stratégies de trading</li>
+                                <li>✅ Webinaires privés</li>
+                            </ul>
+                            <a href="https://t.me/votre-groupe-vip" target="_blank" class="telegram-btn vip-btn">
+                                <span>👑</span> Accéder au VIP
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <p style="margin-top: 30px; font-size: 14px; color: #7B8BA8;">Suivez-nous aussi sur nos autres réseaux</p>
                     <div class="social-links">
                         <a href="#" class="social-btn">📺 YouTube</a>
                         <a href="#" class="social-btn">🎮 Twitch</a>
                         <a href="#" class="social-btn">🐦 Twitter</a>
                         <a href="#" class="social-btn">💬 Discord</a>
-                        <a href="#" class="social-btn">📱 Telegram</a>
                         <a href="#" class="social-btn">🎵 TikTok</a>
                     </div>
                 </div>
@@ -1983,6 +2380,173 @@
         </div>
     </div>
 
+    <!-- ONGLET ASSISTANCE -->
+    <div id="assistance" class="tab-content">
+        <section class="assistance-section">
+            <div class="assistance-container">
+                <div class="section-title">
+                    <h2>💬 ASSISTANCE & INFORMATIONS LÉGALES</h2>
+                    <p>Tout ce que vous devez savoir sur La Sphere</p>
+                </div>
+
+                <!-- Avertissement important -->
+                <div class="warning-box">
+                    <div class="warning-icon">⚠️</div>
+                    <div class="warning-content">
+                        <h3>Avertissement Important</h3>
+                        <p><strong>AUCUNE INFORMATION FOURNIE SUR CE SITE NE CONSTITUE UN CONSEIL FINANCIER.</strong></p>
+                        <p>Les contenus, analyses, opinions et informations partagés sur La Sphere (site web, réseaux sociaux, vidéos, lives, groupes Telegram, Discord, etc.) sont fournis <strong>à titre purement éducatif et informatif</strong>.</p>
+                        <p><strong>Trading et investissement comportent des risques :</strong> Vous pouvez perdre tout ou partie de votre capital. Ne tradez ou n'investissez jamais plus que ce que vous pouvez vous permettre de perdre.</p>
+                        <p><strong>Faites vos propres recherches (DYOR) :</strong> Avant toute décision d'investissement, effectuez vos propres analyses et consultez un conseiller financier agréé si nécessaire.</p>
+                    </div>
+                </div>
+
+                <!-- Support & Contact -->
+                <div class="assistance-grid">
+                    <div class="assistance-card">
+                        <span class="assistance-icon">📧</span>
+                        <h3>Contact Email</h3>
+                        <p>Pour toute question, suggestion ou problème technique</p>
+                        <a href="mailto:contact@lasphere.xyz" class="assistance-btn">contact@lasphere.xyz</a>
+                    </div>
+
+                    <div class="assistance-card">
+                        <span class="assistance-icon">💬</span>
+                        <h3>Support Discord</h3>
+                        <p>Assistance en temps réel via notre serveur Discord</p>
+                        <a href="#" target="_blank" class="assistance-btn">Rejoindre Discord</a>
+                    </div>
+
+                    <div class="assistance-card">
+                        <span class="assistance-icon">📱</span>
+                        <h3>Telegram Support</h3>
+                        <p>Support prioritaire pour les membres VIP</p>
+                        <a href="#" target="_blank" class="assistance-btn">Contacter sur Telegram</a>
+                    </div>
+
+                    <div class="assistance-card">
+                        <span class="assistance-icon">❓</span>
+                        <h3>FAQ</h3>
+                        <p>Réponses aux questions fréquentes</p>
+                        <button onclick="toggleFAQ()" class="assistance-btn">Voir la FAQ</button>
+                    </div>
+                </div>
+
+                <!-- FAQ Section -->
+                <div id="faq-section" style="display: none; margin-top: 50px;">
+                    <h3 style="color: #00D9FF; margin-bottom: 30px; font-size: 28px;">Questions Fréquentes</h3>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">💰 Les services de La Sphere sont-ils gratuits ?</div>
+                        <div class="faq-answer">Oui ! Le site, le Dashboard Crypto, le Calendrier Économique et le groupe Telegram gratuit sont 100% gratuits. Nous proposons également un groupe Telegram VIP payant avec des services premium (signaux, analyses avancées, support prioritaire).</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">📊 D'où proviennent les données du Dashboard ?</div>
+                        <div class="faq-answer">Les données crypto proviennent de l'API CoinGecko et sont actualisées toutes les 30 secondes. Les données du Calendrier Économique sont mises à jour manuellement chaque semaine pour garantir leur fiabilité.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">⚠️ Puis-je suivre vos conseils pour trader ?</div>
+                        <div class="faq-answer">NON. Nous ne fournissons AUCUN conseil en investissement. Tout contenu est éducatif. Vous êtes seul responsable de vos décisions d'investissement. Consultez un conseiller financier agréé.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">👑 Comment accéder au groupe VIP ?</div>
+                        <div class="faq-answer">Cliquez sur le bouton "Accéder au VIP" en page d'accueil. Vous serez redirigé vers notre Telegram où vous trouverez toutes les informations sur l'abonnement VIP, les tarifs et les avantages.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">🔒 Mes données sont-elles protégées ?</div>
+                        <div class="faq-answer">Oui. Ce site ne collecte aucune donnée personnelle. Nous n'utilisons pas de cookies de tracking. Les données du Dashboard sont récupérées directement depuis l'API sans stocker vos informations.</div>
+                    </div>
+                </div>
+
+                <!-- Mentions Légales -->
+                <div class="legal-section">
+                    <h3>📜 Conditions Générales d'Utilisation (CGU)</h3>
+                    
+                    <div class="legal-box">
+                        <h4>1. Acceptation des conditions</h4>
+                        <p>En accédant et en utilisant le site La Sphere (lasphere.xyz), vous acceptez sans réserve les présentes Conditions Générales d'Utilisation.</p>
+                    </div>
+
+                    <div class="legal-box">
+                        <h4>2. Nature des services</h4>
+                        <p>La Sphere fournit des informations éducatives et des outils d'analyse relatifs aux cryptomonnaies et aux marchés financiers. <strong>Aucun contenu ne constitue un conseil en investissement, une recommandation d'achat ou de vente, ni une incitation à investir.</strong></p>
+                    </div>
+
+                    <div class="legal-box">
+                        <h4>3. Responsabilité de l'utilisateur</h4>
+                        <p>L'utilisateur reconnaît que :</p>
+                        <ul>
+                            <li>Le trading et l'investissement en cryptomonnaies comportent des risques élevés</li>
+                            <li>Il peut perdre tout ou partie de son capital investi</li>
+                            <li>Il est seul responsable de ses décisions d'investissement</li>
+                            <li>Il doit effectuer ses propres recherches (DYOR) avant tout investissement</li>
+                            <li>Il doit consulter un conseiller financier agréé avant toute décision d'investissement</li>
+                        </ul>
+                    </div>
+
+                    <div class="legal-box">
+                        <h4>4. Limitation de responsabilité</h4>
+                        <p>La Sphere, CRYPTOJEREM et leurs collaborateurs ne peuvent être tenus responsables de :</p>
+                        <ul>
+                            <li>Pertes financières résultant de l'utilisation des informations fournies</li>
+                            <li>Erreurs, inexactitudes ou omissions dans les contenus publiés</li>
+                            <li>Interruptions de service ou indisponibilité temporaire du site</li>
+                            <li>Dommages directs ou indirects liés à l'utilisation du site</li>
+                        </ul>
+                    </div>
+
+                    <div class="legal-box">
+                        <h4>5. Exactitude des informations</h4>
+                        <p>Les informations fournies sont données à titre indicatif et peuvent contenir des erreurs. Les prix, données de marché et statistiques sont fournis par des sources tierces (CoinGecko, Trading Economics) et peuvent ne pas être à jour ou exacts.</p>
+                    </div>
+
+                    <div class="legal-box">
+                        <h4>6. Propriété intellectuelle</h4>
+                        <p>L'ensemble du contenu du site (textes, images, vidéos, logo, design) est la propriété de La Sphere / CRYPTOJEREM. Toute reproduction, même partielle, est interdite sans autorisation écrite préalable.</p>
+                    </div>
+
+                    <div class="legal-box">
+                        <h4>7. Données personnelles</h4>
+                        <p>Ce site ne collecte aucune donnée personnelle. Nous n'utilisons pas de cookies de tracking ou de systèmes d'analyse des utilisateurs. Les groupes Telegram et Discord sont soumis aux politiques de confidentialité de ces plateformes.</p>
+                    </div>
+
+                    <div class="legal-box">
+                        <h4>8. Services payants (VIP)</h4>
+                        <p>L'accès au groupe Telegram VIP est un service payant. Les conditions de paiement, remboursement et annulation sont détaillées lors de la souscription. <strong>Aucun remboursement n'est effectué en cas de pertes financières liées au trading.</strong></p>
+                    </div>
+
+                    <div class="legal-box">
+                        <h4>9. Modification des CGU</h4>
+                        <p>La Sphere se réserve le droit de modifier les présentes CGU à tout moment. Les modifications prennent effet dès leur publication sur le site. L'utilisation continue du site vaut acceptation des nouvelles conditions.</p>
+                    </div>
+
+                    <div class="legal-box">
+                        <h4>10. Droit applicable</h4>
+                        <p>Les présentes CGU sont régies par le droit français. Tout litige sera soumis aux tribunaux compétents français.</p>
+                    </div>
+                </div>
+
+                <!-- Avertissement final -->
+                <div class="final-warning">
+                    <h3>⚠️ RAPPEL IMPORTANT</h3>
+                    <p><strong>NE JAMAIS INVESTIR PLUS QUE CE QUE VOUS POUVEZ VOUS PERMETTRE DE PERDRE</strong></p>
+                    <p>Le trading de cryptomonnaies est extrêmement risqué et volatil. Les performances passées ne garantissent pas les résultats futurs. La Sphere est un projet éducatif et communautaire, pas un service de conseil financier.</p>
+                    <p><strong>EN CAS DE DOUTE, CONSULTEZ UN CONSEILLER FINANCIER AGRÉÉ.</strong></p>
+                </div>
+
+                <div class="contact-final">
+                    <p>📧 Contact : <a href="mailto:contact@lasphere.xyz">contact@lasphere.xyz</a></p>
+                    <p>👤 Créateur : CRYPTOJEREM</p>
+                    <p>🌐 Site : <a href="https://lasphere.xyz">lasphere.xyz</a></p>
+                </div>
+            </div>
+        </section>
+    </div>
+
     <!-- ONGLET FONCTIONNALITÉS -->
     <div id="fonctionnalites" class="tab-content">
         <section class="features">
@@ -2026,8 +2590,21 @@
     </div>
 
     <footer>
+        <div class="footer-warning">
+            <p style="color: #FF3366; font-weight: 700; font-size: 16px; margin-bottom: 10px;">⚠️ AVERTISSEMENT IMPORTANT</p>
+            <p style="font-size: 13px; max-width: 900px; margin: 0 auto 20px;">
+                <strong>AUCUN CONSEIL FINANCIER</strong> : Les informations fournies sur ce site sont à titre éducatif uniquement. 
+                Le trading comporte des risques de perte en capital. Ne tradez jamais plus que ce que vous pouvez vous permettre de perdre. 
+                Effectuez vos propres recherches (DYOR) avant tout investissement.
+            </p>
+        </div>
         <p>&copy; 2026 La Sphere | Données fournies à titre informatif uniquement</p>
         <p style="margin-top: 10px; color: #00D9FF; font-weight: 600;">Par CRYPTOJEREM - La Sphere</p>
+        <p style="margin-top: 15px; font-size: 12px;">
+            <a href="#" onclick="showTab('assistance'); return false;" style="color: #7B8BA8; text-decoration: none;">CGU</a> • 
+            <a href="#" onclick="showTab('assistance'); return false;" style="color: #7B8BA8; text-decoration: none;">Mentions Légales</a> • 
+            <a href="mailto:contact@lasphere.xyz" style="color: #7B8BA8; text-decoration: none;">Contact</a>
+        </p>
     </footer>
 
     <script>
@@ -2285,6 +2862,16 @@
                     }, 2000);
                 }
             });
+        }
+
+        // Fonction pour toggle FAQ
+        function toggleFAQ() {
+            const faqSection = document.getElementById('faq-section');
+            if (faqSection.style.display === 'none') {
+                faqSection.style.display = 'block';
+            } else {
+                faqSection.style.display = 'none';
+            }
         }
     </script>
 </body>

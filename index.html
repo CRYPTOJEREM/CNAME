@@ -1876,6 +1876,301 @@
             color: #00D9FF;
             font-weight: 600;
         }
+         /* ===== STYLES APPRENTISSAGE ===== */
+        .learning-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        .learning-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .learning-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #00D9FF, #7B2FF7);
+            color: #0A0E27;
+            padding: 10px 28px;
+            border-radius: 25px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .learning-header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 48px;
+            color: #FFFFFF;
+            margin-bottom: 15px;
+            text-shadow: 0 0 30px rgba(0, 217, 255, 0.5);
+        }
+
+        .learning-header p {
+            font-size: 18px;
+            color: #7B8BA8;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .category-selector {
+            background: linear-gradient(135deg, #0D1229 0%, #1A1F3A 100%);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 50px;
+            border: 2px solid rgba(123, 47, 247, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-selector::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #00D9FF 0%, #7B2FF7 50%, #FFD700 100%);
+        }
+
+        .category-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 28px;
+            color: #00D9FF;
+            margin-bottom: 30px;
+            text-align: center;
+            text-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+        }
+
+        .category-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .category-btn {
+            background: rgba(26, 31, 58, 0.5);
+            border: 2px solid rgba(123, 47, 247, 0.3);
+            border-radius: 16px;
+            padding: 30px 25px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            text-align: center;
+        }
+
+        .category-btn:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 217, 255, 0.6);
+            box-shadow: 0 20px 60px rgba(0, 217, 255, 0.3);
+            background: rgba(0, 217, 255, 0.05);
+        }
+
+        .category-btn.active {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.15), rgba(123, 47, 247, 0.15));
+            border-color: rgba(0, 217, 255, 0.8);
+            box-shadow: 0 15px 50px rgba(0, 217, 255, 0.4);
+        }
+
+        .cat-icon {
+            font-size: 48px;
+            display: block;
+        }
+
+        .cat-name {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 22px;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cat-desc {
+            font-size: 13px;
+            color: #7B8BA8;
+            font-weight: 500;
+        }
+
+        .category-btn.active .cat-name {
+            color: #00D9FF;
+            text-shadow: 0 0 15px rgba(0, 217, 255, 0.6);
+        }
+
+        .category-btn.active .cat-desc {
+            color: #B8C5D6;
+        }
+
+        .module-section {
+            margin-bottom: 80px;
+        }
+
+        .module-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 36px;
+            color: #00D9FF;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .module-subtitle {
+            font-size: 16px;
+            color: #B8C5D6;
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+        }
+
+        .video-module-card {
+            background: linear-gradient(135deg, #0D1229 0%, #1A1F3A 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid rgba(123, 47, 247, 0.3);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .video-module-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #00D9FF 0%, #7B2FF7 50%, #FFD700 100%);
+        }
+
+        .video-module-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 70px rgba(0, 217, 255, 0.3);
+            border-color: rgba(0, 217, 255, 0.5);
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            background: #000;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-module-info {
+            padding: 25px;
+        }
+
+        .video-level {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .level-debutant {
+            background: rgba(0, 255, 136, 0.15);
+            color: #00FF88;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+        }
+
+        .level-intermediaire {
+            background: rgba(255, 215, 0, 0.15);
+            color: #FFD700;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .level-avance {
+            background: rgba(255, 51, 102, 0.15);
+            color: #FF3366;
+            border: 1px solid rgba(255, 51, 102, 0.3);
+        }
+
+        .video-module-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            color: #FFFFFF;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .video-module-description {
+            font-size: 14px;
+            color: #B8C5D6;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .video-stats {
+            display: flex;
+            gap: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(123, 47, 247, 0.2);
+        }
+
+        .video-stat {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: #7B8BA8;
+        }
+
+        .category-content {
+            animation: fadeInContent 0.6s ease;
+        }
+
+        @keyframes fadeInContent {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .videos-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .learning-header h1 {
+                font-size: 32px;
+            }
+            
+            .module-title {
+                font-size: 28px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1884,13 +2179,14 @@
             <div class="logo" onclick="showTab('accueil')">
                 <span>LA SPHERE</span>
             </div>
-            <ul class="nav-links">
-                <li><button onclick="showTab('accueil')" id="btn-accueil" class="active">Accueil</button></li>
-                <li><button onclick="showTab('calendrier')" id="btn-calendrier">Calendrier Éco</button></li>
-                <li><button onclick="showTab('dashboard')" id="btn-dashboard">Dashboard Crypto</button></li>
-                <li><button onclick="showTab('assistance')" id="btn-assistance">Assistance</button></li>
-                <li><button onclick="showTab('fonctionnalites')" id="btn-fonctionnalites">Fonctionnalités</button></li>
-            </ul>
+         <ul class="nav-links">
+    <li><button onclick="showTab('accueil')" id="btn-accueil" class="active">Accueil</button></li>
+    <li><button onclick="showTab('calendrier')" id="btn-calendrier">Calendrier Éco</button></li>
+    <li><button onclick="showTab('dashboard')" id="btn-dashboard">Dashboard Crypto</button></li>
+    <li><button onclick="showTab('apprentissage')" id="btn-apprentissage">Apprentissage</button></li>
+    <li><button onclick="showTab('assistance')" id="btn-assistance">Assistance</button></li>
+    <li><button onclick="showTab('fonctionnalites')" id="btn-fonctionnalites">Fonctionnalités</button></li>
+</ul>
         </div>
     </nav>
 
@@ -3138,6 +3434,160 @@
         </section>
     </div>
 
+    <!-- ONGLET APPRENTISSAGE -->
+    <div id="apprentissage" class="tab-content">
+        <section class="learning-section">
+            <div class="learning-header">
+                <div class="learning-badge">🎓 FORMATION COMPLÈTE</div>
+                <h1>PARCOURS D'APPRENTISSAGE</h1>
+                <p>
+                    Apprenez le trading et la crypto de zéro à expert grâce à notre parcours pédagogique structuré. 
+                    Chaque module contient des vidéos détaillées pour vous accompagner dans votre progression.
+                </p>
+            </div>
+
+            <!-- Sélecteur de Parcours -->
+            <div class="category-selector">
+                <h3 class="category-title">🎯 Choisissez Votre Parcours</h3>
+                <div class="category-buttons">
+                    <button class="category-btn active" onclick="showCategory('trading')" id="cat-trading">
+                        <span class="cat-icon">📊</span>
+                        <span class="cat-name">Trading</span>
+                        <span class="cat-desc">Analyse technique & stratégies</span>
+                    </button>
+                    <button class="category-btn" onclick="showCategory('web3')" id="cat-web3">
+                        <span class="cat-icon">🌐</span>
+                        <span class="cat-name">Web3 & DeFi</span>
+                        <span class="cat-desc">Blockchain & finance décentralisée</span>
+                    </button>
+                    <button class="category-btn" onclick="showCategory('memecoin')" id="cat-memecoin">
+                        <span class="cat-icon">🚀</span>
+                        <span class="cat-name">Memecoins</span>
+                        <span class="cat-desc">Tendances & opportunités rapides</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- CONTENU TRADING -->
+            <div class="category-content" id="content-trading">
+            
+            <!-- MODULE 1: LES BASES -->
+            <div class="module-section">
+                <h2 class="module-title">
+                    <span>🌱</span>
+                    <span>MODULE 1 : Les Bases de la Crypto</span>
+                </h2>
+                <p class="module-subtitle">
+                    Commencez votre voyage dans l'univers des cryptomonnaies.
+                </p>
+                
+                <div class="videos-grid">
+                    <div class="video-module-card">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-module-info">
+                            <span class="video-level level-debutant">🌱 DÉBUTANT</span>
+                            <h3 class="video-module-title">Qu'est-ce qu'une cryptomonnaie ?</h3>
+                            <p class="video-module-description">
+                                Comprenez les fondamentaux de la blockchain et des cryptomonnaies.
+                            </p>
+                            <div class="video-stats">
+                                <div class="video-stat">⏱️ 15 min</div>
+                                <div class="video-stat">👁️ 25K vues</div>
+                                <div class="video-stat">📚 Leçon 1</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AJOUTE ICI TES AUTRES VIDÉOS TRADING -->
+
+                </div>
+            </div>
+
+            </div>
+            <!-- FIN CONTENU TRADING -->
+
+            <!-- CONTENU WEB3 -->
+            <div class="category-content" id="content-web3" style="display: none;">
+            
+            <div class="module-section">
+                <h2 class="module-title">
+                    <span>🌐</span>
+                    <span>MODULE 1 : Fondamentaux de la Web3</span>
+                </h2>
+                <p class="module-subtitle">
+                    Découvrez les bases de la Web3 et de la blockchain.
+                </p>
+                
+                <div class="videos-grid">
+                    <div class="video-module-card">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-module-info">
+                            <span class="video-level level-debutant">🌱 DÉBUTANT</span>
+                            <h3 class="video-module-title">Comprendre la Blockchain</h3>
+                            <p class="video-module-description">
+                                Introduction à la technologie blockchain.
+                            </p>
+                            <div class="video-stats">
+                                <div class="video-stat">⏱️ 18 min</div>
+                                <div class="video-stat">👁️ 45K vues</div>
+                                <div class="video-stat">📚 Leçon 1</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AJOUTE ICI TES AUTRES VIDÉOS WEB3 -->
+
+                </div>
+            </div>
+
+            </div>
+            <!-- FIN CONTENU WEB3 -->
+
+            <!-- CONTENU MEMECOINS -->
+            <div class="category-content" id="content-memecoin" style="display: none;">
+            
+            <div class="module-section">
+                <h2 class="module-title">
+                    <span>🚀</span>
+                    <span>MODULE 1 : Introduction aux Memecoins</span>
+                </h2>
+                <p class="module-subtitle">
+                    Découvrez l'univers explosif des memecoins.
+                </p>
+                
+                <div class="videos-grid">
+                    <div class="video-module-card">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-module-info">
+                            <span class="video-level level-debutant">🌱 DÉBUTANT</span>
+                            <h3 class="video-module-title">Qu'est-ce qu'un Memecoin ?</h3>
+                            <p class="video-module-description">
+                                Histoire des memecoins et risques associés.
+                            </p>
+                            <div class="video-stats">
+                                <div class="video-stat">⏱️ 16 min</div>
+                                <div class="video-stat">👁️ 68K vues</div>
+                                <div class="video-stat">📚 Leçon 1</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AJOUTE ICI TES AUTRES VIDÉOS MEMECOINS -->
+
+                </div>
+            </div>
+
+            </div>
+            <!-- FIN CONTENU MEMECOINS -->
+
+        </section>
+    </div>
     <!-- ONGLET FONCTIONNALITÉS -->
     <div id="fonctionnalites" class="tab-content">
         <section class="features">
@@ -3464,6 +3914,38 @@
                 faqSection.style.display = 'none';
             }
         }
+       // Fonction pour changer de catégorie (Apprentissage)
+        function showCategory(categoryName) {
+            // Cacher tous les contenus de catégorie
+            const contents = document.querySelectorAll('.category-content');
+            contents.forEach(content => {
+                content.style.display = 'none';
+            });
+            
+            // Désactiver tous les boutons de catégorie
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            categoryBtns.forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Afficher le contenu sélectionné
+            const selectedContent = document.getElementById('content-' + categoryName);
+            if (selectedContent) {
+                selectedContent.style.display = 'block';
+            }
+            
+            // Activer le bouton correspondant
+            const activeBtn = document.getElementById('cat-' + categoryName);
+            if (activeBtn) {
+                activeBtn.classList.add('active');
+            }
+            
+            // Scroll vers les modules
+            const categorySelector = document.querySelector('.category-selector');
+            if (categorySelector) {
+                categorySelector.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        } 
     </script>
 </body>
 </html>

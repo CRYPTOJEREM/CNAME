@@ -1663,6 +1663,168 @@
                 gap: 20px;
             }
         }
+         /* ===== PARTENAIRES CRYPTO ===== */
+        .partners-section {
+            max-width: 1400px;
+            margin: 80px auto;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, rgba(123, 47, 247, 0.05) 100%);
+            border-radius: 24px;
+            border: 1px solid rgba(123, 47, 247, 0.2);
+        }
+
+        .partners-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .partners-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 42px;
+            color: #FFFFFF;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .partners-subtitle {
+            font-size: 16px;
+            color: #7B8BA8;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 35px;
+        }
+
+        .partner-card {
+            background: linear-gradient(135deg, #0D1229 0%, #1A1F3A 100%);
+            border-radius: 24px;
+            padding: 40px 35px;
+            border: 2px solid rgba(123, 47, 247, 0.3);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .partner-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #00D9FF 0%, #7B2FF7 50%, #FFD700 100%);
+        }
+
+        .partner-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 70px rgba(0, 217, 255, 0.3);
+            border-color: rgba(0, 217, 255, 0.5);
+        }
+
+        .partner-logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 25px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            font-weight: 900;
+            color: #00D9FF;
+            border: 2px solid rgba(0, 217, 255, 0.2);
+            transition: all 0.3s;
+        }
+
+        .partner-card:hover .partner-logo {
+            background: rgba(0, 217, 255, 0.1);
+            border-color: rgba(0, 217, 255, 0.5);
+            transform: scale(1.1);
+        }
+
+        .partner-name {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 28px;
+            color: #FFFFFF;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .partner-description {
+            color: #B8C5D6;
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            min-height: 80px;
+        }
+
+        .partner-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .feature-tag {
+            padding: 6px 14px;
+            background: rgba(0, 217, 255, 0.1);
+            color: #00D9FF;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(0, 217, 255, 0.3);
+        }
+
+        .partner-btn {
+            display: inline-block;
+            width: 100%;
+            padding: 16px 40px;
+            background: linear-gradient(135deg, #00D9FF, #7B2FF7);
+            color: #0A0E27;
+            text-decoration: none;
+            border-radius: 12px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .partner-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 217, 255, 0.5);
+        }
+
+        .partner-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 215, 0, 0.2);
+            color: #FFD700;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: 1px solid rgba(255, 215, 0, 0.5);
+        }
+
     </style>
 </head>
 <body>
@@ -1892,6 +2054,85 @@
                             Rejoignez des milliers de membres sur Discord et Telegram. Échangez, apprenez et partagez vos stratégies dans une ambiance bienveillante.
                         </p>
                     </div>
+                        <!-- SECTION PARTENAIRES CRYPTO -->
+        <section class="partners-section">
+            <div class="partners-header">
+                <h2 class="partners-title">🤝 NOS PARTENAIRES CRYPTO</h2>
+                <p class="partners-subtitle">Tradez en toute sécurité avec nos plateformes partenaires de confiance. Profitez d'offres exclusives et de bonus d'inscription !</p>
+            </div>
+
+            <div class="partners-grid">
+                <!-- MEXC -->
+                <div class="partner-card">
+                    <div class="partner-badge">⭐ RECOMMANDÉ</div>
+                    <div class="partner-logo">
+                        <span style="font-family: 'Montserrat', sans-serif;">MEXC</span>
+                    </div>
+                    <h3 class="partner-name">MEXC</h3>
+                    <p class="partner-description">
+                        Plateforme d'échange crypto leader mondial avec plus de 2000 cryptomonnaies disponibles. Trading spot, futures, staking et bien plus encore.
+                    </p>
+                    <div class="partner-features">
+                        <span class="feature-tag">📊 2000+ Cryptos</span>
+                        <span class="feature-tag">💰 Bonus 10%</span>
+                        <span class="feature-tag">⚡ 0% Frais</span>
+                    </div>
+                    <a href="https://www.mexc.com" target="_blank" class="partner-btn">
+                        🚀 Rejoindre MEXC
+                    </a>
+                </div>
+
+                <!-- BLOFIN -->
+                <div class="partner-card">
+                    <div class="partner-badge">🔥 POPULAIRE</div>
+                    <div class="partner-logo">
+                        <span style="font-family: 'Montserrat', sans-serif; font-size: 32px;">BLO<br>FIN</span>
+                    </div>
+                    <h3 class="partner-name">BLOFIN</h3>
+                    <p class="partner-description">
+                        Plateforme de trading professionnel avec leverage jusqu'à 125x. Interface intuitive, exécution ultra-rapide et liquidité optimale.
+                    </p>
+                    <div class="partner-features">
+                        <span class="feature-tag">📈 Leverage 125x</span>
+                        <span class="feature-tag">🎁 Bonus 5000$</span>
+                        <span class="feature-tag">🔒 Sécurisé</span>
+                    </div>
+                    <a href="https://www.blofin.com" target="_blank" class="partner-btn">
+                        🚀 Rejoindre BLOFIN
+                    </a>
+                </div>
+
+                <!-- BITUNIX -->
+                <div class="partner-card">
+                    <div class="partner-badge">💎 NOUVEAU</div>
+                    <div class="partner-logo">
+                        <span style="font-family: 'Montserrat', sans-serif; font-size: 28px;">BIT<br>UNIX</span>
+                    </div>
+                    <h3 class="partner-name">BITUNIX</h3>
+                    <p class="partner-description">
+                        Exchange nouvelle génération avec trading social intégré. Copy trading, signaux automatiques et communauté active de traders.
+                    </p>
+                    <div class="partner-features">
+                        <span class="feature-tag">👥 Copy Trading</span>
+                        <span class="feature-tag">🎯 Signaux Auto</span>
+                        <span class="feature-tag">💸 Cashback</span>
+                    </div>
+                    <a href="https://www.bitunix.com" target="_blank" class="partner-btn">
+                        🚀 Rejoindre BITUNIX
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note importante -->
+            <div style="margin-top: 50px; padding: 25px; background: rgba(255, 215, 0, 0.1); border: 2px solid rgba(255, 215, 0, 0.3); border-radius: 16px; text-align: center;">
+                <p style="color: #FFD700; font-weight: 600; font-size: 14px; margin-bottom: 10px;">⚠️ AVERTISSEMENT</p>
+                <p style="color: #B8C5D6; font-size: 13px; line-height: 1.6;">
+                    Le trading de cryptomonnaies comporte des risques. Assurez-vous de bien comprendre les risques avant d'investir. 
+                    Ces liens peuvent contenir des codes de parrainage qui nous permettent de toucher une commission sans coût supplémentaire pour vous.
+                </p>
+            </div>
+        </section>
+
                 </div>
 
                 <div class="community-box">

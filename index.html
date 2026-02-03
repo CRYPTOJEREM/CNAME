@@ -837,6 +837,226 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
+  /* ===== SECTION PARTENAIRES CRYPTO ===== */
+        .partners-section {
+            background: linear-gradient(135deg, #0D1229 0%, #1A1F3A 100%);
+            border-radius: 24px;
+            padding: 50px 40px;
+            border: 1px solid rgba(123, 47, 247, 0.2);
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .partners-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #00D9FF 0%, #7B2FF7 50%, #FFD700 100%);
+        }
+
+        .partners-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .partners-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 36px;
+            color: #00D9FF;
+            margin-bottom: 15px;
+            text-shadow: 0 0 30px rgba(0, 217, 255, 0.5);
+        }
+
+        .partners-subtitle {
+            font-size: 16px;
+            color: #7B8BA8;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .partner-card {
+            background: linear-gradient(135deg, rgba(13, 18, 41, 0.8) 0%, rgba(26, 31, 58, 0.8) 100%);
+            border-radius: 20px;
+            padding: 40px 30px;
+            border: 2px solid rgba(123, 47, 247, 0.3);
+            transition: all 0.4s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .partner-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #00D9FF, #7B2FF7);
+        }
+
+        .partner-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 70px rgba(0, 217, 255, 0.3);
+            border-color: rgba(0, 217, 255, 0.5);
+        }
+
+        .partner-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .partner-badge.recommended {
+            background: rgba(255, 215, 0, 0.2);
+            color: #FFD700;
+            border: 1px solid rgba(255, 215, 0, 0.5);
+        }
+
+        .partner-badge.popular {
+            background: rgba(255, 51, 102, 0.2);
+            color: #FF3366;
+            border: 1px solid rgba(255, 51, 102, 0.5);
+        }
+
+        .partner-badge.new {
+            background: rgba(0, 217, 255, 0.2);
+            color: #00D9FF;
+            border: 1px solid rgba(0, 217, 255, 0.5);
+        }
+
+        .partner-logo {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 25px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(0, 217, 255, 0.2);
+            transition: all 0.3s;
+        }
+
+        .partner-card:hover .partner-logo {
+            background: rgba(0, 217, 255, 0.1);
+            border-color: rgba(0, 217, 255, 0.5);
+            transform: scale(1.05);
+        }
+
+        .partner-logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 24px;
+            color: #00D9FF;
+            text-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+        }
+
+        .partner-name {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 26px;
+            color: #FFFFFF;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .partner-description {
+            color: #B8C5D6;
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            min-height: 60px;
+        }
+
+        .partner-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .partner-feature-tag {
+            padding: 6px 14px;
+            background: rgba(0, 217, 255, 0.1);
+            color: #00D9FF;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid rgba(0, 217, 255, 0.3);
+        }
+
+        .partner-btn {
+            display: inline-block;
+            width: 100%;
+            padding: 16px 30px;
+            background: linear-gradient(135deg, #00D9FF, #7B2FF7);
+            color: #0A0E27;
+            text-decoration: none;
+            border-radius: 12px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .partner-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 217, 255, 0.5);
+        }
+
+        .partners-disclaimer {
+            margin-top: 40px;
+            padding: 20px;
+            background: rgba(255, 215, 0, 0.1);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .partners-disclaimer-title {
+            color: #FFD700;
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .partners-disclaimer-text {
+            color: #B8C5D6;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* Responsive Partners */
+        @media (max-width: 1024px) {
+            .partners-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+        }
 
         .stats-community {
             display: grid;
@@ -1955,7 +2175,82 @@
                         </div>
                     </div>
                 </div>
+<!-- ===== SECTION PARTENAIRES CRYPTO ===== -->
+<div class="partners-section">
+    <div class="partners-header">
+        <h2 class="partners-title">🤝 NOS PARTENAIRES CRYPTO</h2>
+        <p class="partners-subtitle">Tradez en toute sécurité avec nos plateformes partenaires de confiance</p>
+    </div>
 
+    <div class="partners-grid">
+        <!-- MEXC -->
+        <div class="partner-card">
+            <div class="partner-badge recommended">⭐ RECOMMANDÉ</div>
+            <div class="partner-logo">
+                <div class="partner-logo-text">MEXC</div>
+            </div>
+            <h3 class="partner-name">MEXC</h3>
+            <p class="partner-description">
+                Plateforme d'échange crypto leader mondial avec plus de 2000 cryptomonnaies disponibles.
+            </p>
+            <div class="partner-features">
+                <span class="partner-feature-tag">📊 2000+ Cryptos</span>
+                <span class="partner-feature-tag">💰 Bonus 10%</span>
+                <span class="partner-feature-tag">⚡ 0% Frais</span>
+            </div>
+            <a href="https://www.mexc.com" target="_blank" class="partner-btn">
+                🚀 Rejoindre MEXC
+            </a>
+        </div>
+
+        <!-- BLOFIN -->
+        <div class="partner-card">
+            <div class="partner-badge popular">🔥 POPULAIRE</div>
+            <div class="partner-logo">
+                <div class="partner-logo-text">BLOFIN</div>
+            </div>
+            <h3 class="partner-name">BLOFIN</h3>
+            <p class="partner-description">
+                Trading professionnel avec leverage jusqu'à 125x. Interface intuitive et liquidité optimale.
+            </p>
+            <div class="partner-features">
+                <span class="partner-feature-tag">📈 Leverage 125x</span>
+                <span class="partner-feature-tag">🎁 Bonus 5000$</span>
+                <span class="partner-feature-tag">🔒 Sécurisé</span>
+            </div>
+            <a href="https://www.blofin.com" target="_blank" class="partner-btn">
+                🚀 Rejoindre BLOFIN
+            </a>
+        </div>
+
+        <!-- BITUNIX -->
+        <div class="partner-card">
+            <div class="partner-badge new">💎 NOUVEAU</div>
+            <div class="partner-logo">
+                <div class="partner-logo-text">BITUNIX</div>
+            </div>
+            <h3 class="partner-name">BITUNIX</h3>
+            <p class="partner-description">
+                Exchange nouvelle génération avec trading social intégré et signaux automatiques.
+            </p>
+            <div class="partner-features">
+                <span class="partner-feature-tag">👥 Copy Trading</span>
+                <span class="partner-feature-tag">🎯 Signaux Auto</span>
+                <span class="partner-feature-tag">💸 Cashback</span>
+            </div>
+            <a href="https://www.bitunix.com" target="_blank" class="partner-btn">
+                🚀 Rejoindre BITUNIX
+            </a>
+        </div>
+    </div>
+
+    <div class="partners-disclaimer">
+        <p class="partners-disclaimer-title">⚠️ AVERTISSEMENT</p>
+        <p class="partners-disclaimer-text">
+            Le trading de cryptomonnaies comporte des risques. Ces liens peuvent contenir des codes de parrainage.
+        </p>
+    </div>
+</div>
                 <div class="stats-community">
                     <div class="stat-box">
                         <div class="stat-number">10K+</div>

@@ -5103,6 +5103,178 @@ function getCategoryLabel(category) {
     };
     return labels[category] || '📰 Actualité';
 }
+        function displayNews(newsArray) {
+    const container = document.getElementById('news-container');
+    
+    if (newsArray.length === 0) {
+        container.innerHTML = `
+            <div class="no-news">
+                <div class="no-news-icon">📭</div>
+                <h3>Aucune actualité disponible</h3>
+                <p>Essayez de rafraîchir ou changez de filtre</p>
+            </div>
+        `;
+        return;
+    }
+
+    const newsHTML = newsArray.map(news => `
+        <div class="news-card" data-category="${news.category}">
+            <div class="news-image">
+                <img src="${news.image}" alt="${news.title}" onerror="this.src='https://via.placeholder.com/400x240/1A1F3A/00D9FF?text=La+Sphere'">
+            </div>
+            <div class="news-content">
+                <div class="news-meta">
+                    <span class="news-category ${getCategoryClass(news.category)}">
+                        ${getCategoryLabel(news.category)}
+                    </span>
+                    <span class="news-date">
+                        🕐 ${news.date}
+                    </span>
+                </div>
+                <h3 class="news-title">${news.title}</h3>
+                <p class="news-excerpt">${news.excerpt}</p>
+                <div class="news-footer">
+                    <span class="news-source">
+                        📰 ${news.source}
+                    </span>
+                    <a href="${news.url}" target="_blank" class="read-more">
+                        Lire la suite →
+                    </a>
+                </div>
+            </div>
+        </div>
+    `).join('');
+
+    container.innerHTML = `<div class="news-grid">${newsHTML}</div>`;
+}
+
+function filterNews(category) {
+    currentFilter = category;
+    
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    event.target.classList.add('active');
+
+    const filtered = category === 'all' 
+        ? allNews 
+        : allNews.filter(news => news.category === category);
+    
+    displayNews(filtered);
+}
+
+function getDemoNews() {
+    return [
+        {
+            title: "Bitcoin franchit les 100 000$ : Une nouvelle ère pour la crypto",
+            url: "https://cryptoast.fr",
+            image: "https://via.placeholder.com/400x240/1A1F3A/F7931A?text=Bitcoin+100K",
+            excerpt: "Le Bitcoin atteint un nouveau record historique en dépassant la barre symbolique des 100 000 dollars. Les analystes de La Sphere prévoient une continuation de la hausse...",
+            date: "Il y a 2h",
+            category: "bitcoin",
+            source: "La Sphere"
+        },
+        {
+            title: "Ethereum 2.0 : La migration vers la preuve d'enjeu réussie",
+            url: "https://cryptoast.fr",
+            image: "https://via.placeholder.com/400x240/1A1F3A/627EEA?text=Ethereum+2.0",
+            excerpt: "La transition tant attendue d'Ethereum vers le consensus par preuve d'enjeu s'est déroulée sans accroc, marquant une étape majeure pour l'écosystème...",
+            date: "Il y a 5h",
+            category: "ethereum",
+            source: "La Sphere"
+        },
+        {
+            title: "Les protocoles DeFi enregistrent 50 milliards de TVL",
+            url: "https://cryptoast.fr",
+            image: "https://via.placeholder.com/400x240/1A1F3A/7B2FF7?text=DeFi+TVL",
+            excerpt: "La finance décentralisée continue sa croissance exponentielle avec une valeur totale verrouillée qui atteint des sommets historiques...",
+            date: "Hier",
+            category: "defi",
+            source: "La Sphere"
+        },
+        {
+            title: "Régulation crypto : L'UE adopte le cadre MiCA",
+            url: "https://cryptoast.fr",
+            image: "https://via.placeholder.com/400x240/1A1F3A/FF3366?text=MiCA+EU",
+            excerpt: "L'Union Européenne finalise son cadre réglementaire pour les crypto-actifs, établissant des règles claires pour l'industrie de la blockchain...",
+            date: "Il y a 1 jour",
+            category: "regulation",
+            source: "La Sphere"
+        },
+        {
+            title: "Solana dépasse Ethereum en nombre de transactions",
+            url: "https://cryptoast.fr",
+            image: "https://via.placeholder.com/400x240/1A1F3A/00D9FF?text=Solana+SOL",
+            excerpt: "La blockchain Solana enregistre un nouveau record avec plus de transactions quotidiennes qu'Ethereum, confirmant sa montée en puissance dans l'écosystème crypto...",
+            date: "Il y a 1 jour",
+            category: "altcoin",
+            source: "La Sphere"
+        },
+        {
+            title: "Les NFTs reviennent en force avec une nouvelle vague d'adoption",
+            url: "https://cryptoast.fr",
+            image: "https://via.placeholder.com/400x240/1A1F3A/FFD700?text=NFT+Boom",
+            excerpt: "Après une période de calme, le marché des NFTs connaît un regain d'intérêt avec des volumes d'échanges en hausse de 200% selon les experts de La Sphere...",
+            date: "Il y a 2 jours",
+            category: "nft",
+            source: "La Sphere"
+        },
+        {
+            title: "Cardano annonce une mise à jour majeure du réseau",
+            url: "https://cryptoast.fr",
+            image: "https://via.placeholder.com/400x240/1A1F3A/00D9FF?text=Cardano+ADA",
+            excerpt: "La blockchain Cardano prépare une mise à jour importante qui devrait améliorer significativement ses performances, son évolutivité et ses capacités de smart contracts...",
+            date: "Il y a 2 jours",
+            category: "altcoin",
+            source: "La Sphere"
+        },
+        {
+            title: "Le staking Ethereum dépasse les 20 millions d'ETH",
+            url: "https://cryptoast.fr",
+            image: "https://via.placeholder.com/400x240/1A1F3A/627EEA?text=ETH+Staking",
+            excerpt: "Un nouveau record pour Ethereum avec plus de 20 millions d'ETH stakés, représentant environ 16% de l'offre totale en circulation...",
+            date: "Il y a 3 jours",
+            category: "ethereum",
+            source: "La Sphere"
+        },
+        {
+            title: "Les institutions investissent massivement dans le Bitcoin",
+            url: "https://cryptoast.fr",
+            image: "https://via.placeholder.com/400x240/1A1F3A/F7931A?text=Institutions+BTC",
+            excerpt: "Les fonds d'investissement institutionnels continuent d'accumuler du Bitcoin, avec plus de 5 milliards de dollars investis ce mois-ci selon les données de La Sphere...",
+            date: "Il y a 3 jours",
+            category: "bitcoin",
+            source: "La Sphere"
+        },
+        {
+            title: "Une nouvelle blockchain Layer 2 bat tous les records de vitesse",
+            url: "https://cryptoast.fr",
+            image: "https://via.placeholder.com/400x240/1A1F3A/00D9FF?text=Layer+2",
+            excerpt: "Cette solution de scalabilité révolutionnaire promet jusqu'à 100 000 transactions par seconde avec des frais quasi nuls, bouleversant le paysage des blockchains...",
+            date: "Il y a 4 jours",
+            category: "altcoin",
+            source: "La Sphere"
+        },
+        {
+            title: "La DeFi franchit le cap des 100 milliards de dollars",
+            url: "https://cryptoast.fr",
+            image: "https://via.placeholder.com/400x240/1A1F3A/7B2FF7?text=DeFi+100B",
+            excerpt: "Milestone historique pour la finance décentralisée qui confirme l'adoption massive des protocoles DeFi par les utilisateurs du monde entier...",
+            date: "Il y a 5 jours",
+            category: "defi",
+            source: "La Sphere"
+        },
+        {
+            title: "Les États-Unis créent un cadre réglementaire favorable aux cryptos",
+            url: "https://cryptoast.fr",
+            image: "https://via.placeholder.com/400x240/1A1F3A/FF3366?text=USA+Regulation",
+            excerpt: "Le gouvernement américain surprend les marchés avec une réglementation claire et favorable à l'innovation dans le secteur des cryptomonnaies...",
+            date: "Il y a 6 jours",
+            category: "regulation",
+            source: "La Sphere"
+        }
+    ];
+}
 
 function getDemoNews() {
     return [

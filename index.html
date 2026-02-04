@@ -4951,189 +4951,159 @@ function showCategory(categoryName) {
 // SYSTÈME D'ACTUALITÉS CRYPTO - VERSION CORRIGÉE
 // ============================================
 
+// ============================================
+// SYSTÈME D'ACTUALITÉS - VERSION SIMPLIFIÉE
+// ============================================
+
 let allNews = [];
 let currentFilter = 'all';
 window.newsLoaded = false;
 
-async function loadCryptoNews() {
-    const container = document.getElementById('news-container');
-    const refreshBtn = document.querySelector('.refresh-news-btn');
-    const refreshIcon = document.getElementById('refresh-icon');
-    const refreshText = document.getElementById('refresh-text');
-
-    console.log('🔄 Début du chargement des news...');
-
-    if (refreshBtn) {
-        refreshBtn.disabled = true;
-        refreshIcon.textContent = '⏳';
-        refreshText.textContent = 'Chargement...';
-    }
-
-    container.innerHTML = `
-        <div class="loading-spinner">
-            <div class="spinner"></div>
-            <p class="loading-text">Récupération des dernières actualités...</p>
-        </div>
-    `;
-
-    // FORCER l'affichage des news de démo immédiatement
-    console.log('📰 Chargement des news de démonstration...');
-    allNews = getDemoNews();
+// Charger immédiatement les news au clic
+function loadCryptoNews() {
+    console.log('Chargement des news...');
+    
+    // Données de démonstration
+    allNews = [
+        {
+            title: "Bitcoin franchit les 100 000$ : Une nouvelle ère pour la crypto",
+            url: "https://cryptoast.fr",
+            image: "https://via.placeholder.com/400x240/1A1F3A/F7931A?text=Bitcoin",
+            excerpt: "Le Bitcoin atteint un nouveau record historique. Les analystes de La Sphere prévoient une continuation...",
+            date: "Il y a 2h",
+            category: "bitcoin",
+            source: "La Sphere"
+        },
+        {
+            title: "Ethereum 2.0 : Migration réussie vers la preuve d'enjeu",
+            url: "https://cryptoast.fr",
+            image: "https://via.placeholder.com/400x240/1A1F3A/627EEA?text=Ethereum",
+            excerpt: "La transition d'Ethereum s'est déroulée sans accroc, marquant une étape majeure...",
+            date: "Il y a 5h",
+            category: "ethereum",
+            source: "La Sphere"
+        },
+        {
+            title: "Les protocoles DeFi enregistrent 50 milliards de TVL",
+            url: "https://cryptoast.fr",
+            image: "https://via.placeholder.com/400x240/1A1F3A/7B2FF7?text=DeFi",
+            excerpt: "La finance décentralisée continue sa croissance exponentielle...",
+            date: "Hier",
+            category: "defi",
+            source: "La Sphere"
+        },
+        {
+            title: "Régulation crypto : L'UE adopte le cadre MiCA",
+            url: "https://cryptoast.fr",
+            image: "https://via.placeholder.com/400x240/1A1F3A/FF3366?text=Regulation",
+            excerpt: "L'Union Européenne finalise son cadre réglementaire pour les crypto-actifs...",
+            date: "Il y a 1 jour",
+            category: "regulation",
+            source: "La Sphere"
+        },
+        {
+            title: "Solana dépasse Ethereum en transactions quotidiennes",
+            url: "https://cryptoast.fr",
+            image: "https://via.placeholder.com/400x240/1A1F3A/00D9FF?text=Solana",
+            excerpt: "La blockchain Solana enregistre un nouveau record de transactions...",
+            date: "Il y a 1 jour",
+            category: "altcoin",
+            source: "La Sphere"
+        },
+        {
+            title: "Les NFTs reviennent en force en 2026",
+            url: "https://cryptoast.fr",
+            image: "https://via.placeholder.com/400x240/1A1F3A/FFD700?text=NFT",
+            excerpt: "Le marché des NFTs connaît un regain d'intérêt avec +200% de volumes...",
+            date: "Il y a 2 jours",
+            category: "nft",
+            source: "La Sphere"
+        },
+        {
+            title: "Cardano : Mise à jour majeure du réseau prévue",
+            url: "https://cryptoast.fr",
+            image: "https://via.placeholder.com/400x240/1A1F3A/00D9FF?text=Cardano",
+            excerpt: "Une mise à jour importante devrait améliorer les performances de Cardano...",
+            date: "Il y a 2 jours",
+            category: "altcoin",
+            source: "La Sphere"
+        },
+        {
+            title: "Le staking Ethereum dépasse 20 millions d'ETH",
+            url: "https://cryptoast.fr",
+            image: "https://via.placeholder.com/400x240/1A1F3A/627EEA?text=Staking",
+            excerpt: "Record historique avec 16% de l'offre totale d'ETH stakée...",
+            date: "Il y a 3 jours",
+            category: "ethereum",
+            source: "La Sphere"
+        },
+        {
+            title: "Les institutions accumulent massivement du Bitcoin",
+            url: "https://cryptoast.fr",
+            image: "https://via.placeholder.com/400x240/1A1F3A/F7931A?text=Institutions",
+            excerpt: "Plus de 5 milliards investis par les fonds institutionnels ce mois-ci...",
+            date: "Il y a 3 jours",
+            category: "bitcoin",
+            source: "La Sphere"
+        },
+        {
+            title: "Nouvelle blockchain Layer 2 : records de vitesse",
+            url: "https://cryptoast.fr",
+            image: "https://via.placeholder.com/400x240/1A1F3A/00D9FF?text=Layer2",
+            excerpt: "100 000 transactions par seconde avec des frais quasi nuls...",
+            date: "Il y a 4 jours",
+            category: "altcoin",
+            source: "La Sphere"
+        },
+        {
+            title: "La DeFi franchit 100 milliards de dollars de TVL",
+            url: "https://cryptoast.fr",
+            image: "https://via.placeholder.com/400x240/1A1F3A/7B2FF7?text=DeFi100B",
+            excerpt: "Milestone historique pour la finance décentralisée mondiale...",
+            date: "Il y a 5 jours",
+            category: "defi",
+            source: "La Sphere"
+        },
+        {
+            title: "USA : Cadre réglementaire favorable aux cryptos",
+            url: "https://cryptoast.fr",
+            image: "https://via.placeholder.com/400x240/1A1F3A/FF3366?text=USA",
+            excerpt: "Réglementation claire et favorable à l'innovation crypto...",
+            date: "Il y a 6 jours",
+            category: "regulation",
+            source: "La Sphere"
+        }
+    ];
+    
     displayNews(allNews);
     window.newsLoaded = true;
-
-    if (refreshBtn) {
-        refreshBtn.disabled = false;
-        refreshIcon.textContent = '✅';
-        refreshText.textContent = 'Actualisé !';
-        setTimeout(() => {
-            refreshIcon.textContent = '🔄';
-            refreshText.textContent = 'Actualiser';
-        }, 2000);
-    }
-
-    console.log('✅ News chargées:', allNews.length, 'articles');
-
-    // Essayer de charger les vraies news en arrière-plan
-    try {
-        const proxyUrl = 'https://api.allorigins.win/get?url=';
-        const targetUrl = encodeURIComponent('https://cryptoast.fr/actu/');
-        
-        console.log('🌐 Tentative de récupération depuis Cryptoast...');
-        const response = await fetch(proxyUrl + targetUrl);
-        const data = await response.json();
-        
-        if (data.contents) {
-            console.log('✅ Contenu reçu de Cryptoast');
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(data.contents, 'text/html');
-            const articles = doc.querySelectorAll('.article-item, article, .post-item');
-            
-            console.log(`📋 Articles trouvés: ${articles.length}`);
-            
-            if (articles.length > 0) {
-                const realNews = [];
-                articles.forEach((article, index) => {
-                    if (index >= 12) return;
-                    
-                    const titleEl = article.querySelector('h2, h3, .title');
-                    const linkEl = article.querySelector('a');
-                    
-                    if (titleEl && linkEl) {
-                        realNews.push({
-                            title: titleEl.textContent.trim(),
-                            url: linkEl.href,
-                            image: 'https://via.placeholder.com/400x240/1A1F3A/00D9FF?text=La+Sphere',
-                            excerpt: 'Découvrez cet article sur La Sphere',
-                            date: 'Récent',
-                            category: detectCategory(titleEl.textContent),
-                            source: 'La Sphere'
-                        });
-                    }
-                });
-                
-                if (realNews.length > 0) {
-                    allNews = realNews;
-                    displayNews(allNews);
-                    console.log('✅ Vraies news affichées:', realNews.length);
-                }
-            }
-        }
-    } catch (error) {
-        console.log('⚠️ Impossible de charger depuis Cryptoast, mode démo actif');
-    }
-}
-function formatDate(dateStr) {
-    try {
-        const date = new Date(dateStr);
-        const now = new Date();
-        const diffMs = now - date;
-        const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
-        const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-        
-        if (diffHours < 1) return 'Il y a quelques minutes';
-        if (diffHours < 24) return `Il y a ${diffHours}h`;
-        if (diffDays === 1) return 'Hier';
-        if (diffDays < 7) return `Il y a ${diffDays} jours`;
-        
-        return date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' });
-    } catch (e) {
-        return dateStr;
-    }
 }
 
-function detectCategory(title) {
-    const titleLower = title.toLowerCase();
-    
-    if (titleLower.includes('bitcoin') || titleLower.includes('btc')) return 'bitcoin';
-    if (titleLower.includes('ethereum') || titleLower.includes('eth')) return 'ethereum';
-    if (titleLower.includes('defi') || titleLower.includes('décentralisée')) return 'defi';
-    if (titleLower.includes('nft')) return 'nft';
-    if (titleLower.includes('régulation') || titleLower.includes('sec')) return 'regulation';
-    
-    return 'altcoin';
-}
-
-function getCategoryClass(category) {
-    const classes = {
-        'bitcoin': 'category-bitcoin',
-        'ethereum': 'category-ethereum',
-        'altcoin': 'category-altcoin',
-        'defi': 'category-defi',
-        'nft': 'category-nft',
-        'regulation': 'category-regulation'
-    };
-    return classes[category] || 'category-default';
-}
-
-function getCategoryLabel(category) {
-    const labels = {
-        'bitcoin': '₿ Bitcoin',
-        'ethereum': 'Ξ Ethereum',
-        'altcoin': '🪙 Altcoin',
-        'defi': '💎 DeFi',
-        'nft': '🎨 NFT',
-        'regulation': '⚖️ Régulation'
-    };
-    return labels[category] || '📰 Actualité';
-}
-        function displayNews(newsArray) {
+function displayNews(newsArray) {
     const container = document.getElementById('news-container');
     
-    if (newsArray.length === 0) {
-        container.innerHTML = `
-            <div class="no-news">
-                <div class="no-news-icon">📭</div>
-                <h3>Aucune actualité disponible</h3>
-                <p>Essayez de rafraîchir ou changez de filtre</p>
-            </div>
-        `;
+    if (!container) {
+        console.error('Conteneur news-container introuvable');
         return;
     }
-
+    
     const newsHTML = newsArray.map(news => `
         <div class="news-card" data-category="${news.category}">
             <div class="news-image">
-                <img src="${news.image}" alt="${news.title}" onerror="this.src='https://via.placeholder.com/400x240/1A1F3A/00D9FF?text=La+Sphere'">
+                <img src="${news.image}" alt="${news.title}">
             </div>
             <div class="news-content">
                 <div class="news-meta">
                     <span class="news-category ${getCategoryClass(news.category)}">
                         ${getCategoryLabel(news.category)}
                     </span>
-                    <span class="news-date">
-                        🕐 ${news.date}
-                    </span>
+                    <span class="news-date">🕐 ${news.date}</span>
                 </div>
                 <h3 class="news-title">${news.title}</h3>
                 <p class="news-excerpt">${news.excerpt}</p>
                 <div class="news-footer">
-                    <span class="news-source">
-                        📰 ${news.source}
-                    </span>
-                    <a href="${news.url}" target="_blank" class="read-more">
-                        Lire la suite →
-                    </a>
+                    <span class="news-source">📰 ${news.source}</span>
+                    <a href="${news.url}" target="_blank" class="read-more">Lire la suite →</a>
                 </div>
             </div>
         </div>
@@ -5143,18 +5113,35 @@ function getCategoryLabel(category) {
 }
 
 function filterNews(category) {
-    currentFilter = category;
-    
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.classList.remove('active');
-    });
-    event.target.classList.add('active');
-
-    const filtered = category === 'all' 
-        ? allNews 
-        : allNews.filter(news => news.category === category);
-    
+    const filtered = category === 'all' ? allNews : allNews.filter(n => n.category === category);
     displayNews(filtered);
+    
+    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+}
+
+function getCategoryClass(cat) {
+    const classes = {
+        'bitcoin': 'category-bitcoin',
+        'ethereum': 'category-ethereum',
+        'altcoin': 'category-altcoin',
+        'defi': 'category-defi',
+        'nft': 'category-nft',
+        'regulation': 'category-regulation'
+    };
+    return classes[cat] || 'category-default';
+}
+
+function getCategoryLabel(cat) {
+    const labels = {
+        'bitcoin': '₿ Bitcoin',
+        'ethereum': 'Ξ Ethereum',
+        'altcoin': '🪙 Altcoin',
+        'defi': '💎 DeFi',
+        'nft': '🎨 NFT',
+        'regulation': '⚖️ Régulation'
+    };
+    return labels[cat] || '📰 Actualité';
 }
 
 function getDemoNews() {

@@ -4961,6 +4961,8 @@ async function loadCryptoNews() {
     const refreshIcon = document.getElementById('refresh-icon');
     const refreshText = document.getElementById('refresh-text');
 
+    console.log('🔄 Début du chargement des news...');
+
     if (refreshBtn) {
         refreshBtn.disabled = true;
         refreshIcon.textContent = '⏳';
@@ -4974,81 +4976,73 @@ async function loadCryptoNews() {
         </div>
     `;
 
+    // FORCER l'affichage des news de démo immédiatement
+    console.log('📰 Chargement des news de démonstration...');
+    allNews = getDemoNews();
+    displayNews(allNews);
+    window.newsLoaded = true;
+
+    if (refreshBtn) {
+        refreshBtn.disabled = false;
+        refreshIcon.textContent = '✅';
+        refreshText.textContent = 'Actualisé !';
+        setTimeout(() => {
+            refreshIcon.textContent = '🔄';
+            refreshText.textContent = 'Actualiser';
+        }, 2000);
+    }
+
+    console.log('✅ News chargées:', allNews.length, 'articles');
+
+    // Essayer de charger les vraies news en arrière-plan
     try {
         const proxyUrl = 'https://api.allorigins.win/get?url=';
         const targetUrl = encodeURIComponent('https://cryptoast.fr/actu/');
         
+        console.log('🌐 Tentative de récupération depuis Cryptoast...');
         const response = await fetch(proxyUrl + targetUrl);
         const data = await response.json();
         
-        if (!data.contents) {
-            throw new Error('Pas de contenu disponible');
-        }
-
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(data.contents, 'text/html');
-        
-        // Sélecteurs multiples pour maximiser les chances
-        const articles = doc.querySelectorAll('.article-item, article, .post-item, .entry, [class*="article"], [class*="post"]');
-        allNews = [];
-
-        console.log(`Trouvé ${articles.length} articles`);
-
-        articles.forEach((article, index) => {
-            if (index >= 12) return;
-
-            const titleEl = article.querySelector('h2, h3, h4, .title, .entry-title, .post-title, [class*="title"]');
-            const linkEl = article.querySelector('a[href*="cryptoast"]') || article.querySelector('a');
-            const imgEl = article.querySelector('img');
-            const excerptEl = article.querySelector('.excerpt, .description, .summary, p');
-            const dateEl = article.querySelector('time, .date, .post-date, [class*="date"]');
-
-            if (titleEl && linkEl) {
-                const title = titleEl.textContent.trim() || titleEl.getAttribute('title') || linkEl.getAttribute('title') || 'Article La Sphere';
+        if (data.contents) {
+            console.log('✅ Contenu reçu de Cryptoast');
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(data.contents, 'text/html');
+            const articles = doc.querySelectorAll('.article-item, article, .post-item');
+            
+            console.log(`📋 Articles trouvés: ${articles.length}`);
+            
+            if (articles.length > 0) {
+                const realNews = [];
+                articles.forEach((article, index) => {
+                    if (index >= 12) return;
+                    
+                    const titleEl = article.querySelector('h2, h3, .title');
+                    const linkEl = article.querySelector('a');
+                    
+                    if (titleEl && linkEl) {
+                        realNews.push({
+                            title: titleEl.textContent.trim(),
+                            url: linkEl.href,
+                            image: 'https://via.placeholder.com/400x240/1A1F3A/00D9FF?text=La+Sphere',
+                            excerpt: 'Découvrez cet article sur La Sphere',
+                            date: 'Récent',
+                            category: detectCategory(titleEl.textContent),
+                            source: 'La Sphere'
+                        });
+                    }
+                });
                 
-                let imageUrl = 'https://via.placeholder.com/400x240/1A1F3A/00D9FF?text=La+Sphere';
-                if (imgEl) {
-                    imageUrl = imgEl.src || imgEl.dataset.src || imgEl.dataset.lazySrc || imgEl.getAttribute('data-original') || imageUrl;
+                if (realNews.length > 0) {
+                    allNews = realNews;
+                    displayNews(allNews);
+                    console.log('✅ Vraies news affichées:', realNews.length);
                 }
-                
-                const newsItem = {
-                    title: title,
-                    url: linkEl.href,
-                    image: imageUrl,
-                    excerpt: excerptEl ? excerptEl.textContent.trim().substring(0, 150) + '...' : 'Découvrez cet article sur La Sphere',
-                    date: dateEl ? formatDate(dateEl.textContent.trim()) : 'Récent',
-                    category: detectCategory(title),
-                    source: 'La Sphere'
-                };
-                
-                allNews.push(newsItem);
             }
-        });
-
-        if (allNews.length === 0) {
-            allNews = getDemoNews();
         }
-
-        displayNews(allNews);
-        window.newsLoaded = true;
-
     } catch (error) {
-        console.error('Erreur:', error);
-        allNews = getDemoNews();
-        displayNews(allNews);
-    } finally {
-        if (refreshBtn) {
-            refreshBtn.disabled = false;
-            refreshIcon.textContent = '✅';
-            refreshText.textContent = 'Actualisé !';
-            setTimeout(() => {
-                refreshIcon.textContent = '🔄';
-                refreshText.textContent = 'Actualiser';
-            }, 2000);
-        }
+        console.log('⚠️ Impossible de charger depuis Cryptoast, mode démo actif');
     }
 }
-
 function formatDate(dateStr) {
     try {
         const date = new Date(dateStr);

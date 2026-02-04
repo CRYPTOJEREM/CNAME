@@ -4947,8 +4947,8 @@ function showCategory(categoryName) {
         categorySelector.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 }
-        // ============================================
-// SYSTÈME D'ACTUALITÉS CRYPTO
+ // ============================================
+// SYSTÈME D'ACTUALITÉS CRYPTO - VERSION CORRIGÉE
 // ============================================
 
 let allNews = [];
@@ -4961,7 +4961,6 @@ async function loadCryptoNews() {
     const refreshIcon = document.getElementById('refresh-icon');
     const refreshText = document.getElementById('refresh-text');
 
-    // Animation du bouton
     if (refreshBtn) {
         refreshBtn.disabled = true;
         refreshIcon.textContent = '⏳';
@@ -4976,7 +4975,6 @@ async function loadCryptoNews() {
     `;
 
     try {
-        // Utilisation d'un proxy CORS pour récupérer le contenu de Cryptoast
         const proxyUrl = 'https://api.allorigins.win/get?url=';
         const targetUrl = encodeURIComponent('https://cryptoast.fr/actu/');
         
@@ -4987,38 +4985,46 @@ async function loadCryptoNews() {
             throw new Error('Pas de contenu disponible');
         }
 
-        // Parser le HTML
         const parser = new DOMParser();
         const doc = parser.parseFromString(data.contents, 'text/html');
         
-        // Extraire les articles
-        const articles = doc.querySelectorAll('article, .post, .article-item, .entry');
+        // Sélecteurs multiples pour maximiser les chances
+        const articles = doc.querySelectorAll('.article-item, article, .post-item, .entry, [class*="article"], [class*="post"]');
         allNews = [];
 
-        articles.forEach((article, index) => {
-            if (index >= 12) return; // Limiter à 12 articles
+        console.log(`Trouvé ${articles.length} articles`);
 
-            const titleEl = article.querySelector('h2, h3, .entry-title, .post-title, a[title]');
-            const linkEl = article.querySelector('a[href*="cryptoast.fr"]');
+        articles.forEach((article, index) => {
+            if (index >= 12) return;
+
+            const titleEl = article.querySelector('h2, h3, h4, .title, .entry-title, .post-title, [class*="title"]');
+            const linkEl = article.querySelector('a[href*="cryptoast"]') || article.querySelector('a');
             const imgEl = article.querySelector('img');
-            const excerptEl = article.querySelector('.excerpt, .entry-summary, p');
-            const dateEl = article.querySelector('time, .date, .post-date');
+            const excerptEl = article.querySelector('.excerpt, .description, .summary, p');
+            const dateEl = article.querySelector('time, .date, .post-date, [class*="date"]');
 
             if (titleEl && linkEl) {
+                const title = titleEl.textContent.trim() || titleEl.getAttribute('title') || linkEl.getAttribute('title') || 'Article La Sphere';
+                
+                let imageUrl = 'https://via.placeholder.com/400x240/1A1F3A/00D9FF?text=La+Sphere';
+                if (imgEl) {
+                    imageUrl = imgEl.src || imgEl.dataset.src || imgEl.dataset.lazySrc || imgEl.getAttribute('data-original') || imageUrl;
+                }
+                
                 const newsItem = {
-                    title: titleEl.textContent.trim() || titleEl.getAttribute('title') || 'Article Cryptoast',
+                    title: title,
                     url: linkEl.href,
-                    image: imgEl ? (imgEl.src || imgEl.dataset.src || 'https://via.placeholder.com/400x240/1A1F3A/00D9FF?text=Cryptoast') : 'https://via.placeholder.com/400x240/1A1F3A/00D9FF?text=Cryptoast',
-                    excerpt: excerptEl ? excerptEl.textContent.trim().substring(0, 150) + '...' : 'Cliquez pour lire l\'article complet sur Cryptoast',
-                    date: dateEl ? dateEl.textContent.trim() : 'Récent',
-                    category: detectCategory(titleEl.textContent || titleEl.getAttribute('title') || ''),
-                    source: 'Cryptoast'
+                    image: imageUrl,
+                    excerpt: excerptEl ? excerptEl.textContent.trim().substring(0, 150) + '...' : 'Découvrez cet article sur La Sphere',
+                    date: dateEl ? formatDate(dateEl.textContent.trim()) : 'Récent',
+                    category: detectCategory(title),
+                    source: 'La Sphere'
                 };
+                
                 allNews.push(newsItem);
             }
         });
 
-        // Si aucun article trouvé, utiliser des données de démonstration
         if (allNews.length === 0) {
             allNews = getDemoNews();
         }
@@ -5027,11 +5033,10 @@ async function loadCryptoNews() {
         window.newsLoaded = true;
 
     } catch (error) {
-        console.error('Erreur lors du chargement des news:', error);
+        console.error('Erreur:', error);
         allNews = getDemoNews();
         displayNews(allNews);
     } finally {
-        // Réinitialiser le bouton
         if (refreshBtn) {
             refreshBtn.disabled = false;
             refreshIcon.textContent = '✅';
@@ -5044,14 +5049,33 @@ async function loadCryptoNews() {
     }
 }
 
+function formatDate(dateStr) {
+    try {
+        const date = new Date(dateStr);
+        const now = new Date();
+        const diffMs = now - date;
+        const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+        const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+        
+        if (diffHours < 1) return 'Il y a quelques minutes';
+        if (diffHours < 24) return `Il y a ${diffHours}h`;
+        if (diffDays === 1) return 'Hier';
+        if (diffDays < 7) return `Il y a ${diffDays} jours`;
+        
+        return date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' });
+    } catch (e) {
+        return dateStr;
+    }
+}
+
 function detectCategory(title) {
     const titleLower = title.toLowerCase();
     
     if (titleLower.includes('bitcoin') || titleLower.includes('btc')) return 'bitcoin';
     if (titleLower.includes('ethereum') || titleLower.includes('eth')) return 'ethereum';
-    if (titleLower.includes('defi') || titleLower.includes('décentralisée') || titleLower.includes('decentralise')) return 'defi';
+    if (titleLower.includes('defi') || titleLower.includes('décentralisée')) return 'defi';
     if (titleLower.includes('nft')) return 'nft';
-    if (titleLower.includes('régulation') || titleLower.includes('regulation') || titleLower.includes('sec') || titleLower.includes('loi')) return 'regulation';
+    if (titleLower.includes('régulation') || titleLower.includes('sec')) return 'regulation';
     
     return 'altcoin';
 }
@@ -5078,67 +5102,6 @@ function getCategoryLabel(category) {
         'regulation': '⚖️ Régulation'
     };
     return labels[category] || '📰 Actualité';
-}
-        function displayNews(newsArray) {
-    const container = document.getElementById('news-container');
-    
-    if (newsArray.length === 0) {
-        container.innerHTML = `
-            <div class="no-news">
-                <div class="no-news-icon">📭</div>
-                <h3>Aucune actualité disponible</h3>
-                <p>Essayez de rafraîchir ou changez de filtre</p>
-            </div>
-        `;
-        return;
-    }
-
-    const newsHTML = newsArray.map(news => `
-        <div class="news-card" data-category="${news.category}">
-            <div class="news-image">
-                <img src="${news.image}" alt="${news.title}" onerror="this.src='https://via.placeholder.com/400x240/1A1F3A/00D9FF?text=Cryptoast'">
-            </div>
-            <div class="news-content">
-                <div class="news-meta">
-                    <span class="news-category ${getCategoryClass(news.category)}">
-                        ${getCategoryLabel(news.category)}
-                    </span>
-                    <span class="news-date">
-                        🕐 ${news.date}
-                    </span>
-                </div>
-                <h3 class="news-title">${news.title}</h3>
-                <p class="news-excerpt">${news.excerpt}</p>
-                <div class="news-footer">
-                    <span class="news-source">
-                        📰 ${news.source}
-                    </span>
-                    <a href="${news.url}" target="_blank" class="read-more">
-                        Lire la suite →
-                    </a>
-                </div>
-            </div>
-        </div>
-    `).join('');
-
-    container.innerHTML = `<div class="news-grid">${newsHTML}</div>`;
-}
-
-function filterNews(category) {
-    currentFilter = category;
-    
-    // Mettre à jour les boutons
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.classList.remove('active');
-    });
-    event.target.classList.add('active');
-
-    // Filtrer les actualités
-    const filtered = category === 'all' 
-        ? allNews 
-        : allNews.filter(news => news.category === category);
-    
-    displayNews(filtered);
 }
 
 function getDemoNews() {

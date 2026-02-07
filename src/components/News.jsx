@@ -3,11 +3,76 @@ import React, { useState, useEffect } from 'react'
 
 const News = () => {
     const [filter, setFilter] = useState('all')
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
     const [news, setNews] = useState([])
+    const [error, setError] = useState(null)
 
-    // Data from legacy code
-    const allNewsData = [
+    const categorizeNews = (title, description) => {
+        const text = `${title} ${description}`.toLowerCase()
+        if (text.includes('bitcoin') || text.includes('btc')) return 'bitcoin'
+        if (text.includes('ethereum') || text.includes('eth')) return 'ethereum'
+        if (text.includes('defi') || text.includes('decentralized')) return 'defi'
+        if (text.includes('nft') || text.includes('non-fungible')) return 'nft'
+        if (text.includes('regulation') || text.includes('sec') || text.includes('regulatory')) return 'regulation'
+        if (text.includes('solana') || text.includes('cardano') || text.includes('altcoin') || text.includes('binance') || text.includes('ripple') || text.includes('xrp')) return 'altcoin'
+        return 'default'
+    }
+
+    const fetchNewsFromAPI = async () => {
+        try {
+            setLoading(true)
+            setError(null)
+
+            // Utiliser l'API CryptoCompare News (gratuite, pas de clé nécessaire)
+            const response = await fetch('https://min-api.cryptocompare.com/data/v2/news/?lang=EN')
+            const data = await response.json()
+
+            if (data.Response === 'Success' && data.Data) {
+                const formattedNews = data.Data.slice(0, 12).map(item => ({
+                    title: item.title,
+                    url: item.url,
+                    image: item.imageurl || 'https://via.placeholder.com/400x240/1A1F3A/00D9FF?text=Crypto+News',
+                    excerpt: item.body.substring(0, 150) + '...',
+                    date: getTimeAgo(item.published_on * 1000),
+                    category: categorizeNews(item.title, item.body),
+                    source: item.source_info.name
+                }))
+                setNews(formattedNews)
+
+                // Sauvegarder dans le cache
+                localStorage.setItem('cryptoNewsCache', JSON.stringify(formattedNews))
+                localStorage.setItem('cryptoNewsCacheTime', Date.now().toString())
+            }
+        } catch (err) {
+            console.error('Erreur lors de la récupération des actualités:', err)
+            setError('Impossible de charger les actualités. Utilisation du cache.')
+
+            // Utiliser le cache en cas d'erreur
+            const cached = localStorage.getItem('cryptoNewsCache')
+            if (cached) {
+                setNews(JSON.parse(cached))
+            } else {
+                // Fallback data en cas d'échec total
+                setNews(getFallbackNews())
+            }
+        } finally {
+            setLoading(false)
+        }
+    }
+
+    const getTimeAgo = (timestamp) => {
+        const now = Date.now()
+        const diff = now - timestamp
+        const hours = Math.floor(diff / (1000 * 60 * 60))
+        const days = Math.floor(hours / 24)
+
+        if (days > 0) return `Il y a ${days} jour${days > 1 ? 's' : ''}`
+        if (hours > 0) return `Il y a ${hours}h`
+        const minutes = Math.floor(diff / (1000 * 60))
+        return `Il y a ${minutes}min`
+    }
+
+    const getFallbackNews = () => [
         {
             title: "Bitcoin franchit les 100 000$ : Une nouvelle ère pour la crypto",
             url: "https://cryptoast.fr",
@@ -83,12 +148,24 @@ const News = () => {
     ];
 
     useEffect(() => {
-        // Simulate fetch
-        setLoading(true);
-        setTimeout(() => {
-            setNews(allNewsData);
-            setLoading(false);
-        }, 500);
+        // Vérifier le cache (valide pendant 30 minutes)
+        const cached = localStorage.getItem('cryptoNewsCache')
+        const cacheTime = localStorage.getItem('cryptoNewsCacheTime')
+
+        if (cached && cacheTime) {
+            const cacheAge = Date.now() - parseInt(cacheTime)
+            const thirtyMinutes = 30 * 60 * 1000
+
+            if (cacheAge < thirtyMinutes) {
+                console.log('📦 Utilisation du cache des actualités')
+                setNews(JSON.parse(cached))
+                setLoading(false)
+                return
+            }
+        }
+
+        // Sinon, récupérer depuis l'API
+        fetchNewsFromAPI()
     }, []);
 
     const handleFilter = (category) => {
@@ -122,10 +199,8 @@ const News = () => {
     }
 
     const refreshNews = () => {
-        setLoading(true);
-        setTimeout(() => {
-            setLoading(false);
-        }, 1000);
+        console.log('🔄 Actualisation manuelle des actualités')
+        fetchNewsFromAPI()
     }
 
     return (
@@ -134,9 +209,13 @@ const News = () => {
                 <div className="news-badge">📰 EN TEMPS RÉEL</div>
                 <h1>ACTUALITÉS CRYPTO</h1>
                 <p>
-                    Les dernières news du monde de la cryptomonnaie, mises à jour automatiquement depuis
-                    Cryptoast
+                    Les dernières news du monde de la cryptomonnaie, mises à jour en temps réel depuis CryptoCompare
                 </p>
+                {error && (
+                    <div style={{ color: '#FFD700', fontSize: '13px', marginTop: '10px' }}>
+                        ⚠️ {error}
+                    </div>
+                )}
             </div>
 
             <div className="news-controls">

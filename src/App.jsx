@@ -9,6 +9,7 @@ import Calendar from './components/Calendar'
 import Dashboard from './components/Dashboard'
 import Learning from './components/Learning'
 import Assistance from './components/Assistance'
+import Subscriptions from './components/Subscriptions'
 
 function App() {
   const [activeTab, setActiveTab] = useState('accueil')
@@ -51,6 +52,12 @@ function App() {
         {activeTab === 'assistance' && (
           <div id="assistance" className="tab-content active">
             <Assistance />
+          </div>
+        )}
+
+        {activeTab === 'abonnements' && (
+          <div id="abonnements" className="tab-content active">
+            <Subscriptions />
           </div>
         )}
 

@@ -14,6 +14,19 @@ const Header = ({ activeTab, setActiveTab }) => {
                     <li><button onClick={() => setActiveTab('calendrier')} className={activeTab === 'calendrier' ? 'active' : ''}>Calendrier Éco</button></li>
                     <li><button onClick={() => setActiveTab('dashboard')} className={activeTab === 'dashboard' ? 'active' : ''}>Dashboard Crypto</button></li>
                     <li><button onClick={() => setActiveTab('apprentissage')} className={activeTab === 'apprentissage' ? 'active' : ''}>Apprentissage</button></li>
+                    <li><button
+                        onClick={() => setActiveTab('abonnements')}
+                        className={activeTab === 'abonnements' ? 'active' : ''}
+                        style={{
+                            background: 'linear-gradient(135deg, #FFD700, #FFA500)',
+                            color: '#0A0E27',
+                            padding: '8px 20px',
+                            borderRadius: '8px',
+                            fontWeight: '700'
+                        }}
+                    >
+                        💎 Abonnements
+                    </button></li>
                     <li><button onClick={() => setActiveTab('assistance')} className={activeTab === 'assistance' ? 'active' : ''}>Assistance</button></li>
                 </ul>
             </div>

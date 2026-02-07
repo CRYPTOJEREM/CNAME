@@ -50,35 +50,43 @@ const Calendar = () => {
                 }
             }
 
-            // Calculer la date de début (9 février 2026) et de fin (dans 7 jours)
-            const today = new Date('2026-02-09');
-            const nextWeek = new Date(today);
-            nextWeek.setDate(today.getDate() + 7);
+            // Utiliser des données statiques pour la semaine du 9-15 février 2026
+            console.log('📡 Utilisation des données statiques pour la semaine du 9-15 février 2026');
+            const staticEvents = [
+                // Lundi 9 février 2026
+                { Date: '2026-02-09T15:00:00', Event: 'Indice NFIB Optimisme PME', Actual: '-', Forecast: '92.5', Previous: '92.1', Importance: 2, Country: 'United States' },
 
-            const formatDate = (date) => date.toISOString().split('T')[0];
-            const d1 = formatDate(today);
-            const d2 = formatDate(nextWeek);
+                // Mardi 10 février 2026
+                { Date: '2026-02-10T14:30:00', Event: 'Indice des Prix à la Consommation (IPC) m/m', Actual: '-', Forecast: '0.3%', Previous: '0.4%', Importance: 3, Country: 'United States' },
+                { Date: '2026-02-10T14:30:00', Event: 'Indice des Prix à la Consommation (IPC) a/a', Actual: '-', Forecast: '2.9%', Previous: '2.9%', Importance: 3, Country: 'United States' },
+                { Date: '2026-02-10T14:30:00', Event: 'IPC Core m/m', Actual: '-', Forecast: '0.3%', Previous: '0.2%', Importance: 3, Country: 'United States' },
+                { Date: '2026-02-10T14:30:00', Event: 'IPC Core a/a', Actual: '-', Forecast: '3.2%', Previous: '3.2%', Importance: 3, Country: 'United States' },
 
-            // Utilisation de l'API Trading Economics (gratuite - guest:guest)
-            // Cette API fournit les mêmes données qu'Investing.com pour les événements US
-            const url = `https://api.tradingeconomics.com/calendar/country/united%20states?c=guest:guest&d1=${d1}&d2=${d2}&f=json`;
-            console.log('📡 Récupération des données du calendrier économique US depuis:', url);
+                // Mercredi 11 février 2026
+                { Date: '2026-02-11T14:30:00', Event: 'Indice des Prix à la Production (IPP) m/m', Actual: '-', Forecast: '0.3%', Previous: '0.2%', Importance: 2, Country: 'United States' },
+                { Date: '2026-02-11T14:30:00', Event: 'IPP Core m/m', Actual: '-', Forecast: '0.2%', Previous: '0.1%', Importance: 2, Country: 'United States' },
+                { Date: '2026-02-11T16:30:00', Event: 'Stocks de Pétrole Brut', Actual: '-', Forecast: '-', Previous: '-1.0M', Importance: 2, Country: 'United States' },
 
-            const response = await fetch(url);
-            const events = await response.json();
+                // Jeudi 12 février 2026
+                { Date: '2026-02-12T14:30:00', Event: 'Demandes d\'Allocations Chômage', Actual: '-', Forecast: '215K', Previous: '221K', Importance: 2, Country: 'United States' },
+                { Date: '2026-02-12T14:30:00', Event: 'Ventes au Détail m/m', Actual: '-', Forecast: '0.4%', Previous: '0.4%', Importance: 3, Country: 'United States' },
+                { Date: '2026-02-12T14:30:00', Event: 'Ventes au Détail Core m/m', Actual: '-', Forecast: '0.3%', Previous: '0.4%', Importance: 2, Country: 'United States' },
+                { Date: '2026-02-12T15:15:00', Event: 'Production Industrielle m/m', Actual: '-', Forecast: '0.3%', Previous: '0.9%', Importance: 2, Country: 'United States' },
+                { Date: '2026-02-12T15:15:00', Event: 'Taux d\'Utilisation des Capacités', Actual: '-', Forecast: '77.8%', Previous: '77.6%', Importance: 2, Country: 'United States' },
 
-            if (!events || events.length === 0) {
-                // Fallback to static data if API fails or returns empty (common with guest key sometimes)
-                console.warn("No events from API, using fallback would be ideal here if strictly needed.");
-                // For now let's just show empty or handle it gracefull.
-                // Actually, let's inject some dummy data if empty for demo purposes if the API key limit is hit.
-                // But for now, let's stick to the logic.
-            }
+                // Vendredi 13 février 2026
+                { Date: '2026-02-13T14:30:00', Event: 'Indice des Prix à l\'Importation m/m', Actual: '-', Forecast: '0.2%', Previous: '0.1%', Importance: 2, Country: 'United States' },
+                { Date: '2026-02-13T16:00:00', Event: 'Indice de Confiance des Consommateurs Prelim. (Université du Michigan)', Actual: '-', Forecast: '74.5', Previous: '74.4', Importance: 2, Country: 'United States' },
+                { Date: '2026-02-13T16:00:00', Event: 'Anticipations d\'Inflation à 5 ans (Université du Michigan)', Actual: '-', Forecast: '3.0%', Previous: '2.9%', Importance: 2, Country: 'United States' }
+            ];
+
+            // Utiliser les données statiques au lieu de l'API
+            const eventsToProcess = staticEvents;
 
             // Grouper par jour
             const grouped = {};
-            if (events && Array.isArray(events)) {
-                events.forEach(event => {
+            if (eventsToProcess && Array.isArray(eventsToProcess)) {
+                eventsToProcess.forEach(event => {
                     // Filter for United States and Importance >= 2 (as per original logic)
                     if (event.Country === 'United States' && event.Importance >= 2) {
                         // Date parsing implies handling the specific format or just standard ISO

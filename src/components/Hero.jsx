@@ -14,46 +14,6 @@ const Hero = ({ setActiveTab }) => {
                 </div>
             </section>
 
-            {/* SECTION POURQUOI NOUS CHOISIR */}
-            <section className="features">
-                <div className="section-title">
-                    <h2>Pourquoi Nous Choisir ?</h2>
-                    <p>Des outils professionnels pour traders et investisseurs</p>
-                </div>
-                <div className="features-grid">
-                    <div className="feature-card">
-                        <span className="feature-icon">⚡</span>
-                        <h3>Données en Temps Réel</h3>
-                        <p>Recevez instantanément les événements économiques majeurs : PIB, inflation, emploi, taux d'intérêt.</p>
-                    </div>
-                    <div className="feature-card">
-                        <span className="feature-icon">🎯</span>
-                        <h3>Analyses Expertes</h3>
-                        <p>Bénéficiez d'analyses approfondies sur les impacts des données économiques sur les marchés.</p>
-                    </div>
-                    <div className="feature-card">
-                        <span className="feature-icon">📈</span>
-                        <h3>Prévisions Précises</h3>
-                        <p>Consultez les prévisions consensus et données historiques pour anticiper les mouvements.</p>
-                    </div>
-                    <div className="feature-card">
-                        <span className="feature-icon">🌍</span>
-                        <h3>Couverture Mondiale</h3>
-                        <p>Suivez les événements des principales économies : USA, Europe, Asie et marchés émergents.</p>
-                    </div>
-                    <div className="feature-card">
-                        <span className="feature-icon">💼</span>
-                        <h3>Interface Pro</h3>
-                        <p>Design moderne optimisé pour une utilisation rapide et efficace en pleine session de trading.</p>
-                    </div>
-                    <div className="feature-card">
-                        <span className="feature-icon">🔔</span>
-                        <h3>100% Gratuit</h3>
-                        <p>Accès complet à tous les outils et données sans aucun frais ni abonnement requis.</p>
-                    </div>
-                </div>
-            </section>
-
             {/* CARROUSEL VIDÉOS YOUTUBE/TWITCH */}
             <section className="carousel-section">
                 <div className="carousel-header">

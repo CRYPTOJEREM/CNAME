@@ -50,8 +50,8 @@ const Calendar = () => {
                 }
             }
 
-            // Calculer la date de début (aujourd'hui) et de fin (dans 7 jours)
-            const today = new Date();
+            // Calculer la date de début (9 février 2026) et de fin (dans 7 jours)
+            const today = new Date('2026-02-09');
             const nextWeek = new Date(today);
             nextWeek.setDate(today.getDate() + 7);
 

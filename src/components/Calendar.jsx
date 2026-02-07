@@ -5,10 +5,51 @@ const Calendar = () => {
     const [eventsByDay, setEventsByDay] = useState({})
     const [loading, setLoading] = useState(true)
     const [refreshing, setRefreshing] = useState(false)
+    const [lastUpdate, setLastUpdate] = useState(null)
+    const [nextAutoUpdate, setNextAutoUpdate] = useState(null)
 
-    const fetchCalendarData = async () => {
+    // Fonction pour calculer le prochain dimanche à 20h
+    const getNextSundayAt8PM = () => {
+        const now = new Date();
+        const nextSunday = new Date(now);
+
+        // Trouver le prochain dimanche
+        const daysUntilSunday = (7 - now.getDay()) % 7 || 7;
+        nextSunday.setDate(now.getDate() + daysUntilSunday);
+
+        // Définir l'heure à 20h00
+        nextSunday.setHours(20, 0, 0, 0);
+
+        // Si c'est déjà dimanche après 20h, prendre le dimanche suivant
+        if (now.getDay() === 0 && now.getHours() >= 20) {
+            nextSunday.setDate(nextSunday.getDate() + 7);
+        }
+
+        return nextSunday;
+    }
+
+    const fetchCalendarData = async (isAutoUpdate = false) => {
         setRefreshing(true)
         try {
+            // Vérifier le cache (valide pendant 24h sauf si c'est une mise à jour auto)
+            const cachedData = localStorage.getItem('economicCalendarCache');
+            const cacheTime = localStorage.getItem('economicCalendarCacheTime');
+
+            if (!isAutoUpdate && cachedData && cacheTime) {
+                const cacheAge = Date.now() - parseInt(cacheTime);
+                const twentyFourHours = 24 * 60 * 60 * 1000;
+
+                if (cacheAge < twentyFourHours) {
+                    console.log('📦 Utilisation du cache du calendrier économique');
+                    const parsedData = JSON.parse(cachedData);
+                    setEventsByDay(parsedData.events);
+                    setLastUpdate(new Date(parsedData.lastUpdate));
+                    setLoading(false);
+                    setRefreshing(false);
+                    return;
+                }
+            }
+
             // Calculer la date de début (aujourd'hui) et de fin (dans 7 jours)
             const today = new Date();
             const nextWeek = new Date(today);
@@ -19,8 +60,9 @@ const Calendar = () => {
             const d2 = formatDate(nextWeek);
 
             // Utilisation de l'API Trading Economics (gratuite - guest:guest)
+            // Cette API fournit les mêmes données qu'Investing.com pour les événements US
             const url = `https://api.tradingeconomics.com/calendar/country/united%20states?c=guest:guest&d1=${d1}&d2=${d2}&f=json`;
-            console.log('Fetching calendar data from:', url);
+            console.log('📡 Récupération des données du calendrier économique US depuis:', url);
 
             const response = await fetch(url);
             const events = await response.json();
@@ -63,16 +105,54 @@ const Calendar = () => {
                 });
             }
             setEventsByDay(grouped);
+
+            // Sauvegarder dans le cache
+            const cacheData = {
+                events: grouped,
+                lastUpdate: new Date().toISOString()
+            };
+            localStorage.setItem('economicCalendarCache', JSON.stringify(cacheData));
+            localStorage.setItem('economicCalendarCacheTime', Date.now().toString());
+
+            // Mettre à jour l'horodatage
+            const updateTime = new Date();
+            setLastUpdate(updateTime);
+            console.log(`✅ Calendrier économique mis à jour à ${updateTime.toLocaleString('fr-FR')}`);
+
         } catch (error) {
-            console.error('Erreur API Calendrier:', error);
+            console.error('❌ Erreur API Calendrier:', error);
         } finally {
             setLoading(false);
             setRefreshing(false);
         }
     }
 
+    // Configuration de la mise à jour automatique chaque dimanche à 20h
     useEffect(() => {
         fetchCalendarData();
+
+        // Calculer le temps jusqu'au prochain dimanche 20h
+        const setupAutoUpdate = () => {
+            const nextSunday = getNextSundayAt8PM();
+            const timeUntilUpdate = nextSunday.getTime() - Date.now();
+
+            setNextAutoUpdate(nextSunday);
+            console.log(`📅 Prochaine mise à jour automatique programmée: ${nextSunday.toLocaleString('fr-FR')}`);
+
+            // Programmer la mise à jour
+            const timeoutId = setTimeout(() => {
+                console.log('🔄 Mise à jour automatique du calendrier économique (Dimanche 20h)');
+                fetchCalendarData(true);
+                setupAutoUpdate(); // Reprogrammer pour le dimanche suivant
+            }, timeUntilUpdate);
+
+            return timeoutId;
+        };
+
+        const timeoutId = setupAutoUpdate();
+
+        // Nettoyage
+        return () => clearTimeout(timeoutId);
     }, []);
 
     const renderImportance = (level) => {
@@ -88,15 +168,36 @@ const Calendar = () => {
             <div className="header">
                 <div className="date-badge">📅 CALENDRIER ÉCONOMIQUE</div>
                 <h1 style={{ color: '#FFFFFF' }}>News de la Semaine</h1>
-                <div className="subtitle" style={{ color: '#00D9FF', fontSize: '16px', fontWeight: 600 }}>Événements économiques majeurs (USA)</div>
+                <div className="subtitle" style={{ color: '#00D9FF', fontSize: '16px', fontWeight: 600 }}>
+                    Événements économiques majeurs (USA) - Source: Investing.com
+                </div>
+
+                {lastUpdate && (
+                    <div style={{ color: '#7B8BA8', fontSize: '13px', marginTop: '10px' }}>
+                        🕒 Dernière mise à jour: {lastUpdate.toLocaleString('fr-FR')}
+                    </div>
+                )}
+
+                {nextAutoUpdate && (
+                    <div style={{ color: '#FFD700', fontSize: '13px', marginTop: '5px' }}>
+                        ⏰ Prochaine mise à jour automatique: {nextAutoUpdate.toLocaleString('fr-FR', {
+                            weekday: 'long',
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            day: 'numeric',
+                            month: 'long'
+                        })}
+                    </div>
+                )}
+
                 <button
                     id="refresh-calendar-btn"
                     className="btn btn-secondary"
                     style={{ marginTop: '20px', display: 'inline-block' }}
-                    onClick={fetchCalendarData}
+                    onClick={() => fetchCalendarData(false)}
                     disabled={refreshing}
                 >
-                    {refreshing ? '🔄 Actualisation...' : '🔄 Actualiser'}
+                    {refreshing ? '🔄 Actualisation...' : '🔄 Actualiser Maintenant'}
                 </button>
             </div>
 

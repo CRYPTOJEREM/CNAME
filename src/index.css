@@ -90,6 +90,14 @@
             width: 100%;
         }
 
+        .nav-links button.abonnements-btn {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #0A0E27;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-weight: 700;
+        }
+
         /* SystÃ¨me d'onglets */
         .tab-content {
             display: none;
@@ -1614,6 +1622,325 @@
             color: #FF3366;
             background: rgba(255, 51, 102, 0.15);
             border: 1px solid rgba(255, 51, 102, 0.3);
+        }
+
+        /* Subscription plan styling */
+        .partner-badge.popular {
+            background: #FFD700;
+            color: #0A0E27;
+        }
+
+        .partner-logo-text {
+            font-size: 32px;
+        }
+
+        .partner-price {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .price-main {
+            font-size: 42px;
+            font-weight: 900;
+            color: #00D9FF;
+            margin-bottom: 5px;
+        }
+
+        .price-period {
+            color: #7B8BA8;
+            font-size: 14px;
+        }
+
+        .price-crypto {
+            color: #FFD700;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .partner-features {
+            text-align: left;
+            margin-bottom: 25px;
+        }
+
+        .partner-feature {
+            padding: 10px 0;
+            font-size: 13px;
+            border-bottom: 1px solid rgba(123, 47, 247, 0.1);
+        }
+
+        .partner-feature.active {
+            color: #B8C5D6;
+        }
+
+        .partner-feature.inactive {
+            color: #7B8BA8;
+        }
+
+        .partner-btn.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background: rgba(123, 139, 168, 0.3);
+        }
+
+        .partner-btn.popular {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+        }
+
+        .popular-plan {
+            border: 3px solid #FFD700;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Payment Modal */
+        .payment-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 20px;
+        }
+
+        .payment-modal {
+            background: linear-gradient(135deg, #0D1229 0%, #1A1F3A 100%);
+            border-radius: 24px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            border: 2px solid rgba(0, 217, 255, 0.3);
+            position: relative;
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: #FF3366;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .modal-title {
+            color: #00D9FF;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .modal-subtitle {
+            color: #7B8BA8;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .payment-method-section {
+            margin-bottom: 30px;
+        }
+
+        .payment-method-title {
+            color: #FFFFFF;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .crypto-options-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .crypto-option-btn {
+            padding: 15px;
+            background: rgba(26, 31, 58, 0.5);
+            border: 2px solid rgba(123, 47, 247, 0.2);
+            border-radius: 12px;
+            color: #FFFFFF;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .crypto-icon-large {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .payment-amount-box {
+            background: rgba(0, 217, 255, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(0, 217, 255, 0.3);
+        }
+
+        .amount-label {
+            color: #00D9FF;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .amount-value {
+            color: #FFFFFF;
+            font-size: 32px;
+            font-weight: 900;
+        }
+
+        .amount-equivalent {
+            color: #7B8BA8;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .payment-address-box {
+            background: rgba(255, 215, 0, 0.1);
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .address-label {
+            color: #FFD700;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .address-value {
+            color: #FFFFFF;
+            font-size: 11px;
+            word-break: break-all;
+            font-family: monospace;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .copy-address-btn {
+            background: rgba(255, 215, 0, 0.2);
+            border: 1px solid #FFD700;
+            color: #FFD700;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            width: 100%;
+        }
+
+        .payment-submit-btn {
+            width: 100%;
+            padding: 18px;
+            font-size: 16px;
+            background: linear-gradient(135deg, #00D9FF, #7B2FF7);
+            margin-bottom: 15px;
+        }
+
+        .payment-warning-text {
+            color: #7B8BA8;
+            font-size: 11px;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        /* Header subtitle */
+        .header h1 {
+            color: #FFFFFF;
+        }
+
+        .subtitle {
+            color: #00D9FF;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        /* Loading text */
+        .loading-text {
+            text-align: center;
+            padding: 50px;
+            color: #7B8BA8;
+        }
+
+        /* Footer additions */
+        .footer-warning-title {
+            color: #FF3366;
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .footer-warning-text {
+            font-size: 13px;
+            max-width: 900px;
+            margin: 0 auto 20px;
+        }
+
+        .footer-author {
+            margin-top: 10px;
+            color: #00D9FF;
+            font-weight: 600;
+        }
+
+        .footer-links {
+            margin-top: 15px;
+            font-size: 12px;
+        }
+
+        .footer-link {
+            color: #7B8BA8;
+            text-decoration: none;
+        }
+
+        .footer-link:hover {
+            color: #00D9FF;
+        }
+
+        /* Calendar updates */
+        .last-update-info {
+            color: #7B8BA8;
+            font-size: 13px;
+            margin-top: 10px;
+        }
+
+        .next-update-info {
+            color: #FFD700;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        .refresh-btn {
+            margin-top: 20px;
+            display: inline-block;
+        }
+
+        .actual-value {
+            font-weight: bold;
+            color: #00D9FF;
+        }
+
+        /* News error */
+        .error-message {
+            color: #FFD700;
+            font-size: 13px;
+            margin-top: 10px;
+        }
+
+        /* Assistance FAQ */
+        .faq-section {
+            margin-top: 50px;
+        }
+
+        .faq-section-title {
+            color: #00D9FF;
+            margin-bottom: 30px;
+            font-size: 28px;
         }
 
         .market-cap {

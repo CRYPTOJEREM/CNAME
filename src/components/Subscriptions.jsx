@@ -159,7 +159,7 @@ const Subscriptions = () => {
     }
 
     return (
-        <section className="partners-section" style={{ marginTop: '40px' }}>
+        <section className="partners-section">
             <div className="partners-header">
                 <h2 className="partners-title">💎 NOS ABONNEMENTS</h2>
                 <p className="partners-subtitle">
@@ -172,49 +172,40 @@ const Subscriptions = () => {
                     <div
                         key={plan.id}
                         className={`partner-card ${plan.popular ? 'popular-plan' : ''}`}
-                        style={plan.popular ? {
-                            border: '3px solid #FFD700',
-                            boxShadow: '0 0 30px rgba(255, 215, 0, 0.3)'
-                        } : {}}
                     >
                         {plan.popular && (
-                            <div className="partner-badge popular" style={{ background: '#FFD700', color: '#0A0E27' }}>
+                            <div className="partner-badge popular">
                                 🔥 LE PLUS POPULAIRE
                             </div>
                         )}
 
                         <div className="partner-logo" style={{ background: plan.badgeColor }}>
-                            <div className="partner-logo-text" style={{ fontSize: '32px' }}>
+                            <div className="partner-logo-text">
                                 {plan.name.split(' ')[0]}
                             </div>
                         </div>
 
                         <h3 className="partner-name">{plan.name.split(' ')[1]}</h3>
 
-                        <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-                            <div style={{ fontSize: '42px', fontWeight: '900', color: '#00D9FF', marginBottom: '5px' }}>
+                        <div className="partner-price">
+                            <div className="price-main">
                                 {plan.price === 0 ? 'GRATUIT' : `${plan.price}€`}
                             </div>
-                            <div style={{ color: '#7B8BA8', fontSize: '14px' }}>
+                            <div className="price-period">
                                 {plan.period}
                             </div>
                             {plan.price > 0 && (
-                                <div style={{ color: '#FFD700', fontSize: '12px', marginTop: '5px' }}>
+                                <div className="price-crypto">
                                     ou {plan.priceEth} ETH / {plan.priceUsdt} USDT
                                 </div>
                             )}
                         </div>
 
-                        <div className="partner-features" style={{ textAlign: 'left', marginBottom: '25px' }}>
+                        <div className="partner-features">
                             {plan.features.map((feature, index) => (
                                 <div
                                     key={index}
-                                    style={{
-                                        padding: '10px 0',
-                                        color: feature.startsWith('✅') ? '#B8C5D6' : '#7B8BA8',
-                                        fontSize: '13px',
-                                        borderBottom: '1px solid rgba(123, 47, 247, 0.1)'
-                                    }}
+                                    className={`partner-feature ${feature.startsWith('✅') ? 'active' : 'inactive'}`}
                                 >
                                     {feature}
                                 </div>
@@ -222,17 +213,9 @@ const Subscriptions = () => {
                         </div>
 
                         <button
-                            className="partner-btn"
+                            className={`partner-btn ${plan.disabled ? 'disabled' : ''} ${plan.popular ? 'popular' : ''}`}
                             onClick={() => handleSubscribe(plan)}
                             disabled={plan.disabled}
-                            style={plan.disabled ? {
-                                opacity: 0.5,
-                                cursor: 'not-allowed',
-                                background: 'rgba(123, 139, 168, 0.3)'
-                            } : plan.popular ? {
-                                background: 'linear-gradient(135deg, #FFD700, #FFA500)',
-                                boxShadow: '0 10px 30px rgba(255, 215, 0, 0.4)'
-                            } : {}}
                         >
                             {plan.buttonText}
                         </button>
@@ -242,135 +225,66 @@ const Subscriptions = () => {
 
             {/* Modal de paiement */}
             {showPaymentModal && selectedPlan && (
-                <div style={{
-                    position: 'fixed',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    background: 'rgba(0, 0, 0, 0.9)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    zIndex: 9999,
-                    padding: '20px'
-                }}>
-                    <div style={{
-                        background: 'linear-gradient(135deg, #0D1229 0%, #1A1F3A 100%)',
-                        borderRadius: '24px',
-                        padding: '40px',
-                        maxWidth: '600px',
-                        width: '100%',
-                        border: '2px solid rgba(0, 217, 255, 0.3)',
-                        position: 'relative'
-                    }}>
+                <div className="payment-modal-overlay">
+                    <div className="payment-modal">
                         <button
                             onClick={() => setShowPaymentModal(false)}
-                            style={{
-                                position: 'absolute',
-                                top: '20px',
-                                right: '20px',
-                                background: 'none',
-                                border: 'none',
-                                color: '#FF3366',
-                                fontSize: '24px',
-                                cursor: 'pointer'
-                            }}
+                            className="modal-close-btn"
                         >
                             ✕
                         </button>
 
-                        <h2 style={{ color: '#00D9FF', marginBottom: '10px', textAlign: 'center' }}>
+                        <h2 className="modal-title">
                             💳 Finaliser votre abonnement
                         </h2>
-                        <p style={{ color: '#7B8BA8', textAlign: 'center', marginBottom: '30px' }}>
+                        <p className="modal-subtitle">
                             {selectedPlan.name} - {selectedPlan.price}€{selectedPlan.period}
                         </p>
 
-                        <div style={{ marginBottom: '30px' }}>
-                            <h3 style={{ color: '#FFFFFF', fontSize: '16px', marginBottom: '15px' }}>
+                        <div className="payment-method-section">
+                            <h3 className="payment-method-title">
                                 Choisir la cryptomonnaie de paiement:
                             </h3>
-                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '15px' }}>
+                            <div className="crypto-options-grid">
                                 {cryptoOptions.map((crypto) => (
                                     <button
                                         key={crypto.id}
                                         onClick={() => setPaymentMethod(crypto.id)}
-                                        style={{
-                                            padding: '15px',
-                                            background: paymentMethod === crypto.id
-                                                ? `linear-gradient(135deg, ${crypto.color}40, ${crypto.color}20)`
-                                                : 'rgba(26, 31, 58, 0.5)',
-                                            border: paymentMethod === crypto.id
-                                                ? `2px solid ${crypto.color}`
-                                                : '2px solid rgba(123, 47, 247, 0.2)',
-                                            borderRadius: '12px',
-                                            color: '#FFFFFF',
-                                            cursor: 'pointer',
-                                            transition: 'all 0.3s',
-                                            fontSize: '14px',
-                                            fontWeight: '600'
-                                        }}
+                                        className={`crypto-option-btn ${paymentMethod === crypto.id ? 'active' : ''}`}
+                                        style={paymentMethod === crypto.id ? {
+                                            background: `linear-gradient(135deg, ${crypto.color}40, ${crypto.color}20)`,
+                                            borderColor: crypto.color
+                                        } : {}}
                                     >
-                                        <div style={{ fontSize: '24px', marginBottom: '5px' }}>{crypto.icon}</div>
+                                        <div className="crypto-icon-large">{crypto.icon}</div>
                                         {crypto.name}
                                     </button>
                                 ))}
                             </div>
                         </div>
 
-                        <div style={{
-                            background: 'rgba(0, 217, 255, 0.1)',
-                            padding: '20px',
-                            borderRadius: '12px',
-                            marginBottom: '25px',
-                            border: '1px solid rgba(0, 217, 255, 0.3)'
-                        }}>
-                            <div style={{ color: '#00D9FF', fontSize: '14px', marginBottom: '10px' }}>
+                        <div className="payment-amount-box">
+                            <div className="amount-label">
                                 💰 Montant à payer:
                             </div>
-                            <div style={{ color: '#FFFFFF', fontSize: '32px', fontWeight: '900' }}>
+                            <div className="amount-value">
                                 {getPrice(selectedPlan)}
                             </div>
-                            <div style={{ color: '#7B8BA8', fontSize: '12px', marginTop: '5px' }}>
+                            <div className="amount-equivalent">
                                 ≈ {selectedPlan.price} EUR
                             </div>
                         </div>
 
-                        <div style={{
-                            background: 'rgba(255, 215, 0, 0.1)',
-                            padding: '15px',
-                            borderRadius: '12px',
-                            marginBottom: '25px',
-                            border: '1px solid rgba(255, 215, 0, 0.3)'
-                        }}>
-                            <div style={{ color: '#FFD700', fontSize: '12px', marginBottom: '8px' }}>
+                        <div className="payment-address-box">
+                            <div className="address-label">
                                 📍 Adresse de paiement:
                             </div>
-                            <div style={{
-                                color: '#FFFFFF',
-                                fontSize: '11px',
-                                wordBreak: 'break-all',
-                                fontFamily: 'monospace',
-                                background: 'rgba(0, 0, 0, 0.3)',
-                                padding: '10px',
-                                borderRadius: '8px',
-                                marginBottom: '10px'
-                            }}>
+                            <div className="address-value">
                                 {PAYMENT_ADDRESS}
                             </div>
                             <button
                                 onClick={copyAddress}
-                                style={{
-                                    background: 'rgba(255, 215, 0, 0.2)',
-                                    border: '1px solid #FFD700',
-                                    color: '#FFD700',
-                                    padding: '8px 16px',
-                                    borderRadius: '8px',
-                                    cursor: 'pointer',
-                                    fontSize: '12px',
-                                    width: '100%'
-                                }}
+                                className="copy-address-btn"
                             >
                                 📋 Copier l'adresse
                             </button>
@@ -378,24 +292,12 @@ const Subscriptions = () => {
 
                         <button
                             onClick={handlePayment}
-                            className="partner-btn"
-                            style={{
-                                width: '100%',
-                                padding: '18px',
-                                fontSize: '16px',
-                                background: 'linear-gradient(135deg, #00D9FF, #7B2FF7)',
-                                marginBottom: '15px'
-                            }}
+                            className="partner-btn payment-submit-btn"
                         >
                             🚀 Payer avec MetaMask
                         </button>
 
-                        <p style={{
-                            color: '#7B8BA8',
-                            fontSize: '11px',
-                            textAlign: 'center',
-                            lineHeight: '1.6'
-                        }}>
+                        <p className="payment-warning-text">
                             ⚠️ Une fois le paiement effectué, votre abonnement sera activé automatiquement sous quelques minutes.
                             Conservez votre hash de transaction comme preuve de paiement.
                         </p>

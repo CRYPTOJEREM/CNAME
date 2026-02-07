@@ -212,7 +212,7 @@ const News = () => {
                     Les dernières news du monde de la cryptomonnaie, mises à jour en temps réel depuis CryptoCompare
                 </p>
                 {error && (
-                    <div style={{ color: '#FFD700', fontSize: '13px', marginTop: '10px' }}>
+                    <div className="error-message">
                         ⚠️ {error}
                     </div>
                 )}

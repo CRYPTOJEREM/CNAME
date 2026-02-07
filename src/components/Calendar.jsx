@@ -167,19 +167,19 @@ const Calendar = () => {
         <div className="container">
             <div className="header">
                 <div className="date-badge">📅 CALENDRIER ÉCONOMIQUE</div>
-                <h1 style={{ color: '#FFFFFF' }}>News de la Semaine</h1>
-                <div className="subtitle" style={{ color: '#00D9FF', fontSize: '16px', fontWeight: 600 }}>
+                <h1>News de la Semaine</h1>
+                <div className="subtitle">
                     Événements économiques majeurs (USA) - Source: Investing.com
                 </div>
 
                 {lastUpdate && (
-                    <div style={{ color: '#7B8BA8', fontSize: '13px', marginTop: '10px' }}>
+                    <div className="last-update-info">
                         🕒 Dernière mise à jour: {lastUpdate.toLocaleString('fr-FR')}
                     </div>
                 )}
 
                 {nextAutoUpdate && (
-                    <div style={{ color: '#FFD700', fontSize: '13px', marginTop: '5px' }}>
+                    <div className="next-update-info">
                         ⏰ Prochaine mise à jour automatique: {nextAutoUpdate.toLocaleString('fr-FR', {
                             weekday: 'long',
                             hour: '2-digit',
@@ -192,8 +192,7 @@ const Calendar = () => {
 
                 <button
                     id="refresh-calendar-btn"
-                    className="btn btn-secondary"
-                    style={{ marginTop: '20px', display: 'inline-block' }}
+                    className="btn btn-secondary refresh-btn"
                     onClick={() => fetchCalendarData(false)}
                     disabled={refreshing}
                 >
@@ -202,9 +201,9 @@ const Calendar = () => {
             </div>
 
             {loading ? (
-                <div style={{ textAlign: 'center', padding: '50px', color: '#7B8BA8' }}>Chargement du calendrier...</div>
+                <div className="loading-text">Chargement du calendrier...</div>
             ) : Object.keys(eventsByDay).length === 0 ? (
-                <div style={{ textAlign: 'center', padding: '50px', color: '#7B8BA8' }}>Aucun événement majeur trouvé pour cette semaine (ou limite API atteinte).</div>
+                <div className="loading-text">Aucun événement majeur trouvé pour cette semaine (ou limite API atteinte).</div>
             ) : (
                 Object.keys(eventsByDay).map(day => (
                     <div key={day} className="dashboard">
@@ -240,7 +239,7 @@ const Calendar = () => {
                                         </div>
                                         <div className="data-row">
                                             <span className="data-label">Actuel</span>
-                                            <span className="data-value" style={{ fontWeight: 'bold', color: '#00D9FF' }}>{event.actual}</span>
+                                            <span className="data-value actual-value">{event.actual}</span>
                                         </div>
                                     </div>
                                     <div className={`impact-badge ${event.importance === 3 ? 'impact-high' : 'impact-medium'}`}>

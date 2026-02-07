@@ -57,8 +57,8 @@ const Assistance = () => {
 
                 {/* FAQ Section */}
                 {showFAQ && (
-                    <div id="faq-section" style={{ marginTop: '50px' }}>
-                        <h3 style={{ color: '#00D9FF', marginBottom: '30px', fontSize: '28px' }}>Questions Fréquentes</h3>
+                    <div id="faq-section" className="faq-section">
+                        <h3 className="faq-section-title">Questions Fréquentes</h3>
 
                         <div className="faq-item">
                             <div className="faq-question">💰 Les services de La Sphere sont-ils gratuits ?</div>

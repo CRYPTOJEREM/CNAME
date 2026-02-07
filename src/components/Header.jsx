@@ -16,14 +16,7 @@ const Header = ({ activeTab, setActiveTab }) => {
                     <li><button onClick={() => setActiveTab('apprentissage')} className={activeTab === 'apprentissage' ? 'active' : ''}>Apprentissage</button></li>
                     <li><button
                         onClick={() => setActiveTab('abonnements')}
-                        className={activeTab === 'abonnements' ? 'active' : ''}
-                        style={{
-                            background: 'linear-gradient(135deg, #FFD700, #FFA500)',
-                            color: '#0A0E27',
-                            padding: '8px 20px',
-                            borderRadius: '8px',
-                            fontWeight: '700'
-                        }}
+                        className={`${activeTab === 'abonnements' ? 'active' : ''} abonnements-btn`}
                     >
                         💎 Abonnements
                     </button></li>

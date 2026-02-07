@@ -88,13 +88,13 @@ const Dashboard = () => {
                 <div className="date-badge">
                     {lastUpdate ? `🔄 MISE À JOUR : ${lastUpdate.toLocaleTimeString('fr-FR')}` : '🔄 CHARGEMENT...'}
                 </div>
-                <h1 style={{ color: '#FFFFFF' }}>Dashboard Crypto</h1>
-                <div className="subtitle" style={{ color: '#00D9FF', fontSize: '16px', fontWeight: 600 }}>Top 20 des cryptomonnaies par capitalisation</div>
+                <h1>Dashboard Crypto</h1>
+                <div className="subtitle">Top 20 des cryptomonnaies par capitalisation</div>
             </div>
 
             <div className="dashboard">
                 {loading ? (
-                    <div style={{ textAlign: 'center', padding: '50px', color: '#7B8BA8' }}>Chargement des données...</div>
+                    <div className="loading-text">Chargement des données...</div>
                 ) : (
                     <table>
                         <thead>

@@ -1,8 +1,10 @@
 
 import React, { useState } from 'react'
+import { useAuth } from '../contexts/AuthContext'
 
-const Learning = () => {
+const Learning = ({ setActiveTab }) => {
     const [category, setCategory] = useState('trading')
+    const { isAuthenticated } = useAuth()
 
     const tradingModules = [
         {
@@ -136,12 +138,57 @@ const Learning = () => {
                         <div className="videos-grid">
                             {module.videos.map((video, videoIndex) => (
                                 <div key={videoIndex} className="video-module-card">
-                                    <div className="video-container">
+                                    <div className="video-container" style={{ position: 'relative' }}>
                                         <iframe
                                             src={`https://www.youtube.com/embed/${video.id}`}
                                             allowFullScreen
                                             title={video.title}
+                                            style={!isAuthenticated ? { filter: 'blur(10px)', pointerEvents: 'none' } : {}}
                                         ></iframe>
+                                        {!isAuthenticated && (
+                                            <div
+                                                className="video-overlay"
+                                                onClick={() => setActiveTab('register')}
+                                                style={{
+                                                    position: 'absolute',
+                                                    top: 0,
+                                                    left: 0,
+                                                    width: '100%',
+                                                    height: '100%',
+                                                    background: 'rgba(0, 0, 0, 0.85)',
+                                                    display: 'flex',
+                                                    flexDirection: 'column',
+                                                    alignItems: 'center',
+                                                    justifyContent: 'center',
+                                                    cursor: 'pointer',
+                                                    borderRadius: '12px',
+                                                    transition: 'all 0.3s ease'
+                                                }}
+                                                onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(0, 0, 0, 0.95)'}
+                                                onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(0, 0, 0, 0.85)'}
+                                            >
+                                                <div style={{ textAlign: 'center', padding: '20px' }}>
+                                                    <div style={{ fontSize: '48px', marginBottom: '15px' }}>🔒</div>
+                                                    <h3 style={{ color: '#00D9FF', marginBottom: '10px', fontSize: '1.3rem' }}>
+                                                        Contenu Réservé aux Membres
+                                                    </h3>
+                                                    <p style={{ color: '#fff', marginBottom: '20px', fontSize: '1rem' }}>
+                                                        Créez un compte gratuit pour accéder à toutes nos formations
+                                                    </p>
+                                                    <div style={{
+                                                        background: 'linear-gradient(135deg, #00D9FF 0%, #00A8CC 100%)',
+                                                        color: '#000',
+                                                        padding: '12px 30px',
+                                                        borderRadius: '8px',
+                                                        fontWeight: 'bold',
+                                                        display: 'inline-block',
+                                                        fontSize: '1rem'
+                                                    }}>
+                                                        ✨ Créer un Compte Gratuit
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
                                     <div className="video-module-info">
                                         <span className={`video-level level-${video.level}`}>
@@ -153,6 +200,11 @@ const Learning = () => {
                                         <div className="video-module-description">{video.desc}</div>
                                         <div className="video-stats">
                                             <div className="video-stat">⏱️ {video.duration}</div>
+                                            {!isAuthenticated && (
+                                                <div className="video-stat" style={{ color: '#00D9FF' }}>
+                                                    🔒 Inscription requise
+                                                </div>
+                                            )}
                                         </div>
                                     </div>
                                 </div>

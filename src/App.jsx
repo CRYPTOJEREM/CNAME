@@ -9,7 +9,7 @@ import Calendar from './components/Calendar'
 import Dashboard from './components/Dashboard'
 import Assistance from './components/Assistance'
 import Subscriptions from './components/Subscriptions'
-import FreeContent from './components/FreeContent'
+import Learning from './components/Learning'
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
 import EmailVerification from './components/auth/EmailVerification'
@@ -60,7 +60,7 @@ function App() {
 
         {activeTab === 'apprentissage' && (
           <div id="apprentissage" className="tab-content active">
-            <FreeContent setActiveTab={setActiveTab} />
+            <Learning setActiveTab={setActiveTab} />
           </div>
         )}
 

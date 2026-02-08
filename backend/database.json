@@ -1,0 +1,289 @@
+{
+  "users": [
+    {
+      "id": "dcb98af8-20ac-41b0-b373-de743a73165c",
+      "email": "admin@lasphere.com",
+      "passwordHash": "$2a$10$Oe4TP2kdz2e5VcPR6Gk7c.faNdWvIqlpYDHGJCXwNLu4zrMaalBkC",
+      "firstName": "Admin",
+      "lastName": "La Sphere",
+      "telegramUsername": "@admin_lasphere",
+      "emailVerified": true,
+      "subscriptionStatus": "vip",
+      "subscriptionExpiresAt": "2036-02-08T12:00:00.000Z",
+      "role": "admin",
+      "createdAt": "2026-02-08T12:00:00.000Z",
+      "updatedAt": "2026-02-08T12:00:00.000Z"
+    }
+  ],
+  "products": [
+    {
+      "id": "prod-premium-001",
+      "name": "Abonnement Premium",
+      "slug": "premium",
+      "description": "Accès complet aux formations, signaux de trading et groupe Telegram VIP",
+      "price": 29.99,
+      "currency": "EUR",
+      "duration": 30,
+      "features": [
+        "Toutes les formations trading",
+        "Signaux de trading quotidiens",
+        "Accès groupe Telegram VIP",
+        "Analyses de marché hebdomadaires",
+        "Support prioritaire"
+      ],
+      "level": "premium",
+      "active": true,
+      "createdAt": "2026-02-08T00:00:00.000Z",
+      "updatedAt": "2026-02-08T00:00:00.000Z"
+    },
+    {
+      "id": "prod-vip-001",
+      "name": "Abonnement VIP",
+      "slug": "vip",
+      "description": "Tout Premium + formations avancées, webinaires exclusifs et coaching personnalisé",
+      "price": 79.99,
+      "currency": "EUR",
+      "duration": 30,
+      "features": [
+        "Tout ce qui est inclus dans Premium",
+        "Formations avancées exclusives",
+        "Webinaires live mensuels",
+        "Sessions de coaching 1-to-1",
+        "Accès anticipé aux nouvelles formations",
+        "Analyses personnalisées de portefeuille"
+      ],
+      "level": "vip",
+      "active": true,
+      "createdAt": "2026-02-08T00:00:00.000Z",
+      "updatedAt": "2026-02-08T00:00:00.000Z"
+    }
+  ],
+  "payments": [],
+  "emailVerifications": [],
+  "refreshTokens": [
+    {
+      "id": "4d635acf-a2bc-4d53-8ed7-ec2964e142b4",
+      "userId": "dcb98af8-20ac-41b0-b373-de743a73165c",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkY2I5OGFmOC0yMGFjLTQxYjAtYjM3My1kZTc0M2E3MzE2NWMiLCJpYXQiOjE3NzA1NDk3NDAsImV4cCI6MTc3MTE1NDU0MH0.XvzV4qfJGgV1AhY1hPt16jzllEWzFN0nOj80JjibZlo",
+      "expiresAt": "2026-02-15T11:22:20.607Z",
+      "createdAt": "2026-02-08T11:22:20.607Z"
+    },
+    {
+      "id": "95d91d43-d9ed-4b08-804a-a7178996db85",
+      "userId": "dcb98af8-20ac-41b0-b373-de743a73165c",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkY2I5OGFmOC0yMGFjLTQxYjAtYjM3My1kZTc0M2E3MzE2NWMiLCJpYXQiOjE3NzA1NDk5MDAsImV4cCI6MTc3MTE1NDcwMH0.bbqUnh2KEl5njm2VQVVVXx1W-4E9DRl4zD5DU35Z84c",
+      "expiresAt": "2026-02-15T11:25:00.287Z",
+      "createdAt": "2026-02-08T11:25:00.287Z"
+    },
+    {
+      "id": "f58a4f06-5196-4345-9059-6ae95d07e5d8",
+      "userId": "dcb98af8-20ac-41b0-b373-de743a73165c",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkY2I5OGFmOC0yMGFjLTQxYjAtYjM3My1kZTc0M2E3MzE2NWMiLCJpYXQiOjE3NzA1NTEwNDYsImV4cCI6MTc3MTE1NTg0Nn0.zR-kldJZHD8uMpvLP65j8pfQu7fdzi33w8L3aXt5MfY",
+      "expiresAt": "2026-02-15T11:44:06.564Z",
+      "createdAt": "2026-02-08T11:44:06.564Z"
+    }
+  ],
+  "memberContent": [
+    {
+      "id": "free-1",
+      "title": "Introduction au Trading Crypto",
+      "type": "video",
+      "level": "free",
+      "category": "trading",
+      "description": "Apprenez les bases du trading de cryptomonnaies",
+      "content": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "modules": [],
+      "createdAt": "2026-02-07T00:00:00.000Z",
+      "published": true
+    },
+    {
+      "id": "free-2",
+      "title": "Comprendre la Blockchain",
+      "type": "article",
+      "level": "free",
+      "category": "trading",
+      "description": "Les fondamentaux de la technologie blockchain",
+      "content": "<h2>La Blockchain expliquée simplement</h2><p>La blockchain est une technologie de stockage et de transmission d'informations...</p>",
+      "modules": [],
+      "createdAt": "2026-02-07T00:00:00.000Z",
+      "published": true
+    },
+    {
+      "id": "free-3",
+      "title": "Créer son Premier Wallet",
+      "type": "video",
+      "level": "free",
+      "category": "trading",
+      "description": "Apprenez à créer et sécuriser votre portefeuille crypto. MetaMask, Ledger, et les bonnes pratiques de sécurité.",
+      "content": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "modules": [],
+      "createdAt": "2026-02-07T00:00:00.000Z",
+      "published": true
+    },
+    {
+      "id": "free-4",
+      "title": "Acheter sa Première Crypto",
+      "type": "video",
+      "level": "free",
+      "category": "trading",
+      "description": "Guide complet pour acheter vos premiers Bitcoin et Ethereum sur les exchanges. Binance, Coinbase et alternatives.",
+      "content": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "modules": [],
+      "createdAt": "2026-02-07T00:00:00.000Z",
+      "published": true
+    },
+    {
+      "id": "free-5",
+      "title": "Introduction au Web3",
+      "type": "video",
+      "level": "free",
+      "category": "web3",
+      "description": "Découvrez les fondamentaux du Web3, la prochaine génération d'internet décentralisé.",
+      "content": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "modules": [],
+      "createdAt": "2026-02-07T00:00:00.000Z",
+      "published": true
+    },
+    {
+      "id": "free-6",
+      "title": "Qu'est-ce que la DeFi ?",
+      "type": "video",
+      "level": "free",
+      "category": "web3",
+      "description": "Comprendre la finance décentralisée (DeFi) et son impact sur le système financier traditionnel.",
+      "content": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "modules": [],
+      "createdAt": "2026-02-07T00:00:00.000Z",
+      "published": true
+    },
+    {
+      "id": "free-7",
+      "title": "Les NFTs Expliqués",
+      "type": "video",
+      "level": "free",
+      "category": "web3",
+      "description": "Tout savoir sur les NFTs : création, achat, vente et opportunités dans l'écosystème Web3.",
+      "content": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "modules": [],
+      "createdAt": "2026-02-07T00:00:00.000Z",
+      "published": true
+    },
+    {
+      "id": "free-8",
+      "title": "Smart Contracts pour Débutants",
+      "type": "article",
+      "level": "free",
+      "category": "web3",
+      "description": "Découvrez comment fonctionnent les contrats intelligents sur Ethereum et autres blockchains.",
+      "content": "<h2>Les Smart Contracts</h2><p>Les contrats intelligents sont des programmes autonomes qui s'exécutent automatiquement...</p>",
+      "modules": [],
+      "createdAt": "2026-02-07T00:00:00.000Z",
+      "published": true
+    },
+    {
+      "id": "free-9",
+      "title": "Memecoins : Le Guide du Débutant",
+      "type": "video",
+      "level": "free",
+      "category": "memecoin",
+      "description": "Comprendre les memecoins : de Dogecoin à Pepe, comment ça marche et les risques associés.",
+      "content": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "modules": [],
+      "createdAt": "2026-02-07T00:00:00.000Z",
+      "published": true
+    },
+    {
+      "id": "free-10",
+      "title": "Identifier les Tendances Memecoin",
+      "type": "video",
+      "level": "free",
+      "category": "memecoin",
+      "description": "Apprenez à repérer les tendances émergentes et les signaux d'alerte dans le monde des memecoins.",
+      "content": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "modules": [],
+      "createdAt": "2026-02-07T00:00:00.000Z",
+      "published": true
+    },
+    {
+      "id": "free-11",
+      "title": "Stratégies de Trading Memecoin",
+      "type": "video",
+      "level": "free",
+      "category": "memecoin",
+      "description": "Techniques et stratégies pour trader les memecoins avec gestion du risque et timing optimal.",
+      "content": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "modules": [],
+      "createdAt": "2026-02-07T00:00:00.000Z",
+      "published": true
+    },
+    {
+      "id": "free-12",
+      "title": "Les Pièges à Éviter",
+      "type": "article",
+      "level": "free",
+      "category": "memecoin",
+      "description": "Rug pulls, pump & dump et autres arnaques : comment se protéger dans l'univers volatile des memecoins.",
+      "content": "<h2>Attention aux Arnaques</h2><p>Le marché des memecoins est rempli d'opportunités mais aussi de dangers...</p>",
+      "modules": [],
+      "createdAt": "2026-02-07T00:00:00.000Z",
+      "published": true
+    },
+    {
+      "id": "premium-1",
+      "title": "Analyse Technique Avancée",
+      "type": "formation",
+      "level": "premium",
+      "category": "trading",
+      "description": "Maîtrisez les indicateurs techniques pour le trading",
+      "content": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "modules": [
+        "Module 1: RSI et MACD",
+        "Module 2: Fibonacci et Supports/Résistances",
+        "Module 3: Patterns de chandeliers japonais"
+      ],
+      "createdAt": "2026-02-07T00:00:00.000Z",
+      "published": true
+    },
+    {
+      "id": "premium-2",
+      "title": "Signaux de Trading Hebdomadaires",
+      "type": "signal",
+      "level": "premium",
+      "category": "trading",
+      "description": "Recevez 5-10 signaux par semaine",
+      "content": "Signaux disponibles dans le groupe Telegram Premium",
+      "modules": [],
+      "createdAt": "2026-02-07T00:00:00.000Z",
+      "published": true
+    },
+    {
+      "id": "vip-1",
+      "title": "Stratégies de Trading Algorithmique",
+      "type": "formation",
+      "level": "vip",
+      "category": "trading",
+      "description": "Créez vos propres bots de trading",
+      "content": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "modules": [
+        "Module 1: Introduction au trading algo",
+        "Module 2: Backtesting de stratégies",
+        "Module 3: Déploiement de bots",
+        "Module 4: Gestion des risques"
+      ],
+      "createdAt": "2026-02-07T00:00:00.000Z",
+      "published": true
+    },
+    {
+      "id": "vip-2",
+      "title": "Webinaire Mensuel Exclusif VIP",
+      "type": "webinar",
+      "level": "vip",
+      "category": "trading",
+      "description": "Session live mensuelle avec Q&A",
+      "content": "Prochain webinaire: 15 février 2026 à 20h00",
+      "modules": [],
+      "createdAt": "2026-02-07T00:00:00.000Z",
+      "published": true
+    }
+  ]
+}

@@ -5,6 +5,8 @@ const Dashboard = () => {
     const [cryptoData, setCryptoData] = useState([])
     const [loading, setLoading] = useState(true)
     const [lastUpdate, setLastUpdate] = useState(null)
+    const [searchTerm, setSearchTerm] = useState('')
+    const [searchFocused, setSearchFocused] = useState(false)
 
     // Fonction pour formater les nombres
     const formatNumber = (num) => {
@@ -82,6 +84,17 @@ const Dashboard = () => {
         return () => clearInterval(interval);
     }, []);
 
+    // Filtrer les cryptos selon la recherche
+    const filteredCryptoData = cryptoData.filter(coin =>
+        coin.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        coin.symbol.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    // Effacer la recherche
+    const clearSearch = () => {
+        setSearchTerm('');
+    }
+
     return (
         <div className="container">
             <div className="header">
@@ -90,11 +103,43 @@ const Dashboard = () => {
                 </div>
                 <h1>Dashboard Crypto</h1>
                 <div className="subtitle">Top 20 des cryptomonnaies par capitalisation</div>
+
+                {/* Barre de recherche */}
+                <div className={`search-bar-container ${searchFocused ? 'focused' : ''}`}>
+                    <div className="search-bar-wrapper">
+                        <span className="search-icon">🔍</span>
+                        <input
+                            type="text"
+                            className="search-input"
+                            placeholder="Rechercher une crypto (Bitcoin, ETH, BNB...)"
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            onFocus={() => setSearchFocused(true)}
+                            onBlur={() => setSearchFocused(false)}
+                        />
+                        {searchTerm && (
+                            <button className="search-clear" onClick={clearSearch}>
+                                ✕
+                            </button>
+                        )}
+                    </div>
+                    {searchTerm && (
+                        <div className="search-results-count">
+                            {filteredCryptoData.length} résultat{filteredCryptoData.length > 1 ? 's' : ''} trouvé{filteredCryptoData.length > 1 ? 's' : ''}
+                        </div>
+                    )}
+                </div>
             </div>
 
             <div className="dashboard">
                 {loading ? (
                     <div className="loading-text">Chargement des données...</div>
+                ) : filteredCryptoData.length === 0 ? (
+                    <div className="no-results">
+                        <div className="no-results-icon">🔍</div>
+                        <div className="no-results-text">Aucune crypto trouvée pour "{searchTerm}"</div>
+                        <button className="no-results-btn" onClick={clearSearch}>Effacer la recherche</button>
+                    </div>
                 ) : (
                     <table>
                         <thead>
@@ -111,7 +156,7 @@ const Dashboard = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {cryptoData.map((coin, index) => {
+                            {filteredCryptoData.map((coin, index) => {
                                 const change24h = coin.price_change_percentage_24h || 0;
                                 const change7d = coin.price_change_percentage_7d_in_currency || 0;
 

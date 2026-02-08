@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🤖 Test Bot Telegram - La Sphere</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .demo-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .card h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card p {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button.secondary {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        button.success {
+            background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+            margin-bottom: 10px;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .response-box {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            white-space: pre-wrap;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            max-height: 300px;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .response-box.show {
+            display: block;
+        }
+
+        .response-box.error {
+            border-left-color: #f5576c;
+            background: #ffe5e5;
+        }
+
+        .response-box.success {
+            border-left-color: #84fab0;
+            background: #e5ffe5;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-box .number {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .stat-box .label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .log-entry {
+            padding: 10px;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 0.9em;
+        }
+
+        .log-entry:last-child {
+            border-bottom: none;
+        }
+
+        .timestamp {
+            color: #999;
+            font-size: 0.85em;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .links {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin-top: 30px;
+        }
+
+        .links h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .links a {
+            color: #667eea;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .links a:hover {
+            background: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 Test Bot Telegram La Sphere</h1>
+            <p>Testez toutes les fonctionnalités du bot sans configuration !</p>
+            <span class="demo-badge">MODE DEMO</span>
+        </div>
+
+        <div class="grid">
+            <!-- Commandes Utilisateur -->
+            <div class="card">
+                <h2>👤 Commandes Utilisateur</h2>
+                <p>Testez les commandes que vos utilisateurs peuvent utiliser</p>
+                <div class="button-group">
+                    <button onclick="testCommand('/start')">🚀 /start</button>
+                    <button onclick="testCommand('/help')">📚 /help</button>
+                    <button onclick="testCommand('/status')">✅ /status</button>
+                    <button onclick="testCommand('/abonnements')">💎 /abonnements</button>
+                    <button onclick="testCommand('/support')">💬 /support</button>
+                </div>
+                <div id="command-response" class="response-box"></div>
+            </div>
+
+            <!-- Commandes VIP -->
+            <div class="card">
+                <h2>💎 Commandes VIP</h2>
+                <p>Commandes disponibles dans le groupe VIP</p>
+                <div class="button-group">
+                    <button onclick="testCommand('/signaux')" class="secondary">📊 /signaux</button>
+                    <button onclick="testCommand('/analyse')" class="secondary">📈 /analyse</button>
+                    <button onclick="testCommand('/formations')" class="secondary">📚 /formations</button>
+                </div>
+                <div id="vip-response" class="response-box"></div>
+            </div>
+
+            <!-- Commandes Admin -->
+            <div class="card">
+                <h2>⚙️ Commandes Admin</h2>
+                <p>Fonctionnalités d'administration</p>
+                <div class="button-group">
+                    <button onclick="testCommand('/stats')" class="success">📊 /stats</button>
+                </div>
+                <div id="admin-response" class="response-box"></div>
+            </div>
+
+            <!-- Test Invitation -->
+            <div class="card">
+                <h2>📨 Test Invitation</h2>
+                <p>Simuler l'envoi d'une invitation au groupe VIP</p>
+                <input type="text" id="invite-username" placeholder="Pseudo Telegram (ex: johndoe)" value="demo_user">
+                <input type="text" id="invite-plan" placeholder="Plan (ex: VIP)" value="VIP">
+                <button onclick="testInvite()">📨 Envoyer Invitation</button>
+                <div id="invite-response" class="response-box"></div>
+            </div>
+
+            <!-- Test Nouveau Membre -->
+            <div class="card">
+                <h2>👋 Test Nouveau Membre</h2>
+                <p>Simuler l'arrivée d'un nouveau membre dans le groupe</p>
+                <input type="text" id="member-username" placeholder="Pseudo Telegram (ex: alice)" value="alice">
+                <button onclick="testNewMember()">👋 Nouveau Membre</button>
+                <div id="member-response" class="response-box"></div>
+            </div>
+
+            <!-- Test Paiement Complet -->
+            <div class="card">
+                <h2>💳 Test Paiement Complet</h2>
+                <p>Simuler tout le flow de paiement</p>
+                <input type="text" id="payment-username" placeholder="Pseudo Telegram" value="bob">
+                <input type="text" id="payment-plan" placeholder="Plan" value="Premium">
+                <input type="text" id="payment-price" placeholder="Prix" value="29.99">
+                <button onclick="testPayment()" class="success">💳 Simuler Paiement</button>
+                <div id="payment-response" class="response-box"></div>
+            </div>
+        </div>
+
+        <!-- Dashboard Stats -->
+        <div class="card">
+            <h2>📊 Dashboard & Statistiques</h2>
+            <p>Vue d'ensemble du bot et de son activité</p>
+            <button onclick="loadDashboard()">🔄 Actualiser</button>
+            <button onclick="loadLogs()" class="secondary">📋 Voir les Logs</button>
+            <button onclick="loadMessages()" class="secondary">💬 Voir les Messages</button>
+            <button onclick="clearData()" class="success">🗑️ Effacer les Données</button>
+
+            <div id="stats-container" class="stats-grid"></div>
+            <div id="dashboard-response" class="response-box"></div>
+        </div>
+
+        <!-- Liens Utiles -->
+        <div class="links">
+            <h3>🔗 Liens Utiles</h3>
+            <a href="http://localhost:5175" target="_blank">🌐 Frontend La Sphere</a>
+            <a href="http://localhost:3001/api/telegram-demo" target="_blank">🔧 API Telegram Demo</a>
+            <a href="../TELEGRAM_SETUP.md" target="_blank">📖 Guide de Configuration</a>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:3001/api/telegram-demo';
+
+        async function apiCall(endpoint, method = 'GET', body = null) {
+            try {
+                const options = {
+                    method: method,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                };
+
+                if (body) {
+                    options.body = JSON.stringify(body);
+                }
+
+                const response = await fetch(`${API_URL}${endpoint}`, options);
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                return { success: false, error: error.message };
+            }
+        }
+
+        async function testCommand(command) {
+            const responseBox = document.getElementById('command-response');
+            if (command.includes('signaux') || command.includes('analyse') || command.includes('formations')) {
+                responseBox.id = 'vip-response';
+            } else if (command.includes('stats')) {
+                responseBox.id = 'admin-response';
+            }
+
+            const targetBox = document.getElementById(responseBox.id);
+            targetBox.innerHTML = '<div class="loading"></div> Traitement...';
+            targetBox.className = 'response-box show';
+
+            const data = await apiCall('/command', 'POST', { command: command, username: 'demo_user' });
+
+            if (data.success) {
+                targetBox.className = 'response-box show success';
+                targetBox.textContent = `Commande: ${data.command}\nUtilisateur: @${data.username}\n\n${data.response}`;
+            } else {
+                targetBox.className = 'response-box show error';
+                targetBox.textContent = `Erreur: ${data.error}`;
+            }
+        }
+
+        async function testInvite() {
+            const username = document.getElementById('invite-username').value;
+            const planName = document.getElementById('invite-plan').value;
+            const responseBox = document.getElementById('invite-response');
+
+            responseBox.innerHTML = '<div class="loading"></div> Envoi...';
+            responseBox.className = 'response-box show';
+
+            const data = await apiCall('/invite', 'POST', { username: username, planName: planName });
+
+            if (data.success) {
+                responseBox.className = 'response-box show success';
+                responseBox.textContent = `✅ ${data.message}\n\nUtilisateur: @${data.username}\nPlan: ${data.planName}`;
+            } else {
+                responseBox.className = 'response-box show error';
+                responseBox.textContent = `Erreur: ${data.error}`;
+            }
+        }
+
+        async function testNewMember() {
+            const username = document.getElementById('member-username').value;
+            const responseBox = document.getElementById('member-response');
+
+            responseBox.innerHTML = '<div class="loading"></div> Traitement...';
+            responseBox.className = 'response-box show';
+
+            const data = await apiCall('/new-member', 'POST', { username: username });
+
+            if (data.success) {
+                responseBox.className = 'response-box show success';
+                responseBox.textContent = `✅ ${data.message}\n\n${data.welcomeMessage}`;
+            } else {
+                responseBox.className = 'response-box show error';
+                responseBox.textContent = `Erreur: ${data.error}`;
+            }
+        }
+
+        async function testPayment() {
+            const username = document.getElementById('payment-username').value;
+            const planName = document.getElementById('payment-plan').value;
+            const price = document.getElementById('payment-price').value;
+            const responseBox = document.getElementById('payment-response');
+
+            responseBox.innerHTML = '<div class="loading"></div> Traitement du paiement...';
+            responseBox.className = 'response-box show';
+
+            const data = await apiCall('/simulate-payment', 'POST', {
+                username: username,
+                planName: planName,
+                price: price
+            });
+
+            if (data.success) {
+                responseBox.className = 'response-box show success';
+                responseBox.textContent = `✅ ${data.message}\n\nÉtapes:\n${data.steps.join('\n')}`;
+            } else {
+                responseBox.className = 'response-box show error';
+                responseBox.textContent = `Erreur: ${data.error}`;
+            }
+        }
+
+        async function loadDashboard() {
+            const statsContainer = document.getElementById('stats-container');
+            const responseBox = document.getElementById('dashboard-response');
+
+            responseBox.innerHTML = '<div class="loading"></div> Chargement...';
+            responseBox.className = 'response-box show';
+
+            const data = await apiCall('/', 'GET');
+
+            if (data.success) {
+                statsContainer.innerHTML = `
+                    <div class="stat-box">
+                        <div class="number">${data.stats.totalLogs || 0}</div>
+                        <div class="label">Logs</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">${data.stats.totalMessages || 0}</div>
+                        <div class="label">Messages</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">${data.stats.status === 'running' ? '✅' : '❌'}</div>
+                        <div class="label">Statut</div>
+                    </div>
+                `;
+
+                responseBox.className = 'response-box show success';
+                responseBox.textContent = JSON.stringify(data, null, 2);
+            } else {
+                responseBox.className = 'response-box show error';
+                responseBox.textContent = `Erreur: ${data.error}`;
+            }
+        }
+
+        async function loadLogs() {
+            const responseBox = document.getElementById('dashboard-response');
+
+            responseBox.innerHTML = '<div class="loading"></div> Chargement des logs...';
+            responseBox.className = 'response-box show';
+
+            const data = await apiCall('/logs', 'GET');
+
+            if (data.success) {
+                responseBox.className = 'response-box show success';
+                if (data.logs.length === 0) {
+                    responseBox.textContent = 'Aucun log disponible.';
+                } else {
+                    responseBox.innerHTML = data.logs.map(log => `
+                        <div class="log-entry">
+                            <span class="timestamp">${new Date(log.timestamp).toLocaleString('fr-FR')}</span><br>
+                            ${log.message}
+                        </div>
+                    `).join('');
+                }
+            } else {
+                responseBox.className = 'response-box show error';
+                responseBox.textContent = `Erreur: ${data.error}`;
+            }
+        }
+
+        async function loadMessages() {
+            const responseBox = document.getElementById('dashboard-response');
+
+            responseBox.innerHTML = '<div class="loading"></div> Chargement des messages...';
+            responseBox.className = 'response-box show';
+
+            const data = await apiCall('/messages', 'GET');
+
+            if (data.success) {
+                responseBox.className = 'response-box show success';
+                if (data.messages.length === 0) {
+                    responseBox.textContent = 'Aucun message disponible.';
+                } else {
+                    responseBox.textContent = JSON.stringify(data.messages, null, 2);
+                }
+            } else {
+                responseBox.className = 'response-box show error';
+                responseBox.textContent = `Erreur: ${data.error}`;
+            }
+        }
+
+        async function clearData() {
+            if (!confirm('Êtes-vous sûr de vouloir effacer tous les logs et messages ?')) {
+                return;
+            }
+
+            const responseBox = document.getElementById('dashboard-response');
+
+            responseBox.innerHTML = '<div class="loading"></div> Effacement...';
+            responseBox.className = 'response-box show';
+
+            const data = await apiCall('/clear', 'DELETE');
+
+            if (data.success) {
+                responseBox.className = 'response-box show success';
+                responseBox.textContent = '✅ Logs et messages effacés';
+                document.getElementById('stats-container').innerHTML = '';
+                setTimeout(() => loadDashboard(), 1000);
+            } else {
+                responseBox.className = 'response-box show error';
+                responseBox.textContent = `Erreur: ${data.error}`;
+            }
+        }
+
+        // Charger le dashboard au démarrage
+        window.addEventListener('load', () => {
+            loadDashboard();
+        });
+    </script>
+</body>
+</html>

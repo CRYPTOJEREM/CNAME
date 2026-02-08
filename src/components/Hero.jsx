@@ -5,12 +5,12 @@ const Hero = ({ setActiveTab }) => {
     return (
         <>
             <section className="hero">
-                <div className="hero-badge">🚀 VOTRE SOURCE D'INFORMATIONS ÉCONOMIQUES</div>
-                <h1>SUIVEZ LES <span className="gradient-text">ÉVÉNEMENTS</span><br />ÉCONOMIQUES MAJEURS</h1>
-                <p>Accédez en temps réel aux calendriers économiques, analyses de marchés et actualités financières qui impactent vos investissements.</p>
+                <div className="hero-badge">🌐 L'ÉCOSYSTÈME COMMUNAUTAIRE CRYPTO</div>
+                <h1>REJOIGNEZ LA <span className="gradient-text">COMMUNAUTÉ</span><br />CRYPTO LA PLUS ACTIVE</h1>
+                <p>Intégrez un groupe de passionnés où vous apprendrez, échangerez et progresserez ensemble dans le monde de la crypto. Analyses partagées, stratégies collaboratives et support communautaire 24/7.</p>
                 <div className="cta-buttons">
-                    <button onClick={() => setActiveTab('calendrier')} className="btn btn-primary">📅 Voir le Calendrier</button>
-                    <button onClick={() => setActiveTab('fonctionnalites')} className="btn btn-secondary">📊 En Savoir Plus</button>
+                    <button onClick={() => setActiveTab('abonnements')} className="btn btn-primary">🤝 Rejoindre la Communauté</button>
+                    <button onClick={() => setActiveTab('apprentissage')} className="btn btn-secondary">🎓 Découvrir les Formations</button>
                 </div>
             </section>
 

@@ -1,7 +1,10 @@
 
 import React, { useState } from 'react'
+import { useAuth } from '../contexts/AuthContext'
+import api from '../services/api'
 
 const Subscriptions = () => {
+    const { isAuthenticated, user } = useAuth()
     const [selectedPlan, setSelectedPlan] = useState(null)
     const [showPaymentModal, setShowPaymentModal] = useState(false)
     const [paymentMethod, setPaymentMethod] = useState('eth')
@@ -94,6 +97,63 @@ const Subscriptions = () => {
         if (plan.disabled) return
         setSelectedPlan(plan)
         setShowPaymentModal(true)
+    }
+
+    const handleNowPaymentsCheckout = async (plan) => {
+        // Vérifier si l'utilisateur est connecté
+        if (!isAuthenticated) {
+            const shouldLogin = window.confirm(
+                '🔐 Vous devez être connecté pour souscrire à un abonnement.\n\n' +
+                'Voulez-vous vous connecter maintenant ?'
+            )
+            if (shouldLogin) {
+                // Rediriger vers la page de connexion
+                window.activeTabSetter('login')
+            }
+            return
+        }
+
+        // Vérifier si l'utilisateur a un pseudo Telegram
+        if (!user.telegramUsername && (plan.id === 'premium' || plan.id === 'vip')) {
+            const shouldAddTelegram = window.confirm(
+                '📱 Un pseudo Telegram est requis pour les abonnements Premium/VIP.\n\n' +
+                'Voulez-vous ajouter votre pseudo Telegram dans votre profil maintenant ?'
+            )
+            if (shouldAddTelegram) {
+                window.activeTabSetter('membre')
+            }
+            return
+        }
+
+        // Envoyer les informations au backend
+        try {
+            const response = await api.post('/create-payment', {
+                planId: plan.id,
+                planName: plan.name,
+                price: plan.price
+            })
+
+            if (response.data.success && response.data.invoiceUrl) {
+                // Ouvrir la page de paiement NOWPayments
+                window.open(response.data.invoiceUrl, '_blank')
+                setShowPaymentModal(false)
+                alert(
+                    '✅ Page de paiement ouverte!\n\n' +
+                    'Après confirmation du paiement, votre abonnement sera automatiquement activé.' +
+                    (user.telegramUsername ? '\nVous recevrez également une invitation Telegram.' : '')
+                )
+            } else {
+                alert('❌ Erreur lors de la création du paiement')
+            }
+        } catch (error) {
+            console.error('Erreur:', error)
+            if (error.response?.status === 401) {
+                alert('❌ Session expirée. Veuillez vous reconnecter.')
+                window.activeTabSetter('login')
+            } else {
+                alert('❌ Erreur lors de la création du paiement. Veuillez réessayer.')
+            }
+        }
     }
 
     const getPrice = (plan) => {
@@ -223,84 +283,113 @@ const Subscriptions = () => {
                 ))}
             </div>
 
-            {/* Modal de paiement */}
+            {/* Modal de paiement - Design moderne et propre */}
             {showPaymentModal && selectedPlan && (
-                <div className="payment-modal-overlay">
-                    <div className="payment-modal">
-                        <button
-                            onClick={() => setShowPaymentModal(false)}
-                            className="modal-close-btn"
-                        >
-                            ✕
-                        </button>
-
-                        <h2 className="modal-title">
-                            💳 Finaliser votre abonnement
-                        </h2>
-                        <p className="modal-subtitle">
-                            {selectedPlan.name} - {selectedPlan.price}€{selectedPlan.period}
-                        </p>
-
-                        <div className="payment-method-section">
-                            <h3 className="payment-method-title">
-                                Choisir la cryptomonnaie de paiement:
-                            </h3>
-                            <div className="crypto-options-grid">
-                                {cryptoOptions.map((crypto) => (
-                                    <button
-                                        key={crypto.id}
-                                        onClick={() => setPaymentMethod(crypto.id)}
-                                        className={`crypto-option-btn ${paymentMethod === crypto.id ? 'active' : ''}`}
-                                        style={paymentMethod === crypto.id ? {
-                                            background: `linear-gradient(135deg, ${crypto.color}40, ${crypto.color}20)`,
-                                            borderColor: crypto.color
-                                        } : {}}
-                                    >
-                                        <div className="crypto-icon-large">{crypto.icon}</div>
-                                        {crypto.name}
-                                    </button>
-                                ))}
-                            </div>
-                        </div>
-
-                        <div className="payment-amount-box">
-                            <div className="amount-label">
-                                💰 Montant à payer:
-                            </div>
-                            <div className="amount-value">
-                                {getPrice(selectedPlan)}
-                            </div>
-                            <div className="amount-equivalent">
-                                ≈ {selectedPlan.price} EUR
-                            </div>
-                        </div>
-
-                        <div className="payment-address-box">
-                            <div className="address-label">
-                                📍 Adresse de paiement:
-                            </div>
-                            <div className="address-value">
-                                {PAYMENT_ADDRESS}
-                            </div>
+                <div className="payment-modal-overlay" onClick={() => setShowPaymentModal(false)}>
+                    <div className="payment-modal-new" onClick={(e) => e.stopPropagation()}>
+                        {/* Header */}
+                        <div className="modal-header-new">
                             <button
-                                onClick={copyAddress}
-                                className="copy-address-btn"
+                                onClick={() => setShowPaymentModal(false)}
+                                className="modal-close-new"
                             >
-                                📋 Copier l'adresse
+                                ✕
                             </button>
+                            <div className="modal-icon-new">{selectedPlan.name.split(' ')[0]}</div>
+                            <h2 className="modal-title-new">Finaliser votre abonnement</h2>
+                            <div className="modal-plan-badge">{selectedPlan.name}</div>
                         </div>
 
+                        {/* Récapitulatif */}
+                        <div className="modal-summary">
+                            <div className="summary-row">
+                                <span className="summary-label">Plan sélectionné</span>
+                                <span className="summary-value">{selectedPlan.name.split(' ')[1]}</span>
+                            </div>
+                            <div className="summary-row">
+                                <span className="summary-label">Période</span>
+                                <span className="summary-value">{selectedPlan.period}</span>
+                            </div>
+                            <div className="summary-divider"></div>
+                            <div className="summary-row summary-total">
+                                <span className="summary-label">Total à payer</span>
+                                <span className="summary-value-large">{selectedPlan.price}€</span>
+                            </div>
+                        </div>
+
+                        {/* Avantages */}
+                        <div className="modal-benefits">
+                            <div className="benefit-card">
+                                <div className="benefit-icon">🔒</div>
+                                <div className="benefit-content">
+                                    <div className="benefit-title">Paiement 100% sécurisé</div>
+                                    <div className="benefit-text">Traitement via NOWPayments</div>
+                                </div>
+                            </div>
+                            <div className="benefit-card">
+                                <div className="benefit-icon">💎</div>
+                                <div className="benefit-content">
+                                    <div className="benefit-title">200+ Cryptomonnaies</div>
+                                    <div className="benefit-text">Bitcoin, Ethereum, USDT, etc.</div>
+                                </div>
+                            </div>
+                            <div className="benefit-card">
+                                <div className="benefit-icon">⚡</div>
+                                <div className="benefit-content">
+                                    <div className="benefit-title">Accès instantané</div>
+                                    <div className="benefit-text">Activation sous 5 minutes</div>
+                                </div>
+                            </div>
+                            <div className="benefit-card">
+                                <div className="benefit-icon">📱</div>
+                                <div className="benefit-content">
+                                    <div className="benefit-title">Telegram VIP</div>
+                                    <div className="benefit-text">Ajout automatique au groupe</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Bouton personnalisé NOWPayments */}
                         <button
-                            onClick={handlePayment}
-                            className="partner-btn payment-submit-btn"
+                            onClick={() => handleNowPaymentsCheckout(selectedPlan)}
+                            className="payment-button-new"
                         >
-                            🚀 Payer avec MetaMask
+                            <span className="payment-button-icon">🚀</span>
+                            <span className="payment-button-text">Payer avec Crypto</span>
+                            <span className="payment-button-badge">NOWPayments</span>
                         </button>
 
-                        <p className="payment-warning-text">
-                            ⚠️ Une fois le paiement effectué, votre abonnement sera activé automatiquement sous quelques minutes.
-                            Conservez votre hash de transaction comme preuve de paiement.
-                        </p>
+                        {/* Lien NOWPayments alternatif */}
+                        <div className="payment-alternative">
+                            <p className="payment-alternative-text">Ou utilisez le lien direct :</p>
+                            <a
+                                href="https://nowpayments.io/payment/?iid=6131926923&source=button"
+                                target="_blank"
+                                rel="noreferrer noopener"
+                                className="payment-nowpayments-link"
+                            >
+                                <img
+                                    src="https://nowpayments.io/images/embeds/payment-button-white.svg"
+                                    alt="Bouton de paiement Bitcoin et crypto par NOWPayments"
+                                    className="payment-nowpayments-img"
+                                />
+                            </a>
+                        </div>
+
+                        {/* Note importante */}
+                        <div className="modal-note">
+                            <div className="modal-note-icon">ℹ️</div>
+                            <div className="modal-note-content">
+                                <strong>Processus de paiement :</strong>
+                                <ol className="modal-note-list">
+                                    <li>Cliquez sur "Payer avec Crypto"</li>
+                                    <li>Entrez votre pseudo Telegram</li>
+                                    <li>Sélectionnez votre cryptomonnaie</li>
+                                    <li>Effectuez le paiement</li>
+                                    <li>Recevez votre invitation Telegram automatiquement</li>
+                                </ol>
+                            </div>
+                        </div>
                     </div>
                 </div>
             )}

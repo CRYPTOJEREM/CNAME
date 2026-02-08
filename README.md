@@ -1,16 +1,104 @@
-# React + Vite
+# 🌐 La Sphere - Plateforme Communautaire Crypto
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![Live Site](https://img.shields.io/badge/live-lasphere.xyz-00D9FF?style=for-the-badge)](https://lasphere.xyz)
+[![Backend](https://img.shields.io/badge/backend-Render-46E3B7?style=for-the-badge)](https://render.com)
+[![Frontend](https://img.shields.io/badge/frontend-Vercel-000000?style=for-the-badge)](https://vercel.com)
 
-Currently, two official plugins are available:
+> Plateforme communautaire pour traders et passionnés de crypto. Dashboard en temps réel, calendrier économique, formations, et accès VIP.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Déploiement Rapide
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**Le projet est prêt pour le déploiement en ligne !**
 
-## Expanding the ESLint configuration
+👉 Suivez le guide : **[DEPLOY_RAPIDE.md](./DEPLOY_RAPIDE.md)** (15 minutes)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## ✨ Fonctionnalités
+
+- ✅ Dashboard Crypto en temps réel
+- ✅ Calendrier économique automatique
+- ✅ Système d'authentification JWT
+- ✅ Espace membre avec niveaux d'abonnement
+- ✅ Formations Trading, Web3, Memecoins
+- ✅ Paiements crypto (NOWPayments)
+- ✅ Bot Telegram automatique
+
+---
+
+## 🛠️ Développement Local
+
+### Démarrage Rapide
+
+```bash
+# Windows
+DEMARRER_FINAL.bat
+
+# Manuel
+cd backend && node server.js
+cd .. && npm run dev
+```
+
+**Accès :**
+- Frontend : http://localhost:5173
+- Backend : http://localhost:3001
+
+**Compte test :**
+- Email : `admin@lasphere.com`
+- Password : `Admin@2026`
+
+---
+
+## 📚 Documentation
+
+- 🚀 **[Guide Déploiement Rapide](./DEPLOY_RAPIDE.md)** - 15 minutes
+- 📖 **[Guide Déploiement Complet](./DEPLOIEMENT.md)** - Détaillé
+- 🔧 **[Setup Backend](./backend/README_SETUP.md)** - Configuration
+
+---
+
+## 🎯 Stack Technique
+
+| Catégorie | Technologies |
+|-----------|--------------|
+| Frontend | React 19, Vite 7, Axios |
+| Backend | Node.js 18+, Express 4 |
+| Auth | JWT, bcryptjs |
+| Email | Nodemailer (Gmail) |
+| Paiements | NOWPayments |
+| Déploiement | Vercel + Render |
+
+---
+
+## 📦 Structure
+
+```
+lasphere/
+├── backend/          # API Node.js + Express
+├── src/              # Frontend React
+├── CNAME             # Domaine (lasphere.xyz)
+├── vercel.json       # Config Vercel
+├── DEPLOIEMENT.md    # Guide complet
+└── DEPLOY_RAPIDE.md  # Guide 15 min
+```
+
+---
+
+## 🌐 En Ligne
+
+**Domaine :** [lasphere.xyz](https://lasphere.xyz)
+
+---
+
+## 📞 Support
+
+- 📧 Email : contact@lasphere.xyz
+- 💬 Telegram : [@lasphere_vip](https://t.me/lasphere_vip)
+
+---
+
+<div align="center">
+  <strong>🚀 Prêt pour le Déploiement !</strong>
+</div>

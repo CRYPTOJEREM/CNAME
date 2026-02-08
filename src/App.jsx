@@ -7,12 +7,27 @@ import Hero from './components/Hero'
 import News from './components/News'
 import Calendar from './components/Calendar'
 import Dashboard from './components/Dashboard'
-import Learning from './components/Learning'
 import Assistance from './components/Assistance'
 import Subscriptions from './components/Subscriptions'
+import FreeContent from './components/FreeContent'
+import Login from './components/auth/Login'
+import Register from './components/auth/Register'
+import EmailVerification from './components/auth/EmailVerification'
+import LoadingSpinner from './components/common/LoadingSpinner'
+import ProtectedRoute from './components/common/ProtectedRoute'
+import MemberArea from './components/member/MemberArea'
+import { useAuth } from './contexts/AuthContext'
 
 function App() {
   const [activeTab, setActiveTab] = useState('accueil')
+  const { loading } = useAuth()
+
+  // Exposer setActiveTab globalement pour ProtectedRoute
+  window.activeTabSetter = setActiveTab
+
+  if (loading) {
+    return <LoadingSpinner fullScreen />
+  }
 
   return (
     <>
@@ -45,7 +60,7 @@ function App() {
 
         {activeTab === 'apprentissage' && (
           <div id="apprentissage" className="tab-content active">
-            <Learning />
+            <FreeContent setActiveTab={setActiveTab} />
           </div>
         )}
 
@@ -69,6 +84,34 @@ function App() {
                 <p>Découvrez tous les outils de La Sphere</p>
               </div>
             </section>
+          </div>
+        )}
+
+        {/* Pages d'authentification */}
+        {activeTab === 'login' && (
+          <div id="login" className="tab-content active">
+            <Login setActiveTab={setActiveTab} />
+          </div>
+        )}
+
+        {activeTab === 'register' && (
+          <div id="register" className="tab-content active">
+            <Register setActiveTab={setActiveTab} />
+          </div>
+        )}
+
+        {activeTab === 'verify-email' && (
+          <div id="verify-email" className="tab-content active">
+            <EmailVerification setActiveTab={setActiveTab} />
+          </div>
+        )}
+
+        {/* Espace Membre */}
+        {activeTab === 'membre' && (
+          <div id="membre" className="tab-content active">
+            <ProtectedRoute>
+              <MemberArea setActiveTab={setActiveTab} />
+            </ProtectedRoute>
           </div>
         )}
       </main>

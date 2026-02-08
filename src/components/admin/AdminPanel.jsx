@@ -4,6 +4,7 @@ import UserManagement from './UserManagement'
 import ProductManagement from './ProductManagement'
 import ContentManagement from './ContentManagement'
 import PaymentsDashboard from './PaymentsDashboard'
+import ReviewsManagement from './ReviewsManagement'
 import api from '../../services/api'
 
 const AdminPanel = () => {
@@ -91,6 +92,13 @@ const AdminPanel = () => {
                     >
                         <span className="nav-icon">💰</span>
                         <span>Paiements</span>
+                    </button>
+                    <button
+                        className={`admin-nav-btn ${activeSection === 'reviews' ? 'active' : ''}`}
+                        onClick={() => setActiveSection('reviews')}
+                    >
+                        <span className="nav-icon">⭐</span>
+                        <span>Avis Clients</span>
                     </button>
                 </div>
 
@@ -197,6 +205,7 @@ const AdminPanel = () => {
                     {activeSection === 'products' && <ProductManagement />}
                     {activeSection === 'content' && <ContentManagement />}
                     {activeSection === 'payments' && <PaymentsDashboard />}
+                    {activeSection === 'reviews' && <ReviewsManagement />}
                 </div>
             </div>
         </section>

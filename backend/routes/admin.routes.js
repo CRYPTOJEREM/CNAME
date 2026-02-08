@@ -629,4 +629,102 @@ router.get('/stats', async (req, res) => {
     }
 });
 
+// ==========================================
+// REVIEWS MANAGEMENT
+// ==========================================
+
+// @route   GET /api/admin/reviews
+// @desc    Get all reviews (pending and approved)
+// @access  Admin only
+router.get('/reviews', async (req, res) => {
+    try {
+        const db = readDatabase();
+
+        // Retourner tous les avis avec infos utilisateur
+        const reviewsWithUserInfo = db.reviews.map(review => {
+            const user = db.users.find(u => u.id === review.userId);
+            return {
+                ...review,
+                userEmail: user?.email || 'Unknown'
+            };
+        }).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+        res.json({
+            success: true,
+            data: reviewsWithUserInfo
+        });
+    } catch (error) {
+        console.error('Erreur récupération reviews admin:', error);
+        res.status(500).json({
+            success: false,
+            error: 'Erreur lors du chargement des avis'
+        });
+    }
+});
+
+// @route   PUT /api/admin/reviews/:id/approve
+// @desc    Approve a review
+// @access  Admin only
+router.put('/reviews/:id/approve', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const db = readDatabase();
+
+        const reviewIndex = db.reviews.findIndex(r => r.id === id);
+        if (reviewIndex === -1) {
+            return res.status(404).json({
+                success: false,
+                error: 'Avis introuvable'
+            });
+        }
+
+        db.reviews[reviewIndex].approved = true;
+        db.reviews[reviewIndex].approvedAt = new Date().toISOString();
+        writeDatabase(db);
+
+        res.json({
+            success: true,
+            message: 'Avis approuvé avec succès'
+        });
+    } catch (error) {
+        console.error('Erreur approbation review:', error);
+        res.status(500).json({
+            success: false,
+            error: 'Erreur lors de l\'approbation de l\'avis'
+        });
+    }
+});
+
+// @route   DELETE /api/admin/reviews/:id
+// @desc    Delete/reject a review
+// @access  Admin only
+router.delete('/reviews/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const db = readDatabase();
+
+        const reviewIndex = db.reviews.findIndex(r => r.id === id);
+        if (reviewIndex === -1) {
+            return res.status(404).json({
+                success: false,
+                error: 'Avis introuvable'
+            });
+        }
+
+        db.reviews.splice(reviewIndex, 1);
+        writeDatabase(db);
+
+        res.json({
+            success: true,
+            message: 'Avis supprimé avec succès'
+        });
+    } catch (error) {
+        console.error('Erreur suppression review:', error);
+        res.status(500).json({
+            success: false,
+            error: 'Erreur lors de la suppression de l\'avis'
+        });
+    }
+});
+
 module.exports = router;

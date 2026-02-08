@@ -2,6 +2,8 @@
 import React, { useState } from 'react'
 import { useAuth } from '../contexts/AuthContext'
 import api from '../services/api'
+import ReviewSubmissionForm from './reviews/ReviewSubmissionForm'
+import ReviewsList from './reviews/ReviewsList'
 
 const Subscriptions = () => {
     const { isAuthenticated, user } = useAuth()
@@ -277,75 +279,23 @@ const Subscriptions = () => {
                     <div className="hero-stats">
                         <div className="hero-stat">
                             <div className="hero-stat-icon">👥</div>
-                            <div className="hero-stat-value">2K+</div>
-                            <div className="hero-stat-label">Membres actifs</div>
-                        </div>
-                        <div className="hero-stat">
-                            <div className="hero-stat-icon">⭐</div>
-                            <div className="hero-stat-value">4.9/5</div>
-                            <div className="hero-stat-label">Note moyenne</div>
-                        </div>
-                        <div className="hero-stat">
-                            <div className="hero-stat-icon">💰</div>
-                            <div className="hero-stat-value">+287%</div>
-                            <div className="hero-stat-label">ROI moyen 2025</div>
+                            <div className="hero-stat-value">Actifs</div>
+                            <div className="hero-stat-label">Communauté engagée</div>
                         </div>
                         <div className="hero-stat">
                             <div className="hero-stat-icon">📡</div>
-                            <div className="hero-stat-value">150+</div>
-                            <div className="hero-stat-label">Signaux/mois</div>
+                            <div className="hero-stat-value">Quotidien</div>
+                            <div className="hero-stat-label">Signaux de trading</div>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            {/* Section - Témoignages */}
-            <div className="testimonials-section">
-                <h2 className="section-title">⭐ Ils ont transformé leur trading avec La Sphere</h2>
-                <div className="testimonials-grid">
-                    <div className="testimonial-card">
-                        <div className="testimonial-stars">⭐⭐⭐⭐⭐</div>
-                        <p className="testimonial-text">
-                            "Grâce aux signaux de La Sphere, j'ai fait x15 sur $PEPE en 3 jours.
-                            Les analyses sont précises et le groupe est ultra réactif. Meilleur investissement 2025 !"
-                        </p>
-                        <div className="testimonial-author">
-                            <div className="testimonial-avatar">M</div>
-                            <div className="testimonial-info">
-                                <div className="testimonial-name">Maxime R.</div>
-                                <div className="testimonial-role">Membre VIP depuis 6 mois</div>
-                            </div>
+                        <div className="hero-stat">
+                            <div className="hero-stat-icon">🎓</div>
+                            <div className="hero-stat-value">Complet</div>
+                            <div className="hero-stat-label">Formations incluses</div>
                         </div>
-                    </div>
-
-                    <div className="testimonial-card featured">
-                        <div className="testimonial-badge">💎 TÉMOIGNAGE VÉRIFIÉ</div>
-                        <div className="testimonial-stars">⭐⭐⭐⭐⭐</div>
-                        <p className="testimonial-text">
-                            "Je suis passé de débutant à trader rentable en 4 mois. Les formations sont complètes,
-                            le support est incroyable. J'ai récupéré mon investissement en 2 semaines !"
-                        </p>
-                        <div className="testimonial-author">
-                            <div className="testimonial-avatar">S</div>
-                            <div className="testimonial-info">
-                                <div className="testimonial-name">Sarah L.</div>
-                                <div className="testimonial-role">Membre Premium • +€12,450 en gains</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="testimonial-card">
-                        <div className="testimonial-stars">⭐⭐⭐⭐⭐</div>
-                        <p className="testimonial-text">
-                            "Les calls memecoins sont juste INSANES. J'ai chopé $WIF à 0.02$ grâce à leur veille.
-                            Aujourd'hui c'est mon meilleur trade de l'année. Merci La Sphere 🚀"
-                        </p>
-                        <div className="testimonial-author">
-                            <div className="testimonial-avatar">T</div>
-                            <div className="testimonial-info">
-                                <div className="testimonial-name">Thomas B.</div>
-                                <div className="testimonial-role">Membre VIP depuis 1 an</div>
-                            </div>
+                        <div className="hero-stat">
+                            <div className="hero-stat-icon">💬</div>
+                            <div className="hero-stat-value">24/7</div>
+                            <div className="hero-stat-label">Support disponible</div>
                         </div>
                     </div>
                 </div>
@@ -408,33 +358,6 @@ const Subscriptions = () => {
                                 Équipe dédiée disponible 24/7 pour répondre à toutes vos questions et vous accompagner.
                             </p>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            {/* Section - Résultats Réels */}
-            <div className="results-section">
-                <h2 className="section-title">📈 Des résultats concrets, pas des promesses</h2>
-                <div className="results-grid">
-                    <div className="result-card">
-                        <div className="result-icon">💰</div>
-                        <div className="result-number">+287%</div>
-                        <div className="result-label">ROI moyen des membres VIP en 2025</div>
-                    </div>
-                    <div className="result-card">
-                        <div className="result-icon">📊</div>
-                        <div className="result-number">78%</div>
-                        <div className="result-label">Taux de réussite des signaux</div>
-                    </div>
-                    <div className="result-card">
-                        <div className="result-icon">🎯</div>
-                        <div className="result-number">x42</div>
-                        <div className="result-label">Meilleur call memecoin (WIF)</div>
-                    </div>
-                    <div className="result-card">
-                        <div className="result-icon">⚡</div>
-                        <div className="result-number">&lt;24h</div>
-                        <div className="result-label">Temps de réponse du support</div>
                     </div>
                 </div>
             </div>
@@ -659,6 +582,35 @@ const Subscriptions = () => {
                         </p>
                     </div>
                 </div>
+            </div>
+
+            {/* Section - Avis Clients */}
+            <div className="reviews-section">
+                <h2 className="section-title">⭐ Avis de nos membres</h2>
+
+                {/* Formulaire de soumission (Premium/VIP uniquement) */}
+                {isAuthenticated && (user.subscriptionStatus === 'premium' || user.subscriptionStatus === 'vip') && (
+                    <div className="review-form-container">
+                        <h3>📝 Partagez votre expérience</h3>
+                        <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.7)', marginBottom: '30px' }}>
+                            Votre avis compte ! Aidez les futurs membres en partageant votre expérience avec La Sphere.
+                        </p>
+                        <ReviewSubmissionForm />
+                    </div>
+                )}
+
+                {/* Liste des avis approuvés (visible par tous) */}
+                <ReviewsList />
+
+                {/* Message pour non-membres */}
+                {!isAuthenticated && (
+                    <div className="reviews-cta">
+                        <p>
+                            💡 <strong>Rejoignez nos membres Premium ou VIP</strong> pour partager votre propre expérience
+                            et aider la communauté à grandir !
+                        </p>
+                    </div>
+                )}
             </div>
 
             {/* Section - FAQ */}

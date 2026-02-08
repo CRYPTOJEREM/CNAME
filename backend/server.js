@@ -100,6 +100,13 @@ const adminRoutes = require('./routes/admin.routes');
 app.use('/api/admin', adminRoutes);
 
 // ==========================================
+// ROUTES REVIEWS (AVIS CLIENTS)
+// ==========================================
+
+const reviewsRoutes = require('./routes/reviews.routes');
+app.use('/api/reviews', reviewsRoutes);
+
+// ==========================================
 // INITIALISATION TELEGRAM BOT
 // ==========================================
 

@@ -21,6 +21,8 @@
         /* Smooth page transitions */
         main {
             animation: fadeInPage 0.5s ease-in-out;
+            min-height: calc(100vh - 200px);
+            padding-bottom: 60px;
         }
 
         @keyframes fadeInPage {
@@ -1503,10 +1505,20 @@
             max-width: 1200px;
             margin: 60px auto;
             padding: 0 40px;
+            color: #E0E6F0;
         }
 
         .assistance-container {
             padding: 40px 0;
+        }
+
+        .assistance-container h2,
+        .assistance-container h3 {
+            color: #00D9FF;
+        }
+
+        .assistance-container p {
+            color: #E0E6F0;
         }
 
         .warning-box {
@@ -5802,5 +5814,150 @@
 
     .login-modal-icon {
         font-size: 48px;
+    }
+}
+
+/* ============================================
+   PANEL ADMIN
+   ============================================ */
+
+/* Section Admin */
+.admin-section {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0A0E27 0%, #1A1F3A 100%);
+    padding: 40px 20px;
+}
+
+.admin-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Header Admin */
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    padding: 30px;
+    background: rgba(13, 18, 41, 0.8);
+    border-radius: 20px;
+    border: 1px solid rgba(0, 217, 255, 0.2);
+}
+
+.admin-header h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px;
+    background: linear-gradient(135deg, #00D9FF 0%, #7B2FF7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 5px;
+}
+
+.admin-header p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+}
+
+.admin-user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.admin-badge {
+    background: linear-gradient(135deg, #FF3366 0%, #FF6B35 100%);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 12px;
+}
+
+/* Navigation Admin */
+.admin-nav {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 40px;
+    overflow-x: auto;
+    padding: 10px;
+    background: rgba(13, 18, 41, 0.6);
+    border-radius: 16px;
+}
+
+.admin-nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 24px;
+    background: rgba(26, 31, 58, 0.6);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 15px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.admin-nav-btn:hover {
+    background: rgba(0, 217, 255, 0.1);
+    border-color: rgba(0, 217, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+.admin-nav-btn.active {
+    background: linear-gradient(135deg, #00D9FF 0%, #7B2FF7 100%);
+    border-color: #00D9FF;
+    color: white;
+}
+
+/* Contenu Admin */
+.admin-content {
+    background: rgba(13, 18, 41, 0.8);
+    border-radius: 20px;
+    padding: 30px;
+    border: 1px solid rgba(0, 217, 255, 0.2);
+}
+
+/* Stats Dashboard */
+.stats-dashboard h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: #00D9FF;
+    margin-bottom: 30px;
+    font-size: 28px;
+}
+
+/* Management Headers */
+.management-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.management-header h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: #00D9FF;
+    font-size: 26px;
+}
+
+/* Responsive Admin */
+@media (max-width: 768px) {
+    .admin-header {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .admin-nav {
+        flex-direction: column;
+    }
+
+    .admin-nav-btn {
+        width: 100%;
+        justify-content: center;
     }
 }

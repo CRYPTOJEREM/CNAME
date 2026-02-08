@@ -58,6 +58,13 @@ const memberRoutes = require('./routes/member.routes');
 app.use('/api/member', memberRoutes);
 
 // ==========================================
+// ROUTES ADMIN
+// ==========================================
+
+const adminRoutes = require('./routes/admin.routes');
+app.use('/api/admin', adminRoutes);
+
+// ==========================================
 // INITIALISATION TELEGRAM BOT
 // ==========================================
 

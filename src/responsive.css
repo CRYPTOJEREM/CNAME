@@ -1172,6 +1172,77 @@
         flex-direction: column;
         text-align: center;
     }
+
+    /* Assistance Mobile */
+    .assistance-section {
+        padding: 20px 15px !important;
+        margin: 30px auto !important;
+    }
+
+    .assistance-container {
+        padding: 20px 0 !important;
+    }
+
+    .warning-box {
+        padding: 20px !important;
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 15px !important;
+    }
+
+    .warning-icon {
+        font-size: 36px !important;
+    }
+
+    .warning-content h3 {
+        font-size: 20px !important;
+    }
+
+    .warning-content p {
+        font-size: 14px !important;
+    }
+
+    .assistance-grid {
+        grid-template-columns: 1fr !important;
+        gap: 15px !important;
+        margin: 30px 0 !important;
+    }
+
+    .assistance-card {
+        padding: 25px 20px !important;
+    }
+
+    .assistance-card h3 {
+        font-size: 18px !important;
+    }
+
+    .faq-section {
+        margin-top: 30px !important;
+    }
+
+    .faq-section-title {
+        font-size: 22px !important;
+    }
+
+    .faq-item {
+        padding: 20px !important;
+    }
+
+    .faq-question {
+        font-size: 15px !important;
+    }
+
+    .faq-answer {
+        font-size: 13px !important;
+    }
+
+    .legal-section h3 {
+        font-size: 24px !important;
+    }
+
+    .legal-box {
+        padding: 20px !important;
+    }
 }
 
 /* === OPTIMISATION SUPPLÉMENTAIRE MOBILE (PETITS ÉCRANS) === */

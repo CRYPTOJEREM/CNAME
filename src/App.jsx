@@ -18,6 +18,7 @@ import EmailVerification from './components/auth/EmailVerification'
 import LoadingSpinner from './components/common/LoadingSpinner'
 import ProtectedRoute from './components/common/ProtectedRoute'
 import MemberArea from './components/member/MemberArea'
+import AdminPanel from './components/admin/AdminPanel'
 import { useAuth } from './contexts/AuthContext'
 
 function App() {
@@ -120,6 +121,13 @@ function App() {
             <ProtectedRoute>
               <MemberArea setActiveTab={setActiveTab} />
             </ProtectedRoute>
+          </div>
+        )}
+
+        {/* Panel Admin */}
+        {activeTab === 'admin' && (
+          <div id="admin" className="tab-content active">
+            <AdminPanel />
           </div>
         )}
       </main>

@@ -54,34 +54,64 @@ router.post('/register', registerValidation, async (req, res) => {
             telegramUsername
         });
 
-        // Générer token de vérification
-        const verificationToken = uuidv4();
-        const expiresAt = new Date();
-        expiresAt.setHours(expiresAt.getHours() + 24); // Expire dans 24h
+        // En mode développement, vérifier automatiquement l'email
+        if (process.env.NODE_ENV === 'development') {
+            await updateUser(user.id, { emailVerified: true });
 
-        // Sauvegarder le token
-        addToCollection('emailVerifications', {
-            id: uuidv4(),
-            userId: user.id,
-            token: verificationToken,
-            expiresAt: expiresAt.toISOString(),
-            verified: false,
-            createdAt: new Date().toISOString()
-        });
+            res.status(201).json({
+                success: true,
+                message: 'Compte créé avec succès. Vous pouvez vous connecter immédiatement.',
+                user: {
+                    id: user.id,
+                    email: user.email,
+                    firstName: user.firstName,
+                    lastName: user.lastName,
+                    emailVerified: true
+                }
+            });
+        } else {
+            // En production, envoyer un email de vérification
+            const verificationToken = uuidv4();
+            const expiresAt = new Date();
+            expiresAt.setHours(expiresAt.getHours() + 24); // Expire dans 24h
 
-        // Envoyer l'email de vérification
-        await sendVerificationEmail(user, verificationToken);
+            // Sauvegarder le token
+            addToCollection('emailVerifications', {
+                id: uuidv4(),
+                userId: user.id,
+                token: verificationToken,
+                expiresAt: expiresAt.toISOString(),
+                verified: false,
+                createdAt: new Date().toISOString()
+            });
 
-        res.status(201).json({
-            success: true,
-            message: 'Compte créé avec succès. Veuillez vérifier votre email.',
-            user: {
-                id: user.id,
-                email: user.email,
-                firstName: user.firstName,
-                lastName: user.lastName
+            // Essayer d'envoyer l'email de vérification
+            try {
+                await sendVerificationEmail(user, verificationToken);
+                res.status(201).json({
+                    success: true,
+                    message: 'Compte créé avec succès. Veuillez vérifier votre email.',
+                    user: {
+                        id: user.id,
+                        email: user.email,
+                        firstName: user.firstName,
+                        lastName: user.lastName
+                    }
+                });
+            } catch (emailError) {
+                console.warn('⚠️ Impossible d\'envoyer l\'email de vérification:', emailError.message);
+                res.status(201).json({
+                    success: true,
+                    message: 'Compte créé avec succès. L\'envoi de l\'email de vérification a échoué. Contactez le support.',
+                    user: {
+                        id: user.id,
+                        email: user.email,
+                        firstName: user.firstName,
+                        lastName: user.lastName
+                    }
+                });
             }
-        });
+        }
 
     } catch (error) {
         console.error('❌ Erreur inscription:', error.message);

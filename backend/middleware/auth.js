@@ -123,9 +123,33 @@ function requireEmailVerified(req, res, next) {
     next();
 }
 
+/**
+ * Middleware pour vérifier que l'utilisateur est admin
+ * Doit être utilisé APRÈS authMiddleware
+ */
+function requireAdmin(req, res, next) {
+    if (!req.user) {
+        return res.status(401).json({
+            success: false,
+            error: 'Authentification requise'
+        });
+    }
+
+    if (req.user.role !== 'admin') {
+        return res.status(403).json({
+            success: false,
+            error: 'Accès refusé',
+            message: 'Vous devez être administrateur pour accéder à cette ressource'
+        });
+    }
+
+    next();
+}
+
 module.exports = {
     authMiddleware,
     optionalAuthMiddleware,
     requireSubscription,
-    requireEmailVerified
+    requireEmailVerified,
+    requireAdmin
 };

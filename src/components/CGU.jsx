@@ -185,7 +185,7 @@ const CGU = () => {
                             <span className="warning-icon">⚠️</span>
                             <div>
                                 <strong>Avertissement Important :</strong>
-                                <p style="margin-top: 10px;">
+                                <p style={{ marginTop: '10px' }}>
                                     Le trading et l'investissement en cryptomonnaies comportent des
                                     <strong> risques de perte en capital importants</strong>. Les marchés crypto
                                     sont extrêmement volatils et non régulés dans de nombreux pays.

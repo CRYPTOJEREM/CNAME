@@ -104,6 +104,16 @@ const Header = ({ activeTab, setActiveTab }) => {
                         </button>
                     </li>
 
+                    {/* Lien Admin (uniquement pour les admins) */}
+                    {isAuthenticated && user?.role === 'admin' && (
+                        <li>
+                            <button onClick={() => handleTabClick('admin')} className={`${activeTab === 'admin' ? 'active' : ''} admin-btn`}>
+                                <span className="nav-icon">🛡️</span>
+                                <span className="nav-text">Admin</span>
+                            </button>
+                        </li>
+                    )}
+
                     {/* Section Authentification */}
                     <li className="auth-section">
                         {!isAuthenticated ? (

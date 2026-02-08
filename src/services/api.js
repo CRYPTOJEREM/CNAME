@@ -5,6 +5,10 @@ import axios from 'axios';
 // En production: URL du backend Render
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 
+// DEBUG: Afficher l'URL utilisée dans la console
+console.log('🔧 API_URL configurée:', API_URL);
+console.log('🔧 VITE_API_URL depuis env:', import.meta.env.VITE_API_URL);
+
 // Instance Axios avec configuration
 const api = axios.create({
     baseURL: API_URL,

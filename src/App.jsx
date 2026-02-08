@@ -11,6 +11,7 @@ import Dashboard from './components/Dashboard'
 import Assistance from './components/Assistance'
 import Subscriptions from './components/Subscriptions'
 import Learning from './components/Learning'
+import CGU from './components/CGU'
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
 import EmailVerification from './components/auth/EmailVerification'
@@ -74,6 +75,12 @@ function App() {
         {activeTab === 'abonnements' && (
           <div id="abonnements" className="tab-content active">
             <Subscriptions />
+          </div>
+        )}
+
+        {activeTab === 'cgu' && (
+          <div id="cgu" className="tab-content active">
+            <CGU />
           </div>
         )}
 

@@ -145,49 +145,126 @@
     }
 }
 
-/* === HERO SECTION MOBILE === */
+/* === PAGE D'ACCUEIL (HERO) MOBILE === */
 @media (max-width: 768px) {
-    .hero-section {
-        padding: 60px 20px;
-        min-height: auto;
+    /* Section Hero principale */
+    .hero {
+        padding: 40px 20px !important;
+        min-height: auto !important;
+        text-align: center;
     }
 
-    .hero-content h1 {
-        font-size: 32px;
-        line-height: 1.2;
+    .hero-badge {
+        font-size: 11px !important;
+        padding: 8px 16px !important;
+        margin-bottom: 20px !important;
     }
 
-    .hero-subtitle {
-        font-size: 16px;
+    .hero h1 {
+        font-size: 28px !important;
+        line-height: 1.3 !important;
+        margin-bottom: 20px !important;
     }
 
-    .hero-description {
-        font-size: 14px;
+    .hero p {
+        font-size: 15px !important;
+        line-height: 1.6 !important;
+        padding: 0 10px !important;
+        margin-bottom: 30px !important;
+    }
+
+    .gradient-text {
+        display: inline-block;
+    }
+
+    /* Boutons CTA */
+    .cta-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
         padding: 0 10px;
     }
 
-    .hero-stats {
-        flex-direction: column;
+    .btn {
+        width: 100% !important;
+        padding: 16px 20px !important;
+        font-size: 16px !important;
+        white-space: normal !important;
+        text-align: center;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100% !important;
+    }
+
+    /* Section Carrousel Vidéos */
+    .carousel-section {
+        padding: 40px 15px !important;
+    }
+
+    .carousel-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .carousel-title {
+        font-size: 24px !important;
+        margin-bottom: 10px !important;
+    }
+
+    .carousel-subtitle {
+        font-size: 14px !important;
+    }
+
+    .carousel-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 20px;
+    }
+
+    .carousel-track {
+        display: flex;
         gap: 20px;
+        padding: 0 10px;
+    }
+
+    .video-card {
+        min-width: 280px !important;
+        max-width: 280px !important;
+        flex-shrink: 0;
+    }
+
+    .video-thumbnail {
+        height: 160px !important;
+    }
+
+    .video-thumbnail iframe {
+        height: 160px !important;
+    }
+
+    .video-info {
+        padding: 15px !important;
+    }
+
+    .video-title {
+        font-size: 16px !important;
+        line-height: 1.3 !important;
+    }
+
+    .video-description {
+        font-size: 13px !important;
+    }
+
+    .video-stats {
+        flex-wrap: wrap;
+        gap: 8px;
     }
 
     .stat-item {
-        padding: 20px;
-    }
-
-    .stat-number {
-        font-size: 32px;
-    }
-
-    .cta-buttons {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .cta-primary,
-    .cta-secondary {
-        width: 100%;
-        padding: 16px;
+        font-size: 12px !important;
+        padding: 6px 12px !important;
     }
 }
 
@@ -289,38 +366,172 @@
     }
 }
 
-/* === DASHBOARD MOBILE === */
+/* === DASHBOARD CRYPTO MOBILE === */
 @media (max-width: 768px) {
-    .crypto-grid {
+    /* Container principal */
+    .container {
+        padding: 20px 15px !important;
+    }
+
+    /* Header du dashboard */
+    .header {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px 15px !important;
+        text-align: center;
+    }
+
+    .header h1 {
+        font-size: 24px !important;
+    }
+
+    .header p {
+        font-size: 14px !important;
+    }
+
+    /* Barre de recherche */
+    .search-container {
+        width: 100% !important;
+        max-width: none !important;
+    }
+
+    .search-input {
+        font-size: 16px !important;
+        padding: 14px 45px 14px 50px !important;
+    }
+
+    .search-icon,
+    .clear-search {
+        font-size: 18px !important;
+    }
+
+    /* Stats globales */
+    .stats-grid {
         grid-template-columns: 1fr !important;
-        gap: 15px;
-    }
-
-    .crypto-card {
-        padding: 20px;
-    }
-
-    .crypto-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
-
-    .crypto-info h3 {
-        font-size: 18px;
-    }
-
-    .crypto-stats {
-        flex-direction: column;
-        gap: 12px;
+        gap: 15px !important;
+        margin-bottom: 30px;
     }
 
     .stat-card {
-        padding: 15px;
+        padding: 20px 15px !important;
     }
 
-    .chart-container {
-        height: 250px;
+    .stat-label {
+        font-size: 13px !important;
+    }
+
+    .stat-value {
+        font-size: 22px !important;
+    }
+
+    /* Grille de cryptos */
+    .crypto-grid {
+        grid-template-columns: 1fr !important;
+        gap: 15px !important;
+    }
+
+    .crypto-card {
+        padding: 20px 15px !important;
+    }
+
+    /* Header de la carte crypto */
+    .crypto-header {
+        flex-direction: row !important;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .crypto-icon {
+        width: 45px !important;
+        height: 45px !important;
+        font-size: 24px !important;
+    }
+
+    .crypto-info {
+        flex: 1;
+        min-width: 120px;
+    }
+
+    .crypto-name {
+        font-size: 18px !important;
+        margin-bottom: 4px;
+    }
+
+    .crypto-symbol {
+        font-size: 13px !important;
+    }
+
+    .crypto-badge {
+        font-size: 11px !important;
+        padding: 6px 12px !important;
+        white-space: nowrap;
+    }
+
+    /* Prix et variation */
+    .crypto-price-section {
+        margin: 15px 0 !important;
+    }
+
+    .crypto-price {
+        font-size: 26px !important;
+        margin-bottom: 8px;
+    }
+
+    .crypto-change {
+        font-size: 15px !important;
+        padding: 8px 14px !important;
+    }
+
+    /* Stats de la crypto */
+    .crypto-stats {
+        flex-direction: column !important;
+        gap: 12px !important;
+        margin-top: 15px;
+    }
+
+    .stat-item {
+        width: 100% !important;
+        justify-content: space-between;
+        padding: 12px 0 !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .stat-item:last-child {
+        border-bottom: none;
+    }
+
+    .stat-label {
+        font-size: 13px !important;
+    }
+
+    .stat-value {
+        font-size: 15px !important;
+        font-weight: 600;
+    }
+
+    /* Chart mini */
+    .crypto-chart {
+        height: 60px !important;
+        margin: 15px 0 !important;
+    }
+
+    .crypto-chart svg {
+        width: 100% !important;
+        height: 60px !important;
+    }
+
+    /* États de chargement */
+    .loading-spinner,
+    .no-results {
+        padding: 40px 20px !important;
+        font-size: 16px !important;
+    }
+
+    /* Dernière mise à jour */
+    .last-update {
+        font-size: 13px !important;
+        padding: 15px !important;
+        text-align: center;
     }
 }
 
@@ -734,5 +945,231 @@
 
     .nav-links button.active {
         border: 3px solid #00D9FF;
+    }
+}
+
+/* === CGU (CONDITIONS GÉNÉRALES) === */
+.cgu-section {
+    background: linear-gradient(135deg, #0A0E27 0%, #1A1F3A 100%);
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+.cgu-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: rgba(13, 18, 41, 0.8);
+    border-radius: 24px;
+    padding: 40px;
+    border: 1px solid rgba(0, 217, 255, 0.2);
+}
+
+.cgu-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 2px solid rgba(0, 217, 255, 0.3);
+}
+
+.cgu-header h1 {
+    font-size: 36px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #00D9FF 0%, #7B2FF7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 15px;
+}
+
+.cgu-update {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+}
+
+.cgu-content {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.8;
+}
+
+.cgu-article {
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cgu-article:last-child {
+    border-bottom: none;
+}
+
+.cgu-article h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #00D9FF;
+    margin-bottom: 20px;
+}
+
+.cgu-article h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.95);
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+.cgu-article p {
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.cgu-article strong {
+    color: #00D9FF;
+}
+
+.cgu-article a {
+    color: #00D9FF;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 217, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.cgu-article a:hover {
+    color: #7B2FF7;
+    border-bottom-color: #7B2FF7;
+}
+
+.cgu-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 20px 0;
+}
+
+.cgu-list li {
+    padding: 12px 0;
+    padding-left: 30px;
+    position: relative;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.cgu-list li::before {
+    content: "▸";
+    position: absolute;
+    left: 10px;
+    color: #00D9FF;
+}
+
+.cgu-note {
+    background: rgba(0, 217, 255, 0.1);
+    border-left: 4px solid #00D9FF;
+    padding: 15px 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+.note-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.cgu-warning {
+    background: rgba(255, 107, 107, 0.1);
+    border-left: 4px solid #ff6b6b;
+    padding: 15px 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+.warning-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.cgu-contact {
+    background: rgba(0, 217, 255, 0.05);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.contact-item:last-child {
+    border-bottom: none;
+}
+
+.contact-icon {
+    font-size: 24px;
+}
+
+.cgu-footer {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 2px solid rgba(0, 217, 255, 0.3);
+    text-align: center;
+}
+
+.cgu-footer p {
+    margin-bottom: 10px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.cgu-disclaimer {
+    background: rgba(255, 107, 107, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+    color: #ff6b6b !important;
+}
+
+/* CGU Mobile */
+@media (max-width: 768px) {
+    .cgu-container {
+        padding: 25px 20px;
+        border-radius: 16px;
+    }
+
+    .cgu-header h1 {
+        font-size: 26px;
+    }
+
+    .cgu-article h2 {
+        font-size: 20px;
+    }
+
+    .cgu-article h3 {
+        font-size: 17px;
+    }
+
+    .cgu-article p,
+    .cgu-list li {
+        font-size: 15px;
+    }
+
+    .cgu-note,
+    .cgu-warning {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .note-icon,
+    .warning-icon {
+        font-size: 32px;
+    }
+
+    .contact-item {
+        flex-direction: column;
+        text-align: center;
     }
 }

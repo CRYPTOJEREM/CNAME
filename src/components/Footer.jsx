@@ -2,6 +2,14 @@
 import React from 'react'
 
 const Footer = () => {
+    const handleCGUClick = (e) => {
+        e.preventDefault();
+        if (window.activeTabSetter) {
+            window.activeTabSetter('cgu');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    };
+
     return (
         <footer>
             <div className="footer-warning">
@@ -15,9 +23,9 @@ const Footer = () => {
             <p>&copy; 2026 La Sphere | Données fournies à titre informatif uniquement</p>
             <p className="footer-author">Par CRYPTOJEREM - La Sphere</p>
             <p className="footer-links">
-                <a href="#" className="footer-link">CGU</a> •
-                <a href="#" className="footer-link">Mentions Légales</a> •
-                <a href="mailto:contact@lasphere.xyz" className="footer-link">Contact</a>
+                <a href="#cgu" onClick={handleCGUClick} className="footer-link">📜 CGU</a> •
+                <a href="#cgu" onClick={handleCGUClick} className="footer-link">⚖️ Politique de Confidentialité</a> •
+                <a href="mailto:contact@lasphere.xyz" className="footer-link">✉️ Contact</a>
             </p>
         </footer>
     )

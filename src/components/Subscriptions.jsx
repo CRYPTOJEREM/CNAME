@@ -222,9 +222,9 @@ const Subscriptions = () => {
 
     return (
         <section className="partners-section">
-            {/* Vidéo centrée en haut */}
+            {/* Vidéo ultra-wide en haut */}
             <div className="video-hero-centered">
-                <div className="video-container-centered">
+                <div className="video-container-ultrawide">
                     <iframe
                         className="hero-video-main"
                         src="https://www.youtube.com/embed/dQw4w9WgXcQ"
@@ -235,12 +235,35 @@ const Subscriptions = () => {
                     ></iframe>
                 </div>
 
-                {/* Bouton CTA centré */}
+                {/* Stats live sous la vidéo */}
+                <div className="hero-stats-bar">
+                    <div className="stat-item">
+                        <span className="stat-value">Quotidien</span>
+                        <span className="stat-label">Analyses marché</span>
+                    </div>
+                    <div className="stat-item">
+                        <span className="stat-value">24/7</span>
+                        <span className="stat-label">Support actif</span>
+                    </div>
+                    <div className="stat-item">
+                        <span className="stat-value">Temps réel</span>
+                        <span className="stat-label">Signaux trading</span>
+                    </div>
+                </div>
+
+                {/* Bouton CTA principal */}
                 <button className="cta-main-centered" onClick={() => {
                     document.querySelector('.plans-section').scrollIntoView({ behavior: 'smooth' });
                 }}>
-                    Rejoindre La Sphere
+                    Accéder maintenant
                 </button>
+
+                {/* Trust badges */}
+                <div className="trust-badges-line">
+                    <span className="trust-item">✓ Paiement sécurisé</span>
+                    <span className="trust-item">✓ Accès immédiat</span>
+                    <span className="trust-item">✓ Garantie 7 jours</span>
+                </div>
             </div>
 
             {/* Valeur ajoutée - Design fluide sans carrés */}

@@ -88,10 +88,10 @@ const Header = ({ activeTab, setActiveTab }) => {
                         {!isAuthenticated ? (
                             <>
                                 <button onClick={() => setActiveTab('login')} className="auth-btn login-btn">
-                                    Connexion
+                                    🔐 Connexion
                                 </button>
                                 <button onClick={() => setActiveTab('register')} className="auth-btn register-btn">
-                                    Inscription
+                                    ✨ Inscription
                                 </button>
                             </>
                         ) : (

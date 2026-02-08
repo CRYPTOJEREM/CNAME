@@ -1173,3 +1173,287 @@
         text-align: center;
     }
 }
+
+/* === OPTIMISATION SUPPLÉMENTAIRE MOBILE (PETITS ÉCRANS) === */
+@media (max-width: 768px) {
+    /* Réduire toutes les cartes */
+    .video-module-card,
+    .crypto-card,
+    .pricing-card,
+    .news-card {
+        padding: 15px !important;
+        margin-bottom: 15px !important;
+    }
+
+    /* Containers plus compacts */
+    .video-container,
+    .crypto-icon-container,
+    .pricing-icon {
+        margin-bottom: 10px !important;
+    }
+
+    /* Titres et textes plus petits */
+    .video-module-title,
+    .crypto-name,
+    .pricing-title {
+        font-size: 16px !important;
+        margin-bottom: 8px !important;
+    }
+
+    /* Descriptions compactes */
+    .video-module-description,
+    .crypto-description,
+    .pricing-description {
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+        margin-bottom: 10px !important;
+    }
+
+    /* Badges plus petits */
+    .video-level,
+    .crypto-badge,
+    .pricing-badge {
+        font-size: 11px !important;
+        padding: 4px 10px !important;
+        margin: 5px 0 !important;
+    }
+
+    /* Stats compactes */
+    .video-stats,
+    .crypto-stats,
+    .pricing-features {
+        gap: 8px !important;
+        margin-top: 12px !important;
+    }
+
+    .video-stat,
+    .stat-item {
+        font-size: 12px !important;
+        padding: 6px 10px !important;
+    }
+
+    /* Modules de formation */
+    .module-section {
+        padding: 20px 10px !important;
+        margin-bottom: 25px !important;
+    }
+
+    .module-title {
+        font-size: 18px !important;
+        margin-bottom: 15px !important;
+    }
+
+    .module-subtitle {
+        font-size: 13px !important;
+        margin-bottom: 15px !important;
+    }
+
+    /* Carrousel vidéos plus compact */
+    .video-card {
+        min-width: 260px !important;
+        max-width: 260px !important;
+    }
+
+    .video-thumbnail {
+        height: 145px !important;
+    }
+
+    .video-thumbnail iframe {
+        height: 145px !important;
+    }
+
+    .video-info {
+        padding: 12px !important;
+    }
+
+    .video-title {
+        font-size: 15px !important;
+    }
+
+    .video-description {
+        font-size: 12px !important;
+        margin-bottom: 10px !important;
+    }
+
+    /* Hero section encore plus compact */
+    .hero {
+        padding: 30px 15px !important;
+    }
+
+    .hero h1 {
+        font-size: 26px !important;
+        margin-bottom: 15px !important;
+    }
+
+    .hero p {
+        font-size: 14px !important;
+        margin-bottom: 25px !important;
+    }
+
+    .hero-badge {
+        font-size: 10px !important;
+        padding: 6px 12px !important;
+    }
+
+    /* Boutons plus compacts */
+    .btn,
+    .cta-primary,
+    .cta-secondary {
+        padding: 14px 18px !important;
+        font-size: 15px !important;
+    }
+
+    /* Headers de sections */
+    .section-title h2,
+    .learning-header h1,
+    .calendar-title,
+    .dashboard-title {
+        font-size: 22px !important;
+        margin-bottom: 12px !important;
+    }
+
+    .section-title p,
+    .learning-header p {
+        font-size: 13px !important;
+    }
+
+    /* Cards de pricing/abonnements */
+    .pricing-card {
+        padding: 25px 18px !important;
+    }
+
+    .plan-name {
+        font-size: 20px !important;
+    }
+
+    .plan-price {
+        font-size: 30px !important;
+    }
+
+    .feature-item {
+        font-size: 13px !important;
+        padding: 10px 8px !important;
+    }
+
+    /* Dashboard crypto */
+    .crypto-card {
+        padding: 15px 12px !important;
+    }
+
+    .crypto-icon {
+        width: 40px !important;
+        height: 40px !important;
+        font-size: 22px !important;
+    }
+
+    .crypto-price {
+        font-size: 24px !important;
+    }
+
+    .crypto-change {
+        font-size: 14px !important;
+        padding: 6px 12px !important;
+    }
+
+    /* Calendrier */
+    .event-card {
+        padding: 12px !important;
+    }
+
+    .event-time {
+        font-size: 11px !important;
+    }
+
+    .event-title {
+        font-size: 13px !important;
+    }
+
+    /* Footer */
+    .footer-warning {
+        padding: 15px 12px !important;
+    }
+
+    .footer-warning-title {
+        font-size: 13px !important;
+    }
+
+    .footer-warning-text {
+        font-size: 12px !important;
+    }
+}
+
+/* === TRÈS PETITS ÉCRANS (iPhone SE, petits Android) === */
+@media (max-width: 390px) {
+    /* Encore plus compact pour les très petits écrans */
+    .hero h1 {
+        font-size: 24px !important;
+    }
+
+    .hero p {
+        font-size: 13px !important;
+    }
+
+    .video-card {
+        min-width: 240px !important;
+        max-width: 240px !important;
+    }
+
+    .video-thumbnail {
+        height: 135px !important;
+    }
+
+    .video-thumbnail iframe {
+        height: 135px !important;
+    }
+
+    .video-module-card {
+        padding: 12px !important;
+    }
+
+    .crypto-card {
+        padding: 12px 10px !important;
+    }
+
+    .btn {
+        padding: 12px 16px !important;
+        font-size: 14px !important;
+    }
+
+    .module-title {
+        font-size: 16px !important;
+    }
+
+    .section-title h2 {
+        font-size: 20px !important;
+    }
+
+    /* Réduit espacement global */
+    .container {
+        padding: 15px 10px !important;
+    }
+
+    .module-section {
+        padding: 15px 8px !important;
+    }
+}
+
+/* === MODE PAYSAGE MOBILE (LANDSCAPE) === */
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero {
+        padding: 25px 15px !important;
+    }
+
+    .hero h1 {
+        font-size: 22px !important;
+    }
+
+    .video-thumbnail,
+    .video-thumbnail iframe {
+        height: 120px !important;
+    }
+
+    .crypto-card,
+    .video-module-card {
+        padding: 12px !important;
+    }
+}

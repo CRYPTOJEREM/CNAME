@@ -222,117 +222,174 @@ const Subscriptions = () => {
 
     return (
         <section className="partners-section">
-            {/* Hero Section - Présentation du groupe */}
+            {/* Hero Section - Accroche claire */}
             <div className="subscription-hero">
                 <div className="hero-content">
                     <div className="hero-badge">La Sphere</div>
                     <h1 className="hero-title">
-                        Communauté Crypto Francophone
+                        Développez vos compétences en trading crypto
                     </h1>
                     <p className="hero-description">
-                        Rejoignez une communauté de passionnés de cryptomonnaies, Web3 et trading.
-                        Accédez à des analyses professionnelles, formations complètes et signaux de trading.
+                        Une plateforme d'apprentissage et d'accompagnement pour progresser dans l'univers
+                        des cryptomonnaies, du Web3 et du trading. Formations, analyses et communauté francophone.
                     </p>
-
-                    {/* CTA Hero */}
-                    <div className="hero-cta-container">
-                        <button className="hero-cta-primary" onClick={() => {
-                            document.querySelector('.plans-section').scrollIntoView({ behavior: 'smooth' });
-                        }}>
-                            Découvrir les plans
-                        </button>
-                    </div>
                 </div>
             </div>
 
-            {/* Section - À propos de La Sphere */}
-            <div className="about-sphere-section">
+            {/* Section - Les défis du trading crypto */}
+            <div className="challenges-section">
                 <div className="about-sphere-content">
-                    <h2 className="section-title">À propos de La Sphere</h2>
+                    <h2 className="section-title">Les défis du trading de cryptomonnaies</h2>
                     <p className="section-description">
-                        Une plateforme complète pour les passionnés de cryptomonnaies, offrant analyses professionnelles,
-                        formations de qualité et accompagnement personnalisé dans l'univers du Web3 et du trading.
+                        Le marché crypto évolue 24/7 avec une volatilité importante. Sans les bonnes ressources
+                        et connaissances, il est facile de se perdre dans la masse d'informations disponibles.
                     </p>
 
                     <div className="about-features-grid">
                         <div className="about-feature">
-                            <h3 className="about-feature-title">Analyses Professionnelles</h3>
+                            <h3 className="about-feature-title">Information dispersée</h3>
                             <p className="about-feature-text">
-                                Analyses techniques et fondamentales quotidiennes pour identifier les opportunités du marché crypto.
+                                Des milliers de sources d'information contradictoires rendent difficile l'identification
+                                des analyses fiables et pertinentes.
                             </p>
                         </div>
 
                         <div className="about-feature">
-                            <h3 className="about-feature-title">Signaux de Trading</h3>
+                            <h3 className="about-feature-title">Courbe d'apprentissage</h3>
                             <p className="about-feature-text">
-                                Signaux avec points d'entrée, objectifs de profit et stop loss pour accompagner vos décisions.
+                                L'analyse technique, la gestion du risque et la psychologie du trading demandent
+                                un apprentissage structuré et progressif.
                             </p>
                         </div>
 
                         <div className="about-feature">
-                            <h3 className="about-feature-title">Formations Complètes</h3>
+                            <h3 className="about-feature-title">Veille chronophage</h3>
                             <p className="about-feature-text">
-                                Cours sur le trading, l'analyse technique et les fondamentaux du Web3 pour tous les niveaux.
+                                Suivre les évolutions du marché, analyser les projets et identifier les opportunités
+                                nécessite du temps et de l'expertise.
                             </p>
                         </div>
 
                         <div className="about-feature">
-                            <h3 className="about-feature-title">Communauté Active</h3>
+                            <h3 className="about-feature-title">Solitude du trader</h3>
                             <p className="about-feature-text">
-                                Groupe Telegram privé pour échanger avec d'autres membres et partager des expériences.
-                            </p>
-                        </div>
-
-                        <div className="about-feature">
-                            <h3 className="about-feature-title">Veille Marché</h3>
-                            <p className="about-feature-text">
-                                Surveillance continue des nouveaux projets et opportunités émergentes sur le marché.
-                            </p>
-                        </div>
-
-                        <div className="about-feature">
-                            <h3 className="about-feature-title">Support Disponible</h3>
-                            <p className="about-feature-text">
-                                Équipe à votre écoute pour répondre à vos questions et vous accompagner dans votre parcours.
+                                Trader seul sans retour d'expérience ni échanges avec d'autres passionnés
+                                limite la progression et l'apprentissage.
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {/* Section - Ce que vous obtenez */}
-            <div className="why-join-section">
-                <h2 className="section-title">Ce que vous obtenez</h2>
+            {/* Section - Notre approche */}
+            <div className="approach-section">
+                <div className="about-sphere-content">
+                    <h2 className="section-title">Notre approche</h2>
+                    <p className="section-description">
+                        La Sphere centralise les ressources essentielles pour votre progression dans le trading crypto,
+                        du contenu éducatif gratuit aux outils avancés pour les traders confirmés.
+                    </p>
+
+                    <div className="about-features-grid">
+                        <div className="about-feature">
+                            <h3 className="about-feature-title">Contenu gratuit accessible</h3>
+                            <p className="about-feature-text">
+                                Calendrier économique en temps réel, dashboard crypto live, articles et formations de base
+                                pour débuter sans risque.
+                            </p>
+                        </div>
+
+                        <div className="about-feature">
+                            <h3 className="about-feature-title">Formations structurées</h3>
+                            <p className="about-feature-text">
+                                Parcours d'apprentissage progressif couvrant l'analyse technique, la gestion du risque
+                                et les stratégies de trading adaptées à tous les niveaux.
+                            </p>
+                        </div>
+
+                        <div className="about-feature">
+                            <h3 className="about-feature-title">Analyses quotidiennes</h3>
+                            <p className="about-feature-text">
+                                Décryptage des mouvements du marché, identification des tendances et signaux de trading
+                                pour accompagner vos décisions d'investissement.
+                            </p>
+                        </div>
+
+                        <div className="about-feature">
+                            <h3 className="about-feature-title">Communauté d'entraide</h3>
+                            <p className="about-feature-text">
+                                Échanges avec d'autres traders francophones, partage d'expériences et accès à un support
+                                pour vos questions techniques et stratégiques.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Section - Valeur concrète par niveau */}
+            <div className="value-proposition-section">
+                <h2 className="section-title">Progressez à votre rythme</h2>
                 <p className="section-description">
-                    Des outils et ressources pour développer vos compétences en trading crypto
+                    Trois niveaux d'accès pour s'adapter à vos objectifs et votre expérience
                 </p>
                 <div className="why-join-grid">
                     <div className="why-join-card">
-                        <h3 className="why-join-title">Gain de temps</h3>
+                        <h3 className="why-join-title">Niveau Gratuit</h3>
                         <p className="why-join-text">
-                            Analyses quotidiennes et signaux de trading pour vous aider à identifier les opportunités du marché.
+                            Accédez aux outils essentiels : calendrier économique, dashboard crypto, 12 formations de base
+                            sur le trading, la blockchain et les memecoins pour comprendre les fondamentaux.
                         </p>
                     </div>
 
                     <div className="why-join-card">
-                        <h3 className="why-join-title">Apprentissage</h3>
+                        <h3 className="why-join-title">Niveau Premium</h3>
                         <p className="why-join-text">
-                            Formations structurées et accompagnement pour progresser à votre rythme dans le trading.
+                            Analyses techniques quotidiennes, signaux de trading avec points d'entrée et objectifs,
+                            formations avancées, groupe Telegram privé et support prioritaire pour progresser rapidement.
                         </p>
                     </div>
 
                     <div className="why-join-card">
-                        <h3 className="why-join-title">Veille marché</h3>
+                        <h3 className="why-join-title">Niveau VIP</h3>
                         <p className="why-join-text">
-                            Information sur les nouveaux projets et opportunités émergentes dans l'écosystème crypto.
+                            Tout le contenu Premium + formations exclusives de trading algorithmique, webinaires mensuels en direct,
+                            sessions de coaching personnalisées et analyses approfondies de votre portefeuille.
                         </p>
                     </div>
+                </div>
+            </div>
 
-                    <div className="why-join-card">
-                        <h3 className="why-join-title">Communauté</h3>
-                        <p className="why-join-text">
-                            Échanges avec d'autres passionnés de crypto et accès à un support pour vos questions.
-                        </p>
+            {/* Section - Pourquoi un abonnement */}
+            <div className="why-subscription-section">
+                <div className="about-sphere-content">
+                    <h2 className="section-title">Pourquoi un abonnement ?</h2>
+                    <p className="section-description">
+                        Le contenu gratuit vous permet de vous familiariser avec les bases. Les abonnements Premium et VIP
+                        donnent accès aux ressources avancées nécessaires pour développer une stratégie de trading efficace
+                        et prendre des décisions éclairées sur un marché en constante évolution.
+                    </p>
+                    <div className="subscription-benefits">
+                        <div className="benefit-item">
+                            <h4>Gain de temps considérable</h4>
+                            <p>
+                                Les analyses et signaux quotidiens vous évitent des heures de recherche et d'analyse.
+                                Concentrez-vous sur vos décisions de trading plutôt que sur la collecte d'informations.
+                            </p>
+                        </div>
+                        <div className="benefit-item">
+                            <h4>Accélération de l'apprentissage</h4>
+                            <p>
+                                Les formations structurées et le coaching vous permettent de progresser en quelques mois
+                                plutôt qu'en années d'essais-erreurs coûteux sur le marché.
+                            </p>
+                        </div>
+                        <div className="benefit-item">
+                            <h4>Réduction des erreurs</h4>
+                            <p>
+                                Bénéficiez de l'expérience collective pour éviter les pièges classiques : FOMO, mauvaise
+                                gestion du risque, arnaques et projets douteux.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -340,9 +397,10 @@ const Subscriptions = () => {
             {/* Section - Plans d'abonnement */}
             <div className="plans-section">
                 <div className="partners-header">
-                    <h2 className="partners-title">Plans d'abonnement</h2>
+                    <h2 className="partners-title">Choisissez votre niveau d'accès</h2>
                     <p className="partners-subtitle">
-                        Choisissez le plan adapté à vos besoins. Satisfait ou remboursé sous 7 jours.
+                        Commencez gratuitement, évoluez vers Premium ou VIP selon vos objectifs.
+                        Période d'essai de 7 jours avec remboursement intégral.
                     </p>
                 </div>
 

@@ -5,6 +5,7 @@ import { useAuth } from '../contexts/AuthContext'
 const Header = ({ activeTab, setActiveTab }) => {
     const [scrolled, setScrolled] = useState(false)
     const [userMenuOpen, setUserMenuOpen] = useState(false)
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
     const { user, isAuthenticated, logout } = useAuth()
 
     useEffect(() => {
@@ -29,47 +30,67 @@ const Header = ({ activeTab, setActiveTab }) => {
         setUserMenuOpen(false)
     }
 
+    // Fonction pour gérer le clic sur un onglet (ferme le menu mobile)
+    const handleTabClick = (tab) => {
+        setActiveTab(tab)
+        setMobileMenuOpen(false)
+    }
+
     return (
         <nav className={scrolled ? 'scrolled' : ''}>
             <div className="nav-container">
-                <div className="logo" onClick={() => setActiveTab('accueil')}>
+                <div className="logo" onClick={() => handleTabClick('accueil')}>
                     <span className="logo-icon">🌐</span>
                     <span className="logo-text">LA SPHERE</span>
                 </div>
-                <ul className="nav-links">
+
+                {/* Bouton Hamburger (visible uniquement sur mobile) */}
+                <button
+                    className="mobile-menu-toggle"
+                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                    aria-label="Menu de navigation"
+                >
+                    <span className={`hamburger ${mobileMenuOpen ? 'open' : ''}`}>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </button>
+
+                <ul className={`nav-links ${mobileMenuOpen ? 'mobile-open' : ''}`}>
                     <li>
-                        <button onClick={() => setActiveTab('accueil')} className={activeTab === 'accueil' ? 'active' : ''}>
+                        <button onClick={() => handleTabClick('accueil')} className={activeTab === 'accueil' ? 'active' : ''}>
                             <span className="nav-icon">🏠</span>
                             <span className="nav-text">Accueil</span>
                         </button>
                     </li>
                     <li>
-                        <button onClick={() => setActiveTab('actualites')} className={activeTab === 'actualites' ? 'active' : ''}>
+                        <button onClick={() => handleTabClick('actualites')} className={activeTab === 'actualites' ? 'active' : ''}>
                             <span className="nav-icon">📰</span>
                             <span className="nav-text">Actualités</span>
                         </button>
                     </li>
                     <li>
-                        <button onClick={() => setActiveTab('calendrier')} className={activeTab === 'calendrier' ? 'active' : ''}>
+                        <button onClick={() => handleTabClick('calendrier')} className={activeTab === 'calendrier' ? 'active' : ''}>
                             <span className="nav-icon">📅</span>
                             <span className="nav-text">Calendrier</span>
                         </button>
                     </li>
                     <li>
-                        <button onClick={() => setActiveTab('dashboard')} className={activeTab === 'dashboard' ? 'active' : ''}>
+                        <button onClick={() => handleTabClick('dashboard')} className={activeTab === 'dashboard' ? 'active' : ''}>
                             <span className="nav-icon">📊</span>
                             <span className="nav-text">Dashboard</span>
                         </button>
                     </li>
                     <li>
-                        <button onClick={() => setActiveTab('apprentissage')} className={activeTab === 'apprentissage' ? 'active' : ''}>
+                        <button onClick={() => handleTabClick('apprentissage')} className={activeTab === 'apprentissage' ? 'active' : ''}>
                             <span className="nav-icon">🎓</span>
                             <span className="nav-text">Formation</span>
                         </button>
                     </li>
                     <li>
                         <button
-                            onClick={() => setActiveTab('abonnements')}
+                            onClick={() => handleTabClick('abonnements')}
                             className={`${activeTab === 'abonnements' ? 'active' : ''} abonnements-btn`}
                         >
                             <span className="nav-icon">💎</span>
@@ -77,7 +98,7 @@ const Header = ({ activeTab, setActiveTab }) => {
                         </button>
                     </li>
                     <li>
-                        <button onClick={() => setActiveTab('assistance')} className={activeTab === 'assistance' ? 'active' : ''}>
+                        <button onClick={() => handleTabClick('assistance')} className={activeTab === 'assistance' ? 'active' : ''}>
                             <span className="nav-icon">💬</span>
                             <span className="nav-text">Support</span>
                         </button>
@@ -87,10 +108,10 @@ const Header = ({ activeTab, setActiveTab }) => {
                     <li className="auth-section">
                         {!isAuthenticated ? (
                             <>
-                                <button onClick={() => setActiveTab('login')} className="auth-btn login-btn">
+                                <button onClick={() => handleTabClick('login')} className="auth-btn login-btn">
                                     🔐 Connexion
                                 </button>
-                                <button onClick={() => setActiveTab('register')} className="auth-btn register-btn">
+                                <button onClick={() => handleTabClick('register')} className="auth-btn register-btn">
                                     ✨ Inscription
                                 </button>
                             </>
@@ -137,7 +158,7 @@ const Header = ({ activeTab, setActiveTab }) => {
                                         <button
                                             className="dropdown-item"
                                             onClick={() => {
-                                                setActiveTab('membre')
+                                                handleTabClick('membre')
                                                 setUserMenuOpen(false)
                                             }}
                                         >
@@ -148,7 +169,7 @@ const Header = ({ activeTab, setActiveTab }) => {
                                         <button
                                             className="dropdown-item"
                                             onClick={() => {
-                                                setActiveTab('abonnements')
+                                                handleTabClick('abonnements')
                                                 setUserMenuOpen(false)
                                             }}
                                         >
@@ -160,7 +181,10 @@ const Header = ({ activeTab, setActiveTab }) => {
 
                                         <button
                                             className="dropdown-item logout"
-                                            onClick={handleLogout}
+                                            onClick={() => {
+                                                handleLogout()
+                                                setMobileMenuOpen(false)
+                                            }}
                                         >
                                             <span className="dropdown-icon">🚪</span>
                                             <span>Déconnexion</span>

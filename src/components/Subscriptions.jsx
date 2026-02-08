@@ -222,300 +222,115 @@ const Subscriptions = () => {
 
     return (
         <section className="partners-section">
-            {/* Hero Section avec Vidéo */}
-            <div className="subscription-hero-visual">
-                <div className="hero-grid">
-                    <div className="hero-content-left">
-                        <div className="hero-badge">La Sphere</div>
-                        <h1 className="hero-title-visual">
-                            Développez vos compétences en trading crypto
-                        </h1>
-                        <p className="hero-description-visual">
-                            Une plateforme d'apprentissage et d'accompagnement pour progresser dans l'univers
-                            des cryptomonnaies, du Web3 et du trading.
-                        </p>
+            {/* Vidéo centrée en haut */}
+            <div className="video-hero-centered">
+                <div className="video-container-centered">
+                    <iframe
+                        className="hero-video-main"
+                        src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                        title="Présentation La Sphere"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                    ></iframe>
+                </div>
 
-                        <div className="hero-highlights">
-                            <div className="highlight-item">
-                                <span className="highlight-icon">📊</span>
-                                <span className="highlight-text">Analyses quotidiennes</span>
-                            </div>
-                            <div className="highlight-item">
-                                <span className="highlight-icon">🎓</span>
-                                <span className="highlight-text">Formations complètes</span>
-                            </div>
-                            <div className="highlight-item">
-                                <span className="highlight-icon">👥</span>
-                                <span className="highlight-text">Communauté active</span>
-                            </div>
+                {/* Bouton CTA centré */}
+                <button className="cta-main-centered" onClick={() => {
+                    document.querySelector('.plans-section').scrollIntoView({ behavior: 'smooth' });
+                }}>
+                    Rejoindre La Sphere
+                </button>
+            </div>
+
+            {/* Valeur ajoutée - Design fluide sans carrés */}
+            <div className="value-section-clean">
+                <h2 className="clean-title">Ce que vous obtenez avec La Sphere</h2>
+
+                <div className="value-list-clean">
+                    <div className="value-item-clean">
+                        <span className="value-icon-clean">📊</span>
+                        <div className="value-content-clean">
+                            <h3>Analyses quotidiennes du marché</h3>
+                            <p>Décryptage des tendances, identification des opportunités et signaux de trading pour accompagner vos décisions</p>
                         </div>
-
-                        <button className="hero-cta-visual" onClick={() => {
-                            document.querySelector('.plans-section').scrollIntoView({ behavior: 'smooth' });
-                        }}>
-                            Découvrir les plans
-                        </button>
                     </div>
 
-                    <div className="hero-video-container">
-                        <div className="video-wrapper">
-                            {/* Placeholder pour vidéo - Remplacer l'URL par votre vidéo de présentation */}
-                            <iframe
-                                className="hero-video"
-                                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                                title="Présentation La Sphere"
-                                frameBorder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowFullScreen
-                            ></iframe>
-                            <div className="video-overlay">
-                                <span className="video-badge">🎥 Découvrez La Sphere en vidéo</span>
-                            </div>
+                    <div className="value-item-clean">
+                        <span className="value-icon-clean">🎓</span>
+                        <div className="value-content-clean">
+                            <h3>Formations complètes de A à Z</h3>
+                            <p>Du débutant au trader avancé, parcours structuré couvrant l'analyse technique, la gestion du risque et les stratégies</p>
                         </div>
+                    </div>
 
-                        <div className="video-stats">
-                            <div className="video-stat">
-                                <span className="stat-icon">✅</span>
-                                <span className="stat-label">Contenu vérifié</span>
-                            </div>
-                            <div className="video-stat">
-                                <span className="stat-icon">🎯</span>
-                                <span className="stat-label">Formation structurée</span>
-                            </div>
-                            <div className="video-stat">
-                                <span className="stat-icon">💬</span>
-                                <span className="stat-label">Support inclus</span>
-                            </div>
+                    <div className="value-item-clean">
+                        <span className="value-icon-clean">💬</span>
+                        <div className="value-content-clean">
+                            <h3>Groupe Telegram VIP privé</h3>
+                            <p>Échanges en direct avec la communauté, partage d'expériences et support disponible pour vos questions</p>
+                        </div>
+                    </div>
+
+                    <div className="value-item-clean">
+                        <span className="value-icon-clean">🔔</span>
+                        <div className="value-content-clean">
+                            <h3>Alertes et signaux en temps réel</h3>
+                            <p>Notifications instantanées sur les mouvements importants et opportunités identifiées par nos analystes</p>
+                        </div>
+                    </div>
+
+                    <div className="value-item-clean">
+                        <span className="value-icon-clean">📚</span>
+                        <div className="value-content-clean">
+                            <h3>Bibliothèque de ressources</h3>
+                            <p>Accès à l'ensemble des formations, analyses passées, templates et outils pour progresser à votre rythme</p>
+                        </div>
+                    </div>
+
+                    <div className="value-item-clean">
+                        <span className="value-icon-clean">🎯</span>
+                        <div className="value-content-clean">
+                            <h3>Support prioritaire</h3>
+                            <p>Réponses rapides à vos questions techniques et stratégiques pour ne jamais être bloqué</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {/* Section - Les défis du trading crypto */}
-            <div className="challenges-section">
-                <div className="about-sphere-content">
-                    <h2 className="section-title">Les défis du trading de cryptomonnaies</h2>
-                    <p className="section-description">
-                        Le marché crypto évolue 24/7 avec une volatilité importante. Sans les bonnes ressources
-                        et connaissances, il est facile de se perdre dans la masse d'informations disponibles.
-                    </p>
-
-                    <div className="about-features-grid">
-                        <div className="about-feature visual-card">
-                            <div className="feature-icon-large">🌐</div>
-                            <h3 className="about-feature-title">Information dispersée</h3>
-                            <p className="about-feature-text">
-                                Des milliers de sources d'information contradictoires rendent difficile l'identification
-                                des analyses fiables et pertinentes.
-                            </p>
-                        </div>
-
-                        <div className="about-feature visual-card">
-                            <div className="feature-icon-large">📈</div>
-                            <h3 className="about-feature-title">Courbe d'apprentissage</h3>
-                            <p className="about-feature-text">
-                                L'analyse technique, la gestion du risque et la psychologie du trading demandent
-                                un apprentissage structuré et progressif.
-                            </p>
-                        </div>
-
-                        <div className="about-feature visual-card">
-                            <div className="feature-icon-large">⏰</div>
-                            <h3 className="about-feature-title">Veille chronophage</h3>
-                            <p className="about-feature-text">
-                                Suivre les évolutions du marché, analyser les projets et identifier les opportunités
-                                nécessite du temps et de l'expertise.
-                            </p>
-                        </div>
-
-                        <div className="about-feature visual-card">
-                            <div className="feature-icon-large">🤔</div>
-                            <h3 className="about-feature-title">Solitude du trader</h3>
-                            <p className="about-feature-text">
-                                Trader seul sans retour d'expérience ni échanges avec d'autres passionnés
-                                limite la progression et l'apprentissage.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {/* Section - Notre approche */}
-            <div className="approach-section">
-                <div className="about-sphere-content">
-                    <h2 className="section-title">Notre approche</h2>
-                    <p className="section-description">
-                        La Sphere centralise les ressources essentielles pour votre progression dans le trading crypto,
-                        du contenu éducatif gratuit aux outils avancés pour les traders confirmés.
-                    </p>
-
-                    <div className="about-features-grid">
-                        <div className="about-feature visual-card">
-                            <div className="feature-icon-large">🆓</div>
-                            <h3 className="about-feature-title">Contenu gratuit accessible</h3>
-                            <p className="about-feature-text">
-                                Calendrier économique en temps réel, dashboard crypto live, articles et formations de base
-                                pour débuter sans risque.
-                            </p>
-                        </div>
-
-                        <div className="about-feature visual-card">
-                            <div className="feature-icon-large">🎓</div>
-                            <h3 className="about-feature-title">Formations structurées</h3>
-                            <p className="about-feature-text">
-                                Parcours d'apprentissage progressif couvrant l'analyse technique, la gestion du risque
-                                et les stratégies de trading adaptées à tous les niveaux.
-                            </p>
-                        </div>
-
-                        <div className="about-feature visual-card">
-                            <div className="feature-icon-large">📊</div>
-                            <h3 className="about-feature-title">Analyses quotidiennes</h3>
-                            <p className="about-feature-text">
-                                Décryptage des mouvements du marché, identification des tendances et signaux de trading
-                                pour accompagner vos décisions d'investissement.
-                            </p>
-                        </div>
-
-                        <div className="about-feature visual-card">
-                            <div className="feature-icon-large">👥</div>
-                            <h3 className="about-feature-title">Communauté d'entraide</h3>
-                            <p className="about-feature-text">
-                                Échanges avec d'autres traders francophones, partage d'expériences et accès à un support
-                                pour vos questions techniques et stratégiques.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {/* Section - Valeur concrète par niveau */}
-            <div className="value-proposition-section">
-                <h2 className="section-title">Progressez à votre rythme</h2>
-                <p className="section-description">
-                    Trois niveaux d'accès pour s'adapter à vos objectifs et votre expérience
-                </p>
-                <div className="why-join-grid">
-                    <div className="why-join-card">
-                        <h3 className="why-join-title">Niveau Gratuit</h3>
-                        <p className="why-join-text">
-                            Accédez aux outils essentiels : calendrier économique, dashboard crypto, 12 formations de base
-                            sur le trading, la blockchain et les memecoins pour comprendre les fondamentaux.
-                        </p>
-                    </div>
-
-                    <div className="why-join-card">
-                        <h3 className="why-join-title">Niveau Premium</h3>
-                        <p className="why-join-text">
-                            Analyses techniques quotidiennes, signaux de trading avec points d'entrée et objectifs,
-                            formations avancées, groupe Telegram privé et support prioritaire pour progresser rapidement.
-                        </p>
-                    </div>
-
-                    <div className="why-join-card">
-                        <h3 className="why-join-title">Niveau VIP</h3>
-                        <p className="why-join-text">
-                            Tout le contenu Premium + formations exclusives de trading algorithmique, webinaires mensuels en direct,
-                            sessions de coaching personnalisées et analyses approfondies de votre portefeuille.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            {/* Section - Pourquoi un abonnement */}
-            <div className="why-subscription-section">
-                <div className="about-sphere-content">
-                    <h2 className="section-title">Pourquoi un abonnement ?</h2>
-                    <p className="section-description">
-                        Le contenu gratuit vous permet de vous familiariser avec les bases. Les abonnements Premium et VIP
-                        donnent accès aux ressources avancées nécessaires pour développer une stratégie de trading efficace
-                        et prendre des décisions éclairées sur un marché en constante évolution.
-                    </p>
-                    <div className="subscription-benefits">
-                        <div className="benefit-item">
-                            <h4>Gain de temps considérable</h4>
-                            <p>
-                                Les analyses et signaux quotidiens vous évitent des heures de recherche et d'analyse.
-                                Concentrez-vous sur vos décisions de trading plutôt que sur la collecte d'informations.
-                            </p>
-                        </div>
-                        <div className="benefit-item">
-                            <h4>Accélération de l'apprentissage</h4>
-                            <p>
-                                Les formations structurées et le coaching vous permettent de progresser en quelques mois
-                                plutôt qu'en années d'essais-erreurs coûteux sur le marché.
-                            </p>
-                        </div>
-                        <div className="benefit-item">
-                            <h4>Réduction des erreurs</h4>
-                            <p>
-                                Bénéficiez de l'expérience collective pour éviter les pièges classiques : FOMO, mauvaise
-                                gestion du risque, arnaques et projets douteux.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {/* Section - Plans d'abonnement */}
+            {/* Abonnement unique - Design simple et centré */}
             <div className="plans-section">
-                <div className="partners-header">
-                    <h2 className="partners-title">Choisissez votre niveau d'accès</h2>
-                    <p className="partners-subtitle">
-                        Commencez gratuitement, évoluez vers Premium ou VIP selon vos objectifs.
-                        Période d'essai de 7 jours avec remboursement intégral.
-                    </p>
-                </div>
+                <h2 className="clean-title">Abonnement Premium</h2>
+                <p className="clean-subtitle">
+                    Accès complet à toutes les fonctionnalités et ressources de La Sphere
+                </p>
 
-                <div className="partners-grid">
-                {subscriptionPlans.map((plan) => (
-                    <div
-                        key={plan.id}
-                        className={`partner-card ${plan.popular ? 'popular-plan' : ''}`}
-                    >
-
-                        <div className="partner-logo" style={{ background: plan.badgeColor }}>
-                            <div className="partner-logo-text">
-                                {plan.name.split(' ')[0]}
+                <div className="single-plan-centered">
+                    {subscriptionPlans.filter(plan => plan.id === 'premium').map((plan) => (
+                        <div key={plan.id} className="plan-card-clean">
+                            <div className="plan-price-clean">
+                                <span className="price-amount">{plan.price}€</span>
+                                <span className="price-period-clean">/mois</span>
                             </div>
-                        </div>
 
-                        <h3 className="partner-name">{plan.name.split(' ')[1]}</h3>
-
-                        <div className="partner-price">
-                            <div className="price-main">
-                                {plan.price === 0 ? 'GRATUIT' : `${plan.price}€`}
+                            <div className="plan-features-clean">
+                                {plan.features.map((feature, index) => (
+                                    <div key={index} className="feature-line-clean">
+                                        {feature}
+                                    </div>
+                                ))}
                             </div>
-                            <div className="price-period">
-                                {plan.period}
-                            </div>
-                            {plan.price > 0 && (
-                                <div className="price-crypto">
-                                    ou {plan.priceEth} ETH / {plan.priceUsdt} USDT
-                                </div>
-                            )}
-                        </div>
 
-                        <div className="partner-features">
-                            {plan.features.map((feature, index) => (
-                                <div
-                                    key={index}
-                                    className={`partner-feature ${feature.startsWith('✅') ? 'active' : 'inactive'}`}
-                                >
-                                    {feature}
-                                </div>
-                            ))}
-                        </div>
+                            <button
+                                className="plan-btn-clean"
+                                onClick={() => handleSubscribe(plan)}
+                            >
+                                Rejoindre maintenant
+                            </button>
 
-                        <button
-                            className={`partner-btn ${plan.disabled ? 'disabled' : ''} ${plan.popular ? 'popular' : ''}`}
-                            onClick={() => handleSubscribe(plan)}
-                            disabled={plan.disabled}
-                        >
-                            {plan.buttonText}
-                        </button>
-                    </div>
-                ))}
+                            <p className="plan-guarantee">Satisfait ou remboursé sous 7 jours</p>
+                        </div>
+                    ))}
                 </div>
             </div>
 

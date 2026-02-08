@@ -9166,3 +9166,293 @@
         height: 4px;
     }
 }
+
+/* Design épuré - Vidéo centrée et contenu fluide */
+
+/* Vidéo Hero Centré */
+.video-hero-centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 80px;
+    padding: 40px 20px;
+}
+
+.video-container-centered {
+    width: 100%;
+    max-width: 900px;
+    position: relative;
+    padding-bottom: 50.625%; /* Ratio 16:9 */
+    height: 0;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.hero-video-main {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 20px;
+}
+
+.cta-main-centered {
+    padding: 20px 60px;
+    background: linear-gradient(135deg, #00D9FF 0%, #7B2FF7 100%);
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 217, 255, 0.4);
+}
+
+.cta-main-centered:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(0, 217, 255, 0.6);
+}
+
+/* Section Valeur - Design fluide sans carrés */
+.value-section-clean {
+    margin-bottom: 80px;
+    padding: 0 20px;
+}
+
+.clean-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 42px;
+    font-weight: 900;
+    text-align: center;
+    background: linear-gradient(135deg, #ffffff 0%, #00D9FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 60px;
+}
+
+.clean-subtitle {
+    text-align: center;
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 50px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.value-list-clean {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.value-item-clean {
+    display: flex;
+    align-items: flex-start;
+    gap: 25px;
+    padding: 30px;
+    background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, rgba(123, 47, 247, 0.05) 100%);
+    border-radius: 20px;
+    border-left: 4px solid #00D9FF;
+    transition: all 0.3s ease;
+}
+
+.value-item-clean:hover {
+    background: linear-gradient(135deg, rgba(0, 217, 255, 0.1) 0%, rgba(123, 47, 247, 0.1) 100%);
+    transform: translateX(10px);
+    border-left-width: 6px;
+}
+
+.value-icon-clean {
+    font-size: 48px;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.value-content-clean h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.value-content-clean p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+}
+
+/* Plan unique centré - Design simple */
+.single-plan-centered {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.plan-card-clean {
+    max-width: 500px;
+    width: 100%;
+    background: linear-gradient(135deg, rgba(13, 18, 41, 0.95) 0%, rgba(26, 31, 58, 0.95) 100%);
+    border: 3px solid rgba(0, 217, 255, 0.4);
+    border-radius: 30px;
+    padding: 50px 40px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 217, 255, 0.3);
+    transition: all 0.4s ease;
+}
+
+.plan-card-clean:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 80px rgba(0, 217, 255, 0.5);
+    border-color: rgba(0, 217, 255, 0.6);
+}
+
+.plan-price-clean {
+    margin-bottom: 40px;
+}
+
+.price-amount {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 72px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #00D9FF 0%, #7B2FF7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+}
+
+.price-period-clean {
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 600;
+}
+
+.plan-features-clean {
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.feature-line-clean {
+    padding: 15px 0;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.feature-line-clean:last-child {
+    border-bottom: none;
+}
+
+.plan-btn-clean {
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(135deg, #00D9FF 0%, #7B2FF7 100%);
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 217, 255, 0.4);
+    margin-bottom: 20px;
+}
+
+.plan-btn-clean:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(0, 217, 255, 0.6);
+}
+
+.plan-guarantee {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0;
+    font-style: italic;
+}
+
+/* Simplification des sections FAQ et Reviews */
+.faq-section,
+.reviews-section,
+.guarantees-section {
+    margin-bottom: 60px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .video-container-centered {
+        max-width: 100%;
+    }
+
+    .cta-main-centered {
+        width: 100%;
+        max-width: 300px;
+        padding: 18px 40px;
+        font-size: 18px;
+    }
+
+    .clean-title {
+        font-size: 32px;
+    }
+
+    .clean-subtitle {
+        font-size: 16px;
+    }
+
+    .value-item-clean {
+        flex-direction: column;
+        gap: 15px;
+        padding: 25px 20px;
+    }
+
+    .value-icon-clean {
+        font-size: 40px;
+    }
+
+    .value-content-clean h3 {
+        font-size: 20px;
+    }
+
+    .value-content-clean p {
+        font-size: 15px;
+    }
+
+    .plan-card-clean {
+        padding: 40px 25px;
+    }
+
+    .price-amount {
+        font-size: 56px;
+    }
+
+    .price-period-clean {
+        font-size: 20px;
+    }
+
+    .feature-line-clean {
+        font-size: 15px;
+        padding: 12px 0;
+    }
+}
+
+/* Masquer les anciennes sections si elles existent encore */
+.subscription-hero-visual,
+.hero-grid,
+.challenges-section,
+.approach-section,
+.value-proposition-section,
+.why-subscription-section {
+    display: none !important;
+}

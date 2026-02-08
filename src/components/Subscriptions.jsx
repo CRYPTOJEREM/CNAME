@@ -222,17 +222,72 @@ const Subscriptions = () => {
 
     return (
         <section className="partners-section">
-            {/* Hero Section - Accroche claire */}
-            <div className="subscription-hero">
-                <div className="hero-content">
-                    <div className="hero-badge">La Sphere</div>
-                    <h1 className="hero-title">
-                        Développez vos compétences en trading crypto
-                    </h1>
-                    <p className="hero-description">
-                        Une plateforme d'apprentissage et d'accompagnement pour progresser dans l'univers
-                        des cryptomonnaies, du Web3 et du trading. Formations, analyses et communauté francophone.
-                    </p>
+            {/* Hero Section avec Vidéo */}
+            <div className="subscription-hero-visual">
+                <div className="hero-grid">
+                    <div className="hero-content-left">
+                        <div className="hero-badge">La Sphere</div>
+                        <h1 className="hero-title-visual">
+                            Développez vos compétences en trading crypto
+                        </h1>
+                        <p className="hero-description-visual">
+                            Une plateforme d'apprentissage et d'accompagnement pour progresser dans l'univers
+                            des cryptomonnaies, du Web3 et du trading.
+                        </p>
+
+                        <div className="hero-highlights">
+                            <div className="highlight-item">
+                                <span className="highlight-icon">📊</span>
+                                <span className="highlight-text">Analyses quotidiennes</span>
+                            </div>
+                            <div className="highlight-item">
+                                <span className="highlight-icon">🎓</span>
+                                <span className="highlight-text">Formations complètes</span>
+                            </div>
+                            <div className="highlight-item">
+                                <span className="highlight-icon">👥</span>
+                                <span className="highlight-text">Communauté active</span>
+                            </div>
+                        </div>
+
+                        <button className="hero-cta-visual" onClick={() => {
+                            document.querySelector('.plans-section').scrollIntoView({ behavior: 'smooth' });
+                        }}>
+                            Découvrir les plans
+                        </button>
+                    </div>
+
+                    <div className="hero-video-container">
+                        <div className="video-wrapper">
+                            {/* Placeholder pour vidéo - Remplacer l'URL par votre vidéo de présentation */}
+                            <iframe
+                                className="hero-video"
+                                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                                title="Présentation La Sphere"
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                            ></iframe>
+                            <div className="video-overlay">
+                                <span className="video-badge">🎥 Découvrez La Sphere en vidéo</span>
+                            </div>
+                        </div>
+
+                        <div className="video-stats">
+                            <div className="video-stat">
+                                <span className="stat-icon">✅</span>
+                                <span className="stat-label">Contenu vérifié</span>
+                            </div>
+                            <div className="video-stat">
+                                <span className="stat-icon">🎯</span>
+                                <span className="stat-label">Formation structurée</span>
+                            </div>
+                            <div className="video-stat">
+                                <span className="stat-icon">💬</span>
+                                <span className="stat-label">Support inclus</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -246,7 +301,8 @@ const Subscriptions = () => {
                     </p>
 
                     <div className="about-features-grid">
-                        <div className="about-feature">
+                        <div className="about-feature visual-card">
+                            <div className="feature-icon-large">🌐</div>
                             <h3 className="about-feature-title">Information dispersée</h3>
                             <p className="about-feature-text">
                                 Des milliers de sources d'information contradictoires rendent difficile l'identification
@@ -254,7 +310,8 @@ const Subscriptions = () => {
                             </p>
                         </div>
 
-                        <div className="about-feature">
+                        <div className="about-feature visual-card">
+                            <div className="feature-icon-large">📈</div>
                             <h3 className="about-feature-title">Courbe d'apprentissage</h3>
                             <p className="about-feature-text">
                                 L'analyse technique, la gestion du risque et la psychologie du trading demandent
@@ -262,7 +319,8 @@ const Subscriptions = () => {
                             </p>
                         </div>
 
-                        <div className="about-feature">
+                        <div className="about-feature visual-card">
+                            <div className="feature-icon-large">⏰</div>
                             <h3 className="about-feature-title">Veille chronophage</h3>
                             <p className="about-feature-text">
                                 Suivre les évolutions du marché, analyser les projets et identifier les opportunités
@@ -270,7 +328,8 @@ const Subscriptions = () => {
                             </p>
                         </div>
 
-                        <div className="about-feature">
+                        <div className="about-feature visual-card">
+                            <div className="feature-icon-large">🤔</div>
                             <h3 className="about-feature-title">Solitude du trader</h3>
                             <p className="about-feature-text">
                                 Trader seul sans retour d'expérience ni échanges avec d'autres passionnés
@@ -291,7 +350,8 @@ const Subscriptions = () => {
                     </p>
 
                     <div className="about-features-grid">
-                        <div className="about-feature">
+                        <div className="about-feature visual-card">
+                            <div className="feature-icon-large">🆓</div>
                             <h3 className="about-feature-title">Contenu gratuit accessible</h3>
                             <p className="about-feature-text">
                                 Calendrier économique en temps réel, dashboard crypto live, articles et formations de base
@@ -299,7 +359,8 @@ const Subscriptions = () => {
                             </p>
                         </div>
 
-                        <div className="about-feature">
+                        <div className="about-feature visual-card">
+                            <div className="feature-icon-large">🎓</div>
                             <h3 className="about-feature-title">Formations structurées</h3>
                             <p className="about-feature-text">
                                 Parcours d'apprentissage progressif couvrant l'analyse technique, la gestion du risque
@@ -307,7 +368,8 @@ const Subscriptions = () => {
                             </p>
                         </div>
 
-                        <div className="about-feature">
+                        <div className="about-feature visual-card">
+                            <div className="feature-icon-large">📊</div>
                             <h3 className="about-feature-title">Analyses quotidiennes</h3>
                             <p className="about-feature-text">
                                 Décryptage des mouvements du marché, identification des tendances et signaux de trading
@@ -315,7 +377,8 @@ const Subscriptions = () => {
                             </p>
                         </div>
 
-                        <div className="about-feature">
+                        <div className="about-feature visual-card">
+                            <div className="feature-icon-large">👥</div>
                             <h3 className="about-feature-title">Communauté d'entraide</h3>
                             <p className="about-feature-text">
                                 Échanges avec d'autres traders francophones, partage d'expériences et accès à un support

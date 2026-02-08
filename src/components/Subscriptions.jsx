@@ -220,14 +220,149 @@ const Subscriptions = () => {
 
     return (
         <section className="partners-section">
-            <div className="partners-header">
-                <h2 className="partners-title">💎 NOS ABONNEMENTS</h2>
-                <p className="partners-subtitle">
-                    Choisissez le plan qui correspond à vos besoins et accédez à des contenus exclusifs
-                </p>
+            {/* Hero Section - Présentation du groupe */}
+            <div className="subscription-hero">
+                <div className="hero-content">
+                    <div className="hero-badge">💎 COMMUNAUTÉ PREMIUM</div>
+                    <h1 className="hero-title">Bienvenue dans La Sphere</h1>
+                    <p className="hero-description">
+                        La communauté francophone n°1 dédiée au trading crypto, Web3 et memecoins.
+                        Rejoignez plus de <strong>2 000+ traders actifs</strong> qui font confiance à nos analyses quotidiennes.
+                    </p>
+                    <div className="hero-stats">
+                        <div className="hero-stat">
+                            <div className="hero-stat-value">2K+</div>
+                            <div className="hero-stat-label">Membres actifs</div>
+                        </div>
+                        <div className="hero-stat">
+                            <div className="hero-stat-value">95%</div>
+                            <div className="hero-stat-label">Taux satisfaction</div>
+                        </div>
+                        <div className="hero-stat">
+                            <div className="hero-stat-value">24/7</div>
+                            <div className="hero-stat-label">Support disponible</div>
+                        </div>
+                        <div className="hero-stat">
+                            <div className="hero-stat-value">150+</div>
+                            <div className="hero-stat-label">Signaux/mois</div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div className="partners-grid">
+            {/* Section - À propos de La Sphere */}
+            <div className="about-sphere-section">
+                <div className="about-sphere-content">
+                    <h2 className="section-title">🌐 Qu'est-ce que La Sphere ?</h2>
+                    <p className="section-description">
+                        La Sphere est une communauté exclusive de passionnés de crypto qui partagent un objectif commun :
+                        maximiser leurs gains dans l'univers des cryptomonnaies, du Web3 et des memecoins.
+                    </p>
+
+                    <div className="about-features-grid">
+                        <div className="about-feature">
+                            <div className="about-feature-icon">📊</div>
+                            <h3 className="about-feature-title">Analyses Professionnelles</h3>
+                            <p className="about-feature-text">
+                                Analyses techniques et fondamentales quotidiennes sur les meilleures opportunités du marché crypto.
+                            </p>
+                        </div>
+
+                        <div className="about-feature">
+                            <div className="about-feature-icon">📡</div>
+                            <h3 className="about-feature-title">Signaux de Trading</h3>
+                            <p className="about-feature-text">
+                                Signaux en temps réel avec points d'entrée, take profit et stop loss précis pour maximiser vos profits.
+                            </p>
+                        </div>
+
+                        <div className="about-feature">
+                            <div className="about-feature-icon">🎓</div>
+                            <h3 className="about-feature-title">Formations Exclusives</h3>
+                            <p className="about-feature-text">
+                                Masterclass complètes sur le trading, l'analyse technique, les memecoins et le Web3.
+                            </p>
+                        </div>
+
+                        <div className="about-feature">
+                            <div className="about-feature-icon">👥</div>
+                            <h3 className="about-feature-title">Communauté Active</h3>
+                            <p className="about-feature-text">
+                                Groupe Telegram privé avec des traders actifs, partage d'expériences et entraide quotidienne.
+                            </p>
+                        </div>
+
+                        <div className="about-feature">
+                            <div className="about-feature-icon">🚀</div>
+                            <h3 className="about-feature-title">Memecoins en Avant-Première</h3>
+                            <p className="about-feature-text">
+                                Découvrez les prochains x10-x100 avant tout le monde grâce à notre veille constante du marché.
+                            </p>
+                        </div>
+
+                        <div className="about-feature">
+                            <div className="about-feature-icon">💬</div>
+                            <h3 className="about-feature-title">Support Prioritaire</h3>
+                            <p className="about-feature-text">
+                                Équipe dédiée disponible 24/7 pour répondre à toutes vos questions et vous accompagner.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Section - Pourquoi rejoindre La Sphere */}
+            <div className="why-join-section">
+                <h2 className="section-title">💡 Pourquoi rejoindre La Sphere ?</h2>
+                <div className="why-join-grid">
+                    <div className="why-join-card">
+                        <div className="why-join-number">01</div>
+                        <h3 className="why-join-title">Gagnez du temps</h3>
+                        <p className="why-join-text">
+                            Plus besoin de passer des heures à analyser le marché. Nos experts le font pour vous
+                            et vous livrent les meilleures opportunités chaque jour.
+                        </p>
+                    </div>
+
+                    <div className="why-join-card">
+                        <div className="why-join-number">02</div>
+                        <h3 className="why-join-title">Évitez les erreurs</h3>
+                        <p className="why-join-text">
+                            Apprenez des meilleurs et évitez les pièges classiques du trading crypto grâce à
+                            notre expérience de plusieurs années sur les marchés.
+                        </p>
+                    </div>
+
+                    <div className="why-join-card">
+                        <div className="why-join-number">03</div>
+                        <h3 className="why-join-title">Multipliez vos gains</h3>
+                        <p className="why-join-text">
+                            Accédez à des opportunités exclusives (memecoins early, IDO, airdrops) que vous ne
+                            trouverez nulle part ailleurs.
+                        </p>
+                    </div>
+
+                    <div className="why-join-card">
+                        <div className="why-join-number">04</div>
+                        <h3 className="why-join-title">Progressez rapidement</h3>
+                        <p className="why-join-text">
+                            Formations complètes de débutant à expert, webinaires mensuels et coaching personnalisé
+                            pour atteindre vos objectifs.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            {/* Section - Plans d'abonnement */}
+            <div className="plans-section">
+                <div className="partners-header">
+                    <h2 className="partners-title">💎 NOS ABONNEMENTS</h2>
+                    <p className="partners-subtitle">
+                        Choisissez le plan qui correspond à vos besoins et accédez à des contenus exclusifs
+                    </p>
+                </div>
+
+                <div className="partners-grid">
                 {subscriptionPlans.map((plan) => (
                     <div
                         key={plan.id}
@@ -281,6 +416,61 @@ const Subscriptions = () => {
                         </button>
                     </div>
                 ))}
+                </div>
+            </div>
+
+            {/* Section - FAQ */}
+            <div className="faq-section">
+                <h2 className="section-title">❓ Questions Fréquentes</h2>
+                <div className="faq-grid">
+                    <div className="faq-item">
+                        <h3 className="faq-question">💳 Quels moyens de paiement acceptez-vous ?</h3>
+                        <p className="faq-answer">
+                            Nous acceptons plus de 200 cryptomonnaies via NOWPayments : Bitcoin (BTC), Ethereum (ETH),
+                            USDT, USDC, BNB, et bien d'autres. Le paiement est 100% sécurisé et anonyme.
+                        </p>
+                    </div>
+
+                    <div className="faq-item">
+                        <h3 className="faq-question">📱 Comment rejoindre le groupe Telegram ?</h3>
+                        <p className="faq-answer">
+                            Après votre paiement, vous recevrez automatiquement une invitation au groupe Telegram VIP
+                            dans les 5 minutes. Assurez-vous d'avoir entré votre pseudo Telegram lors du paiement.
+                        </p>
+                    </div>
+
+                    <div className="faq-item">
+                        <h3 className="faq-question">🔄 Puis-je résilier mon abonnement ?</h3>
+                        <p className="faq-answer">
+                            Oui, vous pouvez résilier à tout moment. Il n'y a pas d'engagement. Votre accès restera actif
+                            jusqu'à la fin de votre période payée.
+                        </p>
+                    </div>
+
+                    <div className="faq-item">
+                        <h3 className="faq-question">📊 Les signaux sont-ils rentables ?</h3>
+                        <p className="faq-answer">
+                            Nos signaux ont un taux de réussite moyen de 75-80%. Cependant, le trading comporte des risques.
+                            Nous recommandons de ne jamais investir plus que ce que vous pouvez vous permettre de perdre.
+                        </p>
+                    </div>
+
+                    <div className="faq-item">
+                        <h3 className="faq-question">🎓 Y a-t-il du contenu pour débutants ?</h3>
+                        <p className="faq-answer">
+                            Absolument ! Nous proposons des formations complètes pour tous les niveaux, du débutant complet
+                            au trader avancé. Notre communauté est très accueillante pour les nouveaux arrivants.
+                        </p>
+                    </div>
+
+                    <div className="faq-item">
+                        <h3 className="faq-question">⚡ Puis-je passer de Premium à VIP ?</h3>
+                        <p className="faq-answer">
+                            Oui, vous pouvez upgrader votre abonnement à tout moment. Contactez notre support pour bénéficier
+                            d'un crédit proportionnel à votre abonnement actuel.
+                        </p>
+                    </div>
+                </div>
             </div>
 
             {/* Modal de paiement - Design moderne et propre */}

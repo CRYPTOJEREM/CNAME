@@ -1,8 +1,88 @@
 {
-  "users": [],
+  "users": [
+    {
+      "id": "dcb98af8-20ac-41b0-b373-de743a73165c",
+      "email": "admin@lasphere.com",
+      "passwordHash": "$2a$10$Oe4TP2kdz2e5VcPR6Gk7c.faNdWvIqlpYDHGJCXwNLu4zrMaalBkC",
+      "firstName": "Admin",
+      "lastName": "La Sphere",
+      "telegramUsername": "@admin_lasphere",
+      "emailVerified": true,
+      "subscriptionStatus": "vip",
+      "subscriptionExpiresAt": "2036-02-08T12:00:00.000Z",
+      "role": "admin",
+      "createdAt": "2026-02-08T12:00:00.000Z",
+      "updatedAt": "2026-02-08T12:00:00.000Z"
+    }
+  ],
+  "products": [
+    {
+      "id": "prod-premium-001",
+      "name": "Abonnement Premium",
+      "slug": "premium",
+      "description": "Accès complet aux formations, signaux de trading et groupe Telegram VIP",
+      "price": 29.99,
+      "currency": "EUR",
+      "duration": 30,
+      "features": [
+        "Toutes les formations trading",
+        "Signaux de trading quotidiens",
+        "Accès groupe Telegram VIP",
+        "Analyses de marché hebdomadaires",
+        "Support prioritaire"
+      ],
+      "level": "premium",
+      "active": true,
+      "createdAt": "2026-02-08T00:00:00.000Z",
+      "updatedAt": "2026-02-08T00:00:00.000Z"
+    },
+    {
+      "id": "prod-vip-001",
+      "name": "Abonnement VIP",
+      "slug": "vip",
+      "description": "Tout Premium + formations avancées, webinaires exclusifs et coaching personnalisé",
+      "price": 79.99,
+      "currency": "EUR",
+      "duration": 30,
+      "features": [
+        "Tout ce qui est inclus dans Premium",
+        "Formations avancées exclusives",
+        "Webinaires live mensuels",
+        "Sessions de coaching 1-to-1",
+        "Accès anticipé aux nouvelles formations",
+        "Analyses personnalisées de portefeuille"
+      ],
+      "level": "vip",
+      "active": true,
+      "createdAt": "2026-02-08T00:00:00.000Z",
+      "updatedAt": "2026-02-08T00:00:00.000Z"
+    }
+  ],
   "payments": [],
   "emailVerifications": [],
-  "refreshTokens": [],
+  "refreshTokens": [
+    {
+      "id": "4d635acf-a2bc-4d53-8ed7-ec2964e142b4",
+      "userId": "dcb98af8-20ac-41b0-b373-de743a73165c",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkY2I5OGFmOC0yMGFjLTQxYjAtYjM3My1kZTc0M2E3MzE2NWMiLCJpYXQiOjE3NzA1NDk3NDAsImV4cCI6MTc3MTE1NDU0MH0.XvzV4qfJGgV1AhY1hPt16jzllEWzFN0nOj80JjibZlo",
+      "expiresAt": "2026-02-15T11:22:20.607Z",
+      "createdAt": "2026-02-08T11:22:20.607Z"
+    },
+    {
+      "id": "95d91d43-d9ed-4b08-804a-a7178996db85",
+      "userId": "dcb98af8-20ac-41b0-b373-de743a73165c",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkY2I5OGFmOC0yMGFjLTQxYjAtYjM3My1kZTc0M2E3MzE2NWMiLCJpYXQiOjE3NzA1NDk5MDAsImV4cCI6MTc3MTE1NDcwMH0.bbqUnh2KEl5njm2VQVVVXx1W-4E9DRl4zD5DU35Z84c",
+      "expiresAt": "2026-02-15T11:25:00.287Z",
+      "createdAt": "2026-02-08T11:25:00.287Z"
+    },
+    {
+      "id": "f58a4f06-5196-4345-9059-6ae95d07e5d8",
+      "userId": "dcb98af8-20ac-41b0-b373-de743a73165c",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkY2I5OGFmOC0yMGFjLTQxYjAtYjM3My1kZTc0M2E3MzE2NWMiLCJpYXQiOjE3NzA1NTEwNDYsImV4cCI6MTc3MTE1NTg0Nn0.zR-kldJZHD8uMpvLP65j8pfQu7fdzi33w8L3aXt5MfY",
+      "expiresAt": "2026-02-15T11:44:06.564Z",
+      "createdAt": "2026-02-08T11:44:06.564Z"
+    }
+  ],
   "memberContent": [
     {
       "id": "free-1",

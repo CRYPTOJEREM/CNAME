@@ -1,0 +1,680 @@
+/* ============================================
+   RESPONSIVE DESIGN - LA SPHERE
+   Optimisation mobile, tablette et desktop
+   ============================================ */
+
+/* ==================== MOBILE FIRST ==================== */
+
+/* === NAVIGATION MOBILE === */
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0 20px;
+        flex-wrap: wrap;
+    }
+
+    .logo {
+        font-size: 20px;
+        gap: 8px;
+    }
+
+    .logo-icon {
+        font-size: 24px;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: rgba(10, 14, 39, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        padding: 20px;
+        max-height: calc(100vh - 70px);
+        overflow-y: auto;
+        border-top: 2px solid rgba(0, 217, 255, 0.3);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-links li {
+        width: 100%;
+        margin: 0;
+    }
+
+    .nav-links button {
+        width: 100%;
+        justify-content: flex-start;
+        padding: 16px 20px;
+        border-radius: 12px;
+        margin-bottom: 8px;
+    }
+
+    .nav-icon {
+        font-size: 24px;
+    }
+
+    .nav-text {
+        font-size: 16px;
+    }
+
+    /* Boutons d'authentification mobile */
+    .auth-section {
+        width: 100%;
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .auth-btn {
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 14px 20px;
+        font-size: 16px;
+    }
+
+    .user-menu {
+        width: 100%;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .user-greeting {
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+        background: rgba(0, 217, 255, 0.1);
+        border-radius: 8px;
+    }
+}
+
+/* === HERO SECTION MOBILE === */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 60px 20px;
+        min-height: auto;
+    }
+
+    .hero-content h1 {
+        font-size: 32px;
+        line-height: 1.2;
+    }
+
+    .hero-subtitle {
+        font-size: 16px;
+    }
+
+    .hero-description {
+        font-size: 14px;
+        padding: 0 10px;
+    }
+
+    .hero-stats {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .stat-item {
+        padding: 20px;
+    }
+
+    .stat-number {
+        font-size: 32px;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .cta-primary,
+    .cta-secondary {
+        width: 100%;
+        padding: 16px;
+    }
+}
+
+/* === GRILLES DE CONTENU MOBILE === */
+@media (max-width: 768px) {
+    .videos-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+        padding: 0 10px;
+    }
+
+    .video-module-card {
+        margin-bottom: 20px;
+    }
+
+    .video-container {
+        height: auto;
+        aspect-ratio: 16/9;
+    }
+
+    .video-container iframe {
+        border-radius: 12px;
+    }
+
+    .video-module-info {
+        padding: 16px;
+    }
+
+    .video-module-title {
+        font-size: 18px;
+    }
+
+    .video-module-description {
+        font-size: 14px;
+    }
+
+    .video-stats {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .video-stat {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}
+
+/* === SECTIONS PRINCIPALES MOBILE === */
+@media (max-width: 768px) {
+    .container {
+        padding: 40px 20px;
+    }
+
+    .section-title h2 {
+        font-size: 28px;
+    }
+
+    .section-title p {
+        font-size: 14px;
+    }
+
+    .learning-header {
+        padding: 40px 20px;
+    }
+
+    .learning-header h1 {
+        font-size: 32px;
+    }
+
+    .learning-badge {
+        font-size: 12px;
+        padding: 8px 16px;
+    }
+
+    .category-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .category-btn {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .module-section {
+        padding: 30px 15px;
+    }
+
+    .module-title {
+        font-size: 20px;
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .module-subtitle {
+        font-size: 14px;
+        padding: 0 10px;
+    }
+}
+
+/* === DASHBOARD MOBILE === */
+@media (max-width: 768px) {
+    .crypto-grid {
+        grid-template-columns: 1fr !important;
+        gap: 15px;
+    }
+
+    .crypto-card {
+        padding: 20px;
+    }
+
+    .crypto-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .crypto-info h3 {
+        font-size: 18px;
+    }
+
+    .crypto-stats {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .stat-card {
+        padding: 15px;
+    }
+
+    .chart-container {
+        height: 250px;
+    }
+}
+
+/* === CALENDRIER MOBILE === */
+@media (max-width: 768px) {
+    .calendar-header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px 15px;
+    }
+
+    .week-selector {
+        width: 100%;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .week-nav {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .filter-buttons {
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .filter-btn {
+        font-size: 12px;
+        padding: 8px 16px;
+    }
+
+    .calendar-grid {
+        grid-template-columns: 1fr !important;
+        gap: 15px;
+    }
+
+    .day-column {
+        min-height: auto;
+    }
+
+    .event-card {
+        padding: 15px;
+    }
+
+    .event-time {
+        font-size: 12px;
+    }
+
+    .event-title {
+        font-size: 14px;
+    }
+}
+
+/* === FORMULAIRES MOBILE === */
+@media (max-width: 768px) {
+    .auth-container {
+        padding: 30px 20px;
+        margin: 20px;
+    }
+
+    .auth-title {
+        font-size: 28px;
+    }
+
+    .form-group label {
+        font-size: 14px;
+    }
+
+    .form-control {
+        padding: 14px 16px;
+        font-size: 16px; /* Évite le zoom sur iOS */
+    }
+
+    .btn {
+        padding: 14px;
+        font-size: 16px;
+    }
+
+    .auth-footer {
+        font-size: 14px;
+    }
+}
+
+/* === ABONNEMENTS MOBILE === */
+@media (max-width: 768px) {
+    .pricing-grid {
+        grid-template-columns: 1fr !important;
+        gap: 30px;
+        padding: 0 15px;
+    }
+
+    .pricing-card {
+        padding: 30px 20px;
+    }
+
+    .plan-name {
+        font-size: 24px;
+    }
+
+    .plan-price {
+        font-size: 36px;
+    }
+
+    .feature-item {
+        font-size: 14px;
+        padding: 12px 10px;
+    }
+
+    .plan-btn {
+        padding: 16px;
+        font-size: 16px;
+    }
+}
+
+/* === FOOTER MOBILE === */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        gap: 40px;
+        text-align: center;
+    }
+
+    .footer-section {
+        width: 100%;
+    }
+
+    .footer-links {
+        align-items: center;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
+
+/* === ESPACE MEMBRE MOBILE === */
+@media (max-width: 768px) {
+    .member-area {
+        padding: 30px 15px;
+    }
+
+    .member-header {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .member-nav {
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .member-nav-btn {
+        font-size: 14px;
+        padding: 12px 20px;
+    }
+
+    .profile-card {
+        padding: 25px 20px;
+    }
+
+    .profile-avatar {
+        width: 80px;
+        height: 80px;
+        font-size: 32px;
+    }
+
+    .subscription-card {
+        padding: 25px 20px;
+    }
+}
+
+/* === MODALS MOBILE === */
+@media (max-width: 768px) {
+    .modal-content,
+    .login-modal-content {
+        width: 95%;
+        max-width: none;
+        margin: 20px;
+        padding: 30px 20px;
+    }
+
+    .modal-header h2 {
+        font-size: 24px;
+    }
+
+    .modal-body {
+        padding: 20px 10px;
+    }
+}
+
+/* === ACTUALITÉS MOBILE === */
+@media (max-width: 768px) {
+    .news-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+    }
+
+    .news-card {
+        padding: 20px;
+    }
+
+    .news-title {
+        font-size: 18px;
+    }
+
+    .news-excerpt {
+        font-size: 14px;
+    }
+
+    .news-meta {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+}
+
+/* === LOADING SPINNER MOBILE === */
+@media (max-width: 768px) {
+    .loading-spinner {
+        font-size: 18px;
+    }
+
+    .spinner {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* ==================== TABLETTE ==================== */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .nav-container {
+        padding: 0 30px;
+    }
+
+    .videos-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 25px;
+    }
+
+    .crypto-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    .calendar-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+
+    .pricing-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    .news-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+/* ==================== GRAND ÉCRAN ==================== */
+@media (min-width: 1440px) {
+    .nav-container {
+        max-width: 1600px;
+    }
+
+    .container {
+        max-width: 1600px;
+    }
+
+    .hero-content h1 {
+        font-size: 72px;
+    }
+
+    .videos-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 35px;
+    }
+
+    .crypto-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+}
+
+/* === OPTIMISATIONS TOUCH === */
+@media (hover: none) and (pointer: coarse) {
+    /* Améliore l'expérience tactile */
+    button,
+    .btn,
+    .nav-links button {
+        min-height: 44px; /* Taille minimale recommandée pour touch */
+        min-width: 44px;
+    }
+
+    /* Désactive hover sur tactile */
+    *:hover {
+        transition: none;
+    }
+
+    /* Scroll momentum sur iOS */
+    .nav-links,
+    .filter-buttons,
+    .member-nav {
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* === LANDSCAPE MODE MOBILE === */
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero-section {
+        min-height: auto;
+        padding: 40px 20px;
+    }
+
+    .nav-links {
+        top: 60px;
+        max-height: calc(100vh - 60px);
+    }
+}
+
+/* === TRÈS PETIT ÉCRAN (iPhone SE) === */
+@media (max-width: 375px) {
+    .hero-content h1 {
+        font-size: 28px;
+    }
+
+    .nav-links button {
+        padding: 14px 16px;
+    }
+
+    .video-module-title {
+        font-size: 16px;
+    }
+
+    .plan-price {
+        font-size: 32px;
+    }
+
+    .crypto-price {
+        font-size: 24px;
+    }
+}
+
+/* === OPTIMISATION POUR SAFARI iOS === */
+@supports (-webkit-touch-callout: none) {
+    /* Fix pour le viewport height sur iOS */
+    .hero-section {
+        min-height: -webkit-fill-available;
+    }
+
+    /* Fix pour les inputs qui zooment sur iOS */
+    input,
+    textarea,
+    select {
+        font-size: 16px !important;
+    }
+}
+
+/* === PRINT MEDIA === */
+@media print {
+    nav,
+    .cta-buttons,
+    .auth-section,
+    footer {
+        display: none;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    .container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* === DARK MODE PREFERENCE === */
+@media (prefers-color-scheme: dark) {
+    /* Le site est déjà dark par défaut, mais on peut ajouter des ajustements */
+    body {
+        background: linear-gradient(135deg, #050812 0%, #0D1229 100%);
+    }
+}
+
+/* === REDUCED MOTION === */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* === HIGH CONTRAST MODE === */
+@media (prefers-contrast: high) {
+    button,
+    .btn {
+        border: 2px solid currentColor;
+    }
+
+    .nav-links button.active {
+        border: 3px solid #00D9FF;
+    }
+}

@@ -33,8 +33,43 @@ const { verifyEmailConfig } = require('./config/email');
 // MIDDLEWARE
 // ==========================================
 
+// Configuration CORS pour accepter plusieurs domaines
+const allowedOrigins = [
+    'http://localhost:5173',
+    'http://localhost:5174',
+    'https://lasphere.xyz',
+    'https://www.lasphere.xyz',
+    'https://cname.vercel.app'
+];
+
+// Ajouter dynamiquement les URLs Vercel de déploiement/preview
+if (process.env.FRONTEND_URL) {
+    const frontendUrls = process.env.FRONTEND_URL.split(',').map(url => url.trim());
+    frontendUrls.forEach(url => {
+        if (!allowedOrigins.includes(url)) {
+            allowedOrigins.push(url);
+        }
+    });
+}
+
 app.use(cors({
-    origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+    origin: function (origin, callback) {
+        // Autoriser les requêtes sans origin (mobile apps, curl, etc.)
+        if (!origin) return callback(null, true);
+
+        // Autoriser tous les sous-domaines vercel.app
+        if (origin.includes('.vercel.app')) {
+            return callback(null, true);
+        }
+
+        // Vérifier si l'origin est dans la liste autorisée
+        if (allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            console.log('❌ CORS bloqué pour:', origin);
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     credentials: true
 }));
 app.use(express.json());

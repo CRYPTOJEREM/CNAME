@@ -266,43 +266,32 @@ const Subscriptions = () => {
                 </div>
             </div>
 
-            {/* Section Problème - Hook émotionnel */}
-            <div className="story-section problem-section">
-                <div className="story-content">
-                    <h2 className="story-title">Vous passez des heures à analyser les marchés...</h2>
-                    <p className="story-text">
-                        Vous scrutez les graphiques, vous suivez les actualités, vous essayez de comprendre les mouvements.
-                        Mais à chaque fois que vous pensez avoir trouvé une opportunité, le marché fait l'inverse.
-                    </p>
-                    <p className="story-text">
-                        Vous ratez les bons points d'entrée. Vous sortez trop tôt. Vous restez trop longtemps.
-                    </p>
-                    <p className="story-text highlight-text">
-                        Et pendant ce temps, vous voyez d'autres traders partager leurs gains... alors que vous stagnez.
-                    </p>
+            {/* Section Problème + Solution côte à côte */}
+            <div className="story-section combo-section">
+                <div className="combo-grid">
+                    <div className="combo-left">
+                        <h2 className="story-title">Vous passez des heures à analyser les marchés...</h2>
+                        <p className="story-text">
+                            Vous scrutez les graphiques, vous essayez de comprendre les mouvements. Mais le marché fait l'inverse.
+                            Vous ratez les bons points d'entrée. Vous sortez trop tôt.
+                        </p>
+                        <p className="story-text highlight-text">
+                            Pendant ce temps, d'autres traders partagent leurs gains... alors que vous stagnez.
+                        </p>
+                    </div>
+                    <div className="combo-right">
+                        <h2 className="story-title dream-title">Et si vous aviez les mêmes infos que les meilleurs ?</h2>
+                        <p className="story-text">
+                            Imaginez recevoir chaque matin une analyse complète du marché, des alertes en temps réel, et une communauté de traders qui partagent leurs stratégies.
+                        </p>
+                        <p className="story-text highlight-text">
+                            C'est exactement ce que La Sphere vous offre.
+                        </p>
+                    </div>
                 </div>
             </div>
 
-            {/* Section Transition - "Et si..." */}
-            <div className="story-section dream-section">
-                <div className="story-content">
-                    <h2 className="story-title">Et si vous aviez accès aux mêmes informations que les meilleurs traders ?</h2>
-                    <p className="story-text">
-                        Imaginez vous réveiller chaque matin avec une analyse complète du marché déjà prête.
-                    </p>
-                    <p className="story-text">
-                        Imaginez recevoir des alertes en temps réel sur les opportunités avant qu'il ne soit trop tard.
-                    </p>
-                    <p className="story-text">
-                        Imaginez avoir une communauté de traders expérimentés qui partagent leurs stratégies et vous accompagnent.
-                    </p>
-                    <p className="story-text highlight-text">
-                        C'est exactement ce que La Sphere vous offre.
-                    </p>
-                </div>
-            </div>
-
-            {/* Section Solution - Ce que vous obtenez */}
+            {/* Section Solution - 6 items en grille horizontale */}
             <div className="value-section-clean">
                 <h2 className="clean-title">Voici ce qui change dès aujourd'hui</h2>
 
@@ -310,77 +299,59 @@ const Subscriptions = () => {
                     <div className="value-item-clean">
                         <span className="value-icon-clean">📊</span>
                         <div className="value-content-clean">
-                            <h3>Analyses quotidiennes prêtes à l'emploi</h3>
-                            <p>Chaque matin, vous recevez le décryptage complet du marché avec les niveaux clés et les opportunités à surveiller. Plus besoin de passer 3 heures à analyser.</p>
+                            <h3>Analyses quotidiennes</h3>
+                            <p>Décryptage complet du marché avec niveaux clés et opportunités chaque matin.</p>
                         </div>
                     </div>
 
                     <div className="value-item-clean">
                         <span className="value-icon-clean">🔔</span>
                         <div className="value-content-clean">
-                            <h3>Alertes temps réel sur votre téléphone</h3>
-                            <p>Bitcoin franchit un niveau important ? Vous êtes prévenu instantanément. Ne ratez plus jamais une opportunité pendant que vous êtes au travail.</p>
+                            <h3>Alertes temps réel</h3>
+                            <p>Notifications instantanées sur les mouvements importants directement sur votre téléphone.</p>
                         </div>
                     </div>
 
                     <div className="value-item-clean">
                         <span className="value-icon-clean">💬</span>
                         <div className="value-content-clean">
-                            <h3>Groupe privé de traders actifs</h3>
-                            <p>Rejoignez une communauté où les membres partagent leurs positions, leurs analyses et s'entraident. Vous n'êtes plus seul face aux marchés.</p>
+                            <h3>Groupe privé actif</h3>
+                            <p>Communauté de traders qui partagent positions, analyses et s'entraident au quotidien.</p>
+                        </div>
+                    </div>
+
+                    <div className="value-item-clean">
+                        <span className="value-icon-clean">🎓</span>
+                        <div className="value-content-clean">
+                            <h3>Formations complètes</h3>
+                            <p>Parcours structuré du débutant au trader confirmé : analyse technique, gestion du risque.</p>
+                        </div>
+                    </div>
+
+                    <div className="value-item-clean">
+                        <span className="value-icon-clean">📚</span>
+                        <div className="value-content-clean">
+                            <h3>Bibliothèque de ressources</h3>
+                            <p>Templates, outils et analyses passées au même endroit pour progresser vite.</p>
+                        </div>
+                    </div>
+
+                    <div className="value-item-clean">
+                        <span className="value-icon-clean">🎯</span>
+                        <div className="value-content-clean">
+                            <h3>Support réactif</h3>
+                            <p>Une question ? Notre équipe vous répond rapidement pour vous débloquer.</p>
                         </div>
                     </div>
                 </div>
 
-                {/* CTA intermédiaire */}
-                <button className="cta-story-inline" onClick={() => {
-                    document.querySelector('.plans-section').scrollIntoView({ behavior: 'smooth' });
-                }}>
-                    Je veux accéder à La Sphere
-                </button>
-            </div>
-
-            {/* Section Bénéfices - "Mais ce n'est pas tout" */}
-            <div className="story-section benefits-section">
-                <div className="story-content">
-                    <h2 className="story-title">Mais ce n'est pas tout...</h2>
-                    <div className="benefits-list">
-                        <div className="benefit-item">
-                            <span className="benefit-icon">🎓</span>
-                            <div className="benefit-content">
-                                <h4>Formations complètes incluses</h4>
-                                <p>De débutant à trader confirmé, suivez notre parcours structuré pour maîtriser l'analyse technique, la gestion du risque et les stratégies gagnantes.</p>
-                            </div>
-                        </div>
-                        <div className="benefit-item">
-                            <span className="benefit-icon">📚</span>
-                            <div className="benefit-content">
-                                <h4>Bibliothèque de ressources</h4>
-                                <p>Templates, outils, analyses passées... Tout ce dont vous avez besoin au même endroit pour progresser rapidement.</p>
-                            </div>
-                        </div>
-                        <div className="benefit-item">
-                            <span className="benefit-icon">🎯</span>
-                            <div className="benefit-content">
-                                <h4>Support réactif</h4>
-                                <p>Une question ? Un doute sur une position ? Notre équipe vous répond rapidement pour vous débloquer.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {/* Section Prix - Moment de décision */}
-            <div className="story-section decision-section">
-                <div className="story-content">
-                    <h2 className="story-title">Combien coûte votre réussite en trading ?</h2>
-                    <p className="story-text">
-                        Un seul trade raté peut vous coûter des centaines d'euros.
-                        Une opportunité ratée ? Encore plus.
-                    </p>
-                    <p className="story-text highlight-text">
-                        Pour moins qu'un dîner au restaurant par mois, vous avez accès à tout ce qui peut transformer votre trading.
-                    </p>
+                {/* CTA intermédiaire - centré */}
+                <div className="cta-center-wrapper">
+                    <button className="cta-story-inline" onClick={() => {
+                        document.querySelector('.plans-section').scrollIntoView({ behavior: 'smooth' });
+                    }}>
+                        Je veux accéder à La Sphere
+                    </button>
                 </div>
             </div>
 

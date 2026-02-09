@@ -9822,10 +9822,10 @@
 /* Cards valeur - Design VSL élégant */
 .value-list-clean {
     max-width: 1200px;
-    margin: 40px auto 0;
+    margin: 30px auto 0;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
+    gap: 20px;
     padding: 0 20px;
 }
 
@@ -9834,8 +9834,8 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 16px;
-    padding: 30px 25px;
+    gap: 12px;
+    padding: 22px 20px;
     background:
         linear-gradient(135deg, rgba(13, 18, 41, 0.6) 0%, rgba(26, 31, 58, 0.6) 100%);
     border-radius: 28px;
@@ -9886,7 +9886,7 @@
 }
 
 .value-icon-clean {
-    font-size: 50px;
+    font-size: 38px;
     line-height: 1;
     filter: drop-shadow(0 8px 20px rgba(0, 217, 255, 0.5));
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -10157,104 +10157,57 @@
     border-radius: 2px;
 }
 
-/* Section Problème */
-.problem-section {
+/* Section Combo Problème + Solution côte à côte */
+.combo-section {
     background:
-        radial-gradient(ellipse at top, rgba(255, 0, 0, 0.05) 0%, transparent 60%),
-        linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, transparent 100%);
+        radial-gradient(ellipse at left, rgba(255, 0, 0, 0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at right, rgba(0, 217, 255, 0.06) 0%, transparent 50%);
+    padding: 50px 40px;
 }
 
-.problem-section::before {
+.combo-section::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent 0%, rgba(255, 100, 100, 0.3) 50%, transparent 100%);
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 100, 100, 0.3) 30%, rgba(0, 217, 255, 0.3) 70%, transparent 100%);
 }
 
-/* Section Rêve */
-.dream-section {
-    background:
-        radial-gradient(ellipse at center, rgba(0, 217, 255, 0.08) 0%, transparent 60%);
+.combo-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
 }
 
-.dream-section .story-title {
+.combo-left,
+.combo-right {
+    text-align: center;
+}
+
+.combo-left .story-title {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 26px;
+}
+
+.combo-right .story-title,
+.dream-title {
     background: linear-gradient(135deg, #ffffff 0%, #00D9FF 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    font-size: 26px;
 }
 
-/* Section Bénéfices */
-.benefits-section {
-    background:
-        radial-gradient(ellipse at bottom, rgba(123, 47, 247, 0.08) 0%, transparent 60%);
-    padding: 50px 20px;
-}
-
-.benefits-list {
+/* CTA centré */
+.cta-center-wrapper {
+    display: flex;
+    justify-content: center;
     margin-top: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    text-align: left;
-}
-
-.benefit-item {
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-    padding: 25px;
-    background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, rgba(123, 47, 247, 0.05) 100%);
-    border-radius: 20px;
-    border: 1px solid rgba(0, 217, 255, 0.15);
-    transition: all 0.4s ease;
-}
-
-.benefit-item:hover {
-    background: linear-gradient(135deg, rgba(0, 217, 255, 0.1) 0%, rgba(123, 47, 247, 0.1) 100%);
-    border-color: rgba(0, 217, 255, 0.3);
-    transform: translateX(10px);
-}
-
-.benefit-icon {
-    font-size: 35px;
-    line-height: 1;
-    filter: drop-shadow(0 5px 15px rgba(0, 217, 255, 0.4));
-    flex-shrink: 0;
-}
-
-.benefit-content h4 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 18px;
-    font-weight: 800;
-    color: white;
-    margin-bottom: 8px;
-    letter-spacing: -0.5px;
-}
-
-.benefit-content p {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 15px;
-    line-height: 1.7;
-    color: rgba(255, 255, 255, 0.8);
-    margin: 0;
-    font-weight: 500;
-}
-
-/* Section Décision */
-.decision-section {
-    background:
-        radial-gradient(ellipse at center, rgba(255, 215, 0, 0.06) 0%, transparent 60%);
-}
-
-.decision-section .highlight-text {
-    background: linear-gradient(135deg, #FFD700 0%, #FF8C00 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
 }
 
 /* Section Garantie */
@@ -10666,5 +10619,23 @@
         max-width: 100%;
         padding: 20px 40px;
         font-size: 18px;
+    }
+}
+
+/* Responsive Combo Grid */
+@media (max-width: 768px) {
+    .combo-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .combo-section {
+        padding: 40px 20px;
+    }
+
+    .combo-left .story-title,
+    .combo-right .story-title,
+    .dream-title {
+        font-size: 24px;
     }
 }

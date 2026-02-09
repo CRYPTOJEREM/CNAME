@@ -268,7 +268,7 @@
     }
 }
 
-/* === FEATURES CARDS MOBILE === */
+/* === FEATURES & ECOSYSTEM CARDS MOBILE === */
 @media (max-width: 768px) {
     .features {
         margin: 40px auto !important;
@@ -303,6 +303,54 @@
 
     .feature-card:hover {
         transform: none !important;
+    }
+
+    /* Ecosystem cards (Hero page) */
+    .crypto-ecosystem {
+        margin: 30px auto !important;
+        padding: 0 15px !important;
+    }
+
+    .ecosystem-container {
+        padding: 20px 0 !important;
+    }
+
+    .ecosystem-grid {
+        grid-template-columns: 1fr !important;
+        gap: 15px !important;
+    }
+
+    .ecosystem-card {
+        padding: 20px 18px !important;
+        height: auto !important;
+        min-height: unset !important;
+    }
+
+    .ecosystem-card.main-card {
+        grid-column: span 1 !important;
+    }
+
+    .ecosystem-icon {
+        font-size: 32px !important;
+        margin-bottom: 10px !important;
+    }
+
+    .ecosystem-card h3 {
+        font-size: 18px !important;
+        margin-bottom: 8px !important;
+    }
+
+    .ecosystem-card p {
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+    }
+
+    .ecosystem-card:hover {
+        transform: none !important;
+    }
+
+    .card-glow {
+        display: none !important;
     }
 }
 

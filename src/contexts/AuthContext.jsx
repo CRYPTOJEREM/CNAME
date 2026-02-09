@@ -8,8 +8,13 @@ export const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-    // Vérifier authentification au montage
+    // Nettoyage au montage : supprimer les tokens orphelins (migration cookie → localStorage)
     useEffect(() => {
+        const hasAccess = localStorage.getItem('accessToken');
+        const hasRefresh = localStorage.getItem('refreshToken');
+        if (hasAccess && !hasRefresh) {
+            localStorage.removeItem('accessToken');
+        }
         checkAuth();
     }, []);
 

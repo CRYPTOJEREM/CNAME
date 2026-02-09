@@ -118,14 +118,57 @@ function deleteFromCollection(collectionName, query) {
     return saveDB(db);
 }
 
+/**
+ * Seed du compte admin au démarrage
+ */
+async function seedAdmin() {
+    const bcrypt = require('bcryptjs');
+    const { v4: uuidv4 } = require('uuid');
+
+    const adminEmail = process.env.ADMIN_EMAIL || 'admin@lasphere.com';
+    const adminPassword = process.env.ADMIN_PASSWORD || 'Admin@2026!';
+
+    const db = loadDB();
+    if (!db.users) db.users = [];
+
+    const existingAdmin = db.users.find(u => u.email === adminEmail);
+
+    if (!existingAdmin) {
+        const hash = await bcrypt.hash(adminPassword, 10);
+        db.users.push({
+            id: uuidv4(),
+            email: adminEmail,
+            passwordHash: hash,
+            firstName: 'Admin',
+            lastName: 'La Sphere',
+            telegramUsername: '@admin_lasphere',
+            emailVerified: true,
+            subscriptionStatus: 'vip',
+            subscriptionExpiresAt: new Date(Date.now() + 10 * 365 * 24 * 60 * 60 * 1000).toISOString(),
+            role: 'admin',
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString()
+        });
+        saveDB(db);
+        console.log(`✅ Compte admin créé : ${adminEmail}`);
+    } else {
+        const hash = await bcrypt.hash(adminPassword, 10);
+        existingAdmin.passwordHash = hash;
+        existingAdmin.updatedAt = new Date().toISOString();
+        saveDB(db);
+        console.log(`✅ Compte admin mis à jour : ${adminEmail}`);
+    }
+}
+
 module.exports = {
     loadDB,
     saveDB,
-    readDatabase: loadDB,  // Alias pour compatibilité
-    writeDatabase: saveDB, // Alias pour compatibilité
+    readDatabase: loadDB,
+    writeDatabase: saveDB,
     addToCollection,
     findInCollection,
     findAllInCollection,
     updateInCollection,
-    deleteFromCollection
+    deleteFromCollection,
+    seedAdmin
 };

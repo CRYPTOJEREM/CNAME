@@ -8,7 +8,7 @@ const crypto = require('crypto');
 const cookieParser = require('cookie-parser');
 const TelegramBotService = require('./services/telegramBot');
 const TelegramBotDemo = require('./services/telegramBotDemo');
-const { readDatabase, writeDatabase } = require('./config/database');
+const { readDatabase, writeDatabase, seedAdmin } = require('./config/database');
 const { authMiddleware } = require('./middleware/auth');
 
 const app = express();
@@ -408,6 +408,9 @@ app.get('/api/public/content/:id', (req, res) => {
 // ==========================================
 
 app.listen(PORT, async () => {
+    // Seed admin au démarrage (crée ou met à jour le compte admin)
+    await seedAdmin();
+
     console.log(`
 ╔═══════════════════════════════════════════════════╗
 ║   🚀 Backend La Sphere démarré sur port ${PORT}     ║

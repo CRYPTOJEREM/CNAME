@@ -24,6 +24,7 @@ export const AuthProvider = ({ children }) => {
         } catch (error) {
             console.error('Erreur vérification auth:', error);
             localStorage.removeItem('accessToken');
+            localStorage.removeItem('refreshToken');
         } finally {
             setLoading(false);
         }
@@ -31,8 +32,9 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (email, password) => {
         try {
-            const { accessToken, user: userData } = await authService.login(email, password);
+            const { accessToken, refreshToken, user: userData } = await authService.login(email, password);
             localStorage.setItem('accessToken', accessToken);
+            localStorage.setItem('refreshToken', refreshToken);
             setUser(userData);
             setIsAuthenticated(true);
             return { success: true };
@@ -63,6 +65,7 @@ export const AuthProvider = ({ children }) => {
             console.error('Erreur logout:', error);
         } finally {
             localStorage.removeItem('accessToken');
+            localStorage.removeItem('refreshToken');
             setUser(null);
             setIsAuthenticated(false);
         }

@@ -148,22 +148,14 @@ router.post('/login', loginValidation, async (req, res) => {
             createdAt: new Date().toISOString()
         });
 
-        // Définir le refresh token dans un cookie httpOnly
-        const isProduction = process.env.NODE_ENV === 'production';
-        res.cookie('refreshToken', refreshToken, {
-            httpOnly: true,
-            secure: isProduction,
-            sameSite: isProduction ? 'none' : 'strict',
-            maxAge: 7 * 24 * 60 * 60 * 1000 // 7 jours
-        });
-
-        // Retourner les données utilisateur et le access token
+        // Retourner les données utilisateur et les tokens
         const { passwordHash, ...userWithoutPassword } = user;
 
         res.json({
             success: true,
             message: 'Connexion réussie',
             accessToken,
+            refreshToken,
             user: userWithoutPassword
         });
 
@@ -182,21 +174,12 @@ router.post('/login', loginValidation, async (req, res) => {
  */
 router.post('/logout', authMiddleware, async (req, res) => {
     try {
-        // Récupérer le refresh token du cookie
-        const refreshToken = req.cookies.refreshToken;
+        // Récupérer le refresh token du body ou cookie
+        const refreshToken = req.body.refreshToken || req.cookies.refreshToken;
 
         if (refreshToken) {
-            // Supprimer le refresh token de la base de données
             deleteFromCollection('refreshTokens', { token: refreshToken });
         }
-
-        // Supprimer le cookie
-        const isProduction = process.env.NODE_ENV === 'production';
-        res.clearCookie('refreshToken', {
-            httpOnly: true,
-            secure: isProduction,
-            sameSite: isProduction ? 'none' : 'strict'
-        });
 
         res.json({
             success: true,
@@ -218,7 +201,7 @@ router.post('/logout', authMiddleware, async (req, res) => {
  */
 router.post('/refresh', async (req, res) => {
     try {
-        const refreshToken = req.cookies.refreshToken;
+        const refreshToken = req.body.refreshToken || req.cookies.refreshToken;
 
         if (!refreshToken) {
             return res.status(401).json({

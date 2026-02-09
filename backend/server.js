@@ -106,6 +106,10 @@ app.use('/api/admin', adminRoutes);
 const reviewsRoutes = require('./routes/reviews.routes');
 app.use('/api/reviews', reviewsRoutes);
 
+// Routes Newsletter
+const newsletterRoutes = require('./routes/newsletter.routes');
+app.use('/api/newsletter', newsletterRoutes);
+
 // ==========================================
 // INITIALISATION TELEGRAM BOT
 // ==========================================

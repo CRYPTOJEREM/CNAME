@@ -43,7 +43,7 @@ const {
  */
 router.post('/register', registerValidation, async (req, res) => {
     try {
-        const { email, password, firstName, lastName, telegramUsername } = req.body;
+        const { email, password, firstName, lastName, telegramUsername, newsletterOptIn } = req.body;
 
         // Créer l'utilisateur
         const user = await createUser({
@@ -53,6 +53,20 @@ router.post('/register', registerValidation, async (req, res) => {
             lastName,
             telegramUsername
         });
+
+        // Inscription newsletter si opt-in
+        if (newsletterOptIn) {
+            const existingSubscriber = findInCollection('newsletterSubscribers', { email });
+            if (!existingSubscriber) {
+                addToCollection('newsletterSubscribers', {
+                    id: uuidv4(),
+                    email,
+                    firstName: firstName || null,
+                    source: 'register',
+                    subscribedAt: new Date().toISOString()
+                });
+            }
+        }
 
         // En mode développement, vérifier automatiquement l'email
         if (process.env.NODE_ENV === 'development') {

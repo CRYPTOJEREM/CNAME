@@ -8,7 +8,8 @@ const Register = ({ setActiveTab }) => {
         confirmPassword: '',
         firstName: '',
         lastName: '',
-        telegramUsername: ''
+        telegramUsername: '',
+        newsletterOptIn: true
     });
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
@@ -180,6 +181,19 @@ const Register = ({ setActiveTab }) => {
                             required
                             disabled={loading}
                         />
+                    </div>
+
+                    <div className="newsletter-checkbox">
+                        <label className="checkbox-label">
+                            <input
+                                type="checkbox"
+                                checked={formData.newsletterOptIn}
+                                onChange={(e) => setFormData({ ...formData, newsletterOptIn: e.target.checked })}
+                                disabled={loading}
+                            />
+                            <span className="checkbox-custom"></span>
+                            <span className="checkbox-text">Recevoir nos analyses et actualités crypto par email</span>
+                        </label>
                     </div>
 
                     <button

@@ -24,7 +24,8 @@ function loadDB() {
             payments: [],
             emailVerifications: [],
             refreshTokens: [],
-            memberContent: []
+            memberContent: [],
+            newsletterSubscribers: []
         };
     }
 }

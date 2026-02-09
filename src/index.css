@@ -10099,6 +10099,266 @@
     font-weight: 600;
 }
 
+/* STORY SECTIONS - Flow narratif comme un livre */
+
+/* Base Story Section */
+.story-section {
+    padding: 100px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.story-content {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.story-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 44px;
+    font-weight: 900;
+    line-height: 1.3;
+    margin-bottom: 40px;
+    color: white;
+    letter-spacing: -0.5px;
+}
+
+.story-text {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 22px;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 25px;
+    font-weight: 500;
+}
+
+.highlight-text {
+    font-size: 26px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #00D9FF 0%, #7B2FF7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-top: 35px;
+    padding: 20px;
+    position: relative;
+}
+
+.highlight-text::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #00D9FF 0%, #7B2FF7 100%);
+    border-radius: 2px;
+}
+
+/* Section Problème */
+.problem-section {
+    background:
+        radial-gradient(ellipse at top, rgba(255, 0, 0, 0.05) 0%, transparent 60%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, transparent 100%);
+}
+
+.problem-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 100, 100, 0.3) 50%, transparent 100%);
+}
+
+/* Section Rêve */
+.dream-section {
+    background:
+        radial-gradient(ellipse at center, rgba(0, 217, 255, 0.08) 0%, transparent 60%);
+}
+
+.dream-section .story-title {
+    background: linear-gradient(135deg, #ffffff 0%, #00D9FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Section Bénéfices */
+.benefits-section {
+    background:
+        radial-gradient(ellipse at bottom, rgba(123, 47, 247, 0.08) 0%, transparent 60%);
+    padding: 80px 20px;
+}
+
+.benefits-list {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    text-align: left;
+}
+
+.benefit-item {
+    display: flex;
+    gap: 25px;
+    align-items: flex-start;
+    padding: 35px;
+    background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, rgba(123, 47, 247, 0.05) 100%);
+    border-radius: 20px;
+    border: 1px solid rgba(0, 217, 255, 0.15);
+    transition: all 0.4s ease;
+}
+
+.benefit-item:hover {
+    background: linear-gradient(135deg, rgba(0, 217, 255, 0.1) 0%, rgba(123, 47, 247, 0.1) 100%);
+    border-color: rgba(0, 217, 255, 0.3);
+    transform: translateX(10px);
+}
+
+.benefit-icon {
+    font-size: 45px;
+    line-height: 1;
+    filter: drop-shadow(0 5px 15px rgba(0, 217, 255, 0.4));
+    flex-shrink: 0;
+}
+
+.benefit-content h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+}
+
+.benefit-content p {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 18px;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Section Décision */
+.decision-section {
+    background:
+        radial-gradient(ellipse at center, rgba(255, 215, 0, 0.06) 0%, transparent 60%);
+}
+
+.decision-section .highlight-text {
+    background: linear-gradient(135deg, #FFD700 0%, #FF8C00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Section Garantie */
+.guarantee-section {
+    background:
+        radial-gradient(ellipse at center, rgba(0, 255, 127, 0.06) 0%, transparent 60%);
+    padding: 90px 20px;
+}
+
+.guarantee-section .story-text strong {
+    color: #00FF7F;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Section Urgence */
+.urgency-section {
+    background:
+        radial-gradient(ellipse at center, rgba(255, 69, 0, 0.08) 0%, transparent 60%),
+        linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+    padding: 100px 20px 120px;
+}
+
+.urgency-section .highlight-text {
+    background: linear-gradient(135deg, #FF4500 0%, #FF8C00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* CTA Inline dans le flow */
+.cta-story-inline {
+    margin-top: 50px;
+    padding: 24px 70px;
+    background: linear-gradient(135deg, #00D9FF 0%, #0099FF 50%, #7B2FF7 100%);
+    border: none;
+    border-radius: 60px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow:
+        0 20px 60px rgba(0, 217, 255, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.cta-story-inline:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow:
+        0 30px 80px rgba(0, 217, 255, 0.7),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* CTA Final Push */
+.cta-final-push {
+    margin-top: 50px;
+    padding: 28px 80px;
+    background: linear-gradient(135deg, #FF4500 0%, #FF8C00 50%, #FFD700 100%);
+    border: none;
+    border-radius: 60px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    font-weight: 900;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow:
+        0 25px 70px rgba(255, 69, 0, 0.6),
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow:
+            0 25px 70px rgba(255, 69, 0, 0.6),
+            0 0 0 1px rgba(255, 255, 255, 0.1),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+    50% {
+        box-shadow:
+            0 30px 90px rgba(255, 69, 0, 0.9),
+            0 0 0 1px rgba(255, 255, 255, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    }
+}
+
+.cta-final-push:hover {
+    transform: translateY(-8px) scale(1.08);
+    animation: none;
+    box-shadow:
+        0 35px 100px rgba(255, 69, 0, 1),
+        0 0 0 1px rgba(255, 255, 255, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
 /* Responsive VSL Design */
 @media (max-width: 1400px) {
     .video-container-ultrawide {
@@ -10307,5 +10567,104 @@
 
     .plan-card-clean {
         padding: 40px 25px;
+    }
+}
+
+/* Responsive Story Sections */
+@media (max-width: 1024px) {
+    .story-section {
+        padding: 80px 30px;
+    }
+
+    .story-title {
+        font-size: 38px;
+    }
+
+    .story-text {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .story-section {
+        padding: 70px 20px;
+    }
+
+    .story-title {
+        font-size: 34px;
+    }
+
+    .story-text {
+        font-size: 19px;
+    }
+
+    .highlight-text {
+        font-size: 22px;
+    }
+
+    .benefit-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 30px;
+    }
+
+    .cta-story-inline {
+        width: 100%;
+        max-width: 400px;
+        padding: 22px 60px;
+        font-size: 20px;
+    }
+
+    .cta-final-push {
+        width: 100%;
+        max-width: 450px;
+        padding: 26px 60px;
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 480px) {
+    .story-section {
+        padding: 60px 15px;
+    }
+
+    .story-title {
+        font-size: 28px;
+    }
+
+    .story-text {
+        font-size: 17px;
+        margin-bottom: 20px;
+    }
+
+    .highlight-text {
+        font-size: 19px;
+        padding: 15px;
+    }
+
+    .benefit-item {
+        padding: 25px 20px;
+        gap: 15px;
+    }
+
+    .benefit-icon {
+        font-size: 38px;
+    }
+
+    .benefit-content h4 {
+        font-size: 20px;
+    }
+
+    .benefit-content p {
+        font-size: 16px;
+    }
+
+    .cta-story-inline,
+    .cta-final-push {
+        width: 100%;
+        max-width: 100%;
+        padding: 20px 40px;
+        font-size: 18px;
     }
 }

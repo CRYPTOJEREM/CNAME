@@ -235,7 +235,7 @@ const Subscriptions = () => {
                 <div className="video-container-ultrawide">
                     <iframe
                         className="hero-video-main"
-                        src={`https://www.youtube.com/embed/dQw4w9WgXcQ${videoAutoplay ? '?autoplay=1&mute=1' : ''}`}
+                        src={`https://www.youtube.com/embed/dQw4w9WgXcQ${videoAutoplay ? '?autoplay=1' : ''}`}
                         title="Présentation La Sphere"
                         frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

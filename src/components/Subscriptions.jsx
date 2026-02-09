@@ -270,19 +270,21 @@ const Subscriptions = () => {
             <div className="story-section combo-section">
                 <div className="combo-grid">
                     <div className="combo-left">
+                        <span className="combo-label combo-label-problem">Le problème</span>
                         <h2 className="story-title">Vous passez des heures à analyser les marchés...</h2>
                         <p className="story-text">
-                            Vous scrutez les graphiques, vous essayez de comprendre les mouvements. Mais le marché fait l'inverse.
-                            Vous ratez les bons points d'entrée. Vous sortez trop tôt.
+                            Vous scrutez les graphiques, le marché fait l'inverse. Vous ratez les bons points d'entrée, vous sortez trop tôt.
                         </p>
                         <p className="story-text highlight-text">
-                            Pendant ce temps, d'autres traders partagent leurs gains... alors que vous stagnez.
+                            D'autres traders partagent leurs gains... alors que vous stagnez.
                         </p>
                     </div>
+                    <div className="combo-divider"></div>
                     <div className="combo-right">
+                        <span className="combo-label combo-label-solution">La solution</span>
                         <h2 className="story-title dream-title">Et si vous aviez les mêmes infos que les meilleurs ?</h2>
                         <p className="story-text">
-                            Imaginez recevoir chaque matin une analyse complète du marché, des alertes en temps réel, et une communauté de traders qui partagent leurs stratégies.
+                            Chaque matin une analyse complète, des alertes en temps réel, et une communauté de traders qui partagent leurs stratégies.
                         </p>
                         <p className="story-text highlight-text">
                             C'est exactement ce que La Sphere vous offre.
@@ -294,6 +296,7 @@ const Subscriptions = () => {
             {/* Section Solution - 6 items en grille horizontale */}
             <div className="value-section-clean">
                 <h2 className="clean-title">Voici ce qui change dès aujourd'hui</h2>
+                <p className="section-subtitle">Tout ce dont vous avez besoin pour trader sereinement, au même endroit.</p>
 
                 <div className="value-list-clean">
                     <div className="value-item-clean">
@@ -391,77 +394,23 @@ const Subscriptions = () => {
                 </div>
             </div>
 
-            {/* Section Garantie - Lever les objections */}
-            <div className="story-section guarantee-section">
-                <div className="story-content">
-                    <h2 className="story-title">Vous hésitez encore ? C'est normal.</h2>
-                    <p className="story-text">
-                        Vous vous demandez peut-être : "Et si ça ne marche pas pour moi ?"
-                    </p>
-                    <p className="story-text">
-                        C'est pour ça que nous vous offrons une <strong>garantie satisfait ou remboursé de 7 jours</strong>.
-                    </p>
-                    <p className="story-text highlight-text">
-                        Testez tout. Explorez les analyses. Posez vos questions dans le groupe.
-                        Si dans 7 jours vous n'êtes pas convaincu, vous récupérez 100% de votre argent.
-                    </p>
-                    <p className="story-text">
-                        Vous n'avez littéralement rien à perdre... et tout à gagner.
-                    </p>
-                </div>
+            {/* Barre de garanties horizontale */}
+            <div className="guarantees-bar">
+                <div className="guarantee-pill">🛡️ Satisfait ou remboursé 7j</div>
+                <div className="guarantee-pill">🔒 Paiement sécurisé</div>
+                <div className="guarantee-pill">⚡ Accès immédiat</div>
+                <div className="guarantee-pill">🚪 Sans engagement</div>
             </div>
 
-            {/* Section - Informations rapides */}
-            <div className="guarantees-section">
-                <div className="guarantees-grid">
-                    <div className="guarantee-item">
-                        <h3 className="guarantee-title">🛡️ Satisfait ou Remboursé</h3>
-                        <p className="guarantee-text">
-                            7 jours pour tester sans risque
-                        </p>
-                    </div>
-
-                    <div className="guarantee-item">
-                        <h3 className="guarantee-title">🔒 Paiement Sécurisé</h3>
-                        <p className="guarantee-text">
-                            Transactions cryptées via blockchain
-                        </p>
-                    </div>
-
-                    <div className="guarantee-item">
-                        <h3 className="guarantee-title">⚡ Accès Immédiat</h3>
-                        <p className="guarantee-text">
-                            Activation en moins de 5 minutes
-                        </p>
-                    </div>
-
-                    <div className="guarantee-item">
-                        <h3 className="guarantee-title">🚪 Sans Engagement</h3>
-                        <p className="guarantee-text">
-                            Annulez quand vous voulez
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            {/* Section Urgence - Final push */}
-            <div className="story-section urgency-section">
+            {/* Section finale - Compact */}
+            <div className="story-section final-section">
                 <div className="story-content">
-                    <h2 className="story-title">Le marché n'attend pas</h2>
+                    <h2 className="story-title">Le marché n'attend pas.</h2>
                     <p className="story-text">
-                        Pendant que vous lisez ces lignes, d'autres membres de La Sphere sont déjà en train de positionner leurs trades sur les opportunités du jour.
-                    </p>
-                    <p className="story-text highlight-text">
-                        Chaque jour qui passe sans les bonnes informations, c'est une opportunité manquée.
-                    </p>
-                    <p className="story-text">
-                        La question n'est pas "Est-ce que je devrais rejoindre La Sphere ?"
-                    </p>
-                    <p className="story-text">
-                        La vraie question est : "Combien de temps vais-je encore trader seul sans les bons outils ?"
+                        Chaque jour sans les bonnes informations, c'est une opportunité manquée.
+                        Testez La Sphere pendant 7 jours — si vous n'êtes pas convaincu, vous êtes remboursé intégralement.
                     </p>
 
-                    {/* CTA Final */}
                     <button className="cta-final-push" onClick={() => {
                         document.querySelector('.plans-section').scrollIntoView({ behavior: 'smooth' });
                     }}>

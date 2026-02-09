@@ -16,16 +16,11 @@ const NewsletterPopup = () => {
             return;
         }
 
-        const handleScroll = () => {
-            const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
-            if (scrollPercent > 0.5) {
-                setVisible(true);
-                window.removeEventListener('scroll', handleScroll);
-            }
-        };
+        const timer = setTimeout(() => {
+            setVisible(true);
+        }, 10000);
 
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
+        return () => clearTimeout(timer);
     }, []);
 
     const handleClose = () => {

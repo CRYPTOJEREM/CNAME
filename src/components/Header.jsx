@@ -34,6 +34,7 @@ const Header = ({ activeTab, setActiveTab }) => {
     const handleTabClick = (tab) => {
         setActiveTab(tab)
         setMobileMenuOpen(false)
+        window.scrollTo({ top: 0, behavior: 'smooth' })
     }
 
     return (

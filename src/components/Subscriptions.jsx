@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useAuth } from '../contexts/AuthContext'
 import api from '../services/api'
 import ReviewSubmissionForm from './reviews/ReviewSubmissionForm'
@@ -7,15 +7,7 @@ import ReviewsList from './reviews/ReviewsList'
 
 const Subscriptions = () => {
     const { isAuthenticated, user } = useAuth()
-    const [videoAutoplay, setVideoAutoplay] = useState(false)
     const [selectedPlan, setSelectedPlan] = useState(null)
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setVideoAutoplay(true)
-        }, 3000)
-        return () => clearTimeout(timer)
-    }, [])
     const [showPaymentModal, setShowPaymentModal] = useState(false)
     const [paymentMethod, setPaymentMethod] = useState('eth')
 
@@ -235,7 +227,7 @@ const Subscriptions = () => {
                 <div className="video-container-ultrawide">
                     <iframe
                         className="hero-video-main"
-                        src={`https://www.youtube.com/embed/dQw4w9WgXcQ${videoAutoplay ? '?autoplay=1' : ''}`}
+                        src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
                         title="Présentation La Sphere"
                         frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

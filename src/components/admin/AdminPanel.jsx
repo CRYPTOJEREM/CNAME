@@ -5,6 +5,7 @@ import ProductManagement from './ProductManagement'
 import ContentManagement from './ContentManagement'
 import PaymentsDashboard from './PaymentsDashboard'
 import ReviewsManagement from './ReviewsManagement'
+import CarouselManagement from './CarouselManagement'
 import api from '../../services/api'
 
 const AdminPanel = () => {
@@ -92,6 +93,13 @@ const AdminPanel = () => {
                     >
                         <span className="nav-icon">💰</span>
                         <span>Paiements</span>
+                    </button>
+                    <button
+                        className={`admin-nav-btn ${activeSection === 'carousel' ? 'active' : ''}`}
+                        onClick={() => setActiveSection('carousel')}
+                    >
+                        <span className="nav-icon">🎬</span>
+                        <span>Carrousel</span>
                     </button>
                     <button
                         className={`admin-nav-btn ${activeSection === 'reviews' ? 'active' : ''}`}
@@ -205,6 +213,7 @@ const AdminPanel = () => {
                     {activeSection === 'products' && <ProductManagement />}
                     {activeSection === 'content' && <ContentManagement />}
                     {activeSection === 'payments' && <PaymentsDashboard />}
+                    {activeSection === 'carousel' && <CarouselManagement />}
                     {activeSection === 'reviews' && <ReviewsManagement />}
                 </div>
             </div>

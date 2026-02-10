@@ -1,7 +1,53 @@
 
-import React from 'react'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api'
+
+const FALLBACK_VIDEOS = [
+    { id: 'f1', platform: 'youtube', embedUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', title: 'Analyse du Bitcoin - Correction ou Bull Run ?', description: 'Analyse technique complète du BTC avec les niveaux clés à surveiller.', views: '15K vues', engagement: '890 likes' },
+    { id: 'f2', platform: 'twitch', embedUrl: 'https://player.twitch.tv/?video=2354044936&parent=lasphere.xyz&autoplay=false', title: 'Live Trading Session - Analyse des Altcoins', description: 'Session live de 3h avec analyses en direct.', views: '8K vues', engagement: '450 chats' },
+    { id: 'f3', platform: 'youtube', embedUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', title: 'Top 5 des Cryptos à Surveiller en 2026', description: 'Nos prévisions et analyses sur les cryptos prometteuses.', views: '22K vues', engagement: '1.2K likes' },
+    { id: 'f4', platform: 'youtube', embedUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', title: 'Tutoriel Débutant - Acheter sa Première Crypto', description: 'Guide complet pour débutants.', views: '35K vues', engagement: '2.1K likes' },
+    { id: 'f5', platform: 'twitch', embedUrl: 'https://player.twitch.tv/?video=2354044936&parent=lasphere.xyz&autoplay=false', title: 'NFP Day - Analyse du Rapport Emploi US', description: 'Rediffusion du live spécial NFP.', views: '12K vues', engagement: '780 chats' },
+    { id: 'f6', platform: 'youtube', embedUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', title: 'Ethereum 2.0 - Tout ce qu\'il faut savoir', description: 'Explication complète de l\'écosystème Ethereum.', views: '18K vues', engagement: '950 likes' }
+]
+
+const VideoCard = ({ video }) => (
+    <div className="video-card">
+        <div className="video-thumbnail">
+            <iframe src={video.embedUrl} allowFullScreen></iframe>
+        </div>
+        <div className="video-info">
+            <span className={`video-platform platform-${video.platform}`}>
+                {video.platform === 'youtube' ? '📺 YOUTUBE' : '🎮 TWITCH'}
+            </span>
+            <div className="video-title">{video.title}</div>
+            <div className="video-description">{video.description}</div>
+            <div className="video-stats">
+                <div className="stat-item">👁️ {video.views}</div>
+                <div className="stat-item">{video.platform === 'youtube' ? '❤️' : '💬'} {video.engagement}</div>
+            </div>
+        </div>
+    </div>
+)
 
 const Hero = ({ setActiveTab }) => {
+    const [videos, setVideos] = useState(FALLBACK_VIDEOS)
+
+    useEffect(() => {
+        axios.get(`${API_URL}/carousel`)
+            .then(res => {
+                if (res.data.success && res.data.data.length > 0) {
+                    setVideos(res.data.data)
+                }
+            })
+            .catch(() => {})
+    }, [])
+
+    // Dupliquer pour effet boucle infinie
+    const carouselVideos = [...videos, ...videos.slice(0, 2)]
+
     return (
         <>
             <section className="hero">
@@ -23,132 +69,9 @@ const Hero = ({ setActiveTab }) => {
 
                 <div className="carousel-container">
                     <div className="carousel-track">
-                        {/* Vidéo YouTube 1 */}
-                        <div className="video-card">
-                            <div className="video-thumbnail">
-                                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowFullScreen></iframe>
-                            </div>
-                            <div className="video-info">
-                                <span className="video-platform platform-youtube">📺 YOUTUBE</span>
-                                <div className="video-title">Analyse du Bitcoin - Correction ou Bull Run ?</div>
-                                <div className="video-description">Analyse technique complète du BTC avec les niveaux clés à surveiller.</div>
-                                <div className="video-stats">
-                                    <div className="stat-item">👁️ 15K vues</div>
-                                    <div className="stat-item">❤️ 890 likes</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Vidéo Twitch 1 */}
-                        <div className="video-card">
-                            <div className="video-thumbnail">
-                                <iframe src="https://player.twitch.tv/?video=2354044936&parent=lasphere.xyz&autoplay=false" allowFullScreen></iframe>
-                            </div>
-                            <div className="video-info">
-                                <span className="video-platform platform-twitch">🎮 TWITCH</span>
-                                <div className="video-title">Live Trading Session - Analyse des Altcoins</div>
-                                <div className="video-description">Session live de 3h avec analyses en direct.</div>
-                                <div className="video-stats">
-                                    <div className="stat-item">👁️ 8K vues</div>
-                                    <div className="stat-item">💬 450 chats</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Vidéo YouTube 2 */}
-                        <div className="video-card">
-                            <div className="video-thumbnail">
-                                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowFullScreen></iframe>
-                            </div>
-                            <div className="video-info">
-                                <span className="video-platform platform-youtube">📺 YOUTUBE</span>
-                                <div className="video-title">Top 5 des Cryptos à Surveiller en 2026</div>
-                                <div className="video-description">Nos prévisions et analyses sur les cryptos prometteuses.</div>
-                                <div className="video-stats">
-                                    <div className="stat-item">👁️ 22K vues</div>
-                                    <div className="stat-item">❤️ 1.2K likes</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Vidéo YouTube 3 */}
-                        <div className="video-card">
-                            <div className="video-thumbnail">
-                                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowFullScreen></iframe>
-                            </div>
-                            <div className="video-info">
-                                <span className="video-platform platform-youtube">📺 YOUTUBE</span>
-                                <div className="video-title">Tutoriel Débutant - Acheter sa Première Crypto</div>
-                                <div className="video-description">Guide complet pour débutants.</div>
-                                <div className="video-stats">
-                                    <div className="stat-item">👁️ 35K vues</div>
-                                    <div className="stat-item">❤️ 2.1K likes</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Vidéo Twitch 2 */}
-                        <div className="video-card">
-                            <div className="video-thumbnail">
-                                <iframe src="https://player.twitch.tv/?video=2354044936&parent=lasphere.xyz&autoplay=false" allowFullScreen></iframe>
-                            </div>
-                            <div className="video-info">
-                                <span className="video-platform platform-twitch">🎮 TWITCH</span>
-                                <div className="video-title">NFP Day - Analyse du Rapport Emploi US</div>
-                                <div className="video-description">Rediffusion du live spécial NFP.</div>
-                                <div className="video-stats">
-                                    <div className="stat-item">👁️ 12K vues</div>
-                                    <div className="stat-item">💬 780 chats</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Vidéo YouTube 4 */}
-                        <div className="video-card">
-                            <div className="video-thumbnail">
-                                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowFullScreen></iframe>
-                            </div>
-                            <div className="video-info">
-                                <span className="video-platform platform-youtube">📺 YOUTUBE</span>
-                                <div className="video-title">Ethereum 2.0 - Tout ce qu'il faut savoir</div>
-                                <div className="video-description">Explication complète de l'écosystème Ethereum.</div>
-                                <div className="video-stats">
-                                    <div className="stat-item">👁️ 18K vues</div>
-                                    <div className="stat-item">❤️ 950 likes</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* DUPLICATION POUR BOUCLE INFINIE */}
-                        <div className="video-card">
-                            <div className="video-thumbnail">
-                                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowFullScreen></iframe>
-                            </div>
-                            <div className="video-info">
-                                <span className="video-platform platform-youtube">📺 YOUTUBE</span>
-                                <div className="video-title">Analyse du Bitcoin - Correction ou Bull Run ?</div>
-                                <div className="video-description">Analyse technique complète du BTC.</div>
-                                <div className="video-stats">
-                                    <div className="stat-item">👁️ 15K vues</div>
-                                    <div className="stat-item">❤️ 890 likes</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="video-card">
-                            <div className="video-thumbnail">
-                                <iframe src="https://player.twitch.tv/?video=2354044936&parent=lasphere.xyz&autoplay=false" allowFullScreen></iframe>
-                            </div>
-                            <div className="video-info">
-                                <span className="video-platform platform-twitch">🎮 TWITCH</span>
-                                <div className="video-title">Live Trading Session</div>
-                                <div className="video-description">Session live de 3h.</div>
-                                <div className="video-stats">
-                                    <div className="stat-item">👁️ 8K vues</div>
-                                    <div className="stat-item">💬 450 chats</div>
-                                </div>
-                            </div>
-                        </div>
+                        {carouselVideos.map((video, idx) => (
+                            <VideoCard key={`${video.id}-${idx}`} video={video} />
+                        ))}
                     </div>
                 </div>
             </section>

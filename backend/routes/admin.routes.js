@@ -727,4 +727,115 @@ router.delete('/reviews/:id', async (req, res) => {
     }
 });
 
+// ==========================================
+// CAROUSEL VIDEOS MANAGEMENT
+// ==========================================
+
+// @route   GET /api/admin/carousel
+// @desc    Get all carousel videos
+// @access  Admin only
+router.get('/carousel', async (req, res) => {
+    try {
+        const db = readDatabase();
+        const videos = (db.carouselVideos || []).sort((a, b) => a.order - b.order);
+        res.json({ success: true, data: videos });
+    } catch (error) {
+        console.error('Erreur chargement carousel:', error);
+        res.status(500).json({ success: false, error: 'Erreur serveur' });
+    }
+});
+
+// @route   POST /api/admin/carousel
+// @desc    Add a carousel video
+// @access  Admin only
+router.post('/carousel', async (req, res) => {
+    try {
+        const { platform, embedUrl, title, description, views, engagement } = req.body;
+
+        if (!platform || !embedUrl || !title) {
+            return res.status(400).json({ success: false, error: 'Plateforme, URL embed et titre requis' });
+        }
+
+        const db = readDatabase();
+        if (!db.carouselVideos) db.carouselVideos = [];
+
+        const maxOrder = db.carouselVideos.reduce((max, v) => Math.max(max, v.order || 0), 0);
+
+        const newVideo = {
+            id: `carousel-${Date.now()}`,
+            platform,
+            embedUrl,
+            title,
+            description: description || '',
+            views: views || '0 vues',
+            engagement: engagement || '0 likes',
+            order: maxOrder + 1,
+            active: true,
+            createdAt: new Date().toISOString()
+        };
+
+        db.carouselVideos.push(newVideo);
+        writeDatabase(db);
+
+        res.status(201).json({ success: true, data: newVideo });
+    } catch (error) {
+        console.error('Erreur création carousel:', error);
+        res.status(500).json({ success: false, error: 'Erreur serveur' });
+    }
+});
+
+// @route   PUT /api/admin/carousel/:id
+// @desc    Update a carousel video
+// @access  Admin only
+router.put('/carousel/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const db = readDatabase();
+        if (!db.carouselVideos) db.carouselVideos = [];
+
+        const index = db.carouselVideos.findIndex(v => v.id === id);
+        if (index === -1) {
+            return res.status(404).json({ success: false, error: 'Vidéo introuvable' });
+        }
+
+        const allowedFields = ['platform', 'embedUrl', 'title', 'description', 'views', 'engagement', 'order', 'active'];
+        allowedFields.forEach(field => {
+            if (req.body[field] !== undefined) {
+                db.carouselVideos[index][field] = req.body[field];
+            }
+        });
+        db.carouselVideos[index].updatedAt = new Date().toISOString();
+
+        writeDatabase(db);
+        res.json({ success: true, data: db.carouselVideos[index] });
+    } catch (error) {
+        console.error('Erreur modification carousel:', error);
+        res.status(500).json({ success: false, error: 'Erreur serveur' });
+    }
+});
+
+// @route   DELETE /api/admin/carousel/:id
+// @desc    Delete a carousel video
+// @access  Admin only
+router.delete('/carousel/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const db = readDatabase();
+        if (!db.carouselVideos) db.carouselVideos = [];
+
+        const index = db.carouselVideos.findIndex(v => v.id === id);
+        if (index === -1) {
+            return res.status(404).json({ success: false, error: 'Vidéo introuvable' });
+        }
+
+        db.carouselVideos.splice(index, 1);
+        writeDatabase(db);
+
+        res.json({ success: true, message: 'Vidéo supprimée' });
+    } catch (error) {
+        console.error('Erreur suppression carousel:', error);
+        res.status(500).json({ success: false, error: 'Erreur serveur' });
+    }
+});
+
 module.exports = router;

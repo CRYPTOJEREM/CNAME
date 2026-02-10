@@ -83,6 +83,80 @@
       "createdAt": "2026-02-08T11:44:06.564Z"
     }
   ],
+  "carouselVideos": [
+    {
+      "id": "carousel-1",
+      "platform": "youtube",
+      "embedUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "title": "Analyse du Bitcoin - Correction ou Bull Run ?",
+      "description": "Analyse technique complète du BTC avec les niveaux clés à surveiller.",
+      "views": "15K vues",
+      "engagement": "890 likes",
+      "order": 1,
+      "active": true,
+      "createdAt": "2026-02-08T00:00:00.000Z"
+    },
+    {
+      "id": "carousel-2",
+      "platform": "twitch",
+      "embedUrl": "https://player.twitch.tv/?video=2354044936&parent=lasphere.xyz&autoplay=false",
+      "title": "Live Trading Session - Analyse des Altcoins",
+      "description": "Session live de 3h avec analyses en direct.",
+      "views": "8K vues",
+      "engagement": "450 chats",
+      "order": 2,
+      "active": true,
+      "createdAt": "2026-02-08T00:00:00.000Z"
+    },
+    {
+      "id": "carousel-3",
+      "platform": "youtube",
+      "embedUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "title": "Top 5 des Cryptos à Surveiller en 2026",
+      "description": "Nos prévisions et analyses sur les cryptos prometteuses.",
+      "views": "22K vues",
+      "engagement": "1.2K likes",
+      "order": 3,
+      "active": true,
+      "createdAt": "2026-02-08T00:00:00.000Z"
+    },
+    {
+      "id": "carousel-4",
+      "platform": "youtube",
+      "embedUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "title": "Tutoriel Débutant - Acheter sa Première Crypto",
+      "description": "Guide complet pour débutants.",
+      "views": "35K vues",
+      "engagement": "2.1K likes",
+      "order": 4,
+      "active": true,
+      "createdAt": "2026-02-08T00:00:00.000Z"
+    },
+    {
+      "id": "carousel-5",
+      "platform": "twitch",
+      "embedUrl": "https://player.twitch.tv/?video=2354044936&parent=lasphere.xyz&autoplay=false",
+      "title": "NFP Day - Analyse du Rapport Emploi US",
+      "description": "Rediffusion du live spécial NFP.",
+      "views": "12K vues",
+      "engagement": "780 chats",
+      "order": 5,
+      "active": true,
+      "createdAt": "2026-02-08T00:00:00.000Z"
+    },
+    {
+      "id": "carousel-6",
+      "platform": "youtube",
+      "embedUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "title": "Ethereum 2.0 - Tout ce qu'il faut savoir",
+      "description": "Explication complète de l'écosystème Ethereum.",
+      "views": "18K vues",
+      "engagement": "950 likes",
+      "order": 6,
+      "active": true,
+      "createdAt": "2026-02-08T00:00:00.000Z"
+    }
+  ],
   "memberContent": [
     {
       "id": "free-1",

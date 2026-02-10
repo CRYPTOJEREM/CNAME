@@ -110,6 +110,19 @@ app.use('/api/reviews', reviewsRoutes);
 const newsletterRoutes = require('./routes/newsletter.routes');
 app.use('/api/newsletter', newsletterRoutes);
 
+// Route publique Carousel (sans auth)
+app.get('/api/carousel', (req, res) => {
+    try {
+        const db = readDatabase();
+        const videos = (db.carouselVideos || [])
+            .filter(v => v.active)
+            .sort((a, b) => a.order - b.order);
+        res.json({ success: true, data: videos });
+    } catch (error) {
+        res.status(500).json({ success: false, error: 'Erreur serveur' });
+    }
+});
+
 // ==========================================
 // INITIALISATION TELEGRAM BOT
 // ==========================================

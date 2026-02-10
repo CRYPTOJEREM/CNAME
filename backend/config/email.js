@@ -3,17 +3,18 @@ const nodemailer = require('nodemailer');
 /**
  * Configuration du transporteur SMTP
  */
+const smtpPort = parseInt(process.env.SMTP_PORT) || 465;
 const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST || 'smtp.gmail.com',
-    port: parseInt(process.env.SMTP_PORT) || 587,
-    secure: false, // true for 465, false for other ports
+    host: process.env.SMTP_HOST || 'ssl0.ovh.net',
+    port: smtpPort,
+    secure: smtpPort === 465,
     auth: {
-        user: process.env.SMTP_USER,
+        user: process.env.SMTP_USER || 'Contact@lasphere.xyz',
         pass: process.env.SMTP_PASS
     },
-    connectionTimeout: 5000,
-    greetingTimeout: 5000,
-    socketTimeout: 10000
+    connectionTimeout: 10000,
+    greetingTimeout: 10000,
+    socketTimeout: 15000
 });
 
 /**

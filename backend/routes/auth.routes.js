@@ -68,23 +68,30 @@ router.post('/register', registerValidation, async (req, res) => {
             }
         }
 
-        // Auto-vérifier l'email (SMTP pas encore configuré)
-        await updateUser(user.id, { emailVerified: true });
+        // Créer un token de vérification email
+        const verificationToken = uuidv4();
+        addToCollection('emailVerifications', {
+            id: uuidv4(),
+            userId: user.id,
+            token: verificationToken,
+            expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
+            createdAt: new Date().toISOString()
+        });
 
-        // Essayer d'envoyer un email de bienvenue (non-bloquant)
-        sendWelcomeEmail(user).catch(emailError => {
-            console.warn('⚠️ Email de bienvenue non envoyé (SMTP non configuré):', emailError.message);
+        // Envoyer l'email de vérification (non-bloquant)
+        sendVerificationEmail(user, verificationToken).catch(emailError => {
+            console.warn('⚠️ Email de vérification non envoyé:', emailError.message);
         });
 
         res.status(201).json({
             success: true,
-            message: 'Compte créé avec succès. Vous pouvez vous connecter immédiatement.',
+            message: 'Compte créé ! Vérifiez votre boîte mail pour activer votre compte.',
             user: {
                 id: user.id,
                 email: user.email,
                 firstName: user.firstName,
                 lastName: user.lastName,
-                emailVerified: true
+                emailVerified: false
             }
         });
 

@@ -6,6 +6,7 @@ import ContentManagement from './ContentManagement'
 import PaymentsDashboard from './PaymentsDashboard'
 import ReviewsManagement from './ReviewsManagement'
 import CarouselManagement from './CarouselManagement'
+import ContestManagement from './ContestManagement'
 import api from '../../services/api'
 
 const AdminPanel = () => {
@@ -108,6 +109,13 @@ const AdminPanel = () => {
                         <span className="nav-icon">⭐</span>
                         <span>Avis Clients</span>
                     </button>
+                    <button
+                        className={`admin-nav-btn ${activeSection === 'contest' ? 'active' : ''}`}
+                        onClick={() => setActiveSection('contest')}
+                    >
+                        <span className="nav-icon">🎰</span>
+                        <span>Concours</span>
+                    </button>
                 </div>
 
                 {/* Contenu Admin */}
@@ -197,6 +205,20 @@ const AdminPanel = () => {
                                                 </div>
                                             </div>
                                         </div>
+
+                                        {stats.contest && (
+                                            <div className="stat-card">
+                                                <div className="stat-icon">🎰</div>
+                                                <div className="stat-content">
+                                                    <div className="stat-label">Concours</div>
+                                                    <div className="stat-value">{stats.contest.eligibleParticipants} eligible(s)</div>
+                                                    <div className="stat-details">
+                                                        <span className="stat-detail success">🎯 {stats.contest.totalDraws} tirage(s)</span>
+                                                        <span className="stat-detail premium">💰 ${stats.contest.totalPrizes} distribues</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
 
                                     <button onClick={fetchStats} className="btn-refresh">
@@ -215,6 +237,7 @@ const AdminPanel = () => {
                     {activeSection === 'payments' && <PaymentsDashboard />}
                     {activeSection === 'carousel' && <CarouselManagement />}
                     {activeSection === 'reviews' && <ReviewsManagement />}
+                    {activeSection === 'contest' && <ContestManagement />}
                 </div>
             </div>
         </section>

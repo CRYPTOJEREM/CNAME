@@ -43,7 +43,7 @@ const {
  */
 router.post('/register', registerValidation, async (req, res) => {
     try {
-        const { email, password, firstName, lastName, telegramUsername, newsletterOptIn } = req.body;
+        const { email, password, firstName, lastName, telegramUsername, bitunixUid, newsletterOptIn } = req.body;
 
         // Créer l'utilisateur
         const user = await createUser({
@@ -51,7 +51,8 @@ router.post('/register', registerValidation, async (req, res) => {
             password,
             firstName,
             lastName,
-            telegramUsername
+            telegramUsername,
+            bitunixUid
         });
 
         // Inscription newsletter si opt-in

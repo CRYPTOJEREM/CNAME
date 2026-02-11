@@ -51,10 +51,18 @@ const registerValidation = [
         .withMessage('Le nom contient des caractères invalides'),
 
     body('telegramUsername')
+        .optional()
         .trim()
         .matches(/^@?[a-zA-Z0-9_]{5,32}$/)
         .withMessage('Le pseudo Telegram doit contenir entre 5 et 32 caractères (lettres, chiffres, underscore)')
         .customSanitizer(value => value.replace('@', '')), // Enlever @ si présent
+
+    body('bitunixUid')
+        .trim()
+        .notEmpty()
+        .withMessage('Le Bitunix UID est requis')
+        .matches(/^\d{6,12}$/)
+        .withMessage('Le Bitunix UID doit contenir entre 6 et 12 chiffres'),
 
     handleValidationErrors
 ];
@@ -102,6 +110,12 @@ const updateProfileValidation = [
         .matches(/^@?[a-zA-Z0-9_]{5,32}$/)
         .withMessage('Le pseudo Telegram doit contenir entre 5 et 32 caractères')
         .customSanitizer(value => value.replace('@', '')),
+
+    body('bitunixUid')
+        .optional()
+        .trim()
+        .matches(/^\d{6,12}$/)
+        .withMessage('Le Bitunix UID doit contenir entre 6 et 12 chiffres'),
 
     handleValidationErrors
 ];

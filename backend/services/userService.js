@@ -11,7 +11,7 @@ const {
  * Créer un nouvel utilisateur
  */
 async function createUser(userData) {
-    const { email, password, firstName, lastName, telegramUsername } = userData;
+    const { email, password, firstName, lastName, telegramUsername, bitunixUid } = userData;
 
     // Vérifier si l'utilisateur existe déjà
     const existingUser = findInCollection('users', { email });
@@ -38,6 +38,7 @@ async function createUser(userData) {
         firstName,
         lastName,
         telegramUsername: telegramUsername || null,
+        bitunixUid: bitunixUid || null,
         emailVerified: false,
         subscriptionStatus: 'free',
         subscriptionExpiresAt: null,
@@ -78,7 +79,7 @@ async function findUserByTelegram(telegramUsername) {
  */
 async function updateUser(userId, updates) {
     // Ne pas permettre de modifier certains champs
-    const allowedUpdates = ['firstName', 'lastName', 'telegramUsername', 'emailVerified', 'subscriptionStatus', 'subscriptionExpiresAt'];
+    const allowedUpdates = ['firstName', 'lastName', 'telegramUsername', 'bitunixUid', 'emailVerified', 'subscriptionStatus', 'subscriptionExpiresAt'];
     const filteredUpdates = {};
 
     Object.keys(updates).forEach(key => {
@@ -134,6 +135,7 @@ async function getUserPublicData(userId) {
         firstName: user.firstName,
         lastName: user.lastName,
         telegramUsername: user.telegramUsername,
+        bitunixUid: user.bitunixUid,
         emailVerified: user.emailVerified,
         subscriptionStatus: user.subscriptionStatus,
         subscriptionExpiresAt: user.subscriptionExpiresAt,

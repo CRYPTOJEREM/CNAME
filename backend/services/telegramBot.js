@@ -1,11 +1,13 @@
 const { Telegraf, Markup } = require('telegraf');
+const { v4: uuidv4 } = require('uuid');
 const { findUserByEmail } = require('./userService');
-const { loadDB } = require('../config/database');
+const { loadDB, addToCollection } = require('../config/database');
 
 class TelegramBotService {
     constructor(token, vipGroupId) {
         this.bot = new Telegraf(token);
         this.vipGroupId = vipGroupId;
+        this.surveyState = new Map(); // chatId -> { step, answers }
         this.setupCommands();
         this.setupHandlers();
     }
@@ -30,6 +32,27 @@ class TelegramBotService {
                     [Markup.button.callback('💬 Support', 'support')]
                 ])
             );
+
+            // Lancer le questionnaire apres le welcome (DM uniquement)
+            if (ctx.chat.type === 'private') {
+                setTimeout(() => {
+                    this.surveyState.set(ctx.from.id, { step: 1, answers: {} });
+                    ctx.reply(
+                        `📋 *Petit questionnaire rapide (2 questions):*\n\n` +
+                        `1️⃣ D'où venez-vous ?`,
+                        {
+                            parse_mode: 'Markdown',
+                            ...Markup.inlineKeyboard([
+                                [Markup.button.callback('🎥 YouTube', 'survey_source_youtube')],
+                                [Markup.button.callback('🐦 Twitter', 'survey_source_twitter')],
+                                [Markup.button.callback('🎵 TikTok', 'survey_source_tiktok')],
+                                [Markup.button.callback('👥 Ami / Bouche à oreille', 'survey_source_friend')],
+                                [Markup.button.callback('🔗 Autre', 'survey_source_other')]
+                            ])
+                        }
+                    );
+                }, 2000);
+            }
         });
 
         // ==========================================
@@ -404,6 +427,82 @@ class TelegramBotService {
                 `💬 *Contactez le Support*\n\n` +
                 `Email: support@lasphere.com\n` +
                 `Telegram: @LaSphereSupport`,
+                { parse_mode: 'Markdown' }
+            );
+        });
+
+        // ==========================================
+        // QUESTIONNAIRE SURVEY
+        // ==========================================
+        const sourceLabels = {
+            youtube: 'YouTube', twitter: 'Twitter', tiktok: 'TikTok',
+            friend: 'Ami / Bouche à oreille', other: 'Autre'
+        };
+
+        ['youtube', 'twitter', 'tiktok', 'friend', 'other'].forEach(source => {
+            this.bot.action(`survey_source_${source}`, (ctx) => {
+                ctx.answerCbQuery();
+                const state = this.surveyState.get(ctx.from.id);
+                if (!state || state.step !== 1) return;
+
+                state.answers.source = sourceLabels[source];
+                state.step = 2;
+                this.surveyState.set(ctx.from.id, state);
+
+                ctx.reply(
+                    `2️⃣ *Quel est votre UID Bitunix ?*\n\n` +
+                    `Envoyez votre UID (nombre de 6 à 12 chiffres).\n` +
+                    `Vous le trouverez dans Paramètres > Profil sur Bitunix.`,
+                    { parse_mode: 'Markdown' }
+                );
+            });
+        });
+
+        // Handler texte pour recevoir le UID Bitunix (step 2)
+        this.bot.on('text', (ctx) => {
+            if (ctx.chat.type !== 'private') return;
+
+            const state = this.surveyState.get(ctx.from.id);
+            if (!state || state.step !== 2) return;
+
+            const uid = ctx.message.text.trim();
+
+            if (!/^\d{6,12}$/.test(uid)) {
+                return ctx.reply('⚠️ Le UID Bitunix doit contenir entre 6 et 12 chiffres. Veuillez reessayer:');
+            }
+
+            // Sauvegarder le survey
+            const survey = {
+                id: uuidv4(),
+                telegramUserId: ctx.from.id,
+                telegramUsername: ctx.from.username || null,
+                telegramFirstName: ctx.from.first_name || null,
+                source: state.answers.source,
+                bitunixUid: uid,
+                linkedUserId: null,
+                createdAt: new Date().toISOString()
+            };
+
+            // Tenter de lier au compte utilisateur
+            if (ctx.from.username) {
+                const db = loadDB();
+                const matchedUser = (db.users || []).find(u =>
+                    u.telegramUsername && u.telegramUsername.replace('@', '') === ctx.from.username
+                );
+                if (matchedUser) {
+                    survey.linkedUserId = matchedUser.id;
+                }
+            }
+
+            addToCollection('telegramSurveys', survey);
+            this.surveyState.delete(ctx.from.id);
+
+            ctx.reply(
+                `✅ Merci pour vos réponses !\n\n` +
+                `🏆 *Concours Hebdomadaire $1,000*\n` +
+                `Vous participez automatiquement chaque semaine au tirage au sort de $1,000 de coupon de trading Bitunix !\n\n` +
+                `⚠️ *Condition :* Votre compte Bitunix doit être actif (vous devez trader dessus) pour être éligible.\n\n` +
+                `Tapez /help pour voir les commandes disponibles.`,
                 { parse_mode: 'Markdown' }
             );
         });

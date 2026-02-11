@@ -367,6 +367,85 @@ const MemberArea = ({ setActiveTab }) => {
                                     </button>
                                 </div>
                             )}
+
+                            {/* Card Concours Hebdomadaire */}
+                            <div style={{
+                                background: 'linear-gradient(135deg, #0D1229 0%, #1A1F3A 100%)',
+                                border: '2px solid rgba(255, 215, 0, 0.3)',
+                                borderRadius: '20px',
+                                padding: '30px',
+                                position: 'relative',
+                                overflow: 'hidden'
+                            }}>
+                                <div style={{
+                                    position: 'absolute',
+                                    top: 0,
+                                    left: 0,
+                                    right: 0,
+                                    height: '3px',
+                                    background: 'linear-gradient(90deg, #FFD700, #FF6B00)'
+                                }} />
+                                <div style={{ fontSize: '40px', marginBottom: '15px' }}>🎰</div>
+                                <h3 style={{ color: '#FFFFFF', fontSize: '20px', fontWeight: '700', marginBottom: '10px' }}>
+                                    Concours Hebdomadaire
+                                </h3>
+                                <p style={{
+                                    color: '#FFD700',
+                                    fontSize: '28px',
+                                    fontWeight: '900',
+                                    marginBottom: '15px'
+                                }}>
+                                    $1,000
+                                </p>
+                                <p style={{ color: '#7B8BA8', fontSize: '14px', marginBottom: '10px' }}>
+                                    Coupon de trading Bitunix
+                                </p>
+                                {user.bitunixUid ? (
+                                    <div style={{
+                                        background: 'rgba(0, 217, 255, 0.1)',
+                                        border: '1px solid rgba(0, 217, 255, 0.3)',
+                                        borderRadius: '10px',
+                                        padding: '12px 15px'
+                                    }}>
+                                        <p style={{ color: '#00D9FF', fontSize: '14px', fontWeight: '700', margin: 0 }}>
+                                            ✓ Vous participez automatiquement !
+                                        </p>
+                                        <p style={{ color: '#7B8BA8', fontSize: '12px', margin: '5px 0 0 0' }}>
+                                            Tirage chaque semaine. Votre compte Bitunix doit etre actif (trading) pour etre eligible.
+                                        </p>
+                                    </div>
+                                ) : (
+                                    <div style={{
+                                        background: 'rgba(255, 215, 0, 0.1)',
+                                        border: '1px solid rgba(255, 215, 0, 0.3)',
+                                        borderRadius: '10px',
+                                        padding: '12px 15px'
+                                    }}>
+                                        <p style={{ color: '#FFD700', fontSize: '14px', fontWeight: '700', margin: 0 }}>
+                                            Ajoutez votre Bitunix UID
+                                        </p>
+                                        <p style={{ color: '#7B8BA8', fontSize: '12px', margin: '5px 0 0 0' }}>
+                                            Renseignez votre UID dans votre profil pour participer au tirage.
+                                        </p>
+                                        <button
+                                            onClick={() => setActiveSection('profile')}
+                                            style={{
+                                                background: 'linear-gradient(135deg, #FFD700, #FF6B00)',
+                                                border: 'none',
+                                                color: '#0A0E27',
+                                                padding: '10px 16px',
+                                                borderRadius: '8px',
+                                                fontWeight: '700',
+                                                fontSize: '13px',
+                                                cursor: 'pointer',
+                                                marginTop: '10px'
+                                            }}
+                                        >
+                                            Modifier mon profil
+                                        </button>
+                                    </div>
+                                )}
+                            </div>
                         </div>
                     </div>
                 )}

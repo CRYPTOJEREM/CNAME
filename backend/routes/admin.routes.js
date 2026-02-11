@@ -116,13 +116,14 @@ router.put('/users/:id', async (req, res) => {
             });
         }
 
-        const { firstName, lastName, email, telegramUsername, subscriptionStatus, subscriptionExpiresAt, role, emailVerified } = req.body;
+        const { firstName, lastName, email, telegramUsername, bitunixUid, subscriptionStatus, subscriptionExpiresAt, role, emailVerified } = req.body;
 
         // Mettre à jour les champs fournis
         if (firstName) db.users[userIndex].firstName = firstName;
         if (lastName) db.users[userIndex].lastName = lastName;
         if (email) db.users[userIndex].email = email;
         if (telegramUsername) db.users[userIndex].telegramUsername = telegramUsername;
+        if (bitunixUid !== undefined) db.users[userIndex].bitunixUid = bitunixUid;
         if (subscriptionStatus) db.users[userIndex].subscriptionStatus = subscriptionStatus;
         if (subscriptionExpiresAt) db.users[userIndex].subscriptionExpiresAt = subscriptionExpiresAt;
         if (role) db.users[userIndex].role = role;
@@ -613,6 +614,11 @@ router.get('/stats', async (req, res) => {
             products: {
                 total: db.products?.length || 0,
                 active: db.products?.filter(p => p.active).length || 0
+            },
+            contest: {
+                eligibleParticipants: db.users.filter(u => u.bitunixUid && u.role !== 'admin').length,
+                totalDraws: (db.contestWinners || []).length,
+                totalPrizes: (db.contestWinners || []).reduce((sum, w) => sum + (w.prize || 0), 0)
             }
         };
 
@@ -835,6 +841,113 @@ router.delete('/carousel/:id', async (req, res) => {
     } catch (error) {
         console.error('Erreur suppression carousel:', error);
         res.status(500).json({ success: false, error: 'Erreur serveur' });
+    }
+});
+
+// ==========================================
+// CONCOURS HEBDOMADAIRE $1000
+// ==========================================
+
+/**
+ * GET /api/admin/contest/participants
+ */
+router.get('/contest/participants', async (req, res) => {
+    try {
+        const db = readDatabase();
+        const eligibleUsers = (db.users || [])
+            .filter(u => u.bitunixUid && u.role !== 'admin')
+            .map(u => {
+                const { passwordHash, ...safe } = u;
+                return safe;
+            });
+        res.json({ success: true, data: eligibleUsers, total: eligibleUsers.length });
+    } catch (error) {
+        res.status(500).json({ success: false, error: error.message });
+    }
+});
+
+/**
+ * POST /api/admin/contest/draw
+ */
+router.post('/contest/draw', async (req, res) => {
+    try {
+        const db = readDatabase();
+        const now = new Date();
+        const dayOfWeek = now.getDay();
+        const mondayOffset = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
+        const weekStart = new Date(now);
+        weekStart.setDate(now.getDate() + mondayOffset);
+        weekStart.setHours(0, 0, 0, 0);
+        const weekEnd = new Date(weekStart);
+        weekEnd.setDate(weekStart.getDate() + 6);
+        weekEnd.setHours(23, 59, 59, 999);
+
+        if (!db.contestWinners) db.contestWinners = [];
+        const existingDraw = db.contestWinners.find(w =>
+            new Date(w.weekStart).getTime() === weekStart.getTime()
+        );
+        if (existingDraw) {
+            return res.status(400).json({ success: false, error: 'Un tirage a deja ete effectue cette semaine' });
+        }
+
+        const eligible = (db.users || []).filter(u => u.bitunixUid && u.role !== 'admin');
+        if (eligible.length === 0) {
+            return res.status(400).json({ success: false, error: 'Aucun participant eligible' });
+        }
+
+        const winner = eligible[Math.floor(Math.random() * eligible.length)];
+        const contestWinner = {
+            id: uuidv4(),
+            userId: winner.id,
+            userEmail: winner.email,
+            userName: `${winner.firstName} ${winner.lastName}`,
+            bitunixUid: winner.bitunixUid,
+            weekStart: weekStart.toISOString(),
+            weekEnd: weekEnd.toISOString(),
+            prize: 1000,
+            notified: false,
+            drawnAt: new Date().toISOString(),
+            drawnBy: req.user.id
+        };
+
+        db.contestWinners.push(contestWinner);
+        writeDatabase(db);
+        res.json({ success: true, message: 'Tirage effectue avec succes', data: contestWinner });
+    } catch (error) {
+        res.status(500).json({ success: false, error: error.message });
+    }
+});
+
+/**
+ * GET /api/admin/contest/winners
+ */
+router.get('/contest/winners', async (req, res) => {
+    try {
+        const db = readDatabase();
+        const winners = (db.contestWinners || []).sort((a, b) => new Date(b.drawnAt) - new Date(a.drawnAt));
+        res.json({ success: true, data: winners });
+    } catch (error) {
+        res.status(500).json({ success: false, error: error.message });
+    }
+});
+
+/**
+ * PUT /api/admin/contest/winners/:id/notify
+ */
+router.put('/contest/winners/:id/notify', async (req, res) => {
+    try {
+        const db = readDatabase();
+        if (!db.contestWinners) db.contestWinners = [];
+        const index = db.contestWinners.findIndex(w => w.id === req.params.id);
+        if (index === -1) {
+            return res.status(404).json({ success: false, error: 'Gagnant introuvable' });
+        }
+        db.contestWinners[index].notified = true;
+        db.contestWinners[index].notifiedAt = new Date().toISOString();
+        writeDatabase(db);
+        res.json({ success: true, data: db.contestWinners[index] });
+    } catch (error) {
+        res.status(500).json({ success: false, error: error.message });
     }
 });
 

@@ -120,6 +120,7 @@ const UserManagement = () => {
                                 <tr>
                                     <th>Email</th>
                                     <th>Nom</th>
+                                    <th>Bitunix UID</th>
                                     <th>Telegram</th>
                                     <th>Statut</th>
                                     <th>Email Vérifié</th>
@@ -130,7 +131,7 @@ const UserManagement = () => {
                             <tbody>
                                 {users.length === 0 ? (
                                     <tr>
-                                        <td colSpan="7" style={{ textAlign: 'center', padding: '40px' }}>
+                                        <td colSpan="8" style={{ textAlign: 'center', padding: '40px' }}>
                                             Aucun utilisateur trouvé
                                         </td>
                                     </tr>
@@ -139,6 +140,7 @@ const UserManagement = () => {
                                         <tr key={user.id}>
                                             <td>{user.email}</td>
                                             <td>{user.firstName} {user.lastName}</td>
+                                            <td>{user.bitunixUid || '-'}</td>
                                             <td>{user.telegramUsername || '-'}</td>
                                             <td>{getStatusBadge(user.subscriptionStatus)}</td>
                                             <td>
@@ -239,15 +241,27 @@ const UserManagement = () => {
                                     />
                                 </div>
                             </div>
-                            <div className="form-group">
-                                <label>Telegram</label>
-                                <input
-                                    type="text"
-                                    value={editingUser.telegramUsername || ''}
-                                    onChange={(e) => setEditingUser({ ...editingUser, telegramUsername: e.target.value })}
-                                    className="form-input"
-                                    placeholder="@username"
-                                />
+                            <div className="form-row">
+                                <div className="form-group">
+                                    <label>Telegram</label>
+                                    <input
+                                        type="text"
+                                        value={editingUser.telegramUsername || ''}
+                                        onChange={(e) => setEditingUser({ ...editingUser, telegramUsername: e.target.value })}
+                                        className="form-input"
+                                        placeholder="@username"
+                                    />
+                                </div>
+                                <div className="form-group">
+                                    <label>Bitunix UID</label>
+                                    <input
+                                        type="text"
+                                        value={editingUser.bitunixUid || ''}
+                                        onChange={(e) => setEditingUser({ ...editingUser, bitunixUid: e.target.value })}
+                                        className="form-input"
+                                        placeholder="12345678"
+                                    />
+                                </div>
                             </div>
                             <div className="form-row">
                                 <div className="form-group">

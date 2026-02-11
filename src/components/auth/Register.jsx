@@ -9,6 +9,7 @@ const Register = ({ setActiveTab }) => {
         firstName: '',
         lastName: '',
         telegramUsername: '',
+        bitunixUid: '',
         newsletterOptIn: true
     });
     const [loading, setLoading] = useState(false);
@@ -36,6 +37,11 @@ const Register = ({ setActiveTab }) => {
 
         if (formData.password.length < 8) {
             setError('Le mot de passe doit contenir au moins 8 caractères');
+            return;
+        }
+
+        if (!/^\d{6,12}$/.test(formData.bitunixUid)) {
+            setError('Le Bitunix UID doit contenir entre 6 et 12 chiffres');
             return;
         }
 
@@ -149,6 +155,26 @@ const Register = ({ setActiveTab }) => {
                         />
                         <small className="form-hint">
                             Nécessaire pour accéder au groupe Telegram VIP après paiement
+                        </small>
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="bitunixUid">
+                            Bitunix UID
+                            <span className="label-required">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="bitunixUid"
+                            name="bitunixUid"
+                            value={formData.bitunixUid}
+                            onChange={handleChange}
+                            placeholder="Ex: 12345678"
+                            required
+                            disabled={loading}
+                        />
+                        <small className="form-hint">
+                            Votre identifiant Bitunix (6-12 chiffres). Trouvez-le dans Parametres &gt; Profil sur Bitunix.
                         </small>
                     </div>
 

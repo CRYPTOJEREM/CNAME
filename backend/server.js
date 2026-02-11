@@ -131,10 +131,13 @@ app.get('/api/test-email', async (req, res) => {
             error: verifyErr.message,
             code: verifyErr.code,
             config: {
+                brevoKeySet: !!process.env.BREVO_API_KEY,
+                brevoKeyLength: process.env.BREVO_API_KEY ? process.env.BREVO_API_KEY.length : 0,
+                brevoLogin: process.env.BREVO_LOGIN || 'NOT SET',
+                transporterHost: transporter.options?.host || 'unknown',
                 host: process.env.SMTP_HOST,
                 port: process.env.SMTP_PORT,
                 user: process.env.SMTP_USER,
-                passLength: process.env.SMTP_PASS ? process.env.SMTP_PASS.length : 0,
                 from: process.env.EMAIL_FROM
             }
         });

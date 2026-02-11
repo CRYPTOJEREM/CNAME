@@ -26,7 +26,7 @@ async function sendVerificationEmail(user, verificationToken) {
     `;
 
     const mailOptions = {
-        from: process.env.EMAIL_FROM || '"La Sphere" <Contact@lasphere.xyz>',
+        from: process.env.EMAIL_FROM || '"La Sphere" <contact@lasphere.xyz>',
         to: user.email,
         subject: '🌐 Vérifiez votre email - La Sphere',
         html: getEmailTemplate(content)
@@ -68,7 +68,7 @@ async function sendWelcomeEmail(user) {
     `;
 
     const mailOptions = {
-        from: process.env.EMAIL_FROM || '"La Sphere" <Contact@lasphere.xyz>',
+        from: process.env.EMAIL_FROM || '"La Sphere" <contact@lasphere.xyz>',
         to: user.email,
         subject: '🎉 Bienvenue sur La Sphere !',
         html: getEmailTemplate(content)
@@ -141,7 +141,7 @@ async function sendPaymentConfirmationEmail(user, paymentDetails) {
     `;
 
     const mailOptions = {
-        from: process.env.EMAIL_FROM || '"La Sphere" <Contact@lasphere.xyz>',
+        from: process.env.EMAIL_FROM || '"La Sphere" <contact@lasphere.xyz>',
         to: user.email,
         subject: `✅ Paiement confirmé - ${paymentDetails.planName}`,
         html: getEmailTemplate(content)
@@ -184,7 +184,7 @@ async function sendPasswordResetEmail(user, resetToken) {
     `;
 
     const mailOptions = {
-        from: process.env.EMAIL_FROM || '"La Sphere" <Contact@lasphere.xyz>',
+        from: process.env.EMAIL_FROM || '"La Sphere" <contact@lasphere.xyz>',
         to: user.email,
         subject: '🔐 Réinitialisation de votre mot de passe - La Sphere',
         html: getEmailTemplate(content)

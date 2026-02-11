@@ -144,16 +144,37 @@ app.get('/api/test-email', async (req, res) => {
     }
 
     // Étape 2: Envoyer un email de test
+    const { getEmailTemplate } = require('./config/email');
+    const type = req.query.type || 'simple';
+
+    let subject, html;
+    if (type === 'verification') {
+        subject = '🌐 Vérifiez votre email - La Sphere';
+        html = getEmailTemplate(`
+            <h2>👋 Bienvenue Test !</h2>
+            <p>Ceci est un test du template de vérification.</p>
+            <div style="text-align: center; margin: 30px 0;">
+                <a href="https://lasphere.xyz" style="display: inline-block; padding: 12px 30px; background: linear-gradient(135deg, #00D9FF 0%, #7B2FF7 100%); color: white !important; text-decoration: none; border-radius: 5px; font-weight: bold;">
+                    ✅ Vérifier mon email
+                </a>
+            </div>
+        `);
+    } else {
+        subject = 'Test Email - La Sphere';
+        html = '<h1>Test OK</h1><p>Si vous recevez cet email, la configuration SMTP fonctionne.</p>';
+    }
+
     try {
         const info = await transporter.sendMail({
-            from: process.env.EMAIL_FROM || '"La Sphere" <Contact@lasphere.xyz>',
+            from: process.env.EMAIL_FROM || '"La Sphere" <contact@lasphere.xyz>',
             to: testTo,
-            subject: 'Test Email - La Sphere',
-            html: '<h1>Test OK</h1><p>Si vous recevez cet email, la configuration SMTP fonctionne.</p>'
+            subject,
+            html
         });
         res.json({
             success: true,
             message: `Email envoyé à ${testTo}`,
+            type,
             messageId: info.messageId,
             response: info.response
         });

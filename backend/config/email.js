@@ -31,7 +31,7 @@ const smtpTransporter = nodemailer.createTransport({
  */
 function sendViaBrevoApi(mailOptions) {
     return new Promise((resolve, reject) => {
-        const fromEmail = process.env.SMTP_USER || 'Contact@lasphere.xyz';
+        const fromEmail = (process.env.SMTP_USER || 'contact@lasphere.xyz').toLowerCase();
         const fromName = 'La Sphere';
 
         const data = JSON.stringify({
@@ -54,10 +54,13 @@ function sendViaBrevoApi(mailOptions) {
             }
         };
 
+        console.log(`📤 Brevo API: envoi à ${mailOptions.to}, sujet: ${mailOptions.subject}, from: ${fromEmail}`);
+
         const req = https.request(options, (res) => {
             let body = '';
             res.on('data', chunk => body += chunk);
             res.on('end', () => {
+                console.log(`📨 Brevo API response: ${res.statusCode} - ${body}`);
                 if (res.statusCode >= 200 && res.statusCode < 300) {
                     const parsed = JSON.parse(body);
                     resolve({

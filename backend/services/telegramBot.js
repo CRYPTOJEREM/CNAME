@@ -16,59 +16,70 @@ class TelegramBotService {
         // ==========================================
         // COMMANDE /start - Message d'accueil
         // ==========================================
-        this.bot.command('start', (ctx) => {
+        this.bot.command('start', async (ctx) => {
             const userName = ctx.from.first_name;
-            const args = ctx.message.text.split(' ');
-            const deepLink = args[1]; // ex: /start survey
 
             if (ctx.chat.type === 'private') {
-                // En DM : message de bienvenue + questionnaire
+                // ── DM : message de bienvenue complet ──
                 ctx.reply(
-                    `🌐 Bienvenue sur La Sphere, ${userName}!\n\n` +
-                    `Je suis votre assistant personnel pour:\n\n` +
-                    `✨ Accéder aux formations exclusives\n` +
-                    `💎 Rejoindre le groupe VIP après paiement\n` +
-                    `📊 Consulter votre statut d'abonnement\n` +
-                    `💬 Obtenir du support\n\n` +
-                    `Tapez /help pour voir toutes les commandes disponibles.`,
-                    Markup.inlineKeyboard([
-                        [Markup.button.url('🌐 Visiter La Sphere', process.env.FRONTEND_URL || 'http://localhost:5173')],
-                        [Markup.button.callback('📋 Voir les abonnements', 'show_plans')],
-                        [Markup.button.callback('💬 Support', 'support')]
-                    ])
+                    `━━━━━━━━━━━━━━━━━━━━━━\n` +
+                    `   🌐  *LA SPHERE*\n` +
+                    `━━━━━━━━━━━━━━━━━━━━━━\n\n` +
+                    `Bienvenue *${userName}* !\n\n` +
+                    `Je suis ton assistant personnel :\n\n` +
+                    `  ✨  Formations exclusives\n` +
+                    `  💎  Groupe VIP privé\n` +
+                    `  📊  Suivi d'abonnement\n` +
+                    `  🏆  Concours $1,000/semaine\n\n` +
+                    `━━━━━━━━━━━━━━━━━━━━━━`,
+                    {
+                        parse_mode: 'Markdown',
+                        ...Markup.inlineKeyboard([
+                            [Markup.button.url('🌐 Visiter La Sphere', process.env.FRONTEND_URL || 'http://localhost:5173')],
+                            [Markup.button.callback('📋 Abonnements', 'show_plans'), Markup.button.callback('💬 Support', 'support')]
+                        ])
+                    }
                 );
 
                 // Lancer le questionnaire apres le welcome
                 setTimeout(() => {
                     this.surveyState.set(ctx.from.id, { step: 1, answers: {} });
                     ctx.reply(
-                        `📋 *Petit questionnaire rapide (2 questions):*\n\n` +
-                        `1️⃣ D'où venez-vous ?`,
+                        `📋 *Questionnaire rapide* (2 questions)\n\n` +
+                        `Aide-nous à mieux te connaître et participe au concours gratuit de *$1,000* chaque semaine !\n\n` +
+                        `*Question 1/2* — D'où viens-tu ?`,
                         {
                             parse_mode: 'Markdown',
                             ...Markup.inlineKeyboard([
-                                [Markup.button.callback('🎥 YouTube', 'survey_source_youtube')],
-                                [Markup.button.callback('🐦 Twitter', 'survey_source_twitter')],
-                                [Markup.button.callback('🎵 TikTok', 'survey_source_tiktok')],
-                                [Markup.button.callback('👥 Ami / Bouche à oreille', 'survey_source_friend')],
+                                [Markup.button.callback('🎥 YouTube', 'survey_source_youtube'), Markup.button.callback('🐦 Twitter', 'survey_source_twitter')],
+                                [Markup.button.callback('🎵 TikTok', 'survey_source_tiktok'), Markup.button.callback('👥 Ami', 'survey_source_friend')],
                                 [Markup.button.callback('🔗 Autre', 'survey_source_other')]
                             ])
                         }
                     );
                 }, 2000);
             } else {
-                // Dans un groupe : message court + bouton pour DM le bot
+                // ── GROUPE : message court + auto-suppression ──
+                try {
+                    // Supprimer la commande /start de l'utilisateur
+                    await ctx.deleteMessage().catch(() => {});
+                } catch (e) {}
+
                 const botUsername = ctx.botInfo.username;
-                ctx.reply(
-                    `🌐 Bienvenue sur La Sphere, ${userName}!\n\n` +
-                    `📋 Envoyez-moi un message privé pour compléter un petit questionnaire et participer au concours hebdomadaire de *$1,000* ! 🏆`,
+                const msg = await ctx.reply(
+                    `👋 *${userName}*, clique ci-dessous pour participer au concours gratuit de *$1,000*/semaine !`,
                     {
                         parse_mode: 'Markdown',
                         ...Markup.inlineKeyboard([
-                            [Markup.button.url('📩 M\'envoyer un message privé', `https://t.me/${botUsername}?start=survey`)]
+                            [Markup.button.url('📩 Ouvrir le bot en privé', `https://t.me/${botUsername}?start=survey`)]
                         ])
                     }
                 );
+
+                // Auto-suppression après 30 secondes
+                setTimeout(() => {
+                    ctx.telegram.deleteMessage(msg.chat.id, msg.message_id).catch(() => {});
+                }, 30000);
             }
         });
 
@@ -392,31 +403,59 @@ class TelegramBotService {
 
             for (const member of newMembers) {
                 if (member.is_bot) continue;
+                const name = member.username ? '@' + member.username : member.first_name;
 
                 if (isVipGroup) {
-                    // Groupe VIP : message de bienvenue VIP
+                    // Groupe VIP : bienvenue VIP
                     await ctx.reply(
-                        `🎉 Bienvenue @${member.username || member.first_name} dans le groupe VIP de La Sphere!\n\n` +
-                        `💎 Vous avez maintenant accès à:\n` +
-                        `• Signaux de trading en temps réel (/signaux)\n` +
-                        `• Analyses de marché quotidiennes (/analyse)\n` +
-                        `• Formations exclusives (/formations)\n` +
-                        `• Support VIP prioritaire\n\n` +
-                        `📚 Tapez /help pour voir toutes les commandes.\n` +
-                        `🌐 Accédez à votre espace membre: ${process.env.FRONTEND_URL}?tab=membre`
+                        `🎉 Bienvenue ${name} dans le *groupe VIP* !\n\n` +
+                        `💎 Commandes : /signaux · /analyse · /formations\n` +
+                        `📚 /help pour tout voir`,
+                        { parse_mode: 'Markdown' }
                     );
                 } else {
-                    // Groupe gratuit : bienvenue + invitation DM pour questionnaire
-                    await ctx.reply(
-                        `🌐 Bienvenue ${member.username ? '@' + member.username : member.first_name} sur La Sphere !\n\n` +
-                        `📋 Envoyez-moi un message privé pour compléter un petit questionnaire et participer au concours hebdomadaire de *$1,000* de coupon trading Bitunix ! 🏆`,
-                        {
-                            parse_mode: 'Markdown',
-                            ...Markup.inlineKeyboard([
-                                [Markup.button.url('📩 Compléter le questionnaire', `https://t.me/${botUsername}?start=survey`)]
-                            ])
-                        }
-                    );
+                    // Groupe gratuit : essayer DM d'abord, sinon message court auto-supprimé
+                    let dmSent = false;
+                    try {
+                        await ctx.telegram.sendMessage(
+                            member.id,
+                            `━━━━━━━━━━━━━━━━━━━━━━\n` +
+                            `   🌐  *LA SPHERE*\n` +
+                            `━━━━━━━━━━━━━━━━━━━━━━\n\n` +
+                            `Bienvenue *${member.first_name}* !\n\n` +
+                            `Tu viens de rejoindre notre communauté.\n` +
+                            `Complète ce rapide questionnaire pour participer au concours gratuit de *$1,000 chaque semaine* ! 🏆\n\n` +
+                            `━━━━━━━━━━━━━━━━━━━━━━`,
+                            {
+                                parse_mode: 'Markdown',
+                                ...Markup.inlineKeyboard([
+                                    [Markup.button.callback('🚀 Commencer le questionnaire', 'start_survey_dm')]
+                                ])
+                            }
+                        );
+                        dmSent = true;
+                    } catch (e) {
+                        // DM impossible (l'utilisateur n'a pas encore parlé au bot)
+                        dmSent = false;
+                    }
+
+                    if (!dmSent) {
+                        // Fallback : message court dans le groupe, auto-supprimé après 15s
+                        const msg = await ctx.reply(
+                            `👋 ${name} — écris-moi en privé pour participer au concours *$1,000*/semaine !`,
+                            {
+                                parse_mode: 'Markdown',
+                                ...Markup.inlineKeyboard([
+                                    [Markup.button.url('📩 M\'écrire en privé', `https://t.me/${botUsername}?start=survey`)]
+                                ])
+                            }
+                        );
+
+                        // Auto-suppression après 15 secondes
+                        setTimeout(() => {
+                            ctx.telegram.deleteMessage(msg.chat.id, msg.message_id).catch(() => {});
+                        }, 15000);
+                    }
                 }
             }
         });
@@ -463,6 +502,26 @@ class TelegramBotService {
         });
 
         // ==========================================
+        // BOUTON "Commencer le questionnaire" en DM
+        // ==========================================
+        this.bot.action('start_survey_dm', (ctx) => {
+            ctx.answerCbQuery();
+            this.surveyState.set(ctx.from.id, { step: 1, answers: {} });
+            ctx.reply(
+                `📋 *Questionnaire rapide* (2 questions)\n\n` +
+                `*Question 1/2* — D'où viens-tu ?`,
+                {
+                    parse_mode: 'Markdown',
+                    ...Markup.inlineKeyboard([
+                        [Markup.button.callback('🎥 YouTube', 'survey_source_youtube'), Markup.button.callback('🐦 Twitter', 'survey_source_twitter')],
+                        [Markup.button.callback('🎵 TikTok', 'survey_source_tiktok'), Markup.button.callback('👥 Ami', 'survey_source_friend')],
+                        [Markup.button.callback('🔗 Autre', 'survey_source_other')]
+                    ])
+                }
+            );
+        });
+
+        // ==========================================
         // QUESTIONNAIRE SURVEY
         // ==========================================
         const sourceLabels = {
@@ -481,9 +540,10 @@ class TelegramBotService {
                 this.surveyState.set(ctx.from.id, state);
 
                 ctx.reply(
-                    `2️⃣ *Quel est votre UID Bitunix ?*\n\n` +
-                    `Envoyez votre UID (nombre de 6 à 12 chiffres).\n` +
-                    `Vous le trouverez dans Paramètres > Profil sur Bitunix.`,
+                    `✅ Merci !\n\n` +
+                    `*Question 2/2* — Quel est ton UID Bitunix ?\n\n` +
+                    `Envoie ton UID (6 à 12 chiffres).\n` +
+                    `📍 _Tu le trouves dans Paramètres > Profil sur Bitunix._`,
                     { parse_mode: 'Markdown' }
                 );
             });
@@ -529,12 +589,21 @@ class TelegramBotService {
             this.surveyState.delete(ctx.from.id);
 
             ctx.reply(
-                `✅ Merci pour vos réponses !\n\n` +
-                `🏆 *Concours Hebdomadaire $1,000*\n` +
-                `Vous participez automatiquement chaque semaine au tirage au sort de $1,000 de coupon de trading Bitunix !\n\n` +
-                `⚠️ *Condition :* Votre compte Bitunix doit être actif (vous devez trader dessus) pour être éligible.\n\n` +
-                `Tapez /help pour voir les commandes disponibles.`,
-                { parse_mode: 'Markdown' }
+                `━━━━━━━━━━━━━━━━━━━━━━\n` +
+                `   ✅  *INSCRIPTION CONFIRMÉE*\n` +
+                `━━━━━━━━━━━━━━━━━━━━━━\n\n` +
+                `Merci *${ctx.from.first_name}* !\n\n` +
+                `🏆 *Concours $1,000/semaine*\n` +
+                `Tu participes automatiquement au tirage chaque semaine.\n\n` +
+                `⚠️ *Condition :* Ton compte Bitunix doit être actif (tu dois trader dessus).\n\n` +
+                `━━━━━━━━━━━━━━━━━━━━━━\n` +
+                `Tape /help pour les commandes.`,
+                {
+                    parse_mode: 'Markdown',
+                    ...Markup.inlineKeyboard([
+                        [Markup.button.url('🌐 Aller sur La Sphere', process.env.FRONTEND_URL || 'http://localhost:5173')]
+                    ])
+                }
             );
         });
 

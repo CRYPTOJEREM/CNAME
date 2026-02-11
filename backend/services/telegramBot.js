@@ -18,23 +18,27 @@ class TelegramBotService {
         // ==========================================
         this.bot.command('start', (ctx) => {
             const userName = ctx.from.first_name;
-            ctx.reply(
-                `🌐 Bienvenue sur La Sphere, ${userName}!\n\n` +
-                `Je suis votre assistant personnel pour:\n\n` +
-                `✨ Accéder aux formations exclusives\n` +
-                `💎 Rejoindre le groupe VIP après paiement\n` +
-                `📊 Consulter votre statut d'abonnement\n` +
-                `💬 Obtenir du support\n\n` +
-                `Tapez /help pour voir toutes les commandes disponibles.`,
-                Markup.inlineKeyboard([
-                    [Markup.button.url('🌐 Visiter La Sphere', process.env.FRONTEND_URL || 'http://localhost:5173')],
-                    [Markup.button.callback('📋 Voir les abonnements', 'show_plans')],
-                    [Markup.button.callback('💬 Support', 'support')]
-                ])
-            );
+            const args = ctx.message.text.split(' ');
+            const deepLink = args[1]; // ex: /start survey
 
-            // Lancer le questionnaire apres le welcome (DM uniquement)
             if (ctx.chat.type === 'private') {
+                // En DM : message de bienvenue + questionnaire
+                ctx.reply(
+                    `🌐 Bienvenue sur La Sphere, ${userName}!\n\n` +
+                    `Je suis votre assistant personnel pour:\n\n` +
+                    `✨ Accéder aux formations exclusives\n` +
+                    `💎 Rejoindre le groupe VIP après paiement\n` +
+                    `📊 Consulter votre statut d'abonnement\n` +
+                    `💬 Obtenir du support\n\n` +
+                    `Tapez /help pour voir toutes les commandes disponibles.`,
+                    Markup.inlineKeyboard([
+                        [Markup.button.url('🌐 Visiter La Sphere', process.env.FRONTEND_URL || 'http://localhost:5173')],
+                        [Markup.button.callback('📋 Voir les abonnements', 'show_plans')],
+                        [Markup.button.callback('💬 Support', 'support')]
+                    ])
+                );
+
+                // Lancer le questionnaire apres le welcome
                 setTimeout(() => {
                     this.surveyState.set(ctx.from.id, { step: 1, answers: {} });
                     ctx.reply(
@@ -52,6 +56,19 @@ class TelegramBotService {
                         }
                     );
                 }, 2000);
+            } else {
+                // Dans un groupe : message court + bouton pour DM le bot
+                const botUsername = ctx.botInfo.username;
+                ctx.reply(
+                    `🌐 Bienvenue sur La Sphere, ${userName}!\n\n` +
+                    `📋 Envoyez-moi un message privé pour compléter un petit questionnaire et participer au concours hebdomadaire de *$1,000* ! 🏆`,
+                    {
+                        parse_mode: 'Markdown',
+                        ...Markup.inlineKeyboard([
+                            [Markup.button.url('📩 M\'envoyer un message privé', `https://t.me/${botUsername}?start=survey`)]
+                        ])
+                    }
+                );
             }
         });
 
@@ -369,24 +386,38 @@ class TelegramBotService {
         // GESTION DES NOUVEAUX MEMBRES
         // ==========================================
         this.bot.on('new_chat_members', async (ctx) => {
-            if (ctx.chat.id.toString() !== this.vipGroupId) return;
-
             const newMembers = ctx.message.new_chat_members;
+            const isVipGroup = ctx.chat.id.toString() === this.vipGroupId;
+            const botUsername = ctx.botInfo.username;
 
             for (const member of newMembers) {
                 if (member.is_bot) continue;
 
-                const welcomeMessage =
-                    `🎉 Bienvenue @${member.username || member.first_name} dans le groupe VIP de La Sphere!\n\n` +
-                    `💎 Vous avez maintenant accès à:\n` +
-                    `• Signaux de trading en temps réel (/signaux)\n` +
-                    `• Analyses de marché quotidiennes (/analyse)\n` +
-                    `• Formations exclusives (/formations)\n` +
-                    `• Support VIP prioritaire\n\n` +
-                    `📚 Tapez /help pour voir toutes les commandes.\n` +
-                    `🌐 Accédez à votre espace membre: ${process.env.FRONTEND_URL}?tab=membre`;
-
-                await ctx.reply(welcomeMessage);
+                if (isVipGroup) {
+                    // Groupe VIP : message de bienvenue VIP
+                    await ctx.reply(
+                        `🎉 Bienvenue @${member.username || member.first_name} dans le groupe VIP de La Sphere!\n\n` +
+                        `💎 Vous avez maintenant accès à:\n` +
+                        `• Signaux de trading en temps réel (/signaux)\n` +
+                        `• Analyses de marché quotidiennes (/analyse)\n` +
+                        `• Formations exclusives (/formations)\n` +
+                        `• Support VIP prioritaire\n\n` +
+                        `📚 Tapez /help pour voir toutes les commandes.\n` +
+                        `🌐 Accédez à votre espace membre: ${process.env.FRONTEND_URL}?tab=membre`
+                    );
+                } else {
+                    // Groupe gratuit : bienvenue + invitation DM pour questionnaire
+                    await ctx.reply(
+                        `🌐 Bienvenue ${member.username ? '@' + member.username : member.first_name} sur La Sphere !\n\n` +
+                        `📋 Envoyez-moi un message privé pour compléter un petit questionnaire et participer au concours hebdomadaire de *$1,000* de coupon trading Bitunix ! 🏆`,
+                        {
+                            parse_mode: 'Markdown',
+                            ...Markup.inlineKeyboard([
+                                [Markup.button.url('📩 Compléter le questionnaire', `https://t.me/${botUsername}?start=survey`)]
+                            ])
+                        }
+                    );
+                }
             }
         });
 

@@ -13,10 +13,36 @@ const FALLBACK_VIDEOS = [
     { id: 'f6', platform: 'youtube', embedUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', title: 'Ethereum 2.0 - Tout ce qu\'il faut savoir', description: 'Explication complète de l\'écosystème Ethereum.', views: '18K vues', engagement: '950 likes' }
 ]
 
+const getYoutubeThumbnail = (embedUrl) => {
+    const match = embedUrl.match(/embed\/([a-zA-Z0-9_-]+)/)
+    return match ? `https://img.youtube.com/vi/${match[1]}/hqdefault.jpg` : null
+}
+
+const getTwitchVideoId = (embedUrl) => {
+    const match = embedUrl.match(/video=(\d+)/)
+    return match ? match[1] : null
+}
+
+const getVideoUrl = (video) => {
+    if (video.platform === 'youtube') {
+        const match = video.embedUrl.match(/embed\/([a-zA-Z0-9_-]+)/)
+        return match ? `https://www.youtube.com/watch?v=${match[1]}` : video.embedUrl
+    }
+    const videoId = getTwitchVideoId(video.embedUrl)
+    return videoId ? `https://www.twitch.tv/videos/${videoId}` : video.embedUrl
+}
+
 const VideoCard = ({ video }) => (
-    <div className="video-card">
+    <a href={getVideoUrl(video)} target="_blank" rel="noopener noreferrer" className="video-card" style={{ textDecoration: 'none', color: 'inherit' }}>
         <div className="video-thumbnail">
-            <iframe src={video.embedUrl} allowFullScreen></iframe>
+            {video.platform === 'youtube' ? (
+                <img src={getYoutubeThumbnail(video.embedUrl)} alt={video.title} />
+            ) : (
+                <div className="twitch-placeholder">
+                    <span>🎮</span>
+                </div>
+            )}
+            <div className="video-play-btn">▶</div>
         </div>
         <div className="video-info">
             <span className={`video-platform platform-${video.platform}`}>
@@ -29,7 +55,7 @@ const VideoCard = ({ video }) => (
                 <div className="stat-item">{video.platform === 'youtube' ? '❤️' : '💬'} {video.engagement}</div>
             </div>
         </div>
-    </div>
+    </a>
 )
 
 const Hero = ({ setActiveTab }) => {

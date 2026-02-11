@@ -110,6 +110,60 @@ app.use('/api/reviews', reviewsRoutes);
 const newsletterRoutes = require('./routes/newsletter.routes');
 app.use('/api/newsletter', newsletterRoutes);
 
+// Route diagnostic email (admin uniquement via query secret)
+app.get('/api/test-email', async (req, res) => {
+    const secret = req.query.secret;
+    if (secret !== (process.env.JWT_SECRET || '').slice(0, 10)) {
+        return res.status(403).json({ error: 'Non autorisé' });
+    }
+
+    const { transporter } = require('./config/email');
+    const testTo = req.query.to || process.env.SMTP_USER;
+
+    // Étape 1: Vérifier la connexion SMTP
+    try {
+        await transporter.verify();
+        console.log('✅ Connexion SMTP OK');
+    } catch (verifyErr) {
+        return res.json({
+            success: false,
+            step: 'SMTP verify',
+            error: verifyErr.message,
+            code: verifyErr.code,
+            config: {
+                host: process.env.SMTP_HOST,
+                port: process.env.SMTP_PORT,
+                user: process.env.SMTP_USER,
+                passLength: process.env.SMTP_PASS ? process.env.SMTP_PASS.length : 0,
+                from: process.env.EMAIL_FROM
+            }
+        });
+    }
+
+    // Étape 2: Envoyer un email de test
+    try {
+        const info = await transporter.sendMail({
+            from: process.env.EMAIL_FROM || '"La Sphere" <Contact@lasphere.xyz>',
+            to: testTo,
+            subject: 'Test Email - La Sphere',
+            html: '<h1>Test OK</h1><p>Si vous recevez cet email, la configuration SMTP fonctionne.</p>'
+        });
+        res.json({
+            success: true,
+            message: `Email envoyé à ${testTo}`,
+            messageId: info.messageId,
+            response: info.response
+        });
+    } catch (sendErr) {
+        res.json({
+            success: false,
+            step: 'sendMail',
+            error: sendErr.message,
+            code: sendErr.code
+        });
+    }
+});
+
 // Route publique Carousel (sans auth)
 app.get('/api/carousel', (req, res) => {
     try {

@@ -398,7 +398,7 @@ const MemberArea = ({ setActiveTab }) => {
                                     $1,000
                                 </p>
                                 <p style={{ color: '#7B8BA8', fontSize: '14px', marginBottom: '10px' }}>
-                                    Coupon de trading Bitunix
+                                    Coupon de trading Bitunix - Participation 100% gratuite !
                                 </p>
                                 {user.bitunixUid ? (
                                     <div style={{

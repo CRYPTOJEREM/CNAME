@@ -175,6 +175,7 @@ const Register = ({ setActiveTab }) => {
                         />
                         <small className="form-hint">
                             Votre identifiant Bitunix (6-12 chiffres). Trouvez-le dans Parametres &gt; Profil sur Bitunix.
+                            <br />Participez gratuitement au concours hebdomadaire de $1,000 de coupon trading Bitunix !
                         </small>
                     </div>
 

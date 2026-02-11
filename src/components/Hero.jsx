@@ -303,6 +303,24 @@ const Hero = ({ setActiveTab }) => {
                                     <span className="partner-feature-tag">🎯 Signaux Auto</span>
                                     <span className="partner-feature-tag">💸 Cashback</span>
                                 </div>
+                                <div className="partner-contest" style={{
+                                    background: 'linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 107, 0, 0.1))',
+                                    border: '1px solid rgba(255, 215, 0, 0.3)',
+                                    borderRadius: '12px',
+                                    padding: '12px 16px',
+                                    margin: '15px 0',
+                                    textAlign: 'center'
+                                }}>
+                                    <p style={{ color: '#FFD700', fontSize: '14px', fontWeight: '700', margin: 0 }}>
+                                        🏆 Concours Gratuit chaque semaine
+                                    </p>
+                                    <p style={{ color: '#FFFFFF', fontSize: '20px', fontWeight: '900', margin: '5px 0' }}>
+                                        $1,000 de coupon trading
+                                    </p>
+                                    <p style={{ color: '#7B8BA8', fontSize: '12px', margin: 0 }}>
+                                        Inscrivez-vous avec votre Bitunix UID pour participer !
+                                    </p>
+                                </div>
                                 <a href="https://www.bitunix.com" target="_blank" rel="noopener noreferrer" className="partner-btn">
                                     🚀 Rejoindre BITUNIX
                                 </a>

@@ -24,8 +24,15 @@ const ProtectedRoute = lazy(() => import('./components/common/ProtectedRoute'))
 const MemberArea = lazy(() => import('./components/member/MemberArea'))
 const AdminPanel = lazy(() => import('./components/admin/AdminPanel'))
 
+function getInitialTab() {
+  const params = new URLSearchParams(window.location.search)
+  const tab = params.get('tab')
+  if (tab) return tab
+  return 'accueil'
+}
+
 function App() {
-  const [activeTab, setActiveTab] = useState('accueil')
+  const [activeTab, setActiveTab] = useState(getInitialTab)
   const { loading } = useAuth()
 
   // Exposer setActiveTab globalement pour ProtectedRoute

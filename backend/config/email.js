@@ -1,21 +1,41 @@
 const nodemailer = require('nodemailer');
 
 /**
- * Configuration du transporteur SMTP
+ * Configuration du transporteur email
+ * Utilise Brevo (API SMTP) si BREVO_API_KEY est défini,
+ * sinon fallback sur SMTP OVH classique
  */
-const smtpPort = parseInt(process.env.SMTP_PORT) || 465;
-const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST || 'ssl0.ovh.net',
-    port: smtpPort,
-    secure: smtpPort === 465,
-    auth: {
-        user: process.env.SMTP_USER || 'Contact@lasphere.xyz',
-        pass: process.env.SMTP_PASS
-    },
-    connectionTimeout: 10000,
-    greetingTimeout: 10000,
-    socketTimeout: 15000
-});
+let transporter;
+
+if (process.env.BREVO_API_KEY) {
+    // Brevo SMTP relay (fonctionne sur Render car port 587 Brevo n'est pas bloqué)
+    transporter = nodemailer.createTransport({
+        host: 'smtp-relay.brevo.com',
+        port: 587,
+        secure: false,
+        auth: {
+            user: process.env.SMTP_USER || 'Contact@lasphere.xyz',
+            pass: process.env.BREVO_API_KEY
+        }
+    });
+    console.log('📧 Email configuré via Brevo SMTP relay');
+} else {
+    // Fallback SMTP OVH classique (pour serveur dédié)
+    const smtpPort = parseInt(process.env.SMTP_PORT) || 465;
+    transporter = nodemailer.createTransport({
+        host: process.env.SMTP_HOST || 'ssl0.ovh.net',
+        port: smtpPort,
+        secure: smtpPort === 465,
+        auth: {
+            user: process.env.SMTP_USER || 'Contact@lasphere.xyz',
+            pass: process.env.SMTP_PASS
+        },
+        connectionTimeout: 10000,
+        greetingTimeout: 10000,
+        socketTimeout: 15000
+    });
+    console.log('📧 Email configuré via SMTP OVH');
+}
 
 /**
  * Vérifier la configuration email

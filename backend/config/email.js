@@ -14,7 +14,7 @@ if (process.env.BREVO_API_KEY) {
         port: 587,
         secure: false,
         auth: {
-            user: process.env.SMTP_USER || 'Contact@lasphere.xyz',
+            user: process.env.BREVO_LOGIN || process.env.SMTP_USER || 'Contact@lasphere.xyz',
             pass: process.env.BREVO_API_KEY
         }
     });

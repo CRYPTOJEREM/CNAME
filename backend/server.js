@@ -149,13 +149,13 @@ app.get('/api/test-email', async (req, res) => {
 
     let subject, html;
     if (type === 'verification') {
-        subject = '🌐 Vérifiez votre email - La Sphere';
+        subject = 'Verifiez votre email - La Sphere';
         html = getEmailTemplate(`
-            <h2>👋 Bienvenue Test !</h2>
-            <p>Ceci est un test du template de vérification.</p>
+            <h2>Bienvenue !</h2>
+            <p>Ceci est un test du template de verification.</p>
             <div style="text-align: center; margin: 30px 0;">
-                <a href="https://lasphere.xyz" style="display: inline-block; padding: 12px 30px; background: linear-gradient(135deg, #00D9FF 0%, #7B2FF7 100%); color: white !important; text-decoration: none; border-radius: 5px; font-weight: bold;">
-                    ✅ Vérifier mon email
+                <a href="https://lasphere.xyz" style="display: inline-block; padding: 12px 30px; background-color: #007bff; color: #ffffff; text-decoration: none; border-radius: 5px; font-weight: bold;">
+                    Verifier mon email
                 </a>
             </div>
         `);

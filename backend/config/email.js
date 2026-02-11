@@ -1,41 +1,130 @@
 const nodemailer = require('nodemailer');
+const https = require('https');
 
 /**
  * Configuration du transporteur email
- * Utilise Brevo (API SMTP) si BREVO_API_KEY est défini,
- * sinon fallback sur SMTP OVH classique
+ *
+ * Sur Render free tier, TOUS les ports SMTP sortants sont bloqués.
+ * On utilise donc l'API HTTP Brevo (port 443) quand BREVO_API_KEY est défini.
+ * Sur serveur dédié, on utilise le SMTP OVH classique.
  */
-let transporter;
 
-if (process.env.BREVO_API_KEY) {
-    // Brevo SMTP relay (fonctionne sur Render car port 587 Brevo n'est pas bloqué)
-    transporter = nodemailer.createTransport({
-        host: 'smtp-relay.brevo.com',
-        port: 587,
-        secure: false,
-        auth: {
-            user: process.env.BREVO_LOGIN || process.env.SMTP_USER || 'Contact@lasphere.xyz',
-            pass: process.env.BREVO_API_KEY
-        }
+const useBrevoApi = !!process.env.BREVO_API_KEY;
+
+// Transporter SMTP classique (pour serveur dédié ou fallback)
+const smtpPort = parseInt(process.env.SMTP_PORT) || 465;
+const smtpTransporter = nodemailer.createTransport({
+    host: process.env.SMTP_HOST || 'ssl0.ovh.net',
+    port: smtpPort,
+    secure: smtpPort === 465,
+    auth: {
+        user: process.env.SMTP_USER || 'Contact@lasphere.xyz',
+        pass: process.env.SMTP_PASS
+    },
+    connectionTimeout: 10000,
+    greetingTimeout: 10000,
+    socketTimeout: 15000
+});
+
+/**
+ * Envoyer un email via l'API HTTP Brevo (port 443, jamais bloqué)
+ */
+function sendViaBrevoApi(mailOptions) {
+    return new Promise((resolve, reject) => {
+        const fromEmail = process.env.SMTP_USER || 'Contact@lasphere.xyz';
+        const fromName = 'La Sphere';
+
+        const data = JSON.stringify({
+            sender: { name: fromName, email: fromEmail },
+            to: [{ email: mailOptions.to }],
+            subject: mailOptions.subject,
+            htmlContent: mailOptions.html
+        });
+
+        const options = {
+            hostname: 'api.brevo.com',
+            port: 443,
+            path: '/v3/smtp/email',
+            method: 'POST',
+            headers: {
+                'accept': 'application/json',
+                'api-key': process.env.BREVO_API_KEY,
+                'content-type': 'application/json',
+                'content-length': Buffer.byteLength(data)
+            }
+        };
+
+        const req = https.request(options, (res) => {
+            let body = '';
+            res.on('data', chunk => body += chunk);
+            res.on('end', () => {
+                if (res.statusCode >= 200 && res.statusCode < 300) {
+                    const parsed = JSON.parse(body);
+                    resolve({
+                        messageId: parsed.messageId || 'brevo-' + Date.now(),
+                        response: `Brevo API ${res.statusCode} OK`
+                    });
+                } else {
+                    reject(new Error(`Brevo API error ${res.statusCode}: ${body}`));
+                }
+            });
+        });
+
+        req.on('error', reject);
+        req.write(data);
+        req.end();
     });
-    console.log('📧 Email configuré via Brevo SMTP relay');
-} else {
-    // Fallback SMTP OVH classique (pour serveur dédié)
-    const smtpPort = parseInt(process.env.SMTP_PORT) || 465;
-    transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST || 'ssl0.ovh.net',
-        port: smtpPort,
-        secure: smtpPort === 465,
-        auth: {
-            user: process.env.SMTP_USER || 'Contact@lasphere.xyz',
-            pass: process.env.SMTP_PASS
-        },
-        connectionTimeout: 10000,
-        greetingTimeout: 10000,
-        socketTimeout: 15000
-    });
-    console.log('📧 Email configuré via SMTP OVH');
 }
+
+/**
+ * Transporter compatible - utilise Brevo API HTTP ou SMTP selon la config
+ */
+const transporter = {
+    sendMail: async (mailOptions) => {
+        if (useBrevoApi) {
+            return sendViaBrevoApi(mailOptions);
+        }
+        return smtpTransporter.sendMail(mailOptions);
+    },
+    verify: async () => {
+        if (useBrevoApi) {
+            // Test l'API Brevo avec un appel simple
+            return new Promise((resolve, reject) => {
+                const options = {
+                    hostname: 'api.brevo.com',
+                    port: 443,
+                    path: '/v3/account',
+                    method: 'GET',
+                    headers: {
+                        'accept': 'application/json',
+                        'api-key': process.env.BREVO_API_KEY
+                    }
+                };
+
+                const req = https.request(options, (res) => {
+                    let body = '';
+                    res.on('data', chunk => body += chunk);
+                    res.on('end', () => {
+                        if (res.statusCode === 200) {
+                            resolve(true);
+                        } else {
+                            reject(new Error(`Brevo API verify failed: ${res.statusCode} ${body}`));
+                        }
+                    });
+                });
+
+                req.on('error', reject);
+                req.end();
+            });
+        }
+        return smtpTransporter.verify();
+    },
+    options: {
+        host: useBrevoApi ? 'api.brevo.com (HTTP API)' : (process.env.SMTP_HOST || 'ssl0.ovh.net')
+    }
+};
+
+console.log(useBrevoApi ? '📧 Email configuré via Brevo HTTP API' : '📧 Email configuré via SMTP OVH');
 
 /**
  * Vérifier la configuration email

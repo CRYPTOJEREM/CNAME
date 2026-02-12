@@ -101,8 +101,8 @@ const CGU = () => {
 
                         <h3>4.2 Modalités de Paiement</h3>
                         <p>
-                            Les paiements sont traités via <strong>NOWPayments</strong> et peuvent être effectués en
-                            cryptomonnaies (Bitcoin, Ethereum, USDT, etc.). Les tarifs sont affichés en euros (EUR)
+                            Les paiements sont traites via notre prestataire de paiement securise et peuvent etre effectues en
+                            cryptomonnaies (Bitcoin, Ethereum, USDT, etc.). Les tarifs sont affiches en euros (EUR)
                             et convertis au taux en vigueur lors du paiement.
                         </p>
 
@@ -243,7 +243,7 @@ const CGU = () => {
                         <ul className="cgu-list">
                             <li>👤 Données d'identification (nom, prénom, email)</li>
                             <li>📱 Nom d'utilisateur Telegram</li>
-                            <li>💳 Données de paiement (traitées par NOWPayments)</li>
+                            <li>💳 Donnees de paiement (traitees par notre prestataire securise)</li>
                             <li>📊 Données de navigation et d'utilisation (cookies, logs)</li>
                         </ul>
 

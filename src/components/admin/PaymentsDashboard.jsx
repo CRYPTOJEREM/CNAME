@@ -210,7 +210,7 @@ const PaymentsDashboard = () => {
                 <div className="info-card">
                     <h4>💡 Informations</h4>
                     <ul>
-                        <li>Les paiements sont traités via NOWPayments en cryptomonnaies</li>
+                        <li>Les paiements sont traites en cryptomonnaies via notre prestataire</li>
                         <li>Un webhook confirme automatiquement les paiements complétés</li>
                         <li>Les utilisateurs sont ajoutés au groupe Telegram VIP automatiquement</li>
                         <li>Les statuts sont mis à jour en temps réel</li>

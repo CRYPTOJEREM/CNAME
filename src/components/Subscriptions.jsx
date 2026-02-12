@@ -454,8 +454,8 @@ const Subscriptions = () => {
                     <div className="faq-item">
                         <h3 className="faq-question">Quels moyens de paiement acceptez-vous ?</h3>
                         <p className="faq-answer">
-                            Nous acceptons les cryptomonnaies via NOWPayments : Bitcoin (BTC), Ethereum (ETH),
-                            USDT, USDC, BNB, et de nombreuses autres options. Les paiements sont sécurisés par blockchain.
+                            Nous acceptons les cryptomonnaies : Bitcoin (BTC), Ethereum (ETH),
+                            USDT, USDC, BNB, et de nombreuses autres options. Les paiements sont securises par blockchain.
                         </p>
                     </div>
 
@@ -541,7 +541,7 @@ const Subscriptions = () => {
                                 <div className="benefit-icon">🔒</div>
                                 <div className="benefit-content">
                                     <div className="benefit-title">Paiement 100% sécurisé</div>
-                                    <div className="benefit-text">Traitement via NOWPayments</div>
+                                    <div className="benefit-text">Transaction chiffree sur la blockchain</div>
                                 </div>
                             </div>
                             <div className="benefit-card">
@@ -567,32 +567,15 @@ const Subscriptions = () => {
                             </div>
                         </div>
 
-                        {/* Bouton personnalisé NOWPayments */}
+                        {/* Bouton de paiement crypto */}
                         <button
                             onClick={() => handleNowPaymentsCheckout(selectedPlan)}
                             className="payment-button-new"
                         >
                             <span className="payment-button-icon">🚀</span>
                             <span className="payment-button-text">Payer avec Crypto</span>
-                            <span className="payment-button-badge">NOWPayments</span>
+                            <span className="payment-button-badge">Crypto</span>
                         </button>
-
-                        {/* Lien NOWPayments alternatif */}
-                        <div className="payment-alternative">
-                            <p className="payment-alternative-text">Ou utilisez le lien direct :</p>
-                            <a
-                                href="https://nowpayments.io/payment/?iid=6131926923&source=button"
-                                target="_blank"
-                                rel="noreferrer noopener"
-                                className="payment-nowpayments-link"
-                            >
-                                <img
-                                    src="https://nowpayments.io/images/embeds/payment-button-white.svg"
-                                    alt="Bouton de paiement Bitcoin et crypto par NOWPayments"
-                                    className="payment-nowpayments-img"
-                                />
-                            </a>
-                        </div>
 
                         {/* Note importante */}
                         <div className="modal-note">

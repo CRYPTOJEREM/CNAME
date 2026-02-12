@@ -240,90 +240,62 @@ const Hero = ({ setActiveTab }) => {
                         </div>
                     </div>
 
-                    {/* SECTION PARTENAIRES CRYPTO */}
+                    {/* SECTION PARTENAIRE CRYPTO — BITUNIX */}
                     <div className="partners-section">
                         <div className="partners-header">
-                            <h2 className="partners-title">🤝 NOS PARTENAIRES CRYPTO</h2>
-                            <p className="partners-subtitle">Tradez en toute sécurité avec nos plateformes partenaires de confiance</p>
+                            <h2 className="partners-title">🤝 NOTRE PARTENAIRE CRYPTO</h2>
+                            <p className="partners-subtitle">Tradez sur l'exchange officiel de La Sphere et participez au concours hebdomadaire</p>
                         </div>
 
-                        <div className="partners-grid">
-                            {/* MEXC */}
-                            <div className="partner-card">
-                                <div className="partner-badge recommended">⭐ RECOMMANDÉ</div>
-                                <div className="partner-logo">
-                                    <div className="partner-logo-text">MEXC</div>
+                        <div className="bitunix-layout">
+                            {/* Grand carre gauche — Presentation */}
+                            <div className="bitunix-main-card">
+                                <div className="bitunix-badge">💎 PARTENAIRE OFFICIEL</div>
+                                <div className="bitunix-logo-wrapper">
+                                    <svg viewBox="0 0 200 50" className="bitunix-logo-svg">
+                                        <rect width="200" height="50" rx="6" fill="#000000"/>
+                                        <path d="M20 15 L30 15 L30 25 L25 25 L25 35 L15 35 L15 25 L20 25 Z" fill="#C8FF00"/>
+                                        <circle cx="27" cy="18" r="4" fill="#C8FF00"/>
+                                        <text x="42" y="33" fill="#C8FF00" fontFamily="Arial, sans-serif" fontWeight="bold" fontSize="22">Bitunix</text>
+                                    </svg>
                                 </div>
-                                <h3 className="partner-name">MEXC</h3>
-                                <p className="partner-description">
-                                    Plateforme d'échange crypto leader mondial avec plus de 2000 cryptomonnaies disponibles.
+                                <h3 className="bitunix-main-title">BITUNIX</h3>
+                                <p className="bitunix-main-description">
+                                    Exchange crypto nouvelle generation avec copy trading, signaux automatiques et une interface conçue pour les traders de tous niveaux. Profitez de frais reduits et d'une liquidite optimale.
                                 </p>
-                                <div className="partner-features">
-                                    <span className="partner-feature-tag">📊 2000+ Cryptos</span>
-                                    <span className="partner-feature-tag">💰 Bonus 10%</span>
-                                    <span className="partner-feature-tag">⚡ 0% Frais</span>
+                                <div className="bitunix-main-tags">
+                                    <span className="bitunix-tag">Spot & Futures</span>
+                                    <span className="bitunix-tag">Copy Trading</span>
+                                    <span className="bitunix-tag">200+ Paires</span>
+                                    <span className="bitunix-tag">Signaux Auto</span>
                                 </div>
-                                <a href="https://www.mexc.com" target="_blank" rel="noopener noreferrer" className="partner-btn">
-                                    🚀 Rejoindre MEXC
+                                <a href="https://www.bitunix.com" target="_blank" rel="noopener noreferrer" className="bitunix-cta-btn">
+                                    🚀 Ouvrir un compte Bitunix
                                 </a>
                             </div>
 
-                            {/* BLOFIN */}
-                            <div className="partner-card">
-                                <div className="partner-badge popular">🔥 POPULAIRE</div>
-                                <div className="partner-logo">
-                                    <div className="partner-logo-text">BLOFIN</div>
+                            {/* Petits carres droite — Details */}
+                            <div className="bitunix-info-grid">
+                                <div className="bitunix-info-card">
+                                    <div className="bitunix-info-icon">📈</div>
+                                    <h4 className="bitunix-info-title">Trading Avance</h4>
+                                    <p className="bitunix-info-text">Leverage jusqu'a 125x sur les futures. Outils pro : TradingView integre, ordres avances, stop-loss.</p>
                                 </div>
-                                <h3 className="partner-name">BLOFIN</h3>
-                                <p className="partner-description">
-                                    Trading professionnel avec leverage jusqu'à 125x. Interface intuitive et liquidité optimale.
-                                </p>
-                                <div className="partner-features">
-                                    <span className="partner-feature-tag">📈 Leverage 125x</span>
-                                    <span className="partner-feature-tag">🎁 Bonus 5000$</span>
-                                    <span className="partner-feature-tag">🔒 Sécurisé</span>
+                                <div className="bitunix-info-card">
+                                    <div className="bitunix-info-icon">👥</div>
+                                    <h4 className="bitunix-info-title">Copy Trading</h4>
+                                    <p className="bitunix-info-text">Copiez les meilleurs traders automatiquement. Suivez leurs positions en temps reel sans effort.</p>
                                 </div>
-                                <a href="https://www.blofin.com" target="_blank" rel="noopener noreferrer" className="partner-btn">
-                                    🚀 Rejoindre BLOFIN
-                                </a>
-                            </div>
-
-                            {/* BITUNIX */}
-                            <div className="partner-card">
-                                <div className="partner-badge new">💎 NOUVEAU</div>
-                                <div className="partner-logo">
-                                    <div className="partner-logo-text">BITUNIX</div>
+                                <div className="bitunix-info-card">
+                                    <div className="bitunix-info-icon">🔒</div>
+                                    <h4 className="bitunix-info-title">Securite Maximale</h4>
+                                    <p className="bitunix-info-text">Cold storage, authentification 2FA, audits reguliers. Vos fonds sont proteges en permanence.</p>
                                 </div>
-                                <h3 className="partner-name">BITUNIX</h3>
-                                <p className="partner-description">
-                                    Exchange nouvelle génération avec trading social intégré et signaux automatiques.
-                                </p>
-                                <div className="partner-features">
-                                    <span className="partner-feature-tag">👥 Copy Trading</span>
-                                    <span className="partner-feature-tag">🎯 Signaux Auto</span>
-                                    <span className="partner-feature-tag">💸 Cashback</span>
+                                <div className="bitunix-info-card bitunix-contest-card">
+                                    <div className="bitunix-info-icon">🏆</div>
+                                    <h4 className="bitunix-info-title">Concours $1,000</h4>
+                                    <p className="bitunix-info-text">Chaque semaine, un membre gagne $1,000 de coupon trading. Inscrivez-vous avec votre UID pour participer gratuitement !</p>
                                 </div>
-                                <div className="partner-contest" style={{
-                                    background: 'linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 107, 0, 0.1))',
-                                    border: '1px solid rgba(255, 215, 0, 0.3)',
-                                    borderRadius: '12px',
-                                    padding: '12px 16px',
-                                    margin: '15px 0',
-                                    textAlign: 'center'
-                                }}>
-                                    <p style={{ color: '#FFD700', fontSize: '14px', fontWeight: '700', margin: 0 }}>
-                                        🏆 Concours Gratuit chaque semaine
-                                    </p>
-                                    <p style={{ color: '#FFFFFF', fontSize: '20px', fontWeight: '900', margin: '5px 0' }}>
-                                        $1,000 de coupon trading
-                                    </p>
-                                    <p style={{ color: '#7B8BA8', fontSize: '12px', margin: 0 }}>
-                                        Inscrivez-vous avec votre Bitunix UID pour participer !
-                                    </p>
-                                </div>
-                                <a href="https://www.bitunix.com" target="_blank" rel="noopener noreferrer" className="partner-btn">
-                                    🚀 Rejoindre BITUNIX
-                                </a>
                             </div>
                         </div>
 

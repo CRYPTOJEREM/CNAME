@@ -1153,153 +1153,172 @@
             margin: 0 auto;
         }
 
-        .partners-grid {
+        /* ===== BITUNIX PARTNER LAYOUT ===== */
+        .bitunix-layout {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 1fr 1fr;
             gap: 30px;
+            align-items: stretch;
         }
 
-        .partner-card {
-            background: linear-gradient(135deg, rgba(13, 18, 41, 0.8) 0%, rgba(26, 31, 58, 0.8) 100%);
+        .bitunix-main-card {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(13, 18, 41, 0.8) 100%);
             border-radius: 20px;
-            padding: 40px 30px;
-            border: 2px solid rgba(123, 47, 247, 0.3);
-            transition: all 0.4s ease;
-            text-align: center;
+            padding: 45px 35px;
+            border: 2px solid rgba(200, 255, 0, 0.25);
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s ease;
         }
 
-        .partner-card::before {
+        .bitunix-main-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(90deg, #00D9FF, #7B2FF7);
+            background: linear-gradient(90deg, #C8FF00, #7BFF00);
         }
 
-        .partner-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 70px rgba(0, 217, 255, 0.3);
-            border-color: rgba(0, 217, 255, 0.5);
+        .bitunix-main-card:hover {
+            border-color: rgba(200, 255, 0, 0.5);
+            box-shadow: 0 25px 70px rgba(200, 255, 0, 0.15);
         }
 
-        .partner-badge {
+        .bitunix-badge {
             position: absolute;
             top: 15px;
             right: 15px;
-            padding: 5px 12px;
+            padding: 5px 14px;
             border-radius: 20px;
             font-size: 11px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
+            background: rgba(200, 255, 0, 0.15);
+            color: #C8FF00;
+            border: 1px solid rgba(200, 255, 0, 0.4);
         }
 
-        .partner-badge.recommended {
-            background: rgba(255, 215, 0, 0.2);
-            color: #FFD700;
-            border: 1px solid rgba(255, 215, 0, 0.5);
+        .bitunix-logo-wrapper {
+            margin-bottom: 25px;
         }
 
-        .partner-badge.popular {
-            background: rgba(255, 51, 102, 0.2);
-            color: #FF3366;
-            border: 1px solid rgba(255, 51, 102, 0.5);
+        .bitunix-logo-svg {
+            width: 200px;
+            height: 50px;
+            border-radius: 8px;
         }
 
-        .partner-badge.new {
-            background: rgba(0, 217, 255, 0.2);
-            color: #00D9FF;
-            border: 1px solid rgba(0, 217, 255, 0.5);
-        }
-
-        .partner-logo {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 25px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid rgba(0, 217, 255, 0.2);
-            transition: all 0.3s;
-        }
-
-        .partner-card:hover .partner-logo {
-            background: rgba(0, 217, 255, 0.1);
-            border-color: rgba(0, 217, 255, 0.5);
-            transform: scale(1.05);
-        }
-
-        .partner-logo-text {
+        .bitunix-main-title {
             font-family: 'Montserrat', sans-serif;
             font-weight: 900;
-            font-size: 24px;
-            color: #00D9FF;
-            text-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
-        }
-
-        .partner-name {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 900;
-            font-size: 26px;
+            font-size: 32px;
             color: #FFFFFF;
             margin-bottom: 15px;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
         }
 
-        .partner-description {
+        .bitunix-main-description {
             color: #B8C5D6;
-            font-size: 14px;
-            line-height: 1.7;
+            font-size: 15px;
+            line-height: 1.8;
             margin-bottom: 25px;
-            min-height: 60px;
+            flex-grow: 1;
         }
 
-        .partner-features {
+        .bitunix-main-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
-            justify-content: center;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
-        .partner-feature-tag {
-            padding: 6px 14px;
-            background: rgba(0, 217, 255, 0.1);
-            color: #00D9FF;
+        .bitunix-tag {
+            padding: 7px 16px;
+            background: rgba(200, 255, 0, 0.1);
+            color: #C8FF00;
             border-radius: 20px;
             font-size: 12px;
-            font-weight: 600;
-            border: 1px solid rgba(0, 217, 255, 0.3);
+            font-weight: 700;
+            border: 1px solid rgba(200, 255, 0, 0.3);
         }
 
-        .partner-btn {
-            display: inline-block;
+        .bitunix-cta-btn {
+            display: block;
             width: 100%;
-            padding: 16px 30px;
-            background: linear-gradient(135deg, #00D9FF, #7B2FF7);
-            color: #0A0E27;
+            padding: 18px 30px;
+            background: linear-gradient(135deg, #C8FF00, #7BFF00);
+            color: #000000;
             text-decoration: none;
-            border-radius: 12px;
+            border-radius: 14px;
             font-family: 'Rajdhani', sans-serif;
-            font-weight: 700;
-            font-size: 16px;
+            font-weight: 800;
+            font-size: 17px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            text-align: center;
             transition: all 0.3s;
             border: none;
             cursor: pointer;
         }
 
-        .partner-btn:hover {
+        .bitunix-cta-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 217, 255, 0.5);
+            box-shadow: 0 15px 40px rgba(200, 255, 0, 0.4);
+        }
+
+        .bitunix-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .bitunix-info-card {
+            background: linear-gradient(135deg, rgba(13, 18, 41, 0.8) 0%, rgba(26, 31, 58, 0.8) 100%);
+            border-radius: 16px;
+            padding: 25px 20px;
+            border: 1px solid rgba(123, 47, 247, 0.25);
+            transition: all 0.3s ease;
+        }
+
+        .bitunix-info-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(200, 255, 0, 0.4);
+            box-shadow: 0 15px 40px rgba(200, 255, 0, 0.1);
+        }
+
+        .bitunix-contest-card {
+            border-color: rgba(255, 215, 0, 0.3);
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.05) 0%, rgba(13, 18, 41, 0.8) 100%);
+        }
+
+        .bitunix-contest-card:hover {
+            border-color: rgba(255, 215, 0, 0.6);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.15);
+        }
+
+        .bitunix-info-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .bitunix-info-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 16px;
+            color: #FFFFFF;
+            margin-bottom: 10px;
+        }
+
+        .bitunix-info-text {
+            color: #7B8BA8;
+            font-size: 13px;
+            line-height: 1.6;
         }
 
         .partners-disclaimer {
@@ -1324,11 +1343,17 @@
             line-height: 1.6;
         }
 
-        /* Responsive Partners */
+        /* Responsive Bitunix */
         @media (max-width: 1024px) {
-            .partners-grid {
+            .bitunix-layout {
                 grid-template-columns: 1fr;
                 gap: 25px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .bitunix-info-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -3459,153 +3484,172 @@
             margin: 0 auto;
         }
 
-        .partners-grid {
+        /* ===== BITUNIX PARTNER LAYOUT ===== */
+        .bitunix-layout {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 1fr 1fr;
             gap: 30px;
+            align-items: stretch;
         }
 
-        .partner-card {
-            background: linear-gradient(135deg, rgba(13, 18, 41, 0.8) 0%, rgba(26, 31, 58, 0.8) 100%);
+        .bitunix-main-card {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(13, 18, 41, 0.8) 100%);
             border-radius: 20px;
-            padding: 40px 30px;
-            border: 2px solid rgba(123, 47, 247, 0.3);
-            transition: all 0.4s ease;
-            text-align: center;
+            padding: 45px 35px;
+            border: 2px solid rgba(200, 255, 0, 0.25);
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s ease;
         }
 
-        .partner-card::before {
+        .bitunix-main-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(90deg, #00D9FF, #7B2FF7);
+            background: linear-gradient(90deg, #C8FF00, #7BFF00);
         }
 
-        .partner-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 70px rgba(0, 217, 255, 0.3);
-            border-color: rgba(0, 217, 255, 0.5);
+        .bitunix-main-card:hover {
+            border-color: rgba(200, 255, 0, 0.5);
+            box-shadow: 0 25px 70px rgba(200, 255, 0, 0.15);
         }
 
-        .partner-badge {
+        .bitunix-badge {
             position: absolute;
             top: 15px;
             right: 15px;
-            padding: 5px 12px;
+            padding: 5px 14px;
             border-radius: 20px;
             font-size: 11px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
+            background: rgba(200, 255, 0, 0.15);
+            color: #C8FF00;
+            border: 1px solid rgba(200, 255, 0, 0.4);
         }
 
-        .partner-badge.recommended {
-            background: rgba(255, 215, 0, 0.2);
-            color: #FFD700;
-            border: 1px solid rgba(255, 215, 0, 0.5);
+        .bitunix-logo-wrapper {
+            margin-bottom: 25px;
         }
 
-        .partner-badge.popular {
-            background: rgba(255, 51, 102, 0.2);
-            color: #FF3366;
-            border: 1px solid rgba(255, 51, 102, 0.5);
+        .bitunix-logo-svg {
+            width: 200px;
+            height: 50px;
+            border-radius: 8px;
         }
 
-        .partner-badge.new {
-            background: rgba(0, 217, 255, 0.2);
-            color: #00D9FF;
-            border: 1px solid rgba(0, 217, 255, 0.5);
-        }
-
-        .partner-logo {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 25px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid rgba(0, 217, 255, 0.2);
-            transition: all 0.3s;
-        }
-
-        .partner-card:hover .partner-logo {
-            background: rgba(0, 217, 255, 0.1);
-            border-color: rgba(0, 217, 255, 0.5);
-            transform: scale(1.05);
-        }
-
-        .partner-logo-text {
+        .bitunix-main-title {
             font-family: 'Montserrat', sans-serif;
             font-weight: 900;
-            font-size: 24px;
-            color: #00D9FF;
-            text-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
-        }
-
-        .partner-name {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 900;
-            font-size: 26px;
+            font-size: 32px;
             color: #FFFFFF;
             margin-bottom: 15px;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
         }
 
-        .partner-description {
+        .bitunix-main-description {
             color: #B8C5D6;
-            font-size: 14px;
-            line-height: 1.7;
+            font-size: 15px;
+            line-height: 1.8;
             margin-bottom: 25px;
-            min-height: 60px;
+            flex-grow: 1;
         }
 
-        .partner-features {
+        .bitunix-main-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
-            justify-content: center;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
-        .partner-feature-tag {
-            padding: 6px 14px;
-            background: rgba(0, 217, 255, 0.1);
-            color: #00D9FF;
+        .bitunix-tag {
+            padding: 7px 16px;
+            background: rgba(200, 255, 0, 0.1);
+            color: #C8FF00;
             border-radius: 20px;
             font-size: 12px;
-            font-weight: 600;
-            border: 1px solid rgba(0, 217, 255, 0.3);
+            font-weight: 700;
+            border: 1px solid rgba(200, 255, 0, 0.3);
         }
 
-        .partner-btn {
-            display: inline-block;
+        .bitunix-cta-btn {
+            display: block;
             width: 100%;
-            padding: 16px 30px;
-            background: linear-gradient(135deg, #00D9FF, #7B2FF7);
-            color: #0A0E27;
+            padding: 18px 30px;
+            background: linear-gradient(135deg, #C8FF00, #7BFF00);
+            color: #000000;
             text-decoration: none;
-            border-radius: 12px;
+            border-radius: 14px;
             font-family: 'Rajdhani', sans-serif;
-            font-weight: 700;
-            font-size: 16px;
+            font-weight: 800;
+            font-size: 17px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            text-align: center;
             transition: all 0.3s;
             border: none;
             cursor: pointer;
         }
 
-        .partner-btn:hover {
+        .bitunix-cta-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 217, 255, 0.5);
+            box-shadow: 0 15px 40px rgba(200, 255, 0, 0.4);
+        }
+
+        .bitunix-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .bitunix-info-card {
+            background: linear-gradient(135deg, rgba(13, 18, 41, 0.8) 0%, rgba(26, 31, 58, 0.8) 100%);
+            border-radius: 16px;
+            padding: 25px 20px;
+            border: 1px solid rgba(123, 47, 247, 0.25);
+            transition: all 0.3s ease;
+        }
+
+        .bitunix-info-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(200, 255, 0, 0.4);
+            box-shadow: 0 15px 40px rgba(200, 255, 0, 0.1);
+        }
+
+        .bitunix-contest-card {
+            border-color: rgba(255, 215, 0, 0.3);
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.05) 0%, rgba(13, 18, 41, 0.8) 100%);
+        }
+
+        .bitunix-contest-card:hover {
+            border-color: rgba(255, 215, 0, 0.6);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.15);
+        }
+
+        .bitunix-info-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .bitunix-info-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 16px;
+            color: #FFFFFF;
+            margin-bottom: 10px;
+        }
+
+        .bitunix-info-text {
+            color: #7B8BA8;
+            font-size: 13px;
+            line-height: 1.6;
         }
 
         .partners-disclaimer {
@@ -3630,11 +3674,17 @@
             line-height: 1.6;
         }
 
-        /* Responsive Partners */
+        /* Responsive Bitunix */
         @media (max-width: 1024px) {
-            .partners-grid {
+            .bitunix-layout {
                 grid-template-columns: 1fr;
                 gap: 25px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .bitunix-info-grid {
+                grid-template-columns: 1fr;
             }
         }
 

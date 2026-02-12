@@ -327,40 +327,45 @@ const Hero = ({ setActiveTab }) => {
                     </div>
 
                     <div className="cta-ecosystem">
+                        <div className="cta-eco-glow" />
                         <h3>Rejoignez la Communauté</h3>
-                        <p>Choisissez votre niveau d'accès et rejoignez des milliers de passionnés de crypto</p>
+                        <p>Choisissez votre niveau d'accès et passez au niveau superieur</p>
 
                         <div className="telegram-modules">
                             <div className="telegram-card free">
+                                <div className="telegram-card-top free-top" />
                                 <div className="telegram-badge">🆓 GRATUIT</div>
-                                <h4>Groupe Telegram Gratuit</h4>
-                                <p>Accès aux discussions communautaires, partage d'analyses et actualités crypto</p>
+                                <h4>Communauté Gratuite</h4>
+                                <p className="telegram-price-text">Accessible a tous</p>
                                 <ul className="telegram-features">
-                                    <li>✅ Discussions en temps réel</li>
-                                    <li>✅ Partage d'analyses</li>
-                                    <li>✅ Actualités crypto</li>
-                                    <li>✅ Entraide communautaire</li>
+                                    <li><span className="feature-check">✓</span> Groupe Telegram communautaire</li>
+                                    <li><span className="feature-check">✓</span> Partage d'analyses & discussions</li>
+                                    <li><span className="feature-check">✓</span> Actualites crypto quotidiennes</li>
+                                    <li><span className="feature-check">✓</span> Entraide entre membres</li>
+                                    <li><span className="feature-check">✓</span> Concours $1,000/semaine</li>
                                 </ul>
-                                <a href="https://t.me/votre-groupe-gratuit" target="_blank" rel="noopener noreferrer" className="telegram-btn free-btn">
-                                    <span>📱</span> Rejoindre Gratuitement
-                                </a>
+                                <button onClick={() => setActiveTab('abonnements')} className="telegram-btn free-btn">
+                                    Commencer Gratuitement
+                                </button>
                             </div>
 
                             <div className="telegram-card vip">
-                                <div className="telegram-badge vip-badge">⭐ VIP</div>
-                                <h4>Groupe Telegram VIP</h4>
-                                <p>Accès premium avec signaux exclusifs, analyses approfondies et support prioritaire</p>
+                                <div className="telegram-card-top vip-top" />
+                                <div className="telegram-badge vip-badge">👑 VIP</div>
+                                <h4>Acces VIP Premium</h4>
+                                <p className="telegram-price-text"><span className="price-amount">$49.99</span>/mois</p>
                                 <ul className="telegram-features">
-                                    <li>✅ Signaux de trading exclusifs</li>
-                                    <li>✅ Analyses techniques avancées</li>
-                                    <li>✅ Support prioritaire 24/7</li>
-                                    <li>✅ Alertes en temps réel</li>
-                                    <li>✅ Stratégies de trading</li>
-                                    <li>✅ Webinaires privés</li>
+                                    <li><span className="feature-check vip-check">✓</span> Tout le plan gratuit inclus</li>
+                                    <li><span className="feature-check vip-check">✓</span> Signaux de trading exclusifs</li>
+                                    <li><span className="feature-check vip-check">✓</span> Analyses techniques avancees</li>
+                                    <li><span className="feature-check vip-check">✓</span> Support prioritaire 24/7</li>
+                                    <li><span className="feature-check vip-check">✓</span> Alertes en temps reel</li>
+                                    <li><span className="feature-check vip-check">✓</span> Formations & webinaires prives</li>
+                                    <li><span className="feature-check vip-check">✓</span> Groupe Telegram VIP prive</li>
                                 </ul>
-                                <a href="https://t.me/votre-groupe-vip" target="_blank" rel="noopener noreferrer" className="telegram-btn vip-btn">
-                                    <span>👑</span> Accéder au VIP
-                                </a>
+                                <button onClick={() => setActiveTab('abonnements')} className="telegram-btn vip-btn">
+                                    Devenir VIP
+                                </button>
                             </div>
                         </div>
                     </div>

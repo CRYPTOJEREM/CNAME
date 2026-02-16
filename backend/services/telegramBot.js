@@ -662,12 +662,19 @@ class TelegramBotService {
     }
 
     launch() {
-        this.bot.launch();
-        console.log('✅ Bot Telegram démarré avec succès');
+        this.bot.launch().catch(err => {
+            console.error('❌ Bot Telegram - échec de démarrage:', err.message);
+            console.error('⚠️ Le serveur continue sans le bot Telegram');
+        });
+        console.log('🔄 Bot Telegram en cours de démarrage...');
     }
 
     stop(signal) {
-        this.bot.stop(signal);
+        try {
+            this.bot.stop(signal);
+        } catch (err) {
+            // Bot pas démarré, on ignore
+        }
     }
 }
 

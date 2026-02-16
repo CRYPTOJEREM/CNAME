@@ -215,8 +215,8 @@ if (CONFIG.TELEGRAM_BOT_TOKEN &&
     botService.launch();
 
     // Gérer l'arrêt gracieux
-    process.once('SIGINT', () => botService.stop('SIGINT'));
-    process.once('SIGTERM', () => botService.stop('SIGTERM'));
+    process.once('SIGINT', () => { try { botService.stop('SIGINT'); } catch(e) {} });
+    process.once('SIGTERM', () => { try { botService.stop('SIGTERM'); } catch(e) {} });
 } else {
     // Mode DEMO - permet de tester sans configuration Telegram
     botService = new TelegramBotDemo();

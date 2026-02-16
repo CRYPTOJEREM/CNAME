@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Utilise la variable d'environnement pour l'URL de l'API
 // En développement: http://localhost:3001
-// En production: URL du backend Render
+// En production: https://api.lasphere.xyz/api
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 
 // DEBUG: Afficher l'URL utilisée dans la console

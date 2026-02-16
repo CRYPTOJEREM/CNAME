@@ -33,7 +33,7 @@ const registerValidation = [
     body('password')
         .isLength({ min: 8 })
         .withMessage('Le mot de passe doit contenir au moins 8 caractères')
-        .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/)
+        .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d])/)
         .withMessage('Le mot de passe doit contenir : 1 majuscule, 1 minuscule, 1 chiffre et 1 caractère spécial'),
 
     body('firstName')
@@ -131,7 +131,7 @@ const changePasswordValidation = [
     body('newPassword')
         .isLength({ min: 8 })
         .withMessage('Le nouveau mot de passe doit contenir au moins 8 caractères')
-        .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/)
+        .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d])/)
         .withMessage('Le nouveau mot de passe doit contenir : 1 majuscule, 1 minuscule, 1 chiffre et 1 caractère spécial'),
 
     handleValidationErrors
@@ -148,7 +148,7 @@ const resetPasswordValidation = [
     body('newPassword')
         .isLength({ min: 8 })
         .withMessage('Le nouveau mot de passe doit contenir au moins 8 caractères')
-        .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/)
+        .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d])/)
         .withMessage('Le nouveau mot de passe doit contenir : 1 majuscule, 1 minuscule, 1 chiffre et 1 caractère spécial'),
 
     handleValidationErrors

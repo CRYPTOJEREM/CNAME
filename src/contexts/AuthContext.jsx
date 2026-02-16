@@ -56,9 +56,14 @@ export const AuthProvider = ({ children }) => {
             await authService.register(userData);
             return { success: true };
         } catch (error) {
+            const data = error.response?.data;
+            let errorMsg = data?.error || error.message;
+            if (data?.details?.length) {
+                errorMsg = data.details.map(d => d.message).join(', ');
+            }
             return {
                 success: false,
-                error: error.response?.data?.error || error.message
+                error: errorMsg
             };
         }
     };

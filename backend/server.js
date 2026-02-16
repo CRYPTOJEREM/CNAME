@@ -23,7 +23,8 @@ const CONFIG = {
     NOWPAYMENTS_IPN_SECRET: process.env.NOWPAYMENTS_IPN_SECRET || 'YOUR_IPN_SECRET_KEY',
     TELEGRAM_BOT_TOKEN: process.env.TELEGRAM_BOT_TOKEN || 'YOUR_TELEGRAM_BOT_TOKEN',
     TELEGRAM_VIP_GROUP_ID: process.env.TELEGRAM_VIP_GROUP_ID || '-1001234567890',
-    SITE_URL: process.env.FRONTEND_URL || 'http://localhost:5173'
+    SITE_URL: process.env.FRONTEND_URL || 'http://localhost:5173',
+    BACKEND_URL: process.env.BACKEND_URL || 'http://localhost:3001'
 };
 
 // Importer la configuration email pour vérification
@@ -273,7 +274,7 @@ app.post('/api/create-payment', authMiddleware, async (req, res) => {
             pay_currency: 'btc', // Devise par défaut, l'utilisateur peut changer
             order_id: orderId,
             order_description: `Abonnement ${planName} - La Sphere`,
-            ipn_callback_url: `${CONFIG.SITE_URL}/api/nowpayments-webhook`,
+            ipn_callback_url: `${CONFIG.BACKEND_URL}/api/nowpayments-webhook`,
             success_url: `${CONFIG.SITE_URL}?payment=success`,
             cancel_url: `${CONFIG.SITE_URL}?payment=cancel`,
         };

@@ -23,7 +23,7 @@ const Subscriptions = () => {
             currency: 'EUR',
             period: 'À vie',
             badge: 'Communauté',
-            badgeColor: 'rgba(0, 217, 255, 0.2)',
+            badgeColor: 'rgba(100, 210, 255, 0.2)',
             features: [
                 { included: true, text: 'Accès au Dashboard Crypto en temps réel' },
                 { included: true, text: 'Calendrier économique US' },
@@ -41,14 +41,14 @@ const Subscriptions = () => {
         {
             id: 'premium',
             name: 'PREMIUM',
-            nameIcon: <Star size={14} />,
+            nameIcon: <Star size={18} />,
             price: 29.99,
             priceEth: '0.015',
             priceUsdt: '30',
             currency: 'EUR',
             period: '/mois',
             badge: 'Populaire',
-            badgeColor: 'rgba(255, 215, 0, 0.2)',
+            badgeColor: 'rgba(255, 214, 10, 0.2)',
             popular: true,
             features: [
                 { included: true, text: 'Tout du plan GRATUIT' },
@@ -67,14 +67,14 @@ const Subscriptions = () => {
         {
             id: 'vip',
             name: 'VIP',
-            nameIcon: <Gem size={14} />,
+            nameIcon: <Gem size={18} />,
             price: 99.99,
             priceEth: '0.05',
             priceUsdt: '100',
             currency: 'EUR',
             period: '/mois',
             badge: 'Elite',
-            badgeColor: 'rgba(123, 47, 247, 0.2)',
+            badgeColor: 'rgba(191, 90, 242, 0.2)',
             features: [
                 { included: true, text: 'Tout du plan PREMIUM' },
                 { included: true, text: 'Analyses approfondies quotidiennes' },
@@ -303,7 +303,7 @@ const Subscriptions = () => {
 
                 <div className="value-list-clean">
                     <div className="value-item-clean">
-                        <span className="value-icon-clean"><BarChart3 size={16} /></span>
+                        <span className="value-icon-clean"><BarChart3 size={24} /></span>
                         <div className="value-content-clean">
                             <h3>Analyses quotidiennes</h3>
                             <p>Décryptage complet du marché avec niveaux clés et opportunités chaque matin.</p>
@@ -311,7 +311,7 @@ const Subscriptions = () => {
                     </div>
 
                     <div className="value-item-clean">
-                        <span className="value-icon-clean"><Bell size={16} /></span>
+                        <span className="value-icon-clean"><Bell size={24} /></span>
                         <div className="value-content-clean">
                             <h3>Alertes temps réel</h3>
                             <p>Notifications instantanées sur les mouvements importants directement sur votre téléphone.</p>
@@ -319,7 +319,7 @@ const Subscriptions = () => {
                     </div>
 
                     <div className="value-item-clean">
-                        <span className="value-icon-clean"><MessageCircle size={16} /></span>
+                        <span className="value-icon-clean"><MessageCircle size={24} /></span>
                         <div className="value-content-clean">
                             <h3>Groupe privé actif</h3>
                             <p>Communauté de traders qui partagent positions, analyses et s'entraident au quotidien.</p>
@@ -327,7 +327,7 @@ const Subscriptions = () => {
                     </div>
 
                     <div className="value-item-clean">
-                        <span className="value-icon-clean"><GraduationCap size={16} /></span>
+                        <span className="value-icon-clean"><GraduationCap size={24} /></span>
                         <div className="value-content-clean">
                             <h3>Formations complètes</h3>
                             <p>Parcours structuré du débutant au trader confirmé : analyse technique, gestion du risque.</p>
@@ -335,7 +335,7 @@ const Subscriptions = () => {
                     </div>
 
                     <div className="value-item-clean">
-                        <span className="value-icon-clean"><BookOpen size={16} /></span>
+                        <span className="value-icon-clean"><BookOpen size={24} /></span>
                         <div className="value-content-clean">
                             <h3>Bibliothèque de ressources</h3>
                             <p>Templates, outils et analyses passées au même endroit pour progresser vite.</p>
@@ -343,7 +343,7 @@ const Subscriptions = () => {
                     </div>
 
                     <div className="value-item-clean">
-                        <span className="value-icon-clean"><Target size={16} /></span>
+                        <span className="value-icon-clean"><Target size={24} /></span>
                         <div className="value-content-clean">
                             <h3>Support réactif</h3>
                             <p>Une question ? Notre équipe vous répond rapidement pour vous débloquer.</p>
@@ -379,7 +379,7 @@ const Subscriptions = () => {
                             <div className="plan-features-clean">
                                 {plan.features.map((feature, index) => (
                                     <div key={index} className={`feature-line-clean ${!feature.included ? 'feature-excluded' : ''}`}>
-                                        {feature.included ? <CheckCircle2 size={16} /> : <XCircle size={16} />}
+                                        {feature.included ? <CheckCircle2 size={18} /> : <XCircle size={18} />}
                                         <span>{feature.text}</span>
                                     </div>
                                 ))}
@@ -400,10 +400,10 @@ const Subscriptions = () => {
 
             {/* Barre de garanties horizontale */}
             <div className="guarantees-bar">
-                <div className="guarantee-pill"><Shield size={16} /> Satisfait ou remboursé 7j</div>
-                <div className="guarantee-pill"><Lock size={16} /> Paiement sécurisé</div>
-                <div className="guarantee-pill"><Zap size={16} /> Accès immédiat</div>
-                <div className="guarantee-pill"><LogOut size={16} /> Sans engagement</div>
+                <div className="guarantee-pill"><Shield size={18} /> Satisfait ou remboursé 7j</div>
+                <div className="guarantee-pill"><Lock size={18} /> Paiement sécurisé</div>
+                <div className="guarantee-pill"><Zap size={18} /> Accès immédiat</div>
+                <div className="guarantee-pill"><LogOut size={18} /> Sans engagement</div>
             </div>
 
             {/* Section finale - Compact */}
@@ -542,21 +542,21 @@ const Subscriptions = () => {
                         {/* Avantages */}
                         <div className="modal-benefits">
                             <div className="benefit-card">
-                                <div className="benefit-icon"><Lock size={16} /></div>
+                                <div className="benefit-icon"><Lock size={18} /></div>
                                 <div className="benefit-content">
                                     <div className="benefit-title">Paiement 100% sécurisé</div>
                                     <div className="benefit-text">Transaction chiffree sur la blockchain</div>
                                 </div>
                             </div>
                             <div className="benefit-card">
-                                <div className="benefit-icon"><Gem size={16} /></div>
+                                <div className="benefit-icon"><Gem size={20} /></div>
                                 <div className="benefit-content">
                                     <div className="benefit-title">200+ Cryptomonnaies</div>
                                     <div className="benefit-text">Bitcoin, Ethereum, USDT, etc.</div>
                                 </div>
                             </div>
                             <div className="benefit-card">
-                                <div className="benefit-icon"><Zap size={16} /></div>
+                                <div className="benefit-icon"><Zap size={18} /></div>
                                 <div className="benefit-content">
                                     <div className="benefit-title">Accès instantané</div>
                                     <div className="benefit-text">Activation sous 5 minutes</div>
@@ -576,7 +576,7 @@ const Subscriptions = () => {
                             onClick={() => handleNowPaymentsCheckout(selectedPlan)}
                             className="payment-button-new"
                         >
-                            <span className="payment-button-icon"><Rocket size={16} /></span>
+                            <span className="payment-button-icon"><Rocket size={20} /></span>
                             <span className="payment-button-text">Payer avec Crypto</span>
                             <span className="payment-button-badge">Crypto</span>
                         </button>
@@ -600,7 +600,7 @@ const Subscriptions = () => {
             )}
 
             <div className="partners-disclaimer">
-                <p className="partners-disclaimer-title"><Lock size={16} /> PAIEMENTS SÉCURISÉS</p>
+                <p className="partners-disclaimer-title"><Lock size={18} /> PAIEMENTS SÉCURISÉS</p>
                 <p className="partners-disclaimer-text">
                     Les paiements sont effectués directement via blockchain, garantissant transparence et sécurité.
                     Aucune donnée bancaire n'est stockée. Vous pouvez résilier votre abonnement à tout moment.

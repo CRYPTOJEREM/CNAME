@@ -65,7 +65,7 @@ const Header = ({ activeTab, setActiveTab }) => {
         <nav className={scrolled ? 'scrolled' : ''}>
             <div className="nav-container">
                 <div className="logo" onClick={() => handleTabClick('accueil')}>
-                    <span className="logo-icon"><Globe size={22} /></span>
+                    <span className="logo-icon"><Globe size={26} /></span>
                     <span className="logo-text">LA SPHERE</span>
                 </div>
 
@@ -85,31 +85,31 @@ const Header = ({ activeTab, setActiveTab }) => {
                 <ul className={`nav-links ${mobileMenuOpen ? 'mobile-open' : ''}`}>
                     <li>
                         <button onClick={() => handleTabClick('accueil')} className={activeTab === 'accueil' ? 'active' : ''}>
-                            <span className="nav-icon"><Home size={16} /></span>
+                            <span className="nav-icon"><Home size={18} /></span>
                             <span className="nav-text">Accueil</span>
                         </button>
                     </li>
                     <li>
                         <button onClick={() => handleTabClick('actualites')} className={activeTab === 'actualites' ? 'active' : ''}>
-                            <span className="nav-icon"><Newspaper size={16} /></span>
+                            <span className="nav-icon"><Newspaper size={18} /></span>
                             <span className="nav-text">Actualités</span>
                         </button>
                     </li>
                     <li>
                         <button onClick={() => handleTabClick('calendrier')} className={activeTab === 'calendrier' ? 'active' : ''}>
-                            <span className="nav-icon"><CalendarDays size={16} /></span>
+                            <span className="nav-icon"><CalendarDays size={18} /></span>
                             <span className="nav-text">Calendrier</span>
                         </button>
                     </li>
                     <li>
                         <button onClick={() => handleTabClick('dashboard')} className={activeTab === 'dashboard' ? 'active' : ''}>
-                            <span className="nav-icon"><BarChart3 size={16} /></span>
+                            <span className="nav-icon"><BarChart3 size={18} /></span>
                             <span className="nav-text">Dashboard</span>
                         </button>
                     </li>
                     <li>
                         <button onClick={() => handleTabClick('apprentissage')} className={activeTab === 'apprentissage' ? 'active' : ''}>
-                            <span className="nav-icon"><GraduationCap size={16} /></span>
+                            <span className="nav-icon"><GraduationCap size={18} /></span>
                             <span className="nav-text">Formation</span>
                         </button>
                     </li>
@@ -118,13 +118,13 @@ const Header = ({ activeTab, setActiveTab }) => {
                             onClick={() => handleTabClick('abonnements')}
                             className={`${activeTab === 'abonnements' ? 'active' : ''} abonnements-btn`}
                         >
-                            <span className="nav-icon"><Gem size={16} /></span>
+                            <span className="nav-icon"><Gem size={18} /></span>
                             <span className="nav-text">Abonnements</span>
                         </button>
                     </li>
                     <li>
                         <button onClick={() => handleTabClick('assistance')} className={activeTab === 'assistance' ? 'active' : ''}>
-                            <span className="nav-icon"><MessageCircle size={16} /></span>
+                            <span className="nav-icon"><MessageCircle size={18} /></span>
                             <span className="nav-text">Support</span>
                         </button>
                     </li>
@@ -133,7 +133,7 @@ const Header = ({ activeTab, setActiveTab }) => {
                     {isAuthenticated && user?.role === 'admin' && (
                         <li>
                             <button onClick={() => handleTabClick('admin')} className={`${activeTab === 'admin' ? 'active' : ''} admin-btn`}>
-                                <span className="nav-icon"><Shield size={16} /></span>
+                                <span className="nav-icon"><Shield size={18} /></span>
                                 <span className="nav-text">Admin</span>
                             </button>
                         </li>
@@ -144,10 +144,10 @@ const Header = ({ activeTab, setActiveTab }) => {
                         {!isAuthenticated ? (
                             <>
                                 <button onClick={() => handleTabClick('login')} className="auth-btn login-btn">
-                                    <Lock size={14} /> Connexion
+                                    <Lock size={16} /> Connexion
                                 </button>
                                 <button onClick={() => handleTabClick('register')} className="auth-btn register-btn">
-                                    <Sparkles size={14} /> Inscription
+                                    <Sparkles size={16} /> Inscription
                                 </button>
                             </>
                         ) : (
@@ -195,7 +195,7 @@ const Header = ({ activeTab, setActiveTab }) => {
                                                 setUserMenuOpen(false)
                                             }}
                                         >
-                                            <span className="dropdown-icon"><User size={16} /></span>
+                                            <span className="dropdown-icon"><User size={18} /></span>
                                             <span>Espace Membre</span>
                                         </button>
 
@@ -206,7 +206,7 @@ const Header = ({ activeTab, setActiveTab }) => {
                                                 setUserMenuOpen(false)
                                             }}
                                         >
-                                            <span className="dropdown-icon"><Gem size={16} /></span>
+                                            <span className="dropdown-icon"><Gem size={18} /></span>
                                             <span>Gérer l'abonnement</span>
                                         </button>
 
@@ -219,7 +219,7 @@ const Header = ({ activeTab, setActiveTab }) => {
                                                 setMobileMenuOpen(false)
                                             }}
                                         >
-                                            <span className="dropdown-icon"><LogOut size={16} /></span>
+                                            <span className="dropdown-icon"><LogOut size={18} /></span>
                                             <span>Déconnexion</span>
                                         </button>
                                     </div>

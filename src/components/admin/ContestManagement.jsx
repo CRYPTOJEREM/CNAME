@@ -121,7 +121,7 @@ const ContestManagement = () => {
                                         <td>{user.bitunixUid}</td>
                                         <td>{user.telegramUsername || '-'}</td>
                                         <td>
-                                            <span className="status-badge" style={{ color: user.subscriptionStatus === 'vip' ? '#00D9FF' : user.subscriptionStatus === 'premium' ? '#FFD700' : '#888' }}>
+                                            <span className="status-badge" style={{ color: user.subscriptionStatus === 'vip' ? '#64D2FF' : user.subscriptionStatus === 'premium' ? '#FFD60A' : '#888' }}>
                                                 {user.subscriptionStatus.toUpperCase()}
                                             </span>
                                         </td>
@@ -162,7 +162,7 @@ const ContestManagement = () => {
                                     <td>{w.userName}</td>
                                     <td>{w.userEmail}</td>
                                     <td>{w.bitunixUid}</td>
-                                    <td style={{ color: '#00D9FF', fontWeight: 'bold' }}>${w.prize}</td>
+                                    <td style={{ color: '#64D2FF', fontWeight: 'bold' }}>${w.prize}</td>
                                     <td>
                                         {w.notified ? (
                                             <span className="badge-success">Oui</span>

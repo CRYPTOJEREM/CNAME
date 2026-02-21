@@ -116,7 +116,7 @@ const CarouselManagement = () => {
     return (
         <div className="content-management">
             <div className="management-header">
-                <h2><Video size={16} /> Gestion du Carrousel</h2>
+                <h2><Video size={22} /> Gestion du Carrousel</h2>
                 <button onClick={handleCreate} className="btn-create">➕ Ajouter une vidéo</button>
             </div>
 
@@ -147,7 +147,7 @@ const CarouselManagement = () => {
                                     <tr key={video.id}>
                                         <td>
                                             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                                <span style={{ fontWeight: 'bold', color: '#00D9FF' }}>#{video.order}</span>
+                                                <span style={{ fontWeight: 'bold', color: '#64D2FF' }}>#{video.order}</span>
                                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
                                                     <button
                                                         onClick={() => handleMoveUp(video)}

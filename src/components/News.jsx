@@ -207,7 +207,7 @@ const News = () => {
     return (
         <section className="news-section">
             <div className="news-header">
-                <div className="news-badge"><Newspaper size={16} /> EN TEMPS RÉEL</div>
+                <div className="news-badge"><Newspaper size={22} /> EN TEMPS RÉEL</div>
                 <h1>ACTUALITÉS CRYPTO</h1>
                 <p>
                     Les dernières news du monde de la cryptomonnaie, mises à jour en temps réel depuis CryptoCompare
@@ -256,7 +256,7 @@ const News = () => {
                                     <h3 className="news-title">{item.title}</h3>
                                     <p className="news-excerpt">{item.excerpt}</p>
                                     <div className="news-footer">
-                                        <span className="news-source"><Newspaper size={16} /> {item.source}</span>
+                                        <span className="news-source"><Newspaper size={22} /> {item.source}</span>
                                         <a href={item.url} target="_blank" rel="noopener noreferrer" className="read-more">Lire la suite →</a>
                                     </div>
                                 </div>

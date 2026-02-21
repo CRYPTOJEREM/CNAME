@@ -43,8 +43,8 @@ const MemberContent = () => {
     const getLevelBadge = (level) => {
         const badges = {
             free: { icon: '🆓', label: 'GRATUIT', color: '#7B8BA8' },
-            premium: { icon: <Star size={14} />, label: 'PREMIUM', color: '#FFD700' },
-            vip: { icon: <Gem size={14} />, label: 'VIP', color: '#00D9FF' }
+            premium: { icon: <Star size={16} />, label: 'PREMIUM', color: '#FFD60A' },
+            vip: { icon: <Gem size={16} />, label: 'VIP', color: '#64D2FF' }
         };
         return badges[level] || badges.free;
     };
@@ -63,9 +63,9 @@ const MemberContent = () => {
                 <button
                     onClick={() => setSelectedContent(null)}
                     style={{
-                        background: 'linear-gradient(135deg, #00D9FF, #7B2FF7)',
+                        background: 'linear-gradient(135deg, #64D2FF, #BF5AF2)',
                         border: 'none',
-                        color: '#0A0E27',
+                        color: '#111111',
                         padding: '12px 24px',
                         borderRadius: '12px',
                         fontWeight: '700',
@@ -77,10 +77,10 @@ const MemberContent = () => {
                 </button>
 
                 <div style={{
-                    background: 'linear-gradient(135deg, #0D1229 0%, #1A1F3A 100%)',
+                    background: 'linear-gradient(135deg, #111111 0%, #1A1A1A 100%)',
                     borderRadius: '24px',
                     padding: '40px',
-                    border: '2px solid rgba(123, 47, 247, 0.3)'
+                    border: '2px solid rgba(191, 90, 242, 0.3)'
                 }}>
                     {selectedContent.type === 'video' && (
                         <iframe
@@ -106,11 +106,11 @@ const MemberContent = () => {
     return (
         <div>
             <h2 style={{
-                color: '#00D9FF',
+                color: '#64D2FF',
                 fontSize: '28px',
                 fontWeight: '900',
                 marginBottom: '30px',
-                textShadow: '0 0 20px rgba(0, 217, 255, 0.5)'
+                textShadow: '0 0 20px rgba(100, 210, 255, 0.5)'
             }}>
                 <BookOpen size={16} /> Contenu Exclusif
             </h2>
@@ -133,12 +133,12 @@ const MemberContent = () => {
                         onClick={() => setFilter(filterBtn.id)}
                         style={{
                             background: filter === filterBtn.id
-                                ? 'linear-gradient(135deg, #00D9FF, #7B2FF7)'
-                                : 'rgba(26, 31, 58, 0.5)',
+                                ? 'linear-gradient(135deg, #64D2FF, #BF5AF2)'
+                                : 'rgba(26, 26, 26, 0.5)',
                             border: filter === filterBtn.id
                                 ? 'none'
-                                : '2px solid rgba(123, 47, 247, 0.3)',
-                            color: filter === filterBtn.id ? '#0A0E27' : '#FFFFFF',
+                                : '2px solid rgba(191, 90, 242, 0.3)',
+                            color: filter === filterBtn.id ? '#111111' : '#FFFFFF',
                             padding: '10px 20px',
                             borderRadius: '10px',
                             fontSize: '14px',
@@ -158,8 +158,8 @@ const MemberContent = () => {
             {/* Grid de contenu */}
             {filteredContent.length === 0 ? (
                 <div style={{
-                    background: 'rgba(26, 31, 58, 0.5)',
-                    border: '2px dashed rgba(123, 47, 247, 0.3)',
+                    background: 'rgba(26, 26, 26, 0.5)',
+                    border: '2px dashed rgba(191, 90, 242, 0.3)',
                     borderRadius: '20px',
                     padding: '60px 40px',
                     textAlign: 'center'
@@ -182,8 +182,8 @@ const MemberContent = () => {
                                 key={item.id}
                                 onClick={() => setSelectedContent(item)}
                                 style={{
-                                    background: 'linear-gradient(135deg, #0D1229 0%, #1A1F3A 100%)',
-                                    border: '2px solid rgba(123, 47, 247, 0.3)',
+                                    background: 'linear-gradient(135deg, #111111 0%, #1A1A1A 100%)',
+                                    border: '2px solid rgba(191, 90, 242, 0.3)',
                                     borderRadius: '20px',
                                     padding: '0',
                                     overflow: 'hidden',
@@ -192,11 +192,11 @@ const MemberContent = () => {
                                 }}
                                 onMouseOver={(e) => {
                                     e.currentTarget.style.transform = 'translateY(-5px)';
-                                    e.currentTarget.style.border = '2px solid rgba(0, 217, 255, 0.5)';
+                                    e.currentTarget.style.border = '2px solid rgba(100, 210, 255, 0.5)';
                                 }}
                                 onMouseOut={(e) => {
                                     e.currentTarget.style.transform = 'translateY(0)';
-                                    e.currentTarget.style.border = '2px solid rgba(123, 47, 247, 0.3)';
+                                    e.currentTarget.style.border = '2px solid rgba(191, 90, 242, 0.3)';
                                 }}
                             >
                                 {/* Thumbnail */}
@@ -204,7 +204,7 @@ const MemberContent = () => {
                                     width: '100%',
                                     paddingTop: '56.25%',
                                     position: 'relative',
-                                    background: 'linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(123, 47, 247, 0.1))',
+                                    background: 'linear-gradient(135deg, rgba(100, 210, 255, 0.1), rgba(191, 90, 242, 0.1))',
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'center'
@@ -223,7 +223,7 @@ const MemberContent = () => {
                                         top: '15px',
                                         right: '15px',
                                         background: badge.color,
-                                        color: '#0A0E27',
+                                        color: '#111111',
                                         padding: '6px 12px',
                                         borderRadius: '20px',
                                         fontSize: '12px',
@@ -258,7 +258,7 @@ const MemberContent = () => {
                                         display: 'flex',
                                         gap: '10px',
                                         fontSize: '13px',
-                                        color: '#00D9FF'
+                                        color: '#64D2FF'
                                     }}>
                                         <span>{getTypeIcon(item.type)} {item.type}</span>
                                         {item.modules && item.modules.length > 0 && (

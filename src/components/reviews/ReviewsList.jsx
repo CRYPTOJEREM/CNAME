@@ -111,7 +111,7 @@ const ReviewsList = () => {
                                 <div className="author-info">
                                     <h4>{review.userFirstName}</h4>
                                     <span className={`author-badge ${review.userSubscriptionLevel}`}>
-                                        {review.userSubscriptionLevel === 'premium' ? <><Star size={14} /> Premium</> : <><Gem size={14} /> VIP</>}
+                                        {review.userSubscriptionLevel === 'premium' ? <><Star size={16} /> Premium</> : <><Gem size={16} /> VIP</>}
                                     </span>
                                 </div>
                             </div>

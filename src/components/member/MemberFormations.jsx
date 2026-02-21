@@ -40,8 +40,8 @@ const MemberFormations = () => {
     const getLevelBadge = (level) => {
         const badges = {
             free: { icon: '🆓', label: 'GRATUIT', color: '#7B8BA8' },
-            premium: { icon: <Star size={14} />, label: 'PREMIUM', color: '#FFD700' },
-            vip: { icon: <Gem size={14} />, label: 'VIP', color: '#00D9FF' }
+            premium: { icon: <Star size={16} />, label: 'PREMIUM', color: '#FFD60A' },
+            vip: { icon: <Gem size={16} />, label: 'VIP', color: '#64D2FF' }
         };
         return badges[level] || badges.free;
     };
@@ -58,9 +58,9 @@ const MemberFormations = () => {
                 <button
                     onClick={() => setSelectedFormation(null)}
                     style={{
-                        background: 'linear-gradient(135deg, #00D9FF, #7B2FF7)',
+                        background: 'linear-gradient(135deg, #64D2FF, #BF5AF2)',
                         border: 'none',
-                        color: '#0A0E27',
+                        color: '#111111',
                         padding: '12px 24px',
                         borderRadius: '12px',
                         fontWeight: '700',
@@ -73,10 +73,10 @@ const MemberFormations = () => {
                 </button>
 
                 <div style={{
-                    background: 'linear-gradient(135deg, #0D1229 0%, #1A1F3A 100%)',
+                    background: 'linear-gradient(135deg, #111111 0%, #1A1A1A 100%)',
                     borderRadius: '24px',
                     padding: '40px',
-                    border: '2px solid rgba(123, 47, 247, 0.3)'
+                    border: '2px solid rgba(191, 90, 242, 0.3)'
                 }}>
                     {/* Header */}
                     <div style={{
@@ -85,7 +85,7 @@ const MemberFormations = () => {
                         justifyContent: 'space-between',
                         marginBottom: '25px',
                         paddingBottom: '25px',
-                        borderBottom: '2px solid rgba(123, 47, 247, 0.2)'
+                        borderBottom: '2px solid rgba(191, 90, 242, 0.2)'
                     }}>
                         <div>
                             <h2 style={{
@@ -102,7 +102,7 @@ const MemberFormations = () => {
                         </div>
                         <div style={{
                             background: badge.color,
-                            color: '#0A0E27',
+                            color: '#111111',
                             padding: '8px 16px',
                             borderRadius: '20px',
                             fontSize: '14px',
@@ -120,7 +120,7 @@ const MemberFormations = () => {
                     {selectedFormation.modules && selectedFormation.modules.length > 0 && (
                         <div style={{ marginBottom: '30px' }}>
                             <h3 style={{
-                                color: '#00D9FF',
+                                color: '#64D2FF',
                                 fontSize: '20px',
                                 fontWeight: '700',
                                 marginBottom: '20px'
@@ -136,8 +136,8 @@ const MemberFormations = () => {
                                     <div
                                         key={index}
                                         style={{
-                                            background: 'rgba(26, 31, 58, 0.5)',
-                                            border: '2px solid rgba(123, 47, 247, 0.3)',
+                                            background: 'rgba(26, 26, 26, 0.5)',
+                                            border: '2px solid rgba(191, 90, 242, 0.3)',
                                             borderRadius: '12px',
                                             padding: '15px 20px',
                                             display: 'flex',
@@ -149,11 +149,11 @@ const MemberFormations = () => {
                                             width: '35px',
                                             height: '35px',
                                             borderRadius: '50%',
-                                            background: 'linear-gradient(135deg, #00D9FF, #7B2FF7)',
+                                            background: 'linear-gradient(135deg, #64D2FF, #BF5AF2)',
                                             display: 'flex',
                                             alignItems: 'center',
                                             justifyContent: 'center',
-                                            color: '#0A0E27',
+                                            color: '#111111',
                                             fontWeight: '900',
                                             fontSize: '14px',
                                             flexShrink: 0
@@ -177,7 +177,7 @@ const MemberFormations = () => {
                     {selectedFormation.content && (
                         <div>
                             <h3 style={{
-                                color: '#00D9FF',
+                                color: '#64D2FF',
                                 fontSize: '20px',
                                 fontWeight: '700',
                                 marginBottom: '20px'
@@ -195,13 +195,13 @@ const MemberFormations = () => {
                                         width: '100%',
                                         height: '500px',
                                         borderRadius: '12px',
-                                        border: '2px solid rgba(0, 217, 255, 0.3)'
+                                        border: '2px solid rgba(100, 210, 255, 0.3)'
                                     }}
                                 />
                             ) : (
                                 <div style={{
-                                    background: 'rgba(26, 31, 58, 0.5)',
-                                    border: '2px solid rgba(123, 47, 247, 0.3)',
+                                    background: 'rgba(26, 26, 26, 0.5)',
+                                    border: '2px solid rgba(191, 90, 242, 0.3)',
                                     borderRadius: '12px',
                                     padding: '20px',
                                     color: '#FFFFFF',
@@ -222,11 +222,11 @@ const MemberFormations = () => {
         <div>
             <div style={{ marginBottom: '30px' }}>
                 <h2 style={{
-                    color: '#00D9FF',
+                    color: '#64D2FF',
                     fontSize: '28px',
                     fontWeight: '900',
                     marginBottom: '10px',
-                    textShadow: '0 0 20px rgba(0, 217, 255, 0.5)'
+                    textShadow: '0 0 20px rgba(100, 210, 255, 0.5)'
                 }}>
                     <GraduationCap size={16} /> Mes Formations
                 </h2>
@@ -246,8 +246,8 @@ const MemberFormations = () => {
 
             {formations.length === 0 ? (
                 <div style={{
-                    background: 'rgba(26, 31, 58, 0.5)',
-                    border: '2px dashed rgba(123, 47, 247, 0.3)',
+                    background: 'rgba(26, 26, 26, 0.5)',
+                    border: '2px dashed rgba(191, 90, 242, 0.3)',
                     borderRadius: '20px',
                     padding: '60px 40px',
                     textAlign: 'center'
@@ -273,8 +273,8 @@ const MemberFormations = () => {
                                 key={formation.id}
                                 onClick={() => handleFormationClick(formation.id)}
                                 style={{
-                                    background: 'linear-gradient(135deg, #0D1229 0%, #1A1F3A 100%)',
-                                    border: '2px solid rgba(123, 47, 247, 0.3)',
+                                    background: 'linear-gradient(135deg, #111111 0%, #1A1A1A 100%)',
+                                    border: '2px solid rgba(191, 90, 242, 0.3)',
                                     borderRadius: '20px',
                                     padding: '30px',
                                     cursor: 'pointer',
@@ -284,11 +284,11 @@ const MemberFormations = () => {
                                 }}
                                 onMouseOver={(e) => {
                                     e.currentTarget.style.transform = 'translateY(-5px)';
-                                    e.currentTarget.style.border = '2px solid rgba(0, 217, 255, 0.5)';
+                                    e.currentTarget.style.border = '2px solid rgba(100, 210, 255, 0.5)';
                                 }}
                                 onMouseOut={(e) => {
                                     e.currentTarget.style.transform = 'translateY(0)';
-                                    e.currentTarget.style.border = '2px solid rgba(123, 47, 247, 0.3)';
+                                    e.currentTarget.style.border = '2px solid rgba(191, 90, 242, 0.3)';
                                 }}
                             >
                                 {/* Badge niveau */}
@@ -297,7 +297,7 @@ const MemberFormations = () => {
                                     top: '20px',
                                     right: '20px',
                                     background: badge.color,
-                                    color: '#0A0E27',
+                                    color: '#111111',
                                     padding: '6px 12px',
                                     borderRadius: '20px',
                                     fontSize: '12px',
@@ -314,7 +314,7 @@ const MemberFormations = () => {
                                     width: '70px',
                                     height: '70px',
                                     borderRadius: '50%',
-                                    background: 'linear-gradient(135deg, rgba(0, 217, 255, 0.2), rgba(123, 47, 247, 0.2))',
+                                    background: 'linear-gradient(135deg, rgba(100, 210, 255, 0.2), rgba(191, 90, 242, 0.2))',
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'center',
@@ -350,7 +350,7 @@ const MemberFormations = () => {
                                         display: 'flex',
                                         alignItems: 'center',
                                         gap: '8px',
-                                        color: '#00D9FF',
+                                        color: '#64D2FF',
                                         fontSize: '14px',
                                         fontWeight: '600',
                                         marginBottom: '15px'
@@ -362,9 +362,9 @@ const MemberFormations = () => {
 
                                 {/* Bouton */}
                                 <button style={{
-                                    background: 'rgba(123, 47, 247, 0.2)',
-                                    border: '2px solid rgba(123, 47, 247, 0.5)',
-                                    color: '#00D9FF',
+                                    background: 'rgba(191, 90, 242, 0.2)',
+                                    border: '2px solid rgba(191, 90, 242, 0.5)',
+                                    color: '#64D2FF',
                                     padding: '10px 18px',
                                     borderRadius: '10px',
                                     fontWeight: '700',
@@ -375,13 +375,13 @@ const MemberFormations = () => {
                                 }}
                                     onMouseOver={(e) => {
                                         e.stopPropagation();
-                                        e.currentTarget.style.background = 'linear-gradient(135deg, #00D9FF, #7B2FF7)';
-                                        e.currentTarget.style.color = '#0A0E27';
+                                        e.currentTarget.style.background = 'linear-gradient(135deg, #64D2FF, #BF5AF2)';
+                                        e.currentTarget.style.color = '#111111';
                                     }}
                                     onMouseOut={(e) => {
                                         e.stopPropagation();
-                                        e.currentTarget.style.background = 'rgba(123, 47, 247, 0.2)';
-                                        e.currentTarget.style.color = '#00D9FF';
+                                        e.currentTarget.style.background = 'rgba(191, 90, 242, 0.2)';
+                                        e.currentTarget.style.color = '#64D2FF';
                                     }}
                                 >
                                     Commencer la formation →

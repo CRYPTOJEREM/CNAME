@@ -97,7 +97,7 @@ const ProductManagement = () => {
     return (
         <div className="product-management">
             <div className="management-header">
-                <h2><Gem size={16} /> Gestion des Produits/Abonnements</h2>
+                <h2><Gem size={22} /> Gestion des Produits/Abonnements</h2>
                 <button onClick={handleCreate} className="btn-create">➕ Nouveau Produit</button>
             </div>
 
@@ -127,7 +127,7 @@ const ProductManagement = () => {
                                     </div>
                                     <div className="product-level">
                                         <span className={`level-badge level-${product.level}`}>
-                                            {product.level === 'premium' ? <><Star size={14} /> PREMIUM</> : <><Gem size={14} /> VIP</>}
+                                            {product.level === 'premium' ? <><Star size={16} /> PREMIUM</> : <><Gem size={16} /> VIP</>}
                                         </span>
                                     </div>
                                     <p className="product-description">{product.description}</p>

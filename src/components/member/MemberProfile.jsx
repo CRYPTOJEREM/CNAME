@@ -70,20 +70,20 @@ const MemberProfile = () => {
     return (
         <div>
             <h2 style={{
-                color: '#00D9FF',
+                color: '#64D2FF',
                 fontSize: '28px',
                 fontWeight: '900',
                 marginBottom: '30px',
-                textShadow: '0 0 20px rgba(0, 217, 255, 0.5)'
+                textShadow: '0 0 20px rgba(100, 210, 255, 0.5)'
             }}>
                 <User size={16} /> Mon Profil
             </h2>
 
             <div style={{
-                background: 'linear-gradient(135deg, #0D1229 0%, #1A1F3A 100%)',
+                background: 'linear-gradient(135deg, #111111 0%, #1A1A1A 100%)',
                 borderRadius: '24px',
                 padding: '40px',
-                border: '2px solid rgba(123, 47, 247, 0.3)',
+                border: '2px solid rgba(191, 90, 242, 0.3)',
                 maxWidth: '800px'
             }}>
                 {/* Header profil */}
@@ -92,20 +92,20 @@ const MemberProfile = () => {
                     alignItems: 'center',
                     gap: '25px',
                     paddingBottom: '30px',
-                    borderBottom: '2px solid rgba(123, 47, 247, 0.2)',
+                    borderBottom: '2px solid rgba(191, 90, 242, 0.2)',
                     marginBottom: '30px'
                 }}>
                     <div style={{
                         width: '80px',
                         height: '80px',
                         borderRadius: '50%',
-                        background: 'linear-gradient(135deg, #00D9FF, #7B2FF7)',
+                        background: 'linear-gradient(135deg, #64D2FF, #BF5AF2)',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
                         fontSize: '32px',
                         fontWeight: '900',
-                        color: '#0A0E27'
+                        color: '#111111'
                     }}>
                         {user.firstName?.charAt(0)}{user.lastName?.charAt(0)}
                     </div>
@@ -132,13 +132,13 @@ const MemberProfile = () => {
                 {message.text && (
                     <div style={{
                         background: message.type === 'success'
-                            ? 'rgba(0, 217, 255, 0.1)'
+                            ? 'rgba(100, 210, 255, 0.1)'
                             : 'rgba(255, 77, 77, 0.1)',
-                        border: `1px solid ${message.type === 'success' ? 'rgba(0, 217, 255, 0.3)' : 'rgba(255, 77, 77, 0.3)'}`,
+                        border: `1px solid ${message.type === 'success' ? 'rgba(100, 210, 255, 0.3)' : 'rgba(255, 77, 77, 0.3)'}`,
                         borderRadius: '12px',
                         padding: '15px 20px',
                         marginBottom: '25px',
-                        color: message.type === 'success' ? '#00D9FF' : '#FF4D4D',
+                        color: message.type === 'success' ? '#64D2FF' : '#FF453A',
                         fontSize: '15px'
                     }}>
                         {message.text}
@@ -165,8 +165,8 @@ const MemberProfile = () => {
                             style={{
                                 width: '100%',
                                 padding: '14px 18px',
-                                background: 'rgba(26, 31, 58, 0.3)',
-                                border: '2px solid rgba(123, 47, 247, 0.2)',
+                                background: 'rgba(26, 26, 26, 0.3)',
+                                border: '2px solid rgba(191, 90, 242, 0.2)',
                                 borderRadius: '12px',
                                 color: '#7B8BA8',
                                 fontSize: '15px',
@@ -210,10 +210,10 @@ const MemberProfile = () => {
                                 style={{
                                     width: '100%',
                                     padding: '14px 18px',
-                                    background: isEditing ? 'rgba(26, 31, 58, 0.5)' : 'rgba(26, 31, 58, 0.3)',
+                                    background: isEditing ? 'rgba(26, 26, 26, 0.5)' : 'rgba(26, 26, 26, 0.3)',
                                     border: isEditing
-                                        ? '2px solid rgba(0, 217, 255, 0.5)'
-                                        : '2px solid rgba(123, 47, 247, 0.2)',
+                                        ? '2px solid rgba(100, 210, 255, 0.5)'
+                                        : '2px solid rgba(191, 90, 242, 0.2)',
                                     borderRadius: '12px',
                                     color: '#FFFFFF',
                                     fontSize: '15px',
@@ -241,10 +241,10 @@ const MemberProfile = () => {
                                 style={{
                                     width: '100%',
                                     padding: '14px 18px',
-                                    background: isEditing ? 'rgba(26, 31, 58, 0.5)' : 'rgba(26, 31, 58, 0.3)',
+                                    background: isEditing ? 'rgba(26, 26, 26, 0.5)' : 'rgba(26, 26, 26, 0.3)',
                                     border: isEditing
-                                        ? '2px solid rgba(0, 217, 255, 0.5)'
-                                        : '2px solid rgba(123, 47, 247, 0.2)',
+                                        ? '2px solid rgba(100, 210, 255, 0.5)'
+                                        : '2px solid rgba(191, 90, 242, 0.2)',
                                     borderRadius: '12px',
                                     color: '#FFFFFF',
                                     fontSize: '15px',
@@ -275,10 +275,10 @@ const MemberProfile = () => {
                             style={{
                                 width: '100%',
                                 padding: '14px 18px',
-                                background: isEditing ? 'rgba(26, 31, 58, 0.5)' : 'rgba(26, 31, 58, 0.3)',
+                                background: isEditing ? 'rgba(26, 26, 26, 0.5)' : 'rgba(26, 26, 26, 0.3)',
                                 border: isEditing
-                                    ? '2px solid rgba(0, 217, 255, 0.5)'
-                                    : '2px solid rgba(123, 47, 247, 0.2)',
+                                    ? '2px solid rgba(100, 210, 255, 0.5)'
+                                    : '2px solid rgba(191, 90, 242, 0.2)',
                                 borderRadius: '12px',
                                 color: '#FFFFFF',
                                 fontSize: '15px',
@@ -302,9 +302,9 @@ const MemberProfile = () => {
                                 type="button"
                                 onClick={() => setIsEditing(true)}
                                 style={{
-                                    background: 'linear-gradient(135deg, #00D9FF, #7B2FF7)',
+                                    background: 'linear-gradient(135deg, #64D2FF, #BF5AF2)',
                                     border: 'none',
-                                    color: '#0A0E27',
+                                    color: '#111111',
                                     padding: '14px 28px',
                                     borderRadius: '12px',
                                     fontWeight: '700',
@@ -323,9 +323,9 @@ const MemberProfile = () => {
                                     type="submit"
                                     disabled={loading}
                                     style={{
-                                        background: 'linear-gradient(135deg, #00D9FF, #7B2FF7)',
+                                        background: 'linear-gradient(135deg, #64D2FF, #BF5AF2)',
                                         border: 'none',
-                                        color: '#0A0E27',
+                                        color: '#111111',
                                         padding: '14px 28px',
                                         borderRadius: '12px',
                                         fontWeight: '700',
@@ -344,9 +344,9 @@ const MemberProfile = () => {
                                     onClick={handleCancel}
                                     disabled={loading}
                                     style={{
-                                        background: 'rgba(123, 47, 247, 0.2)',
-                                        border: '2px solid rgba(123, 47, 247, 0.5)',
-                                        color: '#00D9FF',
+                                        background: 'rgba(191, 90, 242, 0.2)',
+                                        border: '2px solid rgba(191, 90, 242, 0.5)',
+                                        color: '#64D2FF',
                                         padding: '14px 28px',
                                         borderRadius: '12px',
                                         fontWeight: '700',
@@ -366,7 +366,7 @@ const MemberProfile = () => {
                 <div style={{
                     marginTop: '30px',
                     paddingTop: '25px',
-                    borderTop: '2px solid rgba(123, 47, 247, 0.2)',
+                    borderTop: '2px solid rgba(191, 90, 242, 0.2)',
                     display: 'grid',
                     gridTemplateColumns: '1fr 1fr',
                     gap: '20px'
@@ -380,7 +380,7 @@ const MemberProfile = () => {
                             Email vérifié
                         </p>
                         <p style={{
-                            color: user.emailVerified ? '#00D9FF' : '#FFD700',
+                            color: user.emailVerified ? '#64D2FF' : '#FFD60A',
                             fontSize: '16px',
                             fontWeight: '700',
                             margin: 0

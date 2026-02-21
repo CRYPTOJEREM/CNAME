@@ -67,11 +67,11 @@ const FreeContent = ({ setActiveTab }) => {
                         className="btn btn-back"
                         onClick={() => setSelectedContent(null)}
                         style={{
-                            background: 'linear-gradient(135deg, #00D9FF, #7B2FF7)',
+                            background: 'linear-gradient(135deg, #64D2FF, #BF5AF2)',
                             border: 'none',
                             padding: '12px 24px',
                             borderRadius: '12px',
-                            color: '#0A0E27',
+                            color: '#111111',
                             fontWeight: '700',
                             cursor: 'pointer',
                             marginBottom: '20px'
@@ -130,12 +130,12 @@ const FreeContent = ({ setActiveTab }) => {
                         className="login-modal-content"
                         onClick={(e) => e.stopPropagation()}
                         style={{
-                            background: 'linear-gradient(135deg, #0D1229 0%, #1A1F3A 100%)',
+                            background: 'linear-gradient(135deg, #111111 0%, #1A1A1A 100%)',
                             borderRadius: '24px',
                             padding: '40px',
                             maxWidth: '500px',
                             width: '90%',
-                            border: '2px solid rgba(123, 47, 247, 0.3)',
+                            border: '2px solid rgba(191, 90, 242, 0.3)',
                             position: 'relative'
                         }}
                     >
@@ -158,7 +158,7 @@ const FreeContent = ({ setActiveTab }) => {
                         <div style={{ textAlign: 'center', marginBottom: '30px' }}>
                             <div style={{ fontSize: '60px', marginBottom: '20px' }}><Lock size={16} /></div>
                             <h2 style={{
-                                color: '#00D9FF',
+                                color: '#64D2FF',
                                 fontSize: '28px',
                                 fontWeight: '900',
                                 marginBottom: '15px'
@@ -217,11 +217,11 @@ const FreeContent = ({ setActiveTab }) => {
                                     setActiveTab('register');
                                 }}
                                 style={{
-                                    background: 'linear-gradient(135deg, #00D9FF, #7B2FF7)',
+                                    background: 'linear-gradient(135deg, #64D2FF, #BF5AF2)',
                                     border: 'none',
                                     padding: '15px',
                                     borderRadius: '12px',
-                                    color: '#0A0E27',
+                                    color: '#111111',
                                     fontWeight: '700',
                                     fontSize: '16px',
                                     cursor: 'pointer',
@@ -238,11 +238,11 @@ const FreeContent = ({ setActiveTab }) => {
                                     setActiveTab('login');
                                 }}
                                 style={{
-                                    background: 'rgba(123, 47, 247, 0.2)',
-                                    border: '2px solid rgba(123, 47, 247, 0.5)',
+                                    background: 'rgba(191, 90, 242, 0.2)',
+                                    border: '2px solid rgba(191, 90, 242, 0.5)',
                                     padding: '15px',
                                     borderRadius: '12px',
-                                    color: '#00D9FF',
+                                    color: '#64D2FF',
                                     fontWeight: '700',
                                     fontSize: '16px',
                                     cursor: 'pointer',
@@ -293,7 +293,7 @@ const FreeContent = ({ setActiveTab }) => {
                         className={`category-btn ${activeCategory === 'memecoin' ? 'active' : ''}`}
                         onClick={() => setActiveCategory('memecoin')}
                     >
-                        <span className="cat-icon"><Rocket size={16} /></span>
+                        <span className="cat-icon"><Rocket size={20} /></span>
                         <span className="cat-name">Memecoins</span>
                         <span className="cat-desc">Tendances & opportunités rapides</span>
                     </button>
@@ -327,7 +327,7 @@ const FreeContent = ({ setActiveTab }) => {
                                             width: '100%',
                                             paddingTop: '56.25%',
                                             position: 'relative',
-                                            background: 'linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(123, 47, 247, 0.1))',
+                                            background: 'linear-gradient(135deg, rgba(100, 210, 255, 0.1), rgba(191, 90, 242, 0.1))',
                                             borderRadius: '12px',
                                             display: 'flex',
                                             alignItems: 'center',
@@ -369,7 +369,7 @@ const FreeContent = ({ setActiveTab }) => {
                                             width: '100%',
                                             paddingTop: '56.25%',
                                             position: 'relative',
-                                            background: 'linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(123, 47, 247, 0.1))',
+                                            background: 'linear-gradient(135deg, rgba(100, 210, 255, 0.1), rgba(191, 90, 242, 0.1))',
                                             borderRadius: '12px',
                                             display: 'flex',
                                             alignItems: 'center',
@@ -428,7 +428,7 @@ const FreeContent = ({ setActiveTab }) => {
                                             width: '100%',
                                             paddingTop: '56.25%',
                                             position: 'relative',
-                                            background: 'linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(123, 47, 247, 0.1))',
+                                            background: 'linear-gradient(135deg, rgba(100, 210, 255, 0.1), rgba(191, 90, 242, 0.1))',
                                             borderRadius: '12px',
                                             display: 'flex',
                                             alignItems: 'center',
@@ -470,7 +470,7 @@ const FreeContent = ({ setActiveTab }) => {
                                             width: '100%',
                                             paddingTop: '56.25%',
                                             position: 'relative',
-                                            background: 'linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(123, 47, 247, 0.1))',
+                                            background: 'linear-gradient(135deg, rgba(100, 210, 255, 0.1), rgba(191, 90, 242, 0.1))',
                                             borderRadius: '12px',
                                             display: 'flex',
                                             alignItems: 'center',
@@ -509,7 +509,7 @@ const FreeContent = ({ setActiveTab }) => {
                 <div className="category-content">
                     <div className="module-section">
                         <h2 className="module-title">
-                            <span><Rocket size={16} /></span>
+                            <span><Rocket size={20} /></span>
                             <span>MODULE : Memecoins</span>
                         </h2>
                         <p className="module-subtitle">
@@ -529,7 +529,7 @@ const FreeContent = ({ setActiveTab }) => {
                                             width: '100%',
                                             paddingTop: '56.25%',
                                             position: 'relative',
-                                            background: 'linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(123, 47, 247, 0.1))',
+                                            background: 'linear-gradient(135deg, rgba(255, 214, 10, 0.1), rgba(191, 90, 242, 0.1))',
                                             borderRadius: '12px',
                                             display: 'flex',
                                             alignItems: 'center',
@@ -547,7 +547,7 @@ const FreeContent = ({ setActiveTab }) => {
                                         </div>
                                     </div>
                                     <div className="video-module-info">
-                                        <span className="video-level level-debutant"><Rocket size={16} /> MEMECOIN - GRATUIT</span>
+                                        <span className="video-level level-debutant"><Rocket size={20} /> MEMECOIN - GRATUIT</span>
                                         <h3 className="video-module-title">{item.title}</h3>
                                         <p className="video-module-description">{item.description}</p>
                                         <div className="video-stats">
@@ -571,7 +571,7 @@ const FreeContent = ({ setActiveTab }) => {
                                             width: '100%',
                                             paddingTop: '56.25%',
                                             position: 'relative',
-                                            background: 'linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(123, 47, 247, 0.1))',
+                                            background: 'linear-gradient(135deg, rgba(255, 214, 10, 0.1), rgba(191, 90, 242, 0.1))',
                                             borderRadius: '12px',
                                             display: 'flex',
                                             alignItems: 'center',
@@ -589,7 +589,7 @@ const FreeContent = ({ setActiveTab }) => {
                                         </div>
                                     </div>
                                     <div className="video-module-info">
-                                        <span className="video-level level-debutant"><Rocket size={16} /> MEMECOIN - GRATUIT</span>
+                                        <span className="video-level level-debutant"><Rocket size={20} /> MEMECOIN - GRATUIT</span>
                                         <h3 className="video-module-title">{item.title}</h3>
                                         <p className="video-module-description">{item.description}</p>
                                         <div className="video-stats">

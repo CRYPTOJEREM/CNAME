@@ -63,8 +63,8 @@ const ReviewsManagement = () => {
     return (
         <div className="reviews-management">
             <div className="management-header">
-                <h2><Star size={14} /> Gestion des Avis Clients</h2>
-                <button onClick={fetchReviews} className="btn-refresh"><RefreshCw size={16} /> Actualiser</button>
+                <h2><Star size={22} /> Gestion des Avis Clients</h2>
+                <button onClick={fetchReviews} className="btn-refresh"><RefreshCw size={18} /> Actualiser</button>
             </div>
 
             {/* Stats */}

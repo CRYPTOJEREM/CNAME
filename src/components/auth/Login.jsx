@@ -67,7 +67,7 @@ const Login = ({ setActiveTab }) => {
                         <button
                             onClick={handleResendVerification}
                             disabled={resendLoading}
-                            style={{ background: 'linear-gradient(135deg, #00D9FF, #7B2FF7)', color: 'white', border: 'none', padding: '8px 20px', borderRadius: '5px', cursor: 'pointer', fontSize: '14px' }}
+                            style={{ background: 'linear-gradient(135deg, #64D2FF, #BF5AF2)', color: 'white', border: 'none', padding: '8px 20px', borderRadius: '5px', cursor: 'pointer', fontSize: '14px' }}
                         >
                             {resendLoading ? 'Envoi en cours...' : <><Mail size={16} /> Renvoyer l'email de vérification</>}
                         </button>
@@ -112,7 +112,7 @@ const Login = ({ setActiveTab }) => {
                         className="btn btn-primary btn-block"
                         disabled={loading}
                     >
-                        {loading ? 'Connexion en cours...' : <><Rocket size={16} /> Se connecter</>}
+                        {loading ? 'Connexion en cours...' : <><Rocket size={20} /> Se connecter</>}
                     </button>
                 </form>
 

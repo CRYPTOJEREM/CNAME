@@ -9,7 +9,7 @@ const Assistance = () => {
         <section className="assistance-section">
             <div className="assistance-container">
                 <div className="section-title">
-                    <h2><MessageCircle size={16} /> ASSISTANCE & INFORMATIONS LÉGALES</h2>
+                    <h2><MessageCircle size={22} /> ASSISTANCE & INFORMATIONS LÉGALES</h2>
                     <p>Tout ce que vous devez savoir sur La Sphere</p>
                 </div>
 

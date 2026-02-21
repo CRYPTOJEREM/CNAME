@@ -73,7 +73,7 @@ const Footer = () => {
             </div>
 
             <div className="footer-warning">
-                <p className="footer-warning-title"><AlertTriangle size={16} /> AVERTISSEMENT IMPORTANT</p>
+                <p className="footer-warning-title"><AlertTriangle size={18} /> AVERTISSEMENT IMPORTANT</p>
                 <p className="footer-warning-text">
                     <strong>AUCUN CONSEIL FINANCIER</strong> : Les informations fournies sur ce site sont à titre éducatif uniquement.
                     Le trading comporte des risques de perte en capital. Ne tradez jamais plus que ce que vous pouvez vous permettre de perdre.

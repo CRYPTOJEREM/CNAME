@@ -96,7 +96,7 @@ const CGU = () => {
                         <p>Le Site propose différents niveaux d'abonnement :</p>
                         <ul className="cgu-list">
                             <li>🆓 <strong>Gratuit</strong> - Accès aux fonctionnalités de base (dashboard, calendrier, actualités)</li>
-                            <li><Star size={14} /> <strong>Premium</strong> - Accès au contenu exclusif, signaux de trading, groupe Telegram</li>
+                            <li><Star size={16} /> <strong>Premium</strong> - Accès au contenu exclusif, signaux de trading, groupe Telegram</li>
                             <li><Gem size={16} /> <strong>VIP</strong> - Accès complet incluant formations avancées, analyses personnalisées, webinaires</li>
                         </ul>
 

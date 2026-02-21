@@ -26,7 +26,7 @@
     display: block;
     height: 3px;
     width: 100%;
-    background: linear-gradient(135deg, #00D9FF, #7B2FF7);
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
     border-radius: 3px;
     transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
@@ -72,13 +72,13 @@
         top: 70px;
         left: 0;
         right: 0;
-        background: rgba(10, 14, 39, 0.98);
+        background: rgba(17, 17, 17, 0.98);
         backdrop-filter: blur(20px);
         flex-direction: column;
         padding: 20px;
         max-height: calc(100vh - 70px);
         overflow-y: auto;
-        border-top: 2px solid rgba(0, 217, 255, 0.3);
+        border-top: 2px solid rgba(100, 210, 255, 0.3);
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
         transform: translateX(-100%);
         opacity: 0;
@@ -140,7 +140,7 @@
         width: 100%;
         text-align: center;
         padding: 12px;
-        background: rgba(0, 217, 255, 0.1);
+        background: rgba(100, 210, 255, 0.1);
         border-radius: 8px;
     }
 }
@@ -1006,7 +1006,7 @@
 @media (prefers-color-scheme: dark) {
     /* Le site est déjà dark par défaut, mais on peut ajouter des ajustements */
     body {
-        background: linear-gradient(135deg, #050812 0%, #0D1229 100%);
+        background: linear-gradient(135deg, #050812 0%, var(--bg-primary) 100%);
     }
 }
 
@@ -1030,13 +1030,13 @@
     }
 
     .nav-links button.active {
-        border: 3px solid #00D9FF;
+        border: 3px solid var(--accent-cyan);
     }
 }
 
 /* === CGU (CONDITIONS GÉNÉRALES) === */
 .cgu-section {
-    background: linear-gradient(135deg, #0A0E27 0%, #1A1F3A 100%);
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
     min-height: 100vh;
     padding: 40px 20px;
 }
@@ -1044,23 +1044,23 @@
 .cgu-container {
     max-width: 900px;
     margin: 0 auto;
-    background: rgba(13, 18, 41, 0.8);
+    background: rgba(17, 17, 17, 0.8);
     border-radius: 24px;
     padding: 40px;
-    border: 1px solid rgba(0, 217, 255, 0.2);
+    border: 1px solid rgba(100, 210, 255, 0.2);
 }
 
 .cgu-header {
     text-align: center;
     margin-bottom: 40px;
     padding-bottom: 30px;
-    border-bottom: 2px solid rgba(0, 217, 255, 0.3);
+    border-bottom: 2px solid rgba(100, 210, 255, 0.3);
 }
 
 .cgu-header h1 {
     font-size: 36px;
     font-weight: 900;
-    background: linear-gradient(135deg, #00D9FF 0%, #7B2FF7 100%);
+    background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-purple) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -1090,7 +1090,7 @@
 .cgu-article h2 {
     font-size: 24px;
     font-weight: 700;
-    color: #00D9FF;
+    color: var(--accent-cyan);
     margin-bottom: 20px;
 }
 
@@ -1108,19 +1108,19 @@
 }
 
 .cgu-article strong {
-    color: #00D9FF;
+    color: var(--accent-cyan);
 }
 
 .cgu-article a {
-    color: #00D9FF;
+    color: var(--accent-cyan);
     text-decoration: none;
-    border-bottom: 1px solid rgba(0, 217, 255, 0.3);
+    border-bottom: 1px solid rgba(100, 210, 255, 0.3);
     transition: all 0.3s ease;
 }
 
 .cgu-article a:hover {
-    color: #7B2FF7;
-    border-bottom-color: #7B2FF7;
+    color: var(--accent-purple);
+    border-bottom-color: var(--accent-purple);
 }
 
 .cgu-list {
@@ -1141,12 +1141,12 @@
     content: "▸";
     position: absolute;
     left: 10px;
-    color: #00D9FF;
+    color: var(--accent-cyan);
 }
 
 .cgu-note {
-    background: rgba(0, 217, 255, 0.1);
-    border-left: 4px solid #00D9FF;
+    background: rgba(100, 210, 255, 0.1);
+    border-left: 4px solid var(--accent-cyan);
     padding: 15px 20px;
     margin: 20px 0;
     border-radius: 8px;
@@ -1162,7 +1162,7 @@
 
 .cgu-warning {
     background: rgba(255, 107, 107, 0.1);
-    border-left: 4px solid #ff6b6b;
+    border-left: 4px solid var(--accent-red);
     padding: 15px 20px;
     margin: 20px 0;
     border-radius: 8px;
@@ -1177,7 +1177,7 @@
 }
 
 .cgu-contact {
-    background: rgba(0, 217, 255, 0.05);
+    background: rgba(100, 210, 255, 0.05);
     border-radius: 12px;
     padding: 20px;
     margin: 20px 0;
@@ -1202,7 +1202,7 @@
 .cgu-footer {
     margin-top: 40px;
     padding-top: 30px;
-    border-top: 2px solid rgba(0, 217, 255, 0.3);
+    border-top: 2px solid rgba(100, 210, 255, 0.3);
     text-align: center;
 }
 
@@ -1216,7 +1216,7 @@
     padding: 15px;
     border-radius: 8px;
     margin-top: 20px;
-    color: #ff6b6b !important;
+    color: var(--accent-red) !important;
 }
 
 /* CGU Mobile */

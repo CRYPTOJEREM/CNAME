@@ -47,11 +47,11 @@ const Dashboard = () => {
 
     // Fonction pour obtenir le texte du badge
     const getBadgeText = (symbol, change24h, change7d) => {
-        if (symbol.toLowerCase() === 'btc') return <><Flame size={14} /> Dominance</>;
-        if (change24h > 5) return <><Rocket size={14} /> Hausse</>;
-        if (change24h > 2) return <><TrendingUp size={14} /> Momentum</>;
-        if (change7d > 10) return <><Zap size={14} /> Actif</>;
-        if (Math.abs(change24h) < 0.5) return <><Gem size={14} /> Stable</>;
+        if (symbol.toLowerCase() === 'btc') return <><Flame size={16} /> Dominance</>;
+        if (change24h > 5) return <><Rocket size={16} /> Hausse</>;
+        if (change24h > 2) return <><TrendingUp size={16} /> Momentum</>;
+        if (change7d > 10) return <><Zap size={16} /> Actif</>;
+        if (Math.abs(change24h) < 0.5) return <><Gem size={16} /> Stable</>;
         return <>À suivre</>;
     }
 
@@ -100,7 +100,7 @@ const Dashboard = () => {
         <div className="container">
             <div className="header">
                 <div className="date-badge">
-                    {lastUpdate ? <><RefreshCw size={14} /> MISE À JOUR : {lastUpdate.toLocaleTimeString('fr-FR')}</> : <><RefreshCw size={14} /> CHARGEMENT...</>}
+                    {lastUpdate ? <><RefreshCw size={16} /> MISE À JOUR : {lastUpdate.toLocaleTimeString('fr-FR')}</> : <><RefreshCw size={16} /> CHARGEMENT...</>}
                 </div>
                 <h1>Dashboard Crypto</h1>
                 <div className="subtitle">Top 20 des cryptomonnaies par capitalisation</div>
@@ -108,7 +108,7 @@ const Dashboard = () => {
                 {/* Barre de recherche */}
                 <div className={`search-bar-container ${searchFocused ? 'focused' : ''}`}>
                     <div className="search-bar-wrapper">
-                        <span className="search-icon"><Search size={16} /></span>
+                        <span className="search-icon"><Search size={18} /></span>
                         <input
                             type="text"
                             className="search-input"
@@ -137,7 +137,7 @@ const Dashboard = () => {
                     <div className="loading-text">Chargement des données...</div>
                 ) : filteredCryptoData.length === 0 ? (
                     <div className="no-results">
-                        <div className="no-results-icon"><Search size={16} /></div>
+                        <div className="no-results-icon"><Search size={18} /></div>
                         <div className="no-results-text">Aucune crypto trouvée pour "{searchTerm}"</div>
                         <button className="no-results-btn" onClick={clearSearch}>Effacer la recherche</button>
                     </div>

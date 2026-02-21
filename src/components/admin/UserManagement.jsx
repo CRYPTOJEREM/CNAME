@@ -67,8 +67,8 @@ const UserManagement = () => {
     const getStatusBadge = (status) => {
         const badges = {
             free: { icon: '🆓', color: '#888' },
-            premium: { icon: <Star size={14} />, color: '#FFD700' },
-            vip: { icon: <Gem size={14} />, color: '#00D9FF' }
+            premium: { icon: <Star size={16} />, color: '#FFD60A' },
+            vip: { icon: <Gem size={16} />, color: '#64D2FF' }
         }
         const badge = badges[status] || badges.free
         return (
@@ -81,7 +81,7 @@ const UserManagement = () => {
     return (
         <div className="user-management">
             <div className="management-header">
-                <h2><Users size={16} /> Gestion des Utilisateurs</h2>
+                <h2><Users size={22} /> Gestion des Utilisateurs</h2>
                 <button onClick={fetchUsers} className="btn-refresh"><RefreshCw size={16} /> Actualiser</button>
             </div>
 

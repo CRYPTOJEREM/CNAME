@@ -174,7 +174,7 @@ const Calendar = () => {
     return (
         <div className="container">
             <div className="header">
-                <div className="date-badge"><CalendarDays size={16} /> CALENDRIER ÉCONOMIQUE</div>
+                <div className="date-badge"><CalendarDays size={22} /> CALENDRIER ÉCONOMIQUE</div>
                 <h1>News de la Semaine</h1>
                 <div className="subtitle">
                     Événements économiques majeurs (USA) - Source: Investing.com
@@ -182,7 +182,7 @@ const Calendar = () => {
 
                 {lastUpdate && (
                     <div className="last-update-info">
-                        <Clock size={14} /> Dernière mise à jour: {lastUpdate.toLocaleString('fr-FR')}
+                        <Clock size={16} /> Dernière mise à jour: {lastUpdate.toLocaleString('fr-FR')}
                     </div>
                 )}
 
@@ -204,7 +204,7 @@ const Calendar = () => {
                     onClick={() => fetchCalendarData()}
                     disabled={refreshing}
                 >
-                    {refreshing ? <><RefreshCw size={16} /> Actualisation...</> : <><RefreshCw size={16} /> Actualiser Maintenant</>}
+                    {refreshing ? <><RefreshCw size={18} /> Actualisation...</> : <><RefreshCw size={18} /> Actualiser Maintenant</>}
                 </button>
             </div>
 
@@ -216,14 +216,14 @@ const Calendar = () => {
                 Object.keys(eventsByDay).map(day => (
                     <div key={day} className="dashboard">
                         <div className="day-header">
-                            <div className="day-title"><BarChart3 size={16} /> {day.charAt(0).toUpperCase() + day.slice(1)}</div>
+                            <div className="day-title"><BarChart3 size={20} /> {day.charAt(0).toUpperCase() + day.slice(1)}</div>
                         </div>
 
                         <div className="events-grid">
                             {eventsByDay[day].map(event => (
                                 <div key={event.id} className={`event-card ${event.importance === 3 ? 'high-importance' : 'medium-importance'}`}>
                                     <div className="event-time">
-                                        <span className="time-icon"><Clock size={14} /></span>
+                                        <span className="time-icon"><Clock size={16} /></span>
                                         <span>{event.time}</span>
                                     </div>
                                     <div className="event-country">

@@ -37,15 +37,15 @@ const SubscriptionStatus = ({ setActiveTab }) => {
                 description: 'Accès au contenu gratuit'
             },
             premium: {
-                icon: <Star size={14} />,
+                icon: <Star size={16} />,
                 text: 'PREMIUM',
-                color: '#7B2FF7',
+                color: '#BF5AF2',
                 description: 'Accès au contenu Premium'
             },
             vip: {
-                icon: <Gem size={14} />,
+                icon: <Gem size={16} />,
                 text: 'VIP',
-                color: '#00D9FF',
+                color: '#64D2FF',
                 description: 'Accès complet à tout le contenu'
             }
         };
@@ -117,7 +117,7 @@ const SubscriptionStatus = ({ setActiveTab }) => {
                     className="btn btn-primary subscription-upgrade-btn"
                     onClick={() => setActiveTab('abonnements')}
                 >
-                    {user.subscriptionStatus === 'free' ? <><Sparkles size={14} /> Passer Premium/VIP</> : <><Gem size={14} /> Passer VIP</>}
+                    {user.subscriptionStatus === 'free' ? <><Sparkles size={14} /> Passer Premium/VIP</> : <><Gem size={16} /> Passer VIP</>}
                 </button>
             )}
 

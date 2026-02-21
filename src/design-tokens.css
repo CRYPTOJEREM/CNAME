@@ -3,11 +3,11 @@
    ========================================== */
 
 :root {
-  /* Background colors - softer dark theme */
-  --bg-primary: #0F1117;
-  --bg-secondary: #1A1D26;
-  --bg-tertiary: #22252E;
-  --bg-elevated: #2A2D36;
+  /* Background colors - black theme */
+  --bg-primary: #111111;
+  --bg-secondary: #1A1A1A;
+  --bg-tertiary: #222222;
+  --bg-elevated: #2A2A2A;
 
   /* Glass effect */
   --glass-bg: rgba(255, 255, 255, 0.05);

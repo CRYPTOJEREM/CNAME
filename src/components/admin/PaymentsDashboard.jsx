@@ -52,7 +52,7 @@ const PaymentsDashboard = () => {
     return (
         <div className="payments-dashboard">
             <div className="management-header">
-                <h2><Wallet size={16} /> Gestion des Paiements</h2>
+                <h2><Wallet size={22} /> Gestion des Paiements</h2>
                 <button onClick={fetchPayments} className="btn-refresh"><RefreshCw size={16} /> Actualiser</button>
             </div>
 

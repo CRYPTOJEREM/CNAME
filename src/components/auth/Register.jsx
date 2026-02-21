@@ -229,7 +229,7 @@ const Register = ({ setActiveTab }) => {
                         className="btn btn-primary btn-block"
                         disabled={loading}
                     >
-                        {loading ? 'Inscription en cours...' : <><Rocket size={16} /> Créer mon compte</>}
+                        {loading ? 'Inscription en cours...' : <><Rocket size={20} /> Créer mon compte</>}
                     </button>
                 </form>
 

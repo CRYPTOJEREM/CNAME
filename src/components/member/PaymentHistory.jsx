@@ -27,9 +27,9 @@ const PaymentHistory = () => {
 
     const getStatusBadge = (status) => {
         const badges = {
-            pending: { icon: <Loader2 size={14} />, text: 'En attente', color: '#FFD700' },
-            completed: { icon: <CheckCircle2 size={14} />, text: 'Complété', color: '#00D9FF' },
-            failed: { icon: <XCircle size={14} />, text: 'Échoué', color: '#FF4D4D' }
+            pending: { icon: <Loader2 size={14} />, text: 'En attente', color: '#FFD60A' },
+            completed: { icon: <CheckCircle2 size={14} />, text: 'Complété', color: '#64D2FF' },
+            failed: { icon: <XCircle size={14} />, text: 'Échoué', color: '#FF453A' }
         };
         return badges[status] || badges.pending;
     };
@@ -59,11 +59,11 @@ const PaymentHistory = () => {
         <div>
             <div style={{ marginBottom: '30px' }}>
                 <h2 style={{
-                    color: '#00D9FF',
+                    color: '#64D2FF',
                     fontSize: '28px',
                     fontWeight: '900',
                     marginBottom: '10px',
-                    textShadow: '0 0 20px rgba(0, 217, 255, 0.5)'
+                    textShadow: '0 0 20px rgba(100, 210, 255, 0.5)'
                 }}>
                     <CreditCard size={16} /> Historique des Paiements
                 </h2>
@@ -78,8 +78,8 @@ const PaymentHistory = () => {
 
             {payments.length === 0 ? (
                 <div style={{
-                    background: 'rgba(26, 31, 58, 0.5)',
-                    border: '2px dashed rgba(123, 47, 247, 0.3)',
+                    background: 'rgba(26, 26, 26, 0.5)',
+                    border: '2px dashed rgba(191, 90, 242, 0.3)',
                     borderRadius: '20px',
                     padding: '60px 40px',
                     textAlign: 'center'
@@ -104,17 +104,17 @@ const PaymentHistory = () => {
                             <div
                                 key={payment.id}
                                 style={{
-                                    background: 'linear-gradient(135deg, #0D1229 0%, #1A1F3A 100%)',
-                                    border: '2px solid rgba(123, 47, 247, 0.3)',
+                                    background: 'linear-gradient(135deg, #111111 0%, #1A1A1A 100%)',
+                                    border: '2px solid rgba(191, 90, 242, 0.3)',
                                     borderRadius: '20px',
                                     padding: '30px',
                                     transition: 'all 0.3s'
                                 }}
                                 onMouseOver={(e) => {
-                                    e.currentTarget.style.border = '2px solid rgba(0, 217, 255, 0.3)';
+                                    e.currentTarget.style.border = '2px solid rgba(100, 210, 255, 0.3)';
                                 }}
                                 onMouseOut={(e) => {
-                                    e.currentTarget.style.border = '2px solid rgba(123, 47, 247, 0.3)';
+                                    e.currentTarget.style.border = '2px solid rgba(191, 90, 242, 0.3)';
                                 }}
                             >
                                 {/* Header */}
@@ -124,7 +124,7 @@ const PaymentHistory = () => {
                                     justifyContent: 'space-between',
                                     marginBottom: '20px',
                                     paddingBottom: '20px',
-                                    borderBottom: '2px solid rgba(123, 47, 247, 0.2)'
+                                    borderBottom: '2px solid rgba(191, 90, 242, 0.2)'
                                 }}>
                                     <div>
                                         <h3 style={{
@@ -145,7 +145,7 @@ const PaymentHistory = () => {
                                     </div>
                                     <div style={{
                                         background: statusBadge.color,
-                                        color: '#0A0E27',
+                                        color: '#111111',
                                         padding: '8px 16px',
                                         borderRadius: '20px',
                                         fontSize: '14px',
@@ -167,8 +167,8 @@ const PaymentHistory = () => {
                                 }}>
                                     {/* Montant */}
                                     <div style={{
-                                        background: 'rgba(0, 217, 255, 0.1)',
-                                        border: '1px solid rgba(0, 217, 255, 0.3)',
+                                        background: 'rgba(100, 210, 255, 0.1)',
+                                        border: '1px solid rgba(100, 210, 255, 0.3)',
                                         borderRadius: '12px',
                                         padding: '15px'
                                     }}>
@@ -180,7 +180,7 @@ const PaymentHistory = () => {
                                             Montant
                                         </p>
                                         <p style={{
-                                            color: '#00D9FF',
+                                            color: '#64D2FF',
                                             fontSize: '24px',
                                             fontWeight: '900',
                                             margin: 0
@@ -191,8 +191,8 @@ const PaymentHistory = () => {
 
                                     {/* ID Transaction */}
                                     <div style={{
-                                        background: 'rgba(123, 47, 247, 0.1)',
-                                        border: '1px solid rgba(123, 47, 247, 0.3)',
+                                        background: 'rgba(191, 90, 242, 0.1)',
+                                        border: '1px solid rgba(191, 90, 242, 0.3)',
                                         borderRadius: '12px',
                                         padding: '15px'
                                     }}>
@@ -219,8 +219,8 @@ const PaymentHistory = () => {
                                     {/* Mise à jour si différente */}
                                     {payment.updatedAt && payment.updatedAt !== payment.createdAt && (
                                         <div style={{
-                                            background: 'rgba(255, 215, 0, 0.1)',
-                                            border: '1px solid rgba(255, 215, 0, 0.3)',
+                                            background: 'rgba(255, 214, 10, 0.1)',
+                                            border: '1px solid rgba(255, 214, 10, 0.3)',
                                             borderRadius: '12px',
                                             padding: '15px'
                                         }}>
@@ -232,7 +232,7 @@ const PaymentHistory = () => {
                                                 Mise à jour
                                             </p>
                                             <p style={{
-                                                color: '#FFD700',
+                                                color: '#FFD60A',
                                                 fontSize: '14px',
                                                 fontWeight: '600',
                                                 margin: 0

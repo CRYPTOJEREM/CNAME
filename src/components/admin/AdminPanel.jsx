@@ -107,7 +107,7 @@ const AdminPanel = () => {
                         className={`admin-nav-btn ${activeSection === 'reviews' ? 'active' : ''}`}
                         onClick={() => setActiveSection('reviews')}
                     >
-                        <span className="nav-icon"><Star size={14} /></span>
+                        <span className="nav-icon"><Star size={16} /></span>
                         <span>Avis Clients</span>
                     </button>
                     <button
@@ -127,7 +127,7 @@ const AdminPanel = () => {
                                 <div className="loading">Chargement des statistiques...</div>
                             ) : stats ? (
                                 <>
-                                    <h2><TrendingUp size={16} /> Vue d'ensemble</h2>
+                                    <h2><TrendingUp size={22} /> Vue d'ensemble</h2>
 
                                     {/* Stats Utilisateurs */}
                                     <div className="stats-grid">
@@ -138,7 +138,7 @@ const AdminPanel = () => {
                                                 <div className="stat-value">{stats.users.total}</div>
                                                 <div className="stat-details">
                                                     <span className="stat-detail free">🆓 {stats.users.free} Free</span>
-                                                    <span className="stat-detail premium"><Star size={14} /> {stats.users.premium} Premium</span>
+                                                    <span className="stat-detail premium"><Star size={16} /> {stats.users.premium} Premium</span>
                                                     <span className="stat-detail vip"><Gem size={16} /> {stats.users.vip} VIP</span>
                                                 </div>
                                             </div>
@@ -177,7 +177,7 @@ const AdminPanel = () => {
                                                 <div className="stat-value">{stats.content.total}</div>
                                                 <div className="stat-details">
                                                     <span className="stat-detail">🆓 {stats.content.free}</span>
-                                                    <span className="stat-detail"><Star size={14} /> {stats.content.premium}</span>
+                                                    <span className="stat-detail"><Star size={16} /> {stats.content.premium}</span>
                                                     <span className="stat-detail"><Gem size={16} /> {stats.content.vip}</span>
                                                 </div>
                                             </div>

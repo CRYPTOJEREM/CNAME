@@ -103,8 +103,8 @@ const ContentManagement = () => {
     const getLevelBadge = (level) => {
         const badges = {
             free: { icon: '🆓', color: '#888' },
-            premium: { icon: <Star size={14} />, color: '#FFD700' },
-            vip: { icon: <Gem size={14} />, color: '#00D9FF' }
+            premium: { icon: <Star size={16} />, color: '#FFD60A' },
+            vip: { icon: <Gem size={16} />, color: '#64D2FF' }
         }
         const badge = badges[level] || badges.free
         return (
@@ -117,7 +117,7 @@ const ContentManagement = () => {
     return (
         <div className="content-management">
             <div className="management-header">
-                <h2><BookOpen size={16} /> Gestion du Contenu</h2>
+                <h2><BookOpen size={22} /> Gestion du Contenu</h2>
                 <button onClick={handleCreate} className="btn-create">➕ Nouveau Contenu</button>
             </div>
 

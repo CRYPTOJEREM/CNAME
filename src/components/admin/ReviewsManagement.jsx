@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import api from '../../services/api'
+import { CalendarDays, CheckCircle2, Gem, Loader2, MessageCircle, RefreshCw, Star, XCircle } from 'lucide-react';
 
 const ReviewsManagement = () => {
     const [reviews, setReviews] = useState([])
@@ -57,33 +58,33 @@ const ReviewsManagement = () => {
     const pendingCount = reviews.filter(r => !r.approved).length
     const approvedCount = reviews.filter(r => r.approved).length
 
-    const renderStars = (rating) => '⭐'.repeat(rating)
+    const renderStars = (rating) => Array.from({ length: rating }, (_, i) => <Star key={i} size={14} fill="currentColor" />)
 
     return (
         <div className="reviews-management">
             <div className="management-header">
-                <h2>⭐ Gestion des Avis Clients</h2>
-                <button onClick={fetchReviews} className="btn-refresh">🔄 Actualiser</button>
+                <h2><Star size={14} /> Gestion des Avis Clients</h2>
+                <button onClick={fetchReviews} className="btn-refresh"><RefreshCw size={16} /> Actualiser</button>
             </div>
 
             {/* Stats */}
             <div className="stats-cards">
                 <div className="stats-card">
-                    <div className="stats-icon">💬</div>
+                    <div className="stats-icon"><MessageCircle size={16} /></div>
                     <div className="stats-content">
                         <div className="stats-label">Total Avis</div>
                         <div className="stats-value">{reviews.length}</div>
                     </div>
                 </div>
                 <div className="stats-card pending">
-                    <div className="stats-icon">⏳</div>
+                    <div className="stats-icon"><Loader2 size={16} /></div>
                     <div className="stats-content">
                         <div className="stats-label">En attente</div>
                         <div className="stats-value">{pendingCount}</div>
                     </div>
                 </div>
                 <div className="stats-card success">
-                    <div className="stats-icon">✅</div>
+                    <div className="stats-icon"><CheckCircle2 size={16} /></div>
                     <div className="stats-content">
                         <div className="stats-label">Approuvés</div>
                         <div className="stats-value">{approvedCount}</div>
@@ -97,13 +98,13 @@ const ReviewsManagement = () => {
                     className={`filter-btn ${filter === 'pending' ? 'active' : ''}`}
                     onClick={() => setFilter('pending')}
                 >
-                    ⏳ En attente ({pendingCount})
+                    <Loader2 size={16} /> En attente ({pendingCount})
                 </button>
                 <button
                     className={`filter-btn ${filter === 'approved' ? 'active' : ''}`}
                     onClick={() => setFilter('approved')}
                 >
-                    ✅ Approuvés ({approvedCount})
+                    <CheckCircle2 size={16} /> Approuvés ({approvedCount})
                 </button>
                 <button
                     className={`filter-btn ${filter === 'all' ? 'active' : ''}`}
@@ -136,15 +137,15 @@ const ReviewsManagement = () => {
                                     <div>
                                         <h4>{review.userFirstName}</h4>
                                         <span className={`user-badge ${review.userSubscriptionLevel}`}>
-                                            {review.userSubscriptionLevel === 'premium' ? '⭐ Premium' : '💎 VIP'}
+                                            {review.userSubscriptionLevel === 'premium' ? <><Star size={14} /> Premium</> : <><Gem size={14} /> VIP</>}
                                         </span>
                                     </div>
                                 </div>
                                 <div className="review-status-badge">
                                     {review.approved ? (
-                                        <span className="badge-approved">✅ Approuvé</span>
+                                        <span className="badge-approved"><CheckCircle2 size={16} /> Approuvé</span>
                                     ) : (
-                                        <span className="badge-pending">⏳ En attente</span>
+                                        <span className="badge-pending"><Loader2 size={16} /> En attente</span>
                                     )}
                                 </div>
                             </div>
@@ -157,7 +158,7 @@ const ReviewsManagement = () => {
                             <p className="review-admin-message">{review.message}</p>
 
                             <div className="review-admin-meta">
-                                <span>📅 {new Date(review.createdAt).toLocaleDateString('fr-FR', {
+                                <span><CalendarDays size={16} /> {new Date(review.createdAt).toLocaleDateString('fr-FR', {
                                     year: 'numeric',
                                     month: 'long',
                                     day: 'numeric',
@@ -172,14 +173,14 @@ const ReviewsManagement = () => {
                                         onClick={() => handleApprove(review.id)}
                                         className="btn-approve"
                                     >
-                                        ✅ Approuver
+                                        <CheckCircle2 size={16} /> Approuver
                                     </button>
                                 )}
                                 <button
                                     onClick={() => handleReject(review.id)}
                                     className="btn-reject"
                                 >
-                                    {review.approved ? '🗑️ Supprimer' : '❌ Rejeter'}
+                                    {review.approved ? '🗑️ Supprimer' : <><XCircle size={14} /> Rejeter</>}
                                 </button>
                             </div>
                         </div>

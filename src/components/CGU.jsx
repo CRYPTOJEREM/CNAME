@@ -1,11 +1,12 @@
 import React from 'react'
+import { AlertTriangle, Ban, BarChart3, CalendarDays, CheckCircle2, CreditCard, Gem, Globe, GraduationCap, Handshake, Lightbulb, Lock, Mail, MessageCircle, Newspaper, Scale, ScrollText, Smartphone, Star, User, XCircle } from 'lucide-react';
 
 const CGU = () => {
     return (
         <section className="cgu-section">
             <div className="cgu-container">
                 <div className="cgu-header">
-                    <h1>📜 Conditions Générales d'Utilisation</h1>
+                    <h1><ScrollText size={16} /> Conditions Générales d'Utilisation</h1>
                     <p className="cgu-update">Dernière mise à jour : 8 février 2026</p>
                 </div>
 
@@ -23,7 +24,7 @@ const CGU = () => {
                             Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser le Site.
                         </p>
                         <div className="cgu-note">
-                            <span className="note-icon">💡</span>
+                            <span className="note-icon"><Lightbulb size={16} /></span>
                             <span>L'utilisation du Site implique l'acceptation pleine et entière des CGU en vigueur au moment de votre connexion.</span>
                         </div>
                     </div>
@@ -36,12 +37,12 @@ const CGU = () => {
                             proposant les services suivants :
                         </p>
                         <ul className="cgu-list">
-                            <li>📊 <strong>Dashboard crypto en temps réel</strong> - Suivi des prix et analyses de marché</li>
-                            <li>📅 <strong>Calendrier économique</strong> - Événements importants et actualités</li>
-                            <li>🎓 <strong>Formations et contenus éducatifs</strong> - Tutoriels, vidéos et guides</li>
-                            <li>💎 <strong>Abonnements Premium et VIP</strong> - Accès à du contenu exclusif</li>
-                            <li>💬 <strong>Communauté Telegram</strong> - Groupe VIP et support</li>
-                            <li>📰 <strong>Actualités crypto</strong> - Veille quotidienne du secteur</li>
+                            <li><BarChart3 size={16} /> <strong>Dashboard crypto en temps réel</strong> - Suivi des prix et analyses de marché</li>
+                            <li><CalendarDays size={16} /> <strong>Calendrier économique</strong> - Événements importants et actualités</li>
+                            <li><GraduationCap size={16} /> <strong>Formations et contenus éducatifs</strong> - Tutoriels, vidéos et guides</li>
+                            <li><Gem size={16} /> <strong>Abonnements Premium et VIP</strong> - Accès à du contenu exclusif</li>
+                            <li><MessageCircle size={16} /> <strong>Communauté Telegram</strong> - Groupe VIP et support</li>
+                            <li><Newspaper size={16} /> <strong>Actualités crypto</strong> - Veille quotidienne du secteur</li>
                         </ul>
                         <p>
                             Le Site fournit des <strong>informations à caractère éducatif et informatif</strong>
@@ -59,10 +60,10 @@ const CGU = () => {
                             Lors de votre inscription, vous devez fournir :
                         </p>
                         <ul className="cgu-list">
-                            <li>✉️ Une adresse email valide</li>
-                            <li>👤 Votre prénom et nom</li>
-                            <li>📱 Votre nom d'utilisateur Telegram (optionnel mais requis pour l'accès au groupe VIP)</li>
-                            <li>🔐 Un mot de passe sécurisé</li>
+                            <li><Mail size={16} /> Une adresse email valide</li>
+                            <li><User size={16} /> Votre prénom et nom</li>
+                            <li><Smartphone size={16} /> Votre nom d'utilisateur Telegram (optionnel mais requis pour l'accès au groupe VIP)</li>
+                            <li><Lock size={14} /> Un mot de passe sécurisé</li>
                         </ul>
 
                         <h3>3.2 Vérification Email</h3>
@@ -79,7 +80,7 @@ const CGU = () => {
                         </p>
 
                         <div className="cgu-warning">
-                            <span className="warning-icon">⚠️</span>
+                            <span className="warning-icon"><AlertTriangle size={16} /></span>
                             <div>
                                 <strong>Important :</strong> Vous devez avoir au moins 18 ans pour créer un compte
                                 et utiliser les services de La Sphere.
@@ -95,8 +96,8 @@ const CGU = () => {
                         <p>Le Site propose différents niveaux d'abonnement :</p>
                         <ul className="cgu-list">
                             <li>🆓 <strong>Gratuit</strong> - Accès aux fonctionnalités de base (dashboard, calendrier, actualités)</li>
-                            <li>⭐ <strong>Premium</strong> - Accès au contenu exclusif, signaux de trading, groupe Telegram</li>
-                            <li>💎 <strong>VIP</strong> - Accès complet incluant formations avancées, analyses personnalisées, webinaires</li>
+                            <li><Star size={14} /> <strong>Premium</strong> - Accès au contenu exclusif, signaux de trading, groupe Telegram</li>
+                            <li><Gem size={16} /> <strong>VIP</strong> - Accès complet incluant formations avancées, analyses personnalisées, webinaires</li>
                         </ul>
 
                         <h3>4.2 Modalités de Paiement</h3>
@@ -117,13 +118,13 @@ const CGU = () => {
                             Conformément à la nature numérique et immédiate des services fournis :
                         </p>
                         <ul className="cgu-list">
-                            <li>❌ Les paiements en cryptomonnaies sont <strong>non remboursables</strong></li>
-                            <li>✅ Aucun remboursement après accès au contenu premium</li>
-                            <li>⚖️ Exception : en cas d'erreur technique avérée empêchant l'accès aux services</li>
+                            <li><XCircle size={16} /> Les paiements en cryptomonnaies sont <strong>non remboursables</strong></li>
+                            <li><CheckCircle2 size={16} /> Aucun remboursement après accès au contenu premium</li>
+                            <li><Scale size={16} /> Exception : en cas d'erreur technique avérée empêchant l'accès aux services</li>
                         </ul>
 
                         <div className="cgu-note">
-                            <span className="note-icon">💡</span>
+                            <span className="note-icon"><Lightbulb size={16} /></span>
                             <span>
                                 Vous pouvez tester gratuitement les fonctionnalités de base avant de souscrire
                                 à un abonnement payant.
@@ -148,15 +149,15 @@ const CGU = () => {
                         <h3>5.2 Règles du Groupe</h3>
                         <p>En rejoignant le groupe Telegram, vous vous engagez à :</p>
                         <ul className="cgu-list">
-                            <li>🤝 Respecter les autres membres de la communauté</li>
-                            <li>🚫 Ne pas spammer, insulter ou harceler</li>
-                            <li>📊 Partager des analyses constructives et argumentées</li>
-                            <li>❌ Ne pas faire de publicité ou de promotion non autorisée</li>
-                            <li>🔒 Respecter la confidentialité des échanges du groupe</li>
+                            <li><Handshake size={16} /> Respecter les autres membres de la communauté</li>
+                            <li><Ban size={16} /> Ne pas spammer, insulter ou harceler</li>
+                            <li><BarChart3 size={16} /> Partager des analyses constructives et argumentées</li>
+                            <li><XCircle size={16} /> Ne pas faire de publicité ou de promotion non autorisée</li>
+                            <li><Lock size={16} /> Respecter la confidentialité des échanges du groupe</li>
                         </ul>
 
                         <div className="cgu-warning">
-                            <span className="warning-icon">⚠️</span>
+                            <span className="warning-icon"><AlertTriangle size={16} /></span>
                             <div>
                                 <strong>Sanction :</strong> Tout manquement aux règles du groupe peut entraîner
                                 l'exclusion immédiate sans remboursement.
@@ -175,14 +176,14 @@ const CGU = () => {
                             en aucun cas :
                         </p>
                         <ul className="cgu-list">
-                            <li>❌ Un conseil en investissement financier personnalisé</li>
-                            <li>❌ Une recommandation d'achat ou de vente d'actifs</li>
-                            <li>❌ Une garantie de performance ou de résultats</li>
+                            <li><XCircle size={16} /> Un conseil en investissement financier personnalisé</li>
+                            <li><XCircle size={16} /> Une recommandation d'achat ou de vente d'actifs</li>
+                            <li><XCircle size={16} /> Une garantie de performance ou de résultats</li>
                         </ul>
 
                         <h3>6.2 Risques des Cryptomonnaies</h3>
                         <div className="cgu-warning">
-                            <span className="warning-icon">⚠️</span>
+                            <span className="warning-icon"><AlertTriangle size={16} /></span>
                             <div>
                                 <strong>Avertissement Important :</strong>
                                 <p style={{ marginTop: '10px' }}>
@@ -216,17 +217,17 @@ const CGU = () => {
                         <h3>7.1 Utilisation Autorisée</h3>
                         <p>Vous êtes autorisé à :</p>
                         <ul className="cgu-list">
-                            <li>✅ Consulter et utiliser le contenu pour un usage personnel et non commercial</li>
-                            <li>✅ Partager des liens vers le Site</li>
+                            <li><CheckCircle2 size={16} /> Consulter et utiliser le contenu pour un usage personnel et non commercial</li>
+                            <li><CheckCircle2 size={16} /> Partager des liens vers le Site</li>
                         </ul>
 
                         <h3>7.2 Utilisation Interdite</h3>
                         <p>Il est strictement interdit de :</p>
                         <ul className="cgu-list">
-                            <li>❌ Copier, reproduire, modifier ou distribuer le contenu sans autorisation écrite</li>
-                            <li>❌ Utiliser le contenu à des fins commerciales</li>
-                            <li>❌ Extraire ou télécharger massivement les données du Site (scraping)</li>
-                            <li>❌ Supprimer les mentions de copyright ou de propriété</li>
+                            <li><XCircle size={16} /> Copier, reproduire, modifier ou distribuer le contenu sans autorisation écrite</li>
+                            <li><XCircle size={16} /> Utiliser le contenu à des fins commerciales</li>
+                            <li><XCircle size={16} /> Extraire ou télécharger massivement les données du Site (scraping)</li>
+                            <li><XCircle size={16} /> Supprimer les mentions de copyright ou de propriété</li>
                         </ul>
                     </div>
 
@@ -241,19 +242,19 @@ const CGU = () => {
                         <h3>8.1 Données Collectées</h3>
                         <p>Nous collectons les données suivantes :</p>
                         <ul className="cgu-list">
-                            <li>👤 Données d'identification (nom, prénom, email)</li>
-                            <li>📱 Nom d'utilisateur Telegram</li>
-                            <li>💳 Donnees de paiement (traitees par notre prestataire securise)</li>
-                            <li>📊 Données de navigation et d'utilisation (cookies, logs)</li>
+                            <li><User size={16} /> Données d'identification (nom, prénom, email)</li>
+                            <li><Smartphone size={16} /> Nom d'utilisateur Telegram</li>
+                            <li><CreditCard size={16} /> Donnees de paiement (traitees par notre prestataire securise)</li>
+                            <li><BarChart3 size={16} /> Données de navigation et d'utilisation (cookies, logs)</li>
                         </ul>
 
                         <h3>8.2 Utilisation des Données</h3>
                         <p>Vos données sont utilisées pour :</p>
                         <ul className="cgu-list">
-                            <li>✅ Gérer votre compte et vos abonnements</li>
-                            <li>✅ Vous fournir l'accès aux services</li>
-                            <li>✅ Vous contacter par email (notifications, newsletter)</li>
-                            <li>✅ Améliorer nos services</li>
+                            <li><CheckCircle2 size={16} /> Gérer votre compte et vos abonnements</li>
+                            <li><CheckCircle2 size={16} /> Vous fournir l'accès aux services</li>
+                            <li><CheckCircle2 size={16} /> Vous contacter par email (notifications, newsletter)</li>
+                            <li><CheckCircle2 size={16} /> Améliorer nos services</li>
                         </ul>
 
                         <h3>8.3 Vos Droits</h3>
@@ -262,7 +263,7 @@ const CGU = () => {
                         <strong> contact@lasphere.xyz</strong></p>
 
                         <div className="cgu-note">
-                            <span className="note-icon">🔒</span>
+                            <span className="note-icon"><Lock size={16} /></span>
                             <span>
                                 Vos données ne sont jamais vendues à des tiers. Consultez notre Politique de
                                 Confidentialité pour plus de détails.
@@ -311,10 +312,10 @@ const CGU = () => {
                             ni remboursement en cas de :
                         </p>
                         <ul className="cgu-list">
-                            <li>❌ Violation des présentes CGU</li>
-                            <li>❌ Comportement inapproprié ou nuisible</li>
-                            <li>❌ Tentative de fraude ou d'abus</li>
-                            <li>❌ Non-paiement ou litige sur un paiement</li>
+                            <li><XCircle size={16} /> Violation des présentes CGU</li>
+                            <li><XCircle size={16} /> Comportement inapproprié ou nuisible</li>
+                            <li><XCircle size={16} /> Tentative de fraude ou d'abus</li>
+                            <li><XCircle size={16} /> Non-paiement ou litige sur un paiement</li>
                         </ul>
                     </div>
 
@@ -350,19 +351,19 @@ const CGU = () => {
                         </p>
                         <div className="cgu-contact">
                             <div className="contact-item">
-                                <span className="contact-icon">✉️</span>
+                                <span className="contact-icon"><Mail size={16} /></span>
                                 <div>
                                     <strong>Email :</strong> contact@lasphere.xyz
                                 </div>
                             </div>
                             <div className="contact-item">
-                                <span className="contact-icon">💬</span>
+                                <span className="contact-icon"><MessageCircle size={16} /></span>
                                 <div>
                                     <strong>Telegram :</strong> @LaSphereSupport
                                 </div>
                             </div>
                             <div className="contact-item">
-                                <span className="contact-icon">🌐</span>
+                                <span className="contact-icon"><Globe size={16} /></span>
                                 <div>
                                     <strong>Site Web :</strong> <a href="https://lasphere.xyz">lasphere.xyz</a>
                                 </div>
@@ -379,7 +380,7 @@ const CGU = () => {
                             Dernière mise à jour : 8 février 2026
                         </p>
                         <p className="cgu-disclaimer">
-                            ⚠️ <strong>Avertissement :</strong> Le trading de cryptomonnaies comporte des risques
+                            <AlertTriangle size={16} /> <strong>Avertissement :</strong> Le trading de cryptomonnaies comporte des risques
                             importants de perte en capital. N'investissez que ce que vous pouvez vous permettre de perdre.
                         </p>
                     </div>

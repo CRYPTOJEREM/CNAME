@@ -1,5 +1,6 @@
 import { useAuth } from '../../contexts/AuthContext';
 import LoadingSpinner from './LoadingSpinner';
+import { Gem, Lock, Sparkles, TrendingUp } from 'lucide-react';
 
 const ProtectedRoute = ({ children, requireSubscription = null }) => {
     const { isAuthenticated, user, loading } = useAuth();
@@ -12,7 +13,7 @@ const ProtectedRoute = ({ children, requireSubscription = null }) => {
         return (
             <div className="auth-required-overlay">
                 <div className="auth-required-modal">
-                    <div className="modal-icon">🔒</div>
+                    <div className="modal-icon"><Lock size={16} /></div>
                     <h2>Authentification Requise</h2>
                     <p>Vous devez être connecté pour accéder à cette page.</p>
                     <div className="auth-buttons">
@@ -20,13 +21,13 @@ const ProtectedRoute = ({ children, requireSubscription = null }) => {
                             onClick={() => window.activeTabSetter('login')}
                             className="btn btn-primary"
                         >
-                            🔐 Se connecter
+                            <Lock size={14} /> Se connecter
                         </button>
                         <button
                             onClick={() => window.activeTabSetter('register')}
                             className="btn btn-secondary"
                         >
-                            ✨ Créer un compte
+                            <Sparkles size={14} /> Créer un compte
                         </button>
                     </div>
                 </div>
@@ -44,7 +45,7 @@ const ProtectedRoute = ({ children, requireSubscription = null }) => {
             return (
                 <div className="subscription-required-overlay">
                     <div className="subscription-required-modal">
-                        <div className="modal-icon">💎</div>
+                        <div className="modal-icon"><Gem size={16} /></div>
                         <h2>Abonnement Requis</h2>
                         <p>
                             Cette section nécessite un abonnement{' '}
@@ -57,7 +58,7 @@ const ProtectedRoute = ({ children, requireSubscription = null }) => {
                             onClick={() => window.activeTabSetter('abonnements')}
                             className="btn btn-primary"
                         >
-                            📈 Voir les Abonnements
+                            <TrendingUp size={16} /> Voir les Abonnements
                         </button>
                     </div>
                 </div>

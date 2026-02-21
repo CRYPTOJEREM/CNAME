@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { AlertTriangle, BarChart3, Bell, CalendarDays, Crown, Eye, Gamepad2, Gem, Globe, GraduationCap, Handshake, Heart, Lock, MessageCircle, Monitor, Music, Play, Rocket, Smartphone, Target, TrendingUp, Trophy, Users, Video } from 'lucide-react';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api'
 
@@ -39,20 +40,20 @@ const VideoCard = ({ video }) => (
                 <img src={getYoutubeThumbnail(video.embedUrl)} alt={video.title} />
             ) : (
                 <div className="twitch-placeholder">
-                    <span>🎮</span>
+                    <span><Gamepad2 size={16} /></span>
                 </div>
             )}
-            <div className="video-play-btn">▶</div>
+            <div className="video-play-btn"><Play size={20} /></div>
         </div>
         <div className="video-info">
             <span className={`video-platform platform-${video.platform}`}>
-                {video.platform === 'youtube' ? '📺 YOUTUBE' : '🎮 TWITCH'}
+                {video.platform === 'youtube' ? <><Monitor size={14} /> YOUTUBE</> : <><Gamepad2 size={14} /> TWITCH</>}
             </span>
             <div className="video-title">{video.title}</div>
             <div className="video-description">{video.description}</div>
             <div className="video-stats">
-                <div className="stat-item">👁️ {video.views}</div>
-                <div className="stat-item">{video.platform === 'youtube' ? '❤️' : '💬'} {video.engagement}</div>
+                <div className="stat-item"><Eye size={14} /> {video.views}</div>
+                <div className="stat-item">{video.platform === 'youtube' ? <Heart size={14} /> : <MessageCircle size={14} />} {video.engagement}</div>
             </div>
         </div>
     </a>
@@ -77,19 +78,19 @@ const Hero = ({ setActiveTab }) => {
     return (
         <>
             <section className="hero">
-                <div className="hero-badge">🌐 L'ÉCOSYSTÈME COMMUNAUTAIRE CRYPTO</div>
+                <div className="hero-badge"><Globe size={16} /> L'ÉCOSYSTÈME COMMUNAUTAIRE CRYPTO</div>
                 <h1>REJOIGNEZ LA <span className="gradient-text">COMMUNAUTÉ</span><br />CRYPTO LA PLUS ACTIVE</h1>
                 <p>Intégrez un groupe de passionnés où vous apprendrez, échangerez et progresserez ensemble dans le monde de la crypto. Analyses partagées, stratégies collaboratives et support communautaire 24/7.</p>
                 <div className="cta-buttons">
-                    <button onClick={() => setActiveTab('abonnements')} className="btn btn-primary">🤝 Rejoindre la Communauté</button>
-                    <button onClick={() => setActiveTab('apprentissage')} className="btn btn-secondary">🎓 Découvrir les Formations</button>
+                    <button onClick={() => setActiveTab('abonnements')} className="btn btn-primary"><Handshake size={16} /> Rejoindre la Communauté</button>
+                    <button onClick={() => setActiveTab('apprentissage')} className="btn btn-secondary"><GraduationCap size={16} /> Découvrir les Formations</button>
                 </div>
             </section>
 
             {/* CARROUSEL VIDÉOS YOUTUBE/TWITCH */}
             <section className="carousel-section">
                 <div className="carousel-header">
-                    <h2 className="carousel-title">🎬 NOS DERNIERS CONTENUS</h2>
+                    <h2 className="carousel-title"><Video size={16} /> NOS DERNIERS CONTENUS</h2>
                     <p className="carousel-subtitle">Analyses, lives, tutos et actualités crypto en continu</p>
                 </div>
 
@@ -106,14 +107,14 @@ const Hero = ({ setActiveTab }) => {
             <section className="crypto-ecosystem">
                 <div className="ecosystem-container">
                     <div className="section-title">
-                        <h2>🌐 NOTRE ÉCOSYSTÈME CRYPTO</h2>
+                        <h2><Globe size={16} /> NOTRE ÉCOSYSTÈME CRYPTO</h2>
                         <p>Un projet innovant au cœur de la révolution blockchain</p>
                     </div>
 
                     <div className="ecosystem-grid">
                         <div className="ecosystem-card main-card">
                             <div className="card-glow"></div>
-                            <span className="ecosystem-icon">🎯</span>
+                            <span className="ecosystem-icon"><Target size={16} /></span>
                             <h3>La Vision</h3>
                             <p>
                                 <strong>La Sphere</strong> est une communauté de passionnés de crypto et de finance ! Nous
@@ -124,7 +125,7 @@ const Hero = ({ setActiveTab }) => {
                         </div>
 
                         <div className="ecosystem-card">
-                            <span className="ecosystem-icon">📊</span>
+                            <span className="ecosystem-icon"><BarChart3 size={16} /></span>
                             <h3>Données en Temps Réel</h3>
                             <p>
                                 Suivez les prix, volumes et capitalisations des top cryptomonnaies avec des mises à jour
@@ -133,7 +134,7 @@ const Hero = ({ setActiveTab }) => {
                         </div>
 
                         <div className="ecosystem-card">
-                            <span className="ecosystem-icon">📅</span>
+                            <span className="ecosystem-icon"><CalendarDays size={16} /></span>
                             <h3>Calendrier Économique</h3>
                             <p>
                                 Ne manquez plus aucun événement économique majeur. Notre calendrier s'actualise
@@ -143,7 +144,7 @@ const Hero = ({ setActiveTab }) => {
                         </div>
 
                         <div className="ecosystem-card">
-                            <span className="ecosystem-icon">🎯</span>
+                            <span className="ecosystem-icon"><Target size={16} /></span>
                             <h3>Analyses Expertes</h3>
                             <p>
                                 Bénéficiez d'analyses approfondies sur les tendances du marché, les mouvements de capitaux
@@ -152,7 +153,7 @@ const Hero = ({ setActiveTab }) => {
                         </div>
 
                         <div className="ecosystem-card">
-                            <span className="ecosystem-icon">🔔</span>
+                            <span className="ecosystem-icon"><Bell size={16} /></span>
                             <h3>Contenu Quotidien</h3>
                             <p>
                                 Vidéos YouTube, lives Twitch, posts Twitter et contenus éducatifs publiés régulièrement pour
@@ -161,7 +162,7 @@ const Hero = ({ setActiveTab }) => {
                         </div>
 
                         <div className="ecosystem-card">
-                            <span className="ecosystem-icon">🤝</span>
+                            <span className="ecosystem-icon"><Handshake size={16} /></span>
                             <h3>Communauté Active</h3>
                             <p>
                                 Rejoignez des milliers de membres sur Discord et Telegram. Échangez, apprenez et partagez
@@ -172,7 +173,7 @@ const Hero = ({ setActiveTab }) => {
 
                     <div className="community-box">
                         <div className="community-title">
-                            <span>🎬</span>
+                            <span><Video size={16} /></span>
                             <span>Notre Contenu</span>
                         </div>
                         <div className="community-content">
@@ -184,7 +185,7 @@ const Hero = ({ setActiveTab }) => {
 
                             <div className="content-platforms">
                                 <div className="platform-item">
-                                    <div className="platform-icon youtube">📺</div>
+                                    <div className="platform-icon youtube"><Monitor size={16} /></div>
                                     <div className="platform-info">
                                         <h4>YouTube</h4>
                                         <p>Analyses crypto, tutoriels trading, revues de marché et actualités blockchain</p>
@@ -193,7 +194,7 @@ const Hero = ({ setActiveTab }) => {
                                 </div>
 
                                 <div className="platform-item">
-                                    <div className="platform-icon twitch">🎮</div>
+                                    <div className="platform-icon twitch"><Gamepad2 size={16} /></div>
                                     <div className="platform-info">
                                         <h4>Twitch</h4>
                                         <p>Lives trading en direct, analyse de charts, Q&A et sessions communautaires</p>
@@ -211,7 +212,7 @@ const Hero = ({ setActiveTab }) => {
                                 </div>
 
                                 <div className="platform-item">
-                                    <div className="platform-icon discord">💬</div>
+                                    <div className="platform-icon discord"><MessageCircle size={16} /></div>
                                     <div className="platform-info">
                                         <h4>Discord</h4>
                                         <p>Communauté active 24/7, salons de discussion, signaux et entraide</p>
@@ -220,7 +221,7 @@ const Hero = ({ setActiveTab }) => {
                                 </div>
 
                                 <div className="platform-item">
-                                    <div className="platform-icon telegram">📱</div>
+                                    <div className="platform-icon telegram"><Smartphone size={16} /></div>
                                     <div className="platform-info">
                                         <h4>Telegram</h4>
                                         <p>Groupe VIP, alertes exclusives et analyses premium</p>
@@ -229,7 +230,7 @@ const Hero = ({ setActiveTab }) => {
                                 </div>
 
                                 <div className="platform-item">
-                                    <div className="platform-icon tiktok">🎵</div>
+                                    <div className="platform-icon tiktok"><Music size={16} /></div>
                                     <div className="platform-info">
                                         <h4>TikTok</h4>
                                         <p>Tips crypto rapides, actualités et éducation en format court</p>
@@ -243,14 +244,14 @@ const Hero = ({ setActiveTab }) => {
                     {/* SECTION PARTENAIRE CRYPTO — BITUNIX */}
                     <div className="partners-section">
                         <div className="partners-header">
-                            <h2 className="partners-title">🤝 NOTRE PARTENAIRE CRYPTO</h2>
+                            <h2 className="partners-title"><Handshake size={16} /> NOTRE PARTENAIRE CRYPTO</h2>
                             <p className="partners-subtitle">Tradez sur l'exchange officiel de La Sphere et participez au concours hebdomadaire</p>
                         </div>
 
                         <div className="bitunix-layout">
                             {/* Grand carre gauche — Presentation */}
                             <div className="bitunix-main-card">
-                                <div className="bitunix-badge">💎 PARTENAIRE OFFICIEL</div>
+                                <div className="bitunix-badge"><Gem size={16} /> PARTENAIRE OFFICIEL</div>
                                 <div className="bitunix-logo-wrapper">
                                     <svg viewBox="0 0 200 50" className="bitunix-logo-svg">
                                         <rect width="200" height="50" rx="6" fill="#000000"/>
@@ -270,29 +271,29 @@ const Hero = ({ setActiveTab }) => {
                                     <span className="bitunix-tag">Signaux Auto</span>
                                 </div>
                                 <a href="https://www.bitunix.com" target="_blank" rel="noopener noreferrer" className="bitunix-cta-btn">
-                                    🚀 Ouvrir un compte Bitunix
+                                    <Rocket size={16} /> Ouvrir un compte Bitunix
                                 </a>
                             </div>
 
                             {/* Petits carres droite — Details */}
                             <div className="bitunix-info-grid">
                                 <div className="bitunix-info-card">
-                                    <div className="bitunix-info-icon">📈</div>
+                                    <div className="bitunix-info-icon"><TrendingUp size={16} /></div>
                                     <h4 className="bitunix-info-title">Trading Avance</h4>
                                     <p className="bitunix-info-text">Leverage jusqu'a 125x sur les futures. Outils pro : TradingView integre, ordres avances, stop-loss.</p>
                                 </div>
                                 <div className="bitunix-info-card">
-                                    <div className="bitunix-info-icon">👥</div>
+                                    <div className="bitunix-info-icon"><Users size={16} /></div>
                                     <h4 className="bitunix-info-title">Copy Trading</h4>
                                     <p className="bitunix-info-text">Copiez les meilleurs traders automatiquement. Suivez leurs positions en temps reel sans effort.</p>
                                 </div>
                                 <div className="bitunix-info-card">
-                                    <div className="bitunix-info-icon">🔒</div>
+                                    <div className="bitunix-info-icon"><Lock size={16} /></div>
                                     <h4 className="bitunix-info-title">Securite Maximale</h4>
                                     <p className="bitunix-info-text">Cold storage, authentification 2FA, audits reguliers. Vos fonds sont proteges en permanence.</p>
                                 </div>
                                 <div className="bitunix-info-card bitunix-contest-card">
-                                    <div className="bitunix-info-icon">🏆</div>
+                                    <div className="bitunix-info-icon"><Trophy size={16} /></div>
                                     <h4 className="bitunix-info-title">Concours $1,000</h4>
                                     <p className="bitunix-info-text">Chaque semaine, un membre gagne $1,000 de coupon trading. Inscrivez-vous avec votre UID pour participer gratuitement !</p>
                                 </div>
@@ -300,7 +301,7 @@ const Hero = ({ setActiveTab }) => {
                         </div>
 
                         <div className="partners-disclaimer">
-                            <p className="partners-disclaimer-title">⚠️ AVERTISSEMENT</p>
+                            <p className="partners-disclaimer-title"><AlertTriangle size={16} /> AVERTISSEMENT</p>
                             <p className="partners-disclaimer-text">
                                 Le trading de cryptomonnaies comporte des risques. Ces liens peuvent contenir des codes de parrainage.
                             </p>
@@ -351,7 +352,7 @@ const Hero = ({ setActiveTab }) => {
 
                             <div className="telegram-card vip">
                                 <div className="telegram-card-top vip-top" />
-                                <div className="telegram-badge vip-badge">👑 VIP</div>
+                                <div className="telegram-badge vip-badge"><Crown size={16} /> VIP</div>
                                 <h4>Acces VIP Premium</h4>
                                 <p className="telegram-price-text"><span className="price-amount">$49.99</span>/mois</p>
                                 <ul className="telegram-features">

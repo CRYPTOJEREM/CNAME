@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import api from '../../services/api'
+import { CheckCircle2, Gem, Star, XCircle } from 'lucide-react';
 
 const ProductManagement = () => {
     const [products, setProducts] = useState([])
@@ -96,7 +97,7 @@ const ProductManagement = () => {
     return (
         <div className="product-management">
             <div className="management-header">
-                <h2>💎 Gestion des Produits/Abonnements</h2>
+                <h2><Gem size={16} /> Gestion des Produits/Abonnements</h2>
                 <button onClick={handleCreate} className="btn-create">➕ Nouveau Produit</button>
             </div>
 
@@ -114,9 +115,9 @@ const ProductManagement = () => {
                                 <div className="product-header">
                                     <h3>{product.name}</h3>
                                     {product.active ? (
-                                        <span className="badge-success">✅ Actif</span>
+                                        <span className="badge-success"><CheckCircle2 size={16} /> Actif</span>
                                     ) : (
-                                        <span className="badge-inactive">❌ Inactif</span>
+                                        <span className="badge-inactive"><XCircle size={16} /> Inactif</span>
                                     )}
                                 </div>
                                 <div className="product-body">
@@ -126,7 +127,7 @@ const ProductManagement = () => {
                                     </div>
                                     <div className="product-level">
                                         <span className={`level-badge level-${product.level}`}>
-                                            {product.level === 'premium' ? '⭐ PREMIUM' : '💎 VIP'}
+                                            {product.level === 'premium' ? <><Star size={14} /> PREMIUM</> : <><Gem size={14} /> VIP</>}
                                         </span>
                                     </div>
                                     <p className="product-description">{product.description}</p>

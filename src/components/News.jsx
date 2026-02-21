@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react'
+import { AlertTriangle, Clock, Coins, Gem, Newspaper, Palette, RefreshCw, Scale } from 'lucide-react';
 
 const News = () => {
     const [filter, setFilter] = useState('all')
@@ -188,14 +189,14 @@ const News = () => {
 
     const getCategoryLabel = (cat) => {
         const labels = {
-            'bitcoin': '₿ Bitcoin',
-            'ethereum': 'Ξ Ethereum',
-            'altcoin': '🪙 Altcoin',
-            'defi': '💎 DeFi',
-            'nft': '🎨 NFT',
-            'regulation': '⚖️ Régulation'
+            'bitcoin': <>₿ Bitcoin</>,
+            'ethereum': <>Ξ Ethereum</>,
+            'altcoin': <><Coins size={14} /> Altcoin</>,
+            'defi': <><Gem size={14} /> DeFi</>,
+            'nft': <><Palette size={14} /> NFT</>,
+            'regulation': <><Scale size={14} /> Régulation</>
         };
-        return labels[cat] || '📰 Actualité';
+        return labels[cat] || <><Newspaper size={14} /> Actualité</>;
     }
 
     const refreshNews = () => {
@@ -206,14 +207,14 @@ const News = () => {
     return (
         <section className="news-section">
             <div className="news-header">
-                <div className="news-badge">📰 EN TEMPS RÉEL</div>
+                <div className="news-badge"><Newspaper size={16} /> EN TEMPS RÉEL</div>
                 <h1>ACTUALITÉS CRYPTO</h1>
                 <p>
                     Les dernières news du monde de la cryptomonnaie, mises à jour en temps réel depuis CryptoCompare
                 </p>
                 {error && (
                     <div className="error-message">
-                        ⚠️ {error}
+                        <AlertTriangle size={16} /> {error}
                     </div>
                 )}
             </div>
@@ -227,7 +228,7 @@ const News = () => {
                     <button className={`filter-btn ${filter === 'defi' ? 'active' : ''}`} onClick={() => handleFilter('defi')}>DeFi</button>
                 </div>
                 <button className="refresh-news-btn" onClick={refreshNews}>
-                    <span id="refresh-icon">🔄</span>
+                    <span id="refresh-icon"><RefreshCw size={16} /></span>
                     <span id="refresh-text">Actualiser</span>
                 </button>
             </div>
@@ -250,12 +251,12 @@ const News = () => {
                                         <span className={`news-category ${getCategoryClass(item.category)}`}>
                                             {getCategoryLabel(item.category)}
                                         </span>
-                                        <span className="news-date">🕐 {item.date}</span>
+                                        <span className="news-date"><Clock size={14} /> {item.date}</span>
                                     </div>
                                     <h3 className="news-title">{item.title}</h3>
                                     <p className="news-excerpt">{item.excerpt}</p>
                                     <div className="news-footer">
-                                        <span className="news-source">📰 {item.source}</span>
+                                        <span className="news-source"><Newspaper size={16} /> {item.source}</span>
                                         <a href={item.url} target="_blank" rel="noopener noreferrer" className="read-more">Lire la suite →</a>
                                     </div>
                                 </div>

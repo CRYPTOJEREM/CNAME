@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
+import { CheckCircle2, Rocket, Sparkles, XCircle } from 'lucide-react';
 
 const Register = ({ setActiveTab }) => {
     const [formData, setFormData] = useState({
@@ -66,7 +67,7 @@ const Register = ({ setActiveTab }) => {
         return (
             <div className="auth-container">
                 <div className="auth-card success-card">
-                    <div className="success-icon">✅</div>
+                    <div className="success-icon"><CheckCircle2 size={16} /></div>
                     <h2>Inscription réussie !</h2>
                     <p>Un email de vérification a été envoyé à <strong>{formData.email}</strong></p>
                     <p className="success-note">
@@ -83,13 +84,13 @@ const Register = ({ setActiveTab }) => {
         <div className="auth-container">
             <div className="auth-card">
                 <div className="auth-header">
-                    <h1>✨ Inscription</h1>
+                    <h1><Sparkles size={14} /> Inscription</h1>
                     <p>Créez votre compte La Sphere</p>
                 </div>
 
                 {error && (
                     <div className="alert alert-error">
-                        <span className="alert-icon">❌</span>
+                        <span className="alert-icon"><XCircle size={16} /></span>
                         <span>{error}</span>
                     </div>
                 )}
@@ -228,7 +229,7 @@ const Register = ({ setActiveTab }) => {
                         className="btn btn-primary btn-block"
                         disabled={loading}
                     >
-                        {loading ? 'Inscription en cours...' : '🚀 Créer mon compte'}
+                        {loading ? 'Inscription en cours...' : <><Rocket size={16} /> Créer mon compte</>}
                     </button>
                 </form>
 

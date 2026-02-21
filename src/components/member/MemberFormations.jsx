@@ -5,6 +5,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import memberService from '../../services/memberService';
+import { BookOpen, Gem, GraduationCap, Star } from 'lucide-react';
 
 const MemberFormations = () => {
     const { user } = useAuth();
@@ -39,8 +40,8 @@ const MemberFormations = () => {
     const getLevelBadge = (level) => {
         const badges = {
             free: { icon: '🆓', label: 'GRATUIT', color: '#7B8BA8' },
-            premium: { icon: '⭐', label: 'PREMIUM', color: '#FFD700' },
-            vip: { icon: '💎', label: 'VIP', color: '#00D9FF' }
+            premium: { icon: <Star size={14} />, label: 'PREMIUM', color: '#FFD700' },
+            vip: { icon: <Gem size={14} />, label: 'VIP', color: '#00D9FF' }
         };
         return badges[level] || badges.free;
     };
@@ -124,7 +125,7 @@ const MemberFormations = () => {
                                 fontWeight: '700',
                                 marginBottom: '20px'
                             }}>
-                                📚 Programme de la formation
+                                <BookOpen size={16} /> Programme de la formation
                             </h3>
                             <div style={{
                                 display: 'flex',
@@ -227,7 +228,7 @@ const MemberFormations = () => {
                     marginBottom: '10px',
                     textShadow: '0 0 20px rgba(0, 217, 255, 0.5)'
                 }}>
-                    🎓 Mes Formations
+                    <GraduationCap size={16} /> Mes Formations
                 </h2>
                 <p style={{
                     color: '#7B8BA8',
@@ -251,7 +252,7 @@ const MemberFormations = () => {
                     padding: '60px 40px',
                     textAlign: 'center'
                 }}>
-                    <div style={{ fontSize: '60px', marginBottom: '20px' }}>🎓</div>
+                    <div style={{ fontSize: '60px', marginBottom: '20px' }}><GraduationCap size={16} /></div>
                     <h3 style={{ color: '#FFFFFF', fontSize: '20px', marginBottom: '10px' }}>
                         Aucune formation disponible
                     </h3>
@@ -320,7 +321,7 @@ const MemberFormations = () => {
                                     fontSize: '35px',
                                     marginBottom: '20px'
                                 }}>
-                                    🎓
+                                    <GraduationCap size={16} />
                                 </div>
 
                                 {/* Titre */}
@@ -354,7 +355,7 @@ const MemberFormations = () => {
                                         fontWeight: '600',
                                         marginBottom: '15px'
                                     }}>
-                                        <span>📚</span>
+                                        <span><BookOpen size={16} /></span>
                                         <span>{formation.modules.length} modules</span>
                                     </div>
                                 )}

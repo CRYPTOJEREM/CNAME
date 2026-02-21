@@ -1,6 +1,11 @@
 
 import { useState, useEffect } from 'react'
 import { useAuth } from '../contexts/AuthContext'
+import {
+    Globe, Home, Newspaper, CalendarDays, BarChart3,
+    GraduationCap, Gem, MessageCircle, Shield, Lock,
+    Sparkles, Star, User, LogOut, ChevronDown
+} from 'lucide-react'
 
 const Header = ({ activeTab, setActiveTab }) => {
     const [scrolled, setScrolled] = useState(false)
@@ -44,11 +49,23 @@ const Header = ({ activeTab, setActiveTab }) => {
         window.scrollTo({ top: 0, behavior: 'smooth' })
     }
 
+    const getStatusIcon = (status) => {
+        if (status === 'premium') return <Star size={12} />
+        if (status === 'vip') return <Gem size={12} />
+        return null
+    }
+
+    const getStatusLabel = (status) => {
+        if (status === 'premium') return 'Premium'
+        if (status === 'vip') return 'VIP'
+        return 'Gratuit'
+    }
+
     return (
         <nav className={scrolled ? 'scrolled' : ''}>
             <div className="nav-container">
                 <div className="logo" onClick={() => handleTabClick('accueil')}>
-                    <span className="logo-icon">🌐</span>
+                    <span className="logo-icon"><Globe size={22} /></span>
                     <span className="logo-text">LA SPHERE</span>
                 </div>
 
@@ -68,31 +85,31 @@ const Header = ({ activeTab, setActiveTab }) => {
                 <ul className={`nav-links ${mobileMenuOpen ? 'mobile-open' : ''}`}>
                     <li>
                         <button onClick={() => handleTabClick('accueil')} className={activeTab === 'accueil' ? 'active' : ''}>
-                            <span className="nav-icon">🏠</span>
+                            <span className="nav-icon"><Home size={16} /></span>
                             <span className="nav-text">Accueil</span>
                         </button>
                     </li>
                     <li>
                         <button onClick={() => handleTabClick('actualites')} className={activeTab === 'actualites' ? 'active' : ''}>
-                            <span className="nav-icon">📰</span>
+                            <span className="nav-icon"><Newspaper size={16} /></span>
                             <span className="nav-text">Actualités</span>
                         </button>
                     </li>
                     <li>
                         <button onClick={() => handleTabClick('calendrier')} className={activeTab === 'calendrier' ? 'active' : ''}>
-                            <span className="nav-icon">📅</span>
+                            <span className="nav-icon"><CalendarDays size={16} /></span>
                             <span className="nav-text">Calendrier</span>
                         </button>
                     </li>
                     <li>
                         <button onClick={() => handleTabClick('dashboard')} className={activeTab === 'dashboard' ? 'active' : ''}>
-                            <span className="nav-icon">📊</span>
+                            <span className="nav-icon"><BarChart3 size={16} /></span>
                             <span className="nav-text">Dashboard</span>
                         </button>
                     </li>
                     <li>
                         <button onClick={() => handleTabClick('apprentissage')} className={activeTab === 'apprentissage' ? 'active' : ''}>
-                            <span className="nav-icon">🎓</span>
+                            <span className="nav-icon"><GraduationCap size={16} /></span>
                             <span className="nav-text">Formation</span>
                         </button>
                     </li>
@@ -101,13 +118,13 @@ const Header = ({ activeTab, setActiveTab }) => {
                             onClick={() => handleTabClick('abonnements')}
                             className={`${activeTab === 'abonnements' ? 'active' : ''} abonnements-btn`}
                         >
-                            <span className="nav-icon">💎</span>
+                            <span className="nav-icon"><Gem size={16} /></span>
                             <span className="nav-text">Abonnements</span>
                         </button>
                     </li>
                     <li>
                         <button onClick={() => handleTabClick('assistance')} className={activeTab === 'assistance' ? 'active' : ''}>
-                            <span className="nav-icon">💬</span>
+                            <span className="nav-icon"><MessageCircle size={16} /></span>
                             <span className="nav-text">Support</span>
                         </button>
                     </li>
@@ -116,7 +133,7 @@ const Header = ({ activeTab, setActiveTab }) => {
                     {isAuthenticated && user?.role === 'admin' && (
                         <li>
                             <button onClick={() => handleTabClick('admin')} className={`${activeTab === 'admin' ? 'active' : ''} admin-btn`}>
-                                <span className="nav-icon">🛡️</span>
+                                <span className="nav-icon"><Shield size={16} /></span>
                                 <span className="nav-text">Admin</span>
                             </button>
                         </li>
@@ -127,10 +144,10 @@ const Header = ({ activeTab, setActiveTab }) => {
                         {!isAuthenticated ? (
                             <>
                                 <button onClick={() => handleTabClick('login')} className="auth-btn login-btn">
-                                    🔐 Connexion
+                                    <Lock size={14} /> Connexion
                                 </button>
                                 <button onClick={() => handleTabClick('register')} className="auth-btn register-btn">
-                                    ✨ Inscription
+                                    <Sparkles size={14} /> Inscription
                                 </button>
                             </>
                         ) : (
@@ -147,10 +164,9 @@ const Header = ({ activeTab, setActiveTab }) => {
                                     </div>
                                     <span className="user-name">{user.firstName}</span>
                                     <span className={`subscription-badge ${user.subscriptionStatus}`}>
-                                        {user.subscriptionStatus === 'premium' ? '⭐' :
-                                         user.subscriptionStatus === 'vip' ? '💎' : '🆓'}
+                                        {getStatusIcon(user.subscriptionStatus)}
                                     </span>
-                                    <span className={`dropdown-arrow ${userMenuOpen ? 'open' : ''}`}>▼</span>
+                                    <ChevronDown size={14} className={`dropdown-arrow ${userMenuOpen ? 'open' : ''}`} />
                                 </button>
 
                                 {userMenuOpen && (
@@ -166,8 +182,7 @@ const Header = ({ activeTab, setActiveTab }) => {
                                                 </div>
                                             </div>
                                             <div className={`dropdown-badge ${user.subscriptionStatus}`}>
-                                                {user.subscriptionStatus === 'premium' ? '⭐ Premium' :
-                                                 user.subscriptionStatus === 'vip' ? '💎 VIP' : '🆓 Gratuit'}
+                                                {getStatusIcon(user.subscriptionStatus)} {getStatusLabel(user.subscriptionStatus)}
                                             </div>
                                         </div>
 
@@ -180,7 +195,7 @@ const Header = ({ activeTab, setActiveTab }) => {
                                                 setUserMenuOpen(false)
                                             }}
                                         >
-                                            <span className="dropdown-icon">👤</span>
+                                            <span className="dropdown-icon"><User size={16} /></span>
                                             <span>Espace Membre</span>
                                         </button>
 
@@ -191,7 +206,7 @@ const Header = ({ activeTab, setActiveTab }) => {
                                                 setUserMenuOpen(false)
                                             }}
                                         >
-                                            <span className="dropdown-icon">💎</span>
+                                            <span className="dropdown-icon"><Gem size={16} /></span>
                                             <span>Gérer l'abonnement</span>
                                         </button>
 
@@ -204,7 +219,7 @@ const Header = ({ activeTab, setActiveTab }) => {
                                                 setMobileMenuOpen(false)
                                             }}
                                         >
-                                            <span className="dropdown-icon">🚪</span>
+                                            <span className="dropdown-icon"><LogOut size={16} /></span>
                                             <span>Déconnexion</span>
                                         </button>
                                     </div>

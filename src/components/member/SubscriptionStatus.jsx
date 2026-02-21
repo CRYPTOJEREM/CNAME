@@ -6,6 +6,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import memberService from '../../services/memberService';
+import { CheckCircle2, Gem, Sparkles, Star } from 'lucide-react';
 
 const SubscriptionStatus = ({ setActiveTab }) => {
     const { user } = useAuth();
@@ -36,13 +37,13 @@ const SubscriptionStatus = ({ setActiveTab }) => {
                 description: 'Accès au contenu gratuit'
             },
             premium: {
-                icon: '⭐',
+                icon: <Star size={14} />,
                 text: 'PREMIUM',
                 color: '#7B2FF7',
                 description: 'Accès au contenu Premium'
             },
             vip: {
-                icon: '💎',
+                icon: <Gem size={14} />,
                 text: 'VIP',
                 color: '#00D9FF',
                 description: 'Accès complet à tout le contenu'
@@ -116,13 +117,13 @@ const SubscriptionStatus = ({ setActiveTab }) => {
                     className="btn btn-primary subscription-upgrade-btn"
                     onClick={() => setActiveTab('abonnements')}
                 >
-                    {user.subscriptionStatus === 'free' ? '✨ Passer Premium/VIP' : '💎 Passer VIP'}
+                    {user.subscriptionStatus === 'free' ? <><Sparkles size={14} /> Passer Premium/VIP</> : <><Gem size={14} /> Passer VIP</>}
                 </button>
             )}
 
             {!canUpgrade && subscription?.isActive && (
                 <div className="subscription-active">
-                    <span className="active-icon">✅</span>
+                    <span className="active-icon"><CheckCircle2 size={16} /></span>
                     <span>Abonnement actif</span>
                 </div>
             )}

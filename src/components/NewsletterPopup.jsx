@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import newsletterService from '../services/newsletterService';
+import { CheckCircle2, XCircle } from 'lucide-react';
 
 const NewsletterPopup = () => {
     const [visible, setVisible] = useState(false);
@@ -64,7 +65,7 @@ const NewsletterPopup = () => {
                 </p>
 
                 {status === 'success' ? (
-                    <p className="newsletter-popup-success">✅ Inscription réussie !</p>
+                    <p className="newsletter-popup-success"><CheckCircle2 size={16} /> Inscription réussie !</p>
                 ) : status === 'exists' ? (
                     <p className="newsletter-popup-success">ℹ️ Vous êtes déjà inscrit !</p>
                 ) : (
@@ -82,7 +83,7 @@ const NewsletterPopup = () => {
                             {loading ? '...' : "S'inscrire gratuitement"}
                         </button>
                         {status === 'error' && (
-                            <p className="newsletter-popup-error">❌ Une erreur est survenue</p>
+                            <p className="newsletter-popup-error"><XCircle size={16} /> Une erreur est survenue</p>
                         )}
                     </form>
                 )}

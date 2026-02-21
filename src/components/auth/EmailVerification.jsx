@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { authService } from '../../services/authService';
+import { CheckCircle2, XCircle } from 'lucide-react';
 
 const EmailVerification = ({ setActiveTab }) => {
     const [status, setStatus] = useState('verifying'); // verifying, success, error
@@ -53,7 +54,7 @@ const EmailVerification = ({ setActiveTab }) => {
 
                 {status === 'success' && (
                     <>
-                        <div className="verification-icon success">✅</div>
+                        <div className="verification-icon success"><CheckCircle2 size={16} /></div>
                         <h2>Email vérifié !</h2>
                         <p>{message}</p>
                         <p className="redirect-note">
@@ -70,7 +71,7 @@ const EmailVerification = ({ setActiveTab }) => {
 
                 {status === 'error' && (
                     <>
-                        <div className="verification-icon error">❌</div>
+                        <div className="verification-icon error"><XCircle size={16} /></div>
                         <h2>Erreur de vérification</h2>
                         <p>{message}</p>
                         <div className="error-actions">

@@ -4,6 +4,7 @@ import { useAuth } from '../contexts/AuthContext'
 import api from '../services/api'
 import ReviewSubmissionForm from './reviews/ReviewSubmissionForm'
 import ReviewsList from './reviews/ReviewsList'
+import { AlertTriangle, BarChart3, Bell, BookOpen, CheckCircle2, Gem, GraduationCap, Lock, LogOut, MessageCircle, Rocket, Shield, Smartphone, Star, Target, XCircle, Zap } from 'lucide-react';
 
 const Subscriptions = () => {
     const { isAuthenticated, user } = useAuth()
@@ -17,29 +18,30 @@ const Subscriptions = () => {
     const subscriptionPlans = [
         {
             id: 'free',
-            name: '🆓 GRATUIT',
+            name: 'GRATUIT',
             price: 0,
             currency: 'EUR',
             period: 'À vie',
             badge: 'Communauté',
             badgeColor: 'rgba(0, 217, 255, 0.2)',
             features: [
-                '✅ Accès au Dashboard Crypto en temps réel',
-                '✅ Calendrier économique US',
-                '✅ Actualités crypto quotidiennes',
-                '✅ Groupe Telegram gratuit',
-                '✅ Accès aux vidéos YouTube/Twitch',
-                '❌ Analyses premium',
-                '❌ Signaux de trading',
-                '❌ Support prioritaire',
-                '❌ Formations exclusives'
+                { included: true, text: 'Accès au Dashboard Crypto en temps réel' },
+                { included: true, text: 'Calendrier économique US' },
+                { included: true, text: 'Actualités crypto quotidiennes' },
+                { included: true, text: 'Groupe Telegram gratuit' },
+                { included: true, text: 'Accès aux vidéos YouTube/Twitch' },
+                { included: false, text: 'Analyses premium' },
+                { included: false, text: 'Signaux de trading' },
+                { included: false, text: 'Support prioritaire' },
+                { included: false, text: 'Formations exclusives' }
             ],
             buttonText: 'Déjà actif',
             disabled: true
         },
         {
             id: 'premium',
-            name: '⭐ PREMIUM',
+            name: 'PREMIUM',
+            nameIcon: <Star size={14} />,
             price: 29.99,
             priceEth: '0.015',
             priceUsdt: '30',
@@ -49,22 +51,23 @@ const Subscriptions = () => {
             badgeColor: 'rgba(255, 215, 0, 0.2)',
             popular: true,
             features: [
-                '✅ Tout du plan GRATUIT',
-                '✅ Analyses techniques quotidiennes',
-                '✅ Signaux de trading (5-10/semaine)',
-                '✅ Alertes prix personnalisées',
-                '✅ Groupe Telegram Premium',
-                '✅ Webinaires mensuels exclusifs',
-                '✅ Support prioritaire 24/7',
-                '✅ Accès anticipé aux nouvelles features',
-                '❌ Formations avancées exclusives'
+                { included: true, text: 'Tout du plan GRATUIT' },
+                { included: true, text: 'Analyses techniques quotidiennes' },
+                { included: true, text: 'Signaux de trading (5-10/semaine)' },
+                { included: true, text: 'Alertes prix personnalisées' },
+                { included: true, text: 'Groupe Telegram Premium' },
+                { included: true, text: 'Webinaires mensuels exclusifs' },
+                { included: true, text: 'Support prioritaire 24/7' },
+                { included: true, text: 'Accès anticipé aux nouvelles features' },
+                { included: false, text: 'Formations avancées exclusives' }
             ],
             buttonText: 'Choisir Premium',
             disabled: false
         },
         {
             id: 'vip',
-            name: '💎 VIP',
+            name: 'VIP',
+            nameIcon: <Gem size={14} />,
             price: 99.99,
             priceEth: '0.05',
             priceUsdt: '100',
@@ -73,15 +76,15 @@ const Subscriptions = () => {
             badge: 'Elite',
             badgeColor: 'rgba(123, 47, 247, 0.2)',
             features: [
-                '✅ Tout du plan PREMIUM',
-                '✅ Analyses approfondies quotidiennes',
-                '✅ Signaux de trading illimités',
-                '✅ Appels vidéo 1-on-1 mensuels',
-                '✅ Formations avancées exclusives',
-                '✅ Portfolio review personnalisé',
-                '✅ Accès à la salle de trading privée',
-                '✅ NFTs exclusifs La Sphere',
-                '✅ Réductions partenaires'
+                { included: true, text: 'Tout du plan PREMIUM' },
+                { included: true, text: 'Analyses approfondies quotidiennes' },
+                { included: true, text: 'Signaux de trading illimités' },
+                { included: true, text: 'Appels vidéo 1-on-1 mensuels' },
+                { included: true, text: 'Formations avancées exclusives' },
+                { included: true, text: 'Portfolio review personnalisé' },
+                { included: true, text: 'Accès à la salle de trading privée' },
+                { included: true, text: 'NFTs exclusifs La Sphere' },
+                { included: true, text: 'Réductions partenaires' }
             ],
             buttonText: 'Choisir VIP',
             disabled: false
@@ -105,7 +108,7 @@ const Subscriptions = () => {
         // Vérifier si l'utilisateur est connecté
         if (!isAuthenticated) {
             const shouldLogin = window.confirm(
-                '🔐 Vous devez être connecté pour souscrire à un abonnement.\n\n' +
+                'Vous devez être connecté pour souscrire à un abonnement.\n\n' +
                 'Voulez-vous vous connecter maintenant ?'
             )
             if (shouldLogin) {
@@ -118,7 +121,7 @@ const Subscriptions = () => {
         // Vérifier si l'utilisateur a un pseudo Telegram
         if (!user.telegramUsername && (plan.id === 'premium' || plan.id === 'vip')) {
             const shouldAddTelegram = window.confirm(
-                '📱 Un pseudo Telegram est requis pour les abonnements Premium/VIP.\n\n' +
+                'Un pseudo Telegram est requis pour les abonnements Premium/VIP.\n\n' +
                 'Voulez-vous ajouter votre pseudo Telegram dans votre profil maintenant ?'
             )
             if (shouldAddTelegram) {
@@ -140,20 +143,20 @@ const Subscriptions = () => {
                 window.open(response.data.invoiceUrl, '_blank')
                 setShowPaymentModal(false)
                 alert(
-                    '✅ Page de paiement ouverte!\n\n' +
+                    'Page de paiement ouverte!\n\n' +
                     'Après confirmation du paiement, votre abonnement sera automatiquement activé.' +
                     (user.telegramUsername ? '\nVous recevrez également une invitation Telegram.' : '')
                 )
             } else {
-                alert('❌ Erreur lors de la création du paiement')
+                alert('Erreur lors de la création du paiement')
             }
         } catch (error) {
             console.error('Erreur:', error)
             if (error.response?.status === 401) {
-                alert('❌ Session expirée. Veuillez vous reconnecter.')
+                alert('Session expirée. Veuillez vous reconnecter.')
                 window.activeTabSetter('login')
             } else {
-                alert('❌ Erreur lors de la création du paiement. Veuillez réessayer.')
+                alert('Erreur lors de la création du paiement. Veuillez réessayer.')
             }
         }
     }
@@ -167,7 +170,7 @@ const Subscriptions = () => {
 
     const handlePayment = async () => {
         if (!window.ethereum) {
-            alert('⚠️ Veuillez installer MetaMask pour effectuer des paiements crypto!')
+            alert('Veuillez installer MetaMask pour effectuer des paiements crypto!')
             window.open('https://metamask.io/download/', '_blank')
             return
         }
@@ -183,7 +186,7 @@ const Subscriptions = () => {
                 amount = (parseFloat(selectedPlan.priceEth) * 1e18).toString(16)
             } else {
                 // Pour les stablecoins, il faudrait utiliser un contrat ERC-20
-                alert('⚠️ Les paiements en stablecoins seront bientôt disponibles. Utilisez ETH pour le moment.')
+                alert('Les paiements en stablecoins seront bientôt disponibles. Utilisez ETH pour le moment.')
                 return
             }
 
@@ -201,7 +204,7 @@ const Subscriptions = () => {
                 params: [transactionParameters],
             })
 
-            alert(`✅ Paiement envoyé! Hash de transaction: ${txHash}\n\nVotre abonnement sera activé sous quelques minutes.`)
+            alert(`Paiement envoyé! Hash de transaction: ${txHash}\n\nVotre abonnement sera activé sous quelques minutes.`)
             setShowPaymentModal(false)
 
             // Ici, vous devriez normalement envoyer le txHash à votre backend pour vérification
@@ -211,13 +214,13 @@ const Subscriptions = () => {
 
         } catch (error) {
             console.error('Erreur de paiement:', error)
-            alert('❌ Erreur lors du paiement: ' + error.message)
+            alert('Erreur lors du paiement: ' + error.message)
         }
     }
 
     const copyAddress = () => {
         navigator.clipboard.writeText(PAYMENT_ADDRESS)
-        alert('✅ Adresse copiée dans le presse-papier!')
+        alert('Adresse copiée dans le presse-papier!')
     }
 
     return (
@@ -300,7 +303,7 @@ const Subscriptions = () => {
 
                 <div className="value-list-clean">
                     <div className="value-item-clean">
-                        <span className="value-icon-clean">📊</span>
+                        <span className="value-icon-clean"><BarChart3 size={16} /></span>
                         <div className="value-content-clean">
                             <h3>Analyses quotidiennes</h3>
                             <p>Décryptage complet du marché avec niveaux clés et opportunités chaque matin.</p>
@@ -308,7 +311,7 @@ const Subscriptions = () => {
                     </div>
 
                     <div className="value-item-clean">
-                        <span className="value-icon-clean">🔔</span>
+                        <span className="value-icon-clean"><Bell size={16} /></span>
                         <div className="value-content-clean">
                             <h3>Alertes temps réel</h3>
                             <p>Notifications instantanées sur les mouvements importants directement sur votre téléphone.</p>
@@ -316,7 +319,7 @@ const Subscriptions = () => {
                     </div>
 
                     <div className="value-item-clean">
-                        <span className="value-icon-clean">💬</span>
+                        <span className="value-icon-clean"><MessageCircle size={16} /></span>
                         <div className="value-content-clean">
                             <h3>Groupe privé actif</h3>
                             <p>Communauté de traders qui partagent positions, analyses et s'entraident au quotidien.</p>
@@ -324,7 +327,7 @@ const Subscriptions = () => {
                     </div>
 
                     <div className="value-item-clean">
-                        <span className="value-icon-clean">🎓</span>
+                        <span className="value-icon-clean"><GraduationCap size={16} /></span>
                         <div className="value-content-clean">
                             <h3>Formations complètes</h3>
                             <p>Parcours structuré du débutant au trader confirmé : analyse technique, gestion du risque.</p>
@@ -332,7 +335,7 @@ const Subscriptions = () => {
                     </div>
 
                     <div className="value-item-clean">
-                        <span className="value-icon-clean">📚</span>
+                        <span className="value-icon-clean"><BookOpen size={16} /></span>
                         <div className="value-content-clean">
                             <h3>Bibliothèque de ressources</h3>
                             <p>Templates, outils et analyses passées au même endroit pour progresser vite.</p>
@@ -340,7 +343,7 @@ const Subscriptions = () => {
                     </div>
 
                     <div className="value-item-clean">
-                        <span className="value-icon-clean">🎯</span>
+                        <span className="value-icon-clean"><Target size={16} /></span>
                         <div className="value-content-clean">
                             <h3>Support réactif</h3>
                             <p>Une question ? Notre équipe vous répond rapidement pour vous débloquer.</p>
@@ -375,8 +378,9 @@ const Subscriptions = () => {
 
                             <div className="plan-features-clean">
                                 {plan.features.map((feature, index) => (
-                                    <div key={index} className="feature-line-clean">
-                                        {feature}
+                                    <div key={index} className={`feature-line-clean ${!feature.included ? 'feature-excluded' : ''}`}>
+                                        {feature.included ? <CheckCircle2 size={16} /> : <XCircle size={16} />}
+                                        <span>{feature.text}</span>
                                     </div>
                                 ))}
                             </div>
@@ -396,10 +400,10 @@ const Subscriptions = () => {
 
             {/* Barre de garanties horizontale */}
             <div className="guarantees-bar">
-                <div className="guarantee-pill">🛡️ Satisfait ou remboursé 7j</div>
-                <div className="guarantee-pill">🔒 Paiement sécurisé</div>
-                <div className="guarantee-pill">⚡ Accès immédiat</div>
-                <div className="guarantee-pill">🚪 Sans engagement</div>
+                <div className="guarantee-pill"><Shield size={16} /> Satisfait ou remboursé 7j</div>
+                <div className="guarantee-pill"><Lock size={16} /> Paiement sécurisé</div>
+                <div className="guarantee-pill"><Zap size={16} /> Accès immédiat</div>
+                <div className="guarantee-pill"><LogOut size={16} /> Sans engagement</div>
             </div>
 
             {/* Section finale - Compact */}
@@ -538,28 +542,28 @@ const Subscriptions = () => {
                         {/* Avantages */}
                         <div className="modal-benefits">
                             <div className="benefit-card">
-                                <div className="benefit-icon">🔒</div>
+                                <div className="benefit-icon"><Lock size={16} /></div>
                                 <div className="benefit-content">
                                     <div className="benefit-title">Paiement 100% sécurisé</div>
                                     <div className="benefit-text">Transaction chiffree sur la blockchain</div>
                                 </div>
                             </div>
                             <div className="benefit-card">
-                                <div className="benefit-icon">💎</div>
+                                <div className="benefit-icon"><Gem size={16} /></div>
                                 <div className="benefit-content">
                                     <div className="benefit-title">200+ Cryptomonnaies</div>
                                     <div className="benefit-text">Bitcoin, Ethereum, USDT, etc.</div>
                                 </div>
                             </div>
                             <div className="benefit-card">
-                                <div className="benefit-icon">⚡</div>
+                                <div className="benefit-icon"><Zap size={16} /></div>
                                 <div className="benefit-content">
                                     <div className="benefit-title">Accès instantané</div>
                                     <div className="benefit-text">Activation sous 5 minutes</div>
                                 </div>
                             </div>
                             <div className="benefit-card">
-                                <div className="benefit-icon">📱</div>
+                                <div className="benefit-icon"><Smartphone size={16} /></div>
                                 <div className="benefit-content">
                                     <div className="benefit-title">Telegram VIP</div>
                                     <div className="benefit-text">Ajout automatique au groupe</div>
@@ -572,7 +576,7 @@ const Subscriptions = () => {
                             onClick={() => handleNowPaymentsCheckout(selectedPlan)}
                             className="payment-button-new"
                         >
-                            <span className="payment-button-icon">🚀</span>
+                            <span className="payment-button-icon"><Rocket size={16} /></span>
                             <span className="payment-button-text">Payer avec Crypto</span>
                             <span className="payment-button-badge">Crypto</span>
                         </button>
@@ -596,7 +600,7 @@ const Subscriptions = () => {
             )}
 
             <div className="partners-disclaimer">
-                <p className="partners-disclaimer-title">🔒 PAIEMENTS SÉCURISÉS</p>
+                <p className="partners-disclaimer-title"><Lock size={16} /> PAIEMENTS SÉCURISÉS</p>
                 <p className="partners-disclaimer-text">
                     Les paiements sont effectués directement via blockchain, garantissant transparence et sécurité.
                     Aucune donnée bancaire n'est stockée. Vous pouvez résilier votre abonnement à tout moment.

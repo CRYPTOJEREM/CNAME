@@ -8,6 +8,7 @@ import MemberProfile from './MemberProfile';
 import MemberContent from './MemberContent';
 import MemberFormations from './MemberFormations';
 import PaymentHistory from './PaymentHistory';
+import { BarChart3, BookOpen, CreditCard, Gem, Gift, GraduationCap, Smartphone, Star, User } from 'lucide-react';
 
 const MemberArea = ({ setActiveTab }) => {
     const { user } = useAuth();
@@ -33,8 +34,8 @@ const MemberArea = ({ setActiveTab }) => {
     const getSubscriptionBadge = () => {
         const badges = {
             free: { icon: '🆓', label: 'FREE', color: '#7B8BA8' },
-            premium: { icon: '⭐', label: 'PREMIUM', color: '#FFD700' },
-            vip: { icon: '💎', label: 'VIP', color: '#00D9FF' }
+            premium: { icon: <Star size={14} />, label: 'PREMIUM', color: '#FFD700' },
+            vip: { icon: <Gem size={14} />, label: 'VIP', color: '#00D9FF' }
         };
         return badges[user.subscriptionStatus] || badges.free;
     };
@@ -73,7 +74,7 @@ const MemberArea = ({ setActiveTab }) => {
                     }} />
 
                     <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '20px' }}>
-                        <div style={{ fontSize: '60px' }}>👤</div>
+                        <div style={{ fontSize: '60px' }}><User size={16} /></div>
                         <div>
                             <h1 style={{
                                 color: '#FFFFFF',
@@ -136,11 +137,11 @@ const MemberArea = ({ setActiveTab }) => {
                     paddingBottom: '10px'
                 }}>
                     {[
-                        { id: 'dashboard', icon: '📊', label: 'Tableau de Bord' },
-                        { id: 'profile', icon: '👤', label: 'Mon Profil' },
-                        { id: 'content', icon: '📚', label: 'Contenu Exclusif' },
-                        { id: 'formations', icon: '🎓', label: 'Formations' },
-                        { id: 'payments', icon: '💳', label: 'Paiements' }
+                        { id: 'dashboard', icon: <BarChart3 size={16} />, label: 'Tableau de Bord' },
+                        { id: 'profile', icon: <User size={16} />, label: 'Mon Profil' },
+                        { id: 'content', icon: <BookOpen size={16} />, label: 'Contenu Exclusif' },
+                        { id: 'formations', icon: <GraduationCap size={16} />, label: 'Formations' },
+                        { id: 'payments', icon: <CreditCard size={16} />, label: 'Paiements' }
                     ].map(section => (
                         <button
                             key={section.id}
@@ -193,7 +194,7 @@ const MemberArea = ({ setActiveTab }) => {
                             marginBottom: '30px',
                             textShadow: '0 0 20px rgba(0, 217, 255, 0.5)'
                         }}>
-                            📊 Tableau de Bord
+                            <BarChart3 size={16} /> Tableau de Bord
                         </h2>
 
                         <div style={{
@@ -266,7 +267,7 @@ const MemberArea = ({ setActiveTab }) => {
                                             width: '100%'
                                         }}
                                     >
-                                        ⭐ Passer Premium
+                                        <Star size={14} /> Passer Premium
                                     </button>
                                 )}
                             </div>
@@ -278,7 +279,7 @@ const MemberArea = ({ setActiveTab }) => {
                                 borderRadius: '20px',
                                 padding: '30px'
                             }}>
-                                <div style={{ fontSize: '40px', marginBottom: '15px' }}>🎓</div>
+                                <div style={{ fontSize: '40px', marginBottom: '15px' }}><GraduationCap size={16} /></div>
                                 <h3 style={{ color: '#FFFFFF', fontSize: '20px', fontWeight: '700', marginBottom: '10px' }}>
                                     Mes Formations
                                 </h3>
@@ -299,7 +300,7 @@ const MemberArea = ({ setActiveTab }) => {
                                         width: '100%'
                                     }}
                                 >
-                                    📚 Voir les Formations
+                                    <BookOpen size={16} /> Voir les Formations
                                 </button>
                             </div>
 
@@ -310,7 +311,7 @@ const MemberArea = ({ setActiveTab }) => {
                                 borderRadius: '20px',
                                 padding: '30px'
                             }}>
-                                <div style={{ fontSize: '40px', marginBottom: '15px' }}>📚</div>
+                                <div style={{ fontSize: '40px', marginBottom: '15px' }}><BookOpen size={16} /></div>
                                 <h3 style={{ color: '#FFFFFF', fontSize: '20px', fontWeight: '700', marginBottom: '10px' }}>
                                     Contenu Exclusif
                                 </h3>
@@ -343,7 +344,7 @@ const MemberArea = ({ setActiveTab }) => {
                                     borderRadius: '20px',
                                     padding: '30px'
                                 }}>
-                                    <div style={{ fontSize: '40px', marginBottom: '15px' }}>📱</div>
+                                    <div style={{ fontSize: '40px', marginBottom: '15px' }}><Smartphone size={16} /></div>
                                     <h3 style={{ color: '#FFFFFF', fontSize: '20px', fontWeight: '700', marginBottom: '10px' }}>
                                         Groupe Telegram VIP
                                     </h3>
@@ -363,7 +364,7 @@ const MemberArea = ({ setActiveTab }) => {
                                             width: '100%'
                                         }}
                                     >
-                                        📲 Rejoindre le Groupe
+                                        <Smartphone size={16} /> Rejoindre le Groupe
                                     </button>
                                 </div>
                             )}
@@ -385,7 +386,7 @@ const MemberArea = ({ setActiveTab }) => {
                                     height: '3px',
                                     background: 'linear-gradient(90deg, #FFD700, #FF6B00)'
                                 }} />
-                                <div style={{ fontSize: '40px', marginBottom: '15px' }}>🎰</div>
+                                <div style={{ fontSize: '40px', marginBottom: '15px' }}><Gift size={16} /></div>
                                 <h3 style={{ color: '#FFFFFF', fontSize: '20px', fontWeight: '700', marginBottom: '10px' }}>
                                     Concours Hebdomadaire
                                 </h3>

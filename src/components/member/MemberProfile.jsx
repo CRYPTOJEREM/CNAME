@@ -5,6 +5,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import memberService from '../../services/memberService';
+import { AlertTriangle, CheckCircle2, User, XCircle } from 'lucide-react';
 
 const MemberProfile = () => {
     const { user, refreshUser } = useAuth();
@@ -40,7 +41,7 @@ const MemberProfile = () => {
         try {
             await memberService.updateProfile(formData);
             await refreshUser();
-            setMessage({ type: 'success', text: '✅ Profil mis à jour avec succès !' });
+            setMessage({ type: 'success', text: 'Profil mis à jour avec succès !' });
             setIsEditing(false);
 
             setTimeout(() => {
@@ -75,7 +76,7 @@ const MemberProfile = () => {
                 marginBottom: '30px',
                 textShadow: '0 0 20px rgba(0, 217, 255, 0.5)'
             }}>
-                👤 Mon Profil
+                <User size={16} /> Mon Profil
             </h2>
 
             <div style={{
@@ -354,7 +355,7 @@ const MemberProfile = () => {
                                         opacity: loading ? 0.7 : 1
                                     }}
                                 >
-                                    ❌ Annuler
+                                    <XCircle size={16} /> Annuler
                                 </button>
                             </>
                         )}
@@ -384,7 +385,7 @@ const MemberProfile = () => {
                             fontWeight: '700',
                             margin: 0
                         }}>
-                            {user.emailVerified ? '✅ Oui' : '⚠️ Non'}
+                            {user.emailVerified ? <><CheckCircle2 size={16} /> Oui</> : <><AlertTriangle size={16} /> Non</>}
                         </p>
                     </div>
                     <div>

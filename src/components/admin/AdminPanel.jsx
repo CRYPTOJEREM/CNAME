@@ -8,6 +8,7 @@ import ReviewsManagement from './ReviewsManagement'
 import CarouselManagement from './CarouselManagement'
 import ContestManagement from './ContestManagement'
 import api from '../../services/api'
+import { Ban, BarChart3, BookOpen, CheckCircle2, Gem, Gift, Loader2, Mail, RefreshCw, Shield, Star, Target, TrendingUp, Users, Video, Wallet, XCircle } from 'lucide-react';
 
 const AdminPanel = () => {
     const { user } = useAuth()
@@ -36,7 +37,7 @@ const AdminPanel = () => {
         return (
             <section className="admin-section">
                 <div className="access-denied">
-                    <h1>🚫 Accès Refusé</h1>
+                    <h1><Ban size={16} /> Accès Refusé</h1>
                     <p>Vous devez être administrateur pour accéder à cette page.</p>
                 </div>
             </section>
@@ -49,7 +50,7 @@ const AdminPanel = () => {
                 {/* Header Admin */}
                 <div className="admin-header">
                     <div>
-                        <h1>🛡️ Panel d'Administration</h1>
+                        <h1><Shield size={16} /> Panel d'Administration</h1>
                         <p>Gestion complète de La Sphere</p>
                     </div>
                     <div className="admin-user-info">
@@ -64,56 +65,56 @@ const AdminPanel = () => {
                         className={`admin-nav-btn ${activeSection === 'stats' ? 'active' : ''}`}
                         onClick={() => setActiveSection('stats')}
                     >
-                        <span className="nav-icon">📊</span>
+                        <span className="nav-icon"><BarChart3 size={16} /></span>
                         <span>Statistiques</span>
                     </button>
                     <button
                         className={`admin-nav-btn ${activeSection === 'users' ? 'active' : ''}`}
                         onClick={() => setActiveSection('users')}
                     >
-                        <span className="nav-icon">👥</span>
+                        <span className="nav-icon"><Users size={16} /></span>
                         <span>Utilisateurs</span>
                     </button>
                     <button
                         className={`admin-nav-btn ${activeSection === 'products' ? 'active' : ''}`}
                         onClick={() => setActiveSection('products')}
                     >
-                        <span className="nav-icon">💎</span>
+                        <span className="nav-icon"><Gem size={16} /></span>
                         <span>Produits</span>
                     </button>
                     <button
                         className={`admin-nav-btn ${activeSection === 'content' ? 'active' : ''}`}
                         onClick={() => setActiveSection('content')}
                     >
-                        <span className="nav-icon">📚</span>
+                        <span className="nav-icon"><BookOpen size={16} /></span>
                         <span>Contenu</span>
                     </button>
                     <button
                         className={`admin-nav-btn ${activeSection === 'payments' ? 'active' : ''}`}
                         onClick={() => setActiveSection('payments')}
                     >
-                        <span className="nav-icon">💰</span>
+                        <span className="nav-icon"><Wallet size={16} /></span>
                         <span>Paiements</span>
                     </button>
                     <button
                         className={`admin-nav-btn ${activeSection === 'carousel' ? 'active' : ''}`}
                         onClick={() => setActiveSection('carousel')}
                     >
-                        <span className="nav-icon">🎬</span>
+                        <span className="nav-icon"><Video size={16} /></span>
                         <span>Carrousel</span>
                     </button>
                     <button
                         className={`admin-nav-btn ${activeSection === 'reviews' ? 'active' : ''}`}
                         onClick={() => setActiveSection('reviews')}
                     >
-                        <span className="nav-icon">⭐</span>
+                        <span className="nav-icon"><Star size={14} /></span>
                         <span>Avis Clients</span>
                     </button>
                     <button
                         className={`admin-nav-btn ${activeSection === 'contest' ? 'active' : ''}`}
                         onClick={() => setActiveSection('contest')}
                     >
-                        <span className="nav-icon">🎰</span>
+                        <span className="nav-icon"><Gift size={16} /></span>
                         <span>Concours</span>
                     </button>
                 </div>
@@ -126,25 +127,25 @@ const AdminPanel = () => {
                                 <div className="loading">Chargement des statistiques...</div>
                             ) : stats ? (
                                 <>
-                                    <h2>📈 Vue d'ensemble</h2>
+                                    <h2><TrendingUp size={16} /> Vue d'ensemble</h2>
 
                                     {/* Stats Utilisateurs */}
                                     <div className="stats-grid">
                                         <div className="stat-card">
-                                            <div className="stat-icon">👥</div>
+                                            <div className="stat-icon"><Users size={16} /></div>
                                             <div className="stat-content">
                                                 <div className="stat-label">Total Utilisateurs</div>
                                                 <div className="stat-value">{stats.users.total}</div>
                                                 <div className="stat-details">
                                                     <span className="stat-detail free">🆓 {stats.users.free} Free</span>
-                                                    <span className="stat-detail premium">⭐ {stats.users.premium} Premium</span>
-                                                    <span className="stat-detail vip">💎 {stats.users.vip} VIP</span>
+                                                    <span className="stat-detail premium"><Star size={14} /> {stats.users.premium} Premium</span>
+                                                    <span className="stat-detail vip"><Gem size={16} /> {stats.users.vip} VIP</span>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div className="stat-card">
-                                            <div className="stat-icon">✉️</div>
+                                            <div className="stat-icon"><Mail size={16} /></div>
                                             <div className="stat-content">
                                                 <div className="stat-label">Emails Vérifiés</div>
                                                 <div className="stat-value">{stats.users.emailVerified}</div>
@@ -158,37 +159,37 @@ const AdminPanel = () => {
                                         </div>
 
                                         <div className="stat-card">
-                                            <div className="stat-icon">💰</div>
+                                            <div className="stat-icon"><Wallet size={16} /></div>
                                             <div className="stat-content">
                                                 <div className="stat-label">Revenus Totaux</div>
                                                 <div className="stat-value">{stats.payments.totalRevenue.toFixed(2)} €</div>
                                                 <div className="stat-details">
-                                                    <span className="stat-detail success">✅ {stats.payments.completed} complétés</span>
-                                                    <span className="stat-detail pending">⏳ {stats.payments.pending} en attente</span>
+                                                    <span className="stat-detail success"><CheckCircle2 size={16} /> {stats.payments.completed} complétés</span>
+                                                    <span className="stat-detail pending"><Loader2 size={16} /> {stats.payments.pending} en attente</span>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div className="stat-card">
-                                            <div className="stat-icon">📚</div>
+                                            <div className="stat-icon"><BookOpen size={16} /></div>
                                             <div className="stat-content">
                                                 <div className="stat-label">Contenus</div>
                                                 <div className="stat-value">{stats.content.total}</div>
                                                 <div className="stat-details">
                                                     <span className="stat-detail">🆓 {stats.content.free}</span>
-                                                    <span className="stat-detail">⭐ {stats.content.premium}</span>
-                                                    <span className="stat-detail">💎 {stats.content.vip}</span>
+                                                    <span className="stat-detail"><Star size={14} /> {stats.content.premium}</span>
+                                                    <span className="stat-detail"><Gem size={16} /> {stats.content.vip}</span>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div className="stat-card">
-                                            <div className="stat-icon">💎</div>
+                                            <div className="stat-icon"><Gem size={16} /></div>
                                             <div className="stat-content">
                                                 <div className="stat-label">Produits</div>
                                                 <div className="stat-value">{stats.products.total}</div>
                                                 <div className="stat-details">
-                                                    <span className="stat-detail success">✅ {stats.products.active} actifs</span>
+                                                    <span className="stat-detail success"><CheckCircle2 size={16} /> {stats.products.active} actifs</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -199,22 +200,22 @@ const AdminPanel = () => {
                                                 <div className="stat-label">Paiements</div>
                                                 <div className="stat-value">{stats.payments.total}</div>
                                                 <div className="stat-details">
-                                                    <span className="stat-detail success">✅ {stats.payments.completed}</span>
-                                                    <span className="stat-detail pending">⏳ {stats.payments.pending}</span>
-                                                    <span className="stat-detail error">❌ {stats.payments.failed}</span>
+                                                    <span className="stat-detail success"><CheckCircle2 size={16} /> {stats.payments.completed}</span>
+                                                    <span className="stat-detail pending"><Loader2 size={16} /> {stats.payments.pending}</span>
+                                                    <span className="stat-detail error"><XCircle size={16} /> {stats.payments.failed}</span>
                                                 </div>
                                             </div>
                                         </div>
 
                                         {stats.contest && (
                                             <div className="stat-card">
-                                                <div className="stat-icon">🎰</div>
+                                                <div className="stat-icon"><Gift size={16} /></div>
                                                 <div className="stat-content">
                                                     <div className="stat-label">Concours</div>
                                                     <div className="stat-value">{stats.contest.eligibleParticipants} eligible(s)</div>
                                                     <div className="stat-details">
-                                                        <span className="stat-detail success">🎯 {stats.contest.totalDraws} tirage(s)</span>
-                                                        <span className="stat-detail premium">💰 ${stats.contest.totalPrizes} distribues</span>
+                                                        <span className="stat-detail success"><Target size={16} /> {stats.contest.totalDraws} tirage(s)</span>
+                                                        <span className="stat-detail premium"><Wallet size={16} /> ${stats.contest.totalPrizes} distribues</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -222,7 +223,7 @@ const AdminPanel = () => {
                                     </div>
 
                                     <button onClick={fetchStats} className="btn-refresh">
-                                        🔄 Actualiser les statistiques
+                                        <RefreshCw size={16} /> Actualiser les statistiques
                                     </button>
                                 </>
                             ) : (

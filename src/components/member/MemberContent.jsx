@@ -5,6 +5,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import memberService from '../../services/memberService';
+import { BarChart3, BookOpen, Gem, GraduationCap, Star } from 'lucide-react';
 
 const MemberContent = () => {
     const { user } = useAuth();
@@ -32,18 +33,18 @@ const MemberContent = () => {
         const icons = {
             video: '🎥',
             article: '📄',
-            formation: '🎓',
+            formation: <GraduationCap size={16} />,
             webinar: '📹',
-            signal: '📊'
+            signal: <BarChart3 size={16} />
         };
-        return icons[type] || '📚';
+        return icons[type] || <BookOpen size={16} />;
     };
 
     const getLevelBadge = (level) => {
         const badges = {
             free: { icon: '🆓', label: 'GRATUIT', color: '#7B8BA8' },
-            premium: { icon: '⭐', label: 'PREMIUM', color: '#FFD700' },
-            vip: { icon: '💎', label: 'VIP', color: '#00D9FF' }
+            premium: { icon: <Star size={14} />, label: 'PREMIUM', color: '#FFD700' },
+            vip: { icon: <Gem size={14} />, label: 'VIP', color: '#00D9FF' }
         };
         return badges[level] || badges.free;
     };
@@ -111,7 +112,7 @@ const MemberContent = () => {
                 marginBottom: '30px',
                 textShadow: '0 0 20px rgba(0, 217, 255, 0.5)'
             }}>
-                📚 Contenu Exclusif
+                <BookOpen size={16} /> Contenu Exclusif
             </h2>
 
             {/* Filtres */}
@@ -122,10 +123,10 @@ const MemberContent = () => {
                 flexWrap: 'wrap'
             }}>
                 {[
-                    { id: 'all', icon: '📚', label: 'Tout' },
+                    { id: 'all', icon: <BookOpen size={16} />, label: 'Tout' },
                     { id: 'video', icon: '🎥', label: 'Vidéos' },
                     { id: 'article', icon: '📄', label: 'Articles' },
-                    { id: 'formation', icon: '🎓', label: 'Formations' }
+                    { id: 'formation', icon: <GraduationCap size={16} />, label: 'Formations' }
                 ].map(filterBtn => (
                     <button
                         key={filterBtn.id}

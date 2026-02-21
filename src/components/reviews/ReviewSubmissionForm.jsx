@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useAuth } from '../../contexts/AuthContext'
 import api from '../../services/api'
+import { AlertTriangle, CheckCircle2, FileEdit, Loader2, Send, Star } from 'lucide-react';
 
 const ReviewSubmissionForm = () => {
     const { user } = useAuth()
@@ -56,7 +57,7 @@ const ReviewSubmissionForm = () => {
         <div className="review-submission-form">
             {success && (
                 <div className="review-success-message">
-                    <span className="success-icon">✅</span>
+                    <span className="success-icon"><CheckCircle2 size={16} /></span>
                     <div>
                         <h4>Merci pour votre avis !</h4>
                         <p>Votre retour d'expérience sera publié après validation par notre équipe.</p>
@@ -75,7 +76,7 @@ const ReviewSubmissionForm = () => {
                                 className={`star-btn ${star <= formData.rating ? 'active' : ''}`}
                                 onClick={() => handleRatingClick(star)}
                             >
-                                {star <= formData.rating ? '⭐' : '☆'}
+                                {star <= formData.rating ? <Star size={14} fill="currentColor" /> : '☆'}
                             </button>
                         ))}
                         <span className="rating-text">
@@ -120,14 +121,14 @@ const ReviewSubmissionForm = () => {
 
                 {error && (
                     <div className="review-error-message">
-                        <span className="error-icon">⚠️</span>
+                        <span className="error-icon"><AlertTriangle size={16} /></span>
                         {error}
                     </div>
                 )}
 
                 <div className="form-footer">
                     <p className="review-notice">
-                        📝 Votre avis sera publié après validation par notre équipe.
+                        <FileEdit size={16} /> Votre avis sera publié après validation par notre équipe.
                         Nous nous réservons le droit de modérer les contenus inappropriés.
                     </p>
                     <button
@@ -135,7 +136,7 @@ const ReviewSubmissionForm = () => {
                         className="btn-submit-review"
                         disabled={submitting}
                     >
-                        {submitting ? '⏳ Envoi en cours...' : '📤 Envoyer mon avis'}
+                        {submitting ? <><Loader2 size={16} /> Envoi en cours...</> : <><Send size={16} /> Envoyer mon avis</>}
                     </button>
                 </div>
             </form>

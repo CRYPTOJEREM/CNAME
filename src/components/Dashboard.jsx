@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react'
+import { Coins, Flame, Gem, Link, RefreshCw, Rocket, Search, TrendingUp, Zap } from 'lucide-react';
 
 const Dashboard = () => {
     const [cryptoData, setCryptoData] = useState([])
@@ -29,12 +30,12 @@ const Dashboard = () => {
     // Fonction pour obtenir l'icône crypto
     const getCryptoIcon = (symbol) => {
         const icons = {
-            'btc': '₿', 'eth': 'Ξ', 'usdt': '₮', 'bnb': '🔸', 'sol': '◎',
-            'xrp': '◈', 'usdc': '💵', 'ada': '₳', 'avax': '🔺', 'doge': '🐕',
-            'dot': '⚫', 'matic': '🟣', 'link': '🔗', 'shib': '🐕', 'trx': '⭕',
-            'dai': '💎', 'atom': '⚛️', 'uni': '🦄', 'ltc': 'Ł', 'etc': '💚'
+            'btc': '₿', 'eth': 'Ξ', 'usdt': '₮', 'bnb': '◆', 'sol': '◎',
+            'xrp': '◈', 'usdc': '$', 'ada': '₳', 'avax': '▲', 'doge': 'Ð',
+            'dot': '●', 'matic': '⬡', 'link': '⬡', 'shib': 'Ð', 'trx': '◎',
+            'dai': '◈', 'atom': '⚛', 'uni': '🦄', 'ltc': 'Ł', 'etc': 'Ξ'
         };
-        return icons[symbol.toLowerCase()] || '🪙';
+        return icons[symbol.toLowerCase()] || '●';
     }
 
     // Fonction pour obtenir la classe du badge
@@ -46,12 +47,12 @@ const Dashboard = () => {
 
     // Fonction pour obtenir le texte du badge
     const getBadgeText = (symbol, change24h, change7d) => {
-        if (symbol.toLowerCase() === 'btc') return '🔥 Dominance';
-        if (change24h > 5) return '🚀 Hausse';
-        if (change24h > 2) return '📈 Momentum';
-        if (change7d > 10) return '⚡ Actif';
-        if (Math.abs(change24h) < 0.5) return '💎 Stable';
-        return '👀 À suivre';
+        if (symbol.toLowerCase() === 'btc') return <><Flame size={14} /> Dominance</>;
+        if (change24h > 5) return <><Rocket size={14} /> Hausse</>;
+        if (change24h > 2) return <><TrendingUp size={14} /> Momentum</>;
+        if (change7d > 10) return <><Zap size={14} /> Actif</>;
+        if (Math.abs(change24h) < 0.5) return <><Gem size={14} /> Stable</>;
+        return <>À suivre</>;
     }
 
     // Fonction pour générer les points du chart
@@ -99,7 +100,7 @@ const Dashboard = () => {
         <div className="container">
             <div className="header">
                 <div className="date-badge">
-                    {lastUpdate ? `🔄 MISE À JOUR : ${lastUpdate.toLocaleTimeString('fr-FR')}` : '🔄 CHARGEMENT...'}
+                    {lastUpdate ? <><RefreshCw size={14} /> MISE À JOUR : {lastUpdate.toLocaleTimeString('fr-FR')}</> : <><RefreshCw size={14} /> CHARGEMENT...</>}
                 </div>
                 <h1>Dashboard Crypto</h1>
                 <div className="subtitle">Top 20 des cryptomonnaies par capitalisation</div>
@@ -107,7 +108,7 @@ const Dashboard = () => {
                 {/* Barre de recherche */}
                 <div className={`search-bar-container ${searchFocused ? 'focused' : ''}`}>
                     <div className="search-bar-wrapper">
-                        <span className="search-icon">🔍</span>
+                        <span className="search-icon"><Search size={16} /></span>
                         <input
                             type="text"
                             className="search-input"
@@ -136,7 +137,7 @@ const Dashboard = () => {
                     <div className="loading-text">Chargement des données...</div>
                 ) : filteredCryptoData.length === 0 ? (
                     <div className="no-results">
-                        <div className="no-results-icon">🔍</div>
+                        <div className="no-results-icon"><Search size={16} /></div>
                         <div className="no-results-text">Aucune crypto trouvée pour "{searchTerm}"</div>
                         <button className="no-results-btn" onClick={clearSearch}>Effacer la recherche</button>
                     </div>

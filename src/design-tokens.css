@@ -1,0 +1,83 @@
+/* ==========================================
+   LA SPHERE - Design Tokens (Apple-inspired Dark)
+   ========================================== */
+
+:root {
+  /* Background colors - softer dark theme */
+  --bg-primary: #0F1117;
+  --bg-secondary: #1A1D26;
+  --bg-tertiary: #22252E;
+  --bg-elevated: #2A2D36;
+
+  /* Glass effect */
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-bg-hover: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-border-hover: rgba(255, 255, 255, 0.15);
+  --glass-blur: 20px;
+
+  /* Text colors */
+  --text-primary: #F5F5F7;
+  --text-secondary: #A1A1A6;
+  --text-tertiary: #6E6E73;
+
+  /* Accent colors - Apple refined */
+  --accent-primary: #2997FF;
+  --accent-cyan: #64D2FF;
+  --accent-purple: #BF5AF2;
+  --accent-gold: #FFD60A;
+  --accent-green: #30D158;
+  --accent-red: #FF453A;
+  --accent-orange: #FF9F0A;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+  --gradient-gold: linear-gradient(135deg, var(--accent-gold), var(--accent-orange));
+  --gradient-surface: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+
+  /* Typography */
+  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-size-hero: clamp(40px, 5vw, 64px);
+  --font-size-h1: clamp(28px, 3.5vw, 48px);
+  --font-size-h2: clamp(24px, 3vw, 36px);
+  --font-size-h3: clamp(18px, 2vw, 24px);
+  --font-size-body: 16px;
+  --font-size-small: 14px;
+  --font-size-caption: 12px;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 40px;
+  --space-2xl: 64px;
+  --space-3xl: 96px;
+  --space-section: 120px;
+
+  /* Borders */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Shadows - Apple-style subtle */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.3);
+  --shadow-glow: 0 0 20px rgba(41, 151, 255, 0.15);
+
+  /* Transitions - Apple-style smooth */
+  --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --transition-fast: 150ms var(--ease-out);
+  --transition-normal: 250ms var(--ease-out);
+  --transition-slow: 400ms var(--ease-in-out);
+}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import api from '../../services/api'
+import { CheckCircle2, CreditCard, Lightbulb, Loader2, RefreshCw, Wallet, XCircle } from 'lucide-react';
 
 const PaymentsDashboard = () => {
     const [payments, setPayments] = useState([])
@@ -36,9 +37,9 @@ const PaymentsDashboard = () => {
 
     const getStatusBadge = (status) => {
         const badges = {
-            completed: { icon: '✅', text: 'Complété', color: '#4CAF50' },
-            pending: { icon: '⏳', text: 'En attente', color: '#FF9800' },
-            failed: { icon: '❌', text: 'Échoué', color: '#F44336' }
+            completed: { icon: <CheckCircle2 size={14} />, text: 'Complété', color: '#4CAF50' },
+            pending: { icon: <Loader2 size={14} />, text: 'En attente', color: '#FF9800' },
+            failed: { icon: <XCircle size={14} />, text: 'Échoué', color: '#F44336' }
         }
         const badge = badges[status] || badges.pending
         return (
@@ -51,43 +52,43 @@ const PaymentsDashboard = () => {
     return (
         <div className="payments-dashboard">
             <div className="management-header">
-                <h2>💰 Gestion des Paiements</h2>
-                <button onClick={fetchPayments} className="btn-refresh">🔄 Actualiser</button>
+                <h2><Wallet size={16} /> Gestion des Paiements</h2>
+                <button onClick={fetchPayments} className="btn-refresh"><RefreshCw size={16} /> Actualiser</button>
             </div>
 
             {/* Statistiques */}
             {stats && (
                 <div className="stats-cards">
                     <div className="stats-card">
-                        <div className="stats-icon">💳</div>
+                        <div className="stats-icon"><CreditCard size={16} /></div>
                         <div className="stats-content">
                             <div className="stats-label">Total Paiements</div>
                             <div className="stats-value">{stats.total}</div>
                         </div>
                     </div>
                     <div className="stats-card success">
-                        <div className="stats-icon">✅</div>
+                        <div className="stats-icon"><CheckCircle2 size={16} /></div>
                         <div className="stats-content">
                             <div className="stats-label">Complétés</div>
                             <div className="stats-value">{stats.completed}</div>
                         </div>
                     </div>
                     <div className="stats-card pending">
-                        <div className="stats-icon">⏳</div>
+                        <div className="stats-icon"><Loader2 size={16} /></div>
                         <div className="stats-content">
                             <div className="stats-label">En attente</div>
                             <div className="stats-value">{stats.pending}</div>
                         </div>
                     </div>
                     <div className="stats-card error">
-                        <div className="stats-icon">❌</div>
+                        <div className="stats-icon"><XCircle size={16} /></div>
                         <div className="stats-content">
                             <div className="stats-label">Échoués</div>
                             <div className="stats-value">{stats.failed}</div>
                         </div>
                     </div>
                     <div className="stats-card revenue">
-                        <div className="stats-icon">💰</div>
+                        <div className="stats-icon"><Wallet size={16} /></div>
                         <div className="stats-content">
                             <div className="stats-label">Revenus Totaux</div>
                             <div className="stats-value">{stats.totalRevenue.toFixed(2)} €</div>
@@ -134,7 +135,7 @@ const PaymentsDashboard = () => {
                         onClick={() => setFilters({ status: 'all', startDate: '', endDate: '' })}
                         className="btn-reset-filters"
                     >
-                        🔄 Réinitialiser
+                        <RefreshCw size={16} /> Réinitialiser
                     </button>
                 )}
             </div>
@@ -178,9 +179,9 @@ const PaymentsDashboard = () => {
                                         <td>{getStatusBadge(payment.status)}</td>
                                         <td>
                                             {payment.telegramAdded ? (
-                                                <span className="telegram-added">✅ Ajouté</span>
+                                                <span className="telegram-added"><CheckCircle2 size={16} /> Ajouté</span>
                                             ) : (
-                                                <span className="telegram-pending">⏳ En attente</span>
+                                                <span className="telegram-pending"><Loader2 size={16} /> En attente</span>
                                             )}
                                         </td>
                                         <td className="payment-date">
@@ -208,7 +209,7 @@ const PaymentsDashboard = () => {
             {/* Informations supplémentaires */}
             <div className="payments-info">
                 <div className="info-card">
-                    <h4>💡 Informations</h4>
+                    <h4><Lightbulb size={16} /> Informations</h4>
                     <ul>
                         <li>Les paiements sont traites en cryptomonnaies via notre prestataire</li>
                         <li>Un webhook confirme automatiquement les paiements complétés</li>

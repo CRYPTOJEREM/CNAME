@@ -4,6 +4,7 @@
 
 import { useState, useEffect } from 'react';
 import memberService from '../../services/memberService';
+import { CheckCircle2, CreditCard, Loader2, XCircle } from 'lucide-react';
 
 const PaymentHistory = () => {
     const [payments, setPayments] = useState([]);
@@ -26,9 +27,9 @@ const PaymentHistory = () => {
 
     const getStatusBadge = (status) => {
         const badges = {
-            pending: { icon: '⏳', text: 'En attente', color: '#FFD700' },
-            completed: { icon: '✅', text: 'Complété', color: '#00D9FF' },
-            failed: { icon: '❌', text: 'Échoué', color: '#FF4D4D' }
+            pending: { icon: <Loader2 size={14} />, text: 'En attente', color: '#FFD700' },
+            completed: { icon: <CheckCircle2 size={14} />, text: 'Complété', color: '#00D9FF' },
+            failed: { icon: <XCircle size={14} />, text: 'Échoué', color: '#FF4D4D' }
         };
         return badges[status] || badges.pending;
     };
@@ -64,7 +65,7 @@ const PaymentHistory = () => {
                     marginBottom: '10px',
                     textShadow: '0 0 20px rgba(0, 217, 255, 0.5)'
                 }}>
-                    💳 Historique des Paiements
+                    <CreditCard size={16} /> Historique des Paiements
                 </h2>
                 <p style={{
                     color: '#7B8BA8',
@@ -83,7 +84,7 @@ const PaymentHistory = () => {
                     padding: '60px 40px',
                     textAlign: 'center'
                 }}>
-                    <div style={{ fontSize: '60px', marginBottom: '20px' }}>💳</div>
+                    <div style={{ fontSize: '60px', marginBottom: '20px' }}><CreditCard size={16} /></div>
                     <h3 style={{ color: '#FFFFFF', fontSize: '20px', marginBottom: '10px' }}>
                         Aucun paiement
                     </h3>

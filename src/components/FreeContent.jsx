@@ -6,6 +6,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useAuth } from '../contexts/AuthContext';
+import { BarChart3, BookOpen, CheckCircle2, Clock, Eye, Globe, GraduationCap, Lock, Play, Rocket, Sparkles, Target } from 'lucide-react';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
@@ -155,7 +156,7 @@ const FreeContent = ({ setActiveTab }) => {
                             ✕
                         </button>
                         <div style={{ textAlign: 'center', marginBottom: '30px' }}>
-                            <div style={{ fontSize: '60px', marginBottom: '20px' }}>🔒</div>
+                            <div style={{ fontSize: '60px', marginBottom: '20px' }}><Lock size={16} /></div>
                             <h2 style={{
                                 color: '#00D9FF',
                                 fontSize: '28px',
@@ -177,7 +178,7 @@ const FreeContent = ({ setActiveTab }) => {
                                 gap: '12px',
                                 padding: '10px 0'
                             }}>
-                                <span style={{ fontSize: '20px' }}>✅</span>
+                                <span style={{ fontSize: '20px' }}><CheckCircle2 size={16} /></span>
                                 <span style={{ color: '#FFFFFF' }}>Accès à tout le contenu gratuit</span>
                             </div>
                             <div style={{
@@ -186,7 +187,7 @@ const FreeContent = ({ setActiveTab }) => {
                                 gap: '12px',
                                 padding: '10px 0'
                             }}>
-                                <span style={{ fontSize: '20px' }}>✅</span>
+                                <span style={{ fontSize: '20px' }}><CheckCircle2 size={16} /></span>
                                 <span style={{ color: '#FFFFFF' }}>Dashboard crypto en temps réel</span>
                             </div>
                             <div style={{
@@ -195,7 +196,7 @@ const FreeContent = ({ setActiveTab }) => {
                                 gap: '12px',
                                 padding: '10px 0'
                             }}>
-                                <span style={{ fontSize: '20px' }}>✅</span>
+                                <span style={{ fontSize: '20px' }}><CheckCircle2 size={16} /></span>
                                 <span style={{ color: '#FFFFFF' }}>Calendrier économique</span>
                             </div>
                             <div style={{
@@ -204,7 +205,7 @@ const FreeContent = ({ setActiveTab }) => {
                                 gap: '12px',
                                 padding: '10px 0'
                             }}>
-                                <span style={{ fontSize: '20px' }}>✅</span>
+                                <span style={{ fontSize: '20px' }}><CheckCircle2 size={16} /></span>
                                 <span style={{ color: '#FFFFFF' }}>Actualités quotidiennes</span>
                             </div>
                         </div>
@@ -229,7 +230,7 @@ const FreeContent = ({ setActiveTab }) => {
                                 onMouseOver={(e) => e.target.style.transform = 'scale(1.02)'}
                                 onMouseOut={(e) => e.target.style.transform = 'scale(1)'}
                             >
-                                ✨ Créer un compte gratuit
+                                <Sparkles size={14} /> Créer un compte gratuit
                             </button>
                             <button
                                 onClick={() => {
@@ -250,7 +251,7 @@ const FreeContent = ({ setActiveTab }) => {
                                 onMouseOver={(e) => e.target.style.transform = 'scale(1.02)'}
                                 onMouseOut={(e) => e.target.style.transform = 'scale(1)'}
                             >
-                                🔐 J'ai déjà un compte
+                                <Lock size={14} /> J'ai déjà un compte
                             </button>
                         </div>
                     </div>
@@ -258,7 +259,7 @@ const FreeContent = ({ setActiveTab }) => {
             )}
 
             <div className="learning-header">
-                <div className="learning-badge">🎓 FORMATION COMPLÈTE</div>
+                <div className="learning-badge"><GraduationCap size={16} /> FORMATION COMPLÈTE</div>
                 <h1>PARCOURS D'APPRENTISSAGE</h1>
                 <p>
                     Apprenez le trading et la crypto de zéro à expert grâce à notre parcours pédagogique structuré.
@@ -270,13 +271,13 @@ const FreeContent = ({ setActiveTab }) => {
 
             {/* Sélecteur de Parcours */}
             <div className="category-selector">
-                <h3 className="category-title">🎯 Choisissez Votre Parcours</h3>
+                <h3 className="category-title"><Target size={16} /> Choisissez Votre Parcours</h3>
                 <div className="category-buttons">
                     <button
                         className={`category-btn ${activeCategory === 'trading' ? 'active' : ''}`}
                         onClick={() => setActiveCategory('trading')}
                     >
-                        <span className="cat-icon">📊</span>
+                        <span className="cat-icon"><BarChart3 size={16} /></span>
                         <span className="cat-name">Trading</span>
                         <span className="cat-desc">Analyse technique & stratégies</span>
                     </button>
@@ -284,7 +285,7 @@ const FreeContent = ({ setActiveTab }) => {
                         className={`category-btn ${activeCategory === 'web3' ? 'active' : ''}`}
                         onClick={() => setActiveCategory('web3')}
                     >
-                        <span className="cat-icon">🌐</span>
+                        <span className="cat-icon"><Globe size={16} /></span>
                         <span className="cat-name">Web3 & DeFi</span>
                         <span className="cat-desc">Blockchain & finance décentralisée</span>
                     </button>
@@ -292,7 +293,7 @@ const FreeContent = ({ setActiveTab }) => {
                         className={`category-btn ${activeCategory === 'memecoin' ? 'active' : ''}`}
                         onClick={() => setActiveCategory('memecoin')}
                     >
-                        <span className="cat-icon">🚀</span>
+                        <span className="cat-icon"><Rocket size={16} /></span>
                         <span className="cat-name">Memecoins</span>
                         <span className="cat-desc">Tendances & opportunités rapides</span>
                     </button>
@@ -339,7 +340,7 @@ const FreeContent = ({ setActiveTab }) => {
                                                 transform: 'translate(-50%, -50%)',
                                                 fontSize: '60px'
                                             }}>
-                                                ▶️
+                                                <Play size={20} />️
                                             </div>
                                         </div>
                                     </div>
@@ -348,9 +349,9 @@ const FreeContent = ({ setActiveTab }) => {
                                         <h3 className="video-module-title">{item.title}</h3>
                                         <p className="video-module-description">{item.description}</p>
                                         <div className="video-stats">
-                                            <div className="video-stat">⏱️ 15 min</div>
-                                            <div className="video-stat">👁️ 25K vues</div>
-                                            <div className="video-stat">📚 Gratuit</div>
+                                            <div className="video-stat"><Clock size={14} /> 15 min</div>
+                                            <div className="video-stat"><Eye size={14} /> 25K vues</div>
+                                            <div className="video-stat"><BookOpen size={16} /> Gratuit</div>
                                         </div>
                                     </div>
                                 </div>
@@ -391,8 +392,8 @@ const FreeContent = ({ setActiveTab }) => {
                                         <p className="video-module-description">{item.description}</p>
                                         <div className="video-stats">
                                             <div className="video-stat">📖 Article</div>
-                                            <div className="video-stat">👁️ 18K vues</div>
-                                            <div className="video-stat">📚 Gratuit</div>
+                                            <div className="video-stat"><Eye size={14} /> 18K vues</div>
+                                            <div className="video-stat"><BookOpen size={16} /> Gratuit</div>
                                         </div>
                                     </div>
                                 </div>
@@ -407,7 +408,7 @@ const FreeContent = ({ setActiveTab }) => {
                 <div className="category-content">
                     <div className="module-section">
                         <h2 className="module-title">
-                            <span>🌐</span>
+                            <span><Globe size={16} /></span>
                             <span>MODULE : Web3 & DeFi</span>
                         </h2>
                         <p className="module-subtitle">
@@ -440,18 +441,18 @@ const FreeContent = ({ setActiveTab }) => {
                                                 transform: 'translate(-50%, -50%)',
                                                 fontSize: '60px'
                                             }}>
-                                                ▶️
+                                                <Play size={20} />️
                                             </div>
                                         </div>
                                     </div>
                                     <div className="video-module-info">
-                                        <span className="video-level level-debutant">🌐 WEB3 - GRATUIT</span>
+                                        <span className="video-level level-debutant"><Globe size={16} /> WEB3 - GRATUIT</span>
                                         <h3 className="video-module-title">{item.title}</h3>
                                         <p className="video-module-description">{item.description}</p>
                                         <div className="video-stats">
-                                            <div className="video-stat">⏱️ 15 min</div>
-                                            <div className="video-stat">👁️ 15K vues</div>
-                                            <div className="video-stat">📚 Gratuit</div>
+                                            <div className="video-stat"><Clock size={14} /> 15 min</div>
+                                            <div className="video-stat"><Eye size={14} /> 15K vues</div>
+                                            <div className="video-stat"><BookOpen size={16} /> Gratuit</div>
                                         </div>
                                     </div>
                                 </div>
@@ -487,13 +488,13 @@ const FreeContent = ({ setActiveTab }) => {
                                         </div>
                                     </div>
                                     <div className="video-module-info">
-                                        <span className="video-level level-debutant">🌐 WEB3 - GRATUIT</span>
+                                        <span className="video-level level-debutant"><Globe size={16} /> WEB3 - GRATUIT</span>
                                         <h3 className="video-module-title">{item.title}</h3>
                                         <p className="video-module-description">{item.description}</p>
                                         <div className="video-stats">
                                             <div className="video-stat">📖 Article</div>
-                                            <div className="video-stat">👁️ 12K vues</div>
-                                            <div className="video-stat">📚 Gratuit</div>
+                                            <div className="video-stat"><Eye size={14} /> 12K vues</div>
+                                            <div className="video-stat"><BookOpen size={16} /> Gratuit</div>
                                         </div>
                                     </div>
                                 </div>
@@ -508,7 +509,7 @@ const FreeContent = ({ setActiveTab }) => {
                 <div className="category-content">
                     <div className="module-section">
                         <h2 className="module-title">
-                            <span>🚀</span>
+                            <span><Rocket size={16} /></span>
                             <span>MODULE : Memecoins</span>
                         </h2>
                         <p className="module-subtitle">
@@ -541,18 +542,18 @@ const FreeContent = ({ setActiveTab }) => {
                                                 transform: 'translate(-50%, -50%)',
                                                 fontSize: '60px'
                                             }}>
-                                                ▶️
+                                                <Play size={20} />️
                                             </div>
                                         </div>
                                     </div>
                                     <div className="video-module-info">
-                                        <span className="video-level level-debutant">🚀 MEMECOIN - GRATUIT</span>
+                                        <span className="video-level level-debutant"><Rocket size={16} /> MEMECOIN - GRATUIT</span>
                                         <h3 className="video-module-title">{item.title}</h3>
                                         <p className="video-module-description">{item.description}</p>
                                         <div className="video-stats">
-                                            <div className="video-stat">⏱️ 12 min</div>
-                                            <div className="video-stat">👁️ 30K vues</div>
-                                            <div className="video-stat">📚 Gratuit</div>
+                                            <div className="video-stat"><Clock size={14} /> 12 min</div>
+                                            <div className="video-stat"><Eye size={14} /> 30K vues</div>
+                                            <div className="video-stat"><BookOpen size={16} /> Gratuit</div>
                                         </div>
                                     </div>
                                 </div>
@@ -588,13 +589,13 @@ const FreeContent = ({ setActiveTab }) => {
                                         </div>
                                     </div>
                                     <div className="video-module-info">
-                                        <span className="video-level level-debutant">🚀 MEMECOIN - GRATUIT</span>
+                                        <span className="video-level level-debutant"><Rocket size={16} /> MEMECOIN - GRATUIT</span>
                                         <h3 className="video-module-title">{item.title}</h3>
                                         <p className="video-module-description">{item.description}</p>
                                         <div className="video-stats">
                                             <div className="video-stat">📖 Article</div>
-                                            <div className="video-stat">👁️ 22K vues</div>
-                                            <div className="video-stat">📚 Gratuit</div>
+                                            <div className="video-stat"><Eye size={14} /> 22K vues</div>
+                                            <div className="video-stat"><BookOpen size={16} /> Gratuit</div>
                                         </div>
                                     </div>
                                 </div>

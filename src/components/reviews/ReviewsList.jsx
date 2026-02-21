@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import api from '../../services/api'
+import { AlertTriangle, CalendarDays, Gem, Loader2, MessageCircle, Star } from 'lucide-react';
 
 const ReviewsList = () => {
     const [reviews, setReviews] = useState([])
@@ -46,13 +47,13 @@ const ReviewsList = () => {
     }
 
     const renderStars = (rating) => {
-        return '⭐'.repeat(rating)
+        return Array.from({ length: rating }, (_, i) => <Star key={i} size={14} fill="currentColor" />)
     }
 
     if (loading) {
         return (
             <div className="reviews-loading">
-                <div className="loading-spinner">⏳</div>
+                <div className="loading-spinner"><Loader2 size={16} /></div>
                 <p>Chargement des avis...</p>
             </div>
         )
@@ -61,7 +62,7 @@ const ReviewsList = () => {
     if (error) {
         return (
             <div className="reviews-error">
-                <span className="error-icon">⚠️</span>
+                <span className="error-icon"><AlertTriangle size={16} /></span>
                 <p>{error}</p>
             </div>
         )
@@ -70,7 +71,7 @@ const ReviewsList = () => {
     if (reviews.length === 0) {
         return (
             <div className="reviews-empty">
-                <div className="empty-icon">💬</div>
+                <div className="empty-icon"><MessageCircle size={16} /></div>
                 <h3>Aucun avis pour le moment</h3>
                 <p>Soyez le premier membre à partager votre expérience !</p>
             </div>
@@ -110,7 +111,7 @@ const ReviewsList = () => {
                                 <div className="author-info">
                                     <h4>{review.userFirstName}</h4>
                                     <span className={`author-badge ${review.userSubscriptionLevel}`}>
-                                        {review.userSubscriptionLevel === 'premium' ? '⭐ Premium' : '💎 VIP'}
+                                        {review.userSubscriptionLevel === 'premium' ? <><Star size={14} /> Premium</> : <><Gem size={14} /> VIP</>}
                                     </span>
                                 </div>
                             </div>
@@ -121,7 +122,7 @@ const ReviewsList = () => {
                         <h3 className="review-title">{review.title}</h3>
                         <p className="review-message">{review.message}</p>
                         <div className="review-date">
-                            📅 {formatDate(review.createdAt)}
+                            <CalendarDays size={16} /> {formatDate(review.createdAt)}
                         </div>
                     </div>
                 ))}

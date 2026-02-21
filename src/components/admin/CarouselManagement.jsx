@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import api from '../../services/api'
+import { CheckCircle2, Eye, Gamepad2, Heart, MessageCircle, Monitor, Video, XCircle } from 'lucide-react';
 
 const CarouselManagement = () => {
     const [videos, setVideos] = useState([])
@@ -115,7 +116,7 @@ const CarouselManagement = () => {
     return (
         <div className="content-management">
             <div className="management-header">
-                <h2>🎬 Gestion du Carrousel</h2>
+                <h2><Video size={16} /> Gestion du Carrousel</h2>
                 <button onClick={handleCreate} className="btn-create">➕ Ajouter une vidéo</button>
             </div>
 
@@ -169,7 +170,7 @@ const CarouselManagement = () => {
                                         </td>
                                         <td>
                                             <span className={`video-platform platform-${video.platform}`}>
-                                                {video.platform === 'youtube' ? '📺 YouTube' : '🎮 Twitch'}
+                                                {video.platform === 'youtube' ? <><Monitor size={14} /> YouTube</> : <><Gamepad2 size={14} /> Twitch</>}
                                             </span>
                                         </td>
                                         <td>
@@ -180,8 +181,8 @@ const CarouselManagement = () => {
                                         </td>
                                         <td>
                                             <div style={{ fontSize: '13px' }}>
-                                                <div>👁️ {video.views}</div>
-                                                <div>{video.platform === 'youtube' ? '❤️' : '💬'} {video.engagement}</div>
+                                                <div><Eye size={14} /> {video.views}</div>
+                                                <div>{video.platform === 'youtube' ? <Heart size={14} /> : <MessageCircle size={14} />} {video.engagement}</div>
                                             </div>
                                         </td>
                                         <td>
@@ -194,7 +195,7 @@ const CarouselManagement = () => {
                                                     borderRadius: '20px', padding: '4px 12px', cursor: 'pointer', fontSize: '12px'
                                                 }}
                                             >
-                                                {video.active ? '✅ Actif' : '❌ Inactif'}
+                                                {video.active ? <><CheckCircle2 size={14} /> Actif</> : <><XCircle size={14} /> Inactif</>}
                                             </button>
                                         </td>
                                         <td>

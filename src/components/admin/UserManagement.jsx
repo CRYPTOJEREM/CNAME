@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import api from '../../services/api'
+import { CheckCircle2, Gem, RefreshCw, Search, Star, Users, XCircle } from 'lucide-react';
 
 const UserManagement = () => {
     const [users, setUsers] = useState([])
@@ -66,8 +67,8 @@ const UserManagement = () => {
     const getStatusBadge = (status) => {
         const badges = {
             free: { icon: '🆓', color: '#888' },
-            premium: { icon: '⭐', color: '#FFD700' },
-            vip: { icon: '💎', color: '#00D9FF' }
+            premium: { icon: <Star size={14} />, color: '#FFD700' },
+            vip: { icon: <Gem size={14} />, color: '#00D9FF' }
         }
         const badge = badges[status] || badges.free
         return (
@@ -80,8 +81,8 @@ const UserManagement = () => {
     return (
         <div className="user-management">
             <div className="management-header">
-                <h2>👥 Gestion des Utilisateurs</h2>
-                <button onClick={fetchUsers} className="btn-refresh">🔄 Actualiser</button>
+                <h2><Users size={16} /> Gestion des Utilisateurs</h2>
+                <button onClick={fetchUsers} className="btn-refresh"><RefreshCw size={16} /> Actualiser</button>
             </div>
 
             {/* Filtres et Recherche */}
@@ -89,7 +90,7 @@ const UserManagement = () => {
                 <div className="search-box">
                     <input
                         type="text"
-                        placeholder="🔍 Rechercher par email, nom, prénom..."
+                        placeholder="Rechercher par email, nom, prénom..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                         className="search-input"
@@ -145,9 +146,9 @@ const UserManagement = () => {
                                             <td>{getStatusBadge(user.subscriptionStatus)}</td>
                                             <td>
                                                 {user.emailVerified ? (
-                                                    <span className="badge-success">✅ Vérifié</span>
+                                                    <span className="badge-success"><CheckCircle2 size={16} /> Vérifié</span>
                                                 ) : (
-                                                    <span className="badge-warning">❌ Non vérifié</span>
+                                                    <span className="badge-warning"><XCircle size={16} /> Non vérifié</span>
                                                 )}
                                             </td>
                                             <td>{new Date(user.createdAt).toLocaleDateString('fr-FR')}</td>

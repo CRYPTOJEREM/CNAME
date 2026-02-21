@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import api from '../../services/api'
+import { BookOpen, CheckCircle2, Clock, Gem, Star, XCircle } from 'lucide-react';
 
 const ContentManagement = () => {
     const [contents, setContents] = useState([])
@@ -92,7 +93,7 @@ const ContentManagement = () => {
         const icons = {
             video: '🎥',
             article: '📄',
-            formation: '📚',
+            formation: <BookOpen size={16} />,
             signal: '📡',
             webinar: '🎤'
         }
@@ -102,8 +103,8 @@ const ContentManagement = () => {
     const getLevelBadge = (level) => {
         const badges = {
             free: { icon: '🆓', color: '#888' },
-            premium: { icon: '⭐', color: '#FFD700' },
-            vip: { icon: '💎', color: '#00D9FF' }
+            premium: { icon: <Star size={14} />, color: '#FFD700' },
+            vip: { icon: <Gem size={14} />, color: '#00D9FF' }
         }
         const badge = badges[level] || badges.free
         return (
@@ -116,7 +117,7 @@ const ContentManagement = () => {
     return (
         <div className="content-management">
             <div className="management-header">
-                <h2>📚 Gestion du Contenu</h2>
+                <h2><BookOpen size={16} /> Gestion du Contenu</h2>
                 <button onClick={handleCreate} className="btn-create">➕ Nouveau Contenu</button>
             </div>
 
@@ -175,8 +176,8 @@ const ContentManagement = () => {
                                 <p className="content-description">{content.description}</p>
                                 <div className="content-meta">
                                     <span>📁 {content.category}</span>
-                                    {content.duration && <span>⏱️ {content.duration}</span>}
-                                    <span>{content.published ? '✅ Publié' : '❌ Brouillon'}</span>
+                                    {content.duration && <span><Clock size={14} /> {content.duration}</span>}
+                                    <span>{content.published ? <><CheckCircle2 size={14} /> Publié</> : <><XCircle size={14} /> Brouillon</>}</span>
                                 </div>
                                 <div className="content-actions">
                                     <button onClick={() => handleEdit(content)} className="btn-edit">✏️ Modifier</button>

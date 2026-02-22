@@ -270,7 +270,7 @@ const Subscriptions = () => {
             </div>
 
             {/* Section Problème + Solution côte à côte */}
-            <div className="story-section combo-section">
+            <div className="story-section combo-section scroll-reveal">
                 <div className="combo-grid">
                     <div className="combo-left">
                         <span className="combo-label combo-label-problem">Le problème</span>
@@ -297,7 +297,7 @@ const Subscriptions = () => {
             </div>
 
             {/* Section Solution - 6 items en grille horizontale */}
-            <div className="value-section-clean">
+            <div className="value-section-clean scroll-reveal">
                 <h2 className="clean-title">Voici ce qui change dès aujourd'hui</h2>
                 <p className="section-subtitle">Tout ce dont vous avez besoin pour trader sereinement, au même endroit.</p>
 
@@ -399,7 +399,7 @@ const Subscriptions = () => {
             </div>
 
             {/* Barre de garanties horizontale */}
-            <div className="guarantees-bar">
+            <div className="guarantees-bar scroll-reveal">
                 <div className="guarantee-pill"><span className="icon-container sm primary"><Shield size={16} /></span> Satisfait ou remboursé 7j</div>
                 <div className="guarantee-pill"><span className="icon-container sm secondary"><Lock size={16} /></span> Paiement sécurisé</div>
                 <div className="guarantee-pill"><span className="icon-container sm primary"><Zap size={16} /></span> Accès immédiat</div>
@@ -424,7 +424,7 @@ const Subscriptions = () => {
             </div>
 
             {/* Section - Avis Clients */}
-            <div className="reviews-section">
+            <div className="reviews-section scroll-reveal">
                 <h2 className="section-title">Avis de nos membres</h2>
 
                 {/* Formulaire de soumission (Premium/VIP uniquement) */}
@@ -452,7 +452,7 @@ const Subscriptions = () => {
             </div>
 
             {/* Section - FAQ */}
-            <div className="faq-section">
+            <div className="faq-section scroll-reveal">
                 <h2 className="section-title">Questions Fréquentes</h2>
                 <div className="faq-grid">
                     <div className="faq-item">

@@ -106,7 +106,7 @@ const Learning = ({ setActiveTab }) => {
                 </p>
             </div>
 
-            <div className="category-selector">
+            <div className="category-selector scroll-reveal">
                 <h3 className="category-title"><span className="icon-container sm primary"><Target size={16} /></span> Choisissez Votre Parcours</h3>
                 <div className="category-buttons">
                     <button className={`category-btn ${category === 'trading' ? 'active' : ''}`} onClick={() => setCategory('trading')}>
@@ -127,7 +127,7 @@ const Learning = ({ setActiveTab }) => {
                 </div>
             </div>
 
-            <div className="category-content">
+            <div className="category-content scroll-reveal">
                 {getModules().map((module, moduleIndex) => (
                     <div key={moduleIndex} className="module-section">
                         <div className="module-title">

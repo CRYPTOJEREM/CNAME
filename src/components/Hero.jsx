@@ -88,7 +88,7 @@ const Hero = ({ setActiveTab }) => {
             </section>
 
             {/* CARROUSEL VIDÉOS YOUTUBE/TWITCH */}
-            <section className="carousel-section">
+            <section className="carousel-section scroll-reveal">
                 <div className="carousel-header">
                     <h2 className="carousel-title"><Video size={22} /> NOS DERNIERS CONTENUS</h2>
                     <p className="carousel-subtitle">Analyses, lives, tutos et actualités crypto en continu</p>
@@ -106,13 +106,13 @@ const Hero = ({ setActiveTab }) => {
             {/* SECTION PROJET ÉCOSYSTÈME CRYPTO */}
             <section className="crypto-ecosystem">
                 <div className="ecosystem-container">
-                    <div className="section-title">
+                    <div className="section-title scroll-reveal">
                         <h2><Globe size={22} /> NOTRE ÉCOSYSTÈME CRYPTO</h2>
                         <p>Un projet innovant au cœur de la révolution blockchain</p>
                     </div>
 
                     <div className="ecosystem-grid">
-                        <div className="ecosystem-card main-card">
+                        <div className="ecosystem-card main-card scroll-reveal">
                             <div className="card-glow"></div>
                             <span className="ecosystem-icon"><span className="icon-container lg primary"><Target size={28} /></span></span>
                             <h3>La Vision</h3>
@@ -124,7 +124,7 @@ const Hero = ({ setActiveTab }) => {
                             </p>
                         </div>
 
-                        <div className="ecosystem-card">
+                        <div className="ecosystem-card scroll-reveal delay-1">
                             <span className="ecosystem-icon"><span className="icon-container primary"><BarChart3 size={24} /></span></span>
                             <h3>Données en Temps Réel</h3>
                             <p>
@@ -133,7 +133,7 @@ const Hero = ({ setActiveTab }) => {
                             </p>
                         </div>
 
-                        <div className="ecosystem-card">
+                        <div className="ecosystem-card scroll-reveal delay-2">
                             <span className="ecosystem-icon"><span className="icon-container secondary"><CalendarDays size={24} /></span></span>
                             <h3>Calendrier Économique</h3>
                             <p>
@@ -143,7 +143,7 @@ const Hero = ({ setActiveTab }) => {
                             </p>
                         </div>
 
-                        <div className="ecosystem-card">
+                        <div className="ecosystem-card scroll-reveal delay-3">
                             <span className="ecosystem-icon"><span className="icon-container primary"><Target size={24} /></span></span>
                             <h3>Analyses Expertes</h3>
                             <p>
@@ -152,7 +152,7 @@ const Hero = ({ setActiveTab }) => {
                             </p>
                         </div>
 
-                        <div className="ecosystem-card">
+                        <div className="ecosystem-card scroll-reveal delay-4">
                             <span className="ecosystem-icon"><span className="icon-container primary"><Bell size={24} /></span></span>
                             <h3>Contenu Quotidien</h3>
                             <p>
@@ -161,7 +161,7 @@ const Hero = ({ setActiveTab }) => {
                             </p>
                         </div>
 
-                        <div className="ecosystem-card">
+                        <div className="ecosystem-card scroll-reveal delay-5">
                             <span className="ecosystem-icon"><span className="icon-container primary"><Handshake size={24} /></span></span>
                             <h3>Communauté Active</h3>
                             <p>
@@ -171,7 +171,7 @@ const Hero = ({ setActiveTab }) => {
                         </div>
                     </div>
 
-                    <div className="community-box">
+                    <div className="community-box scroll-reveal">
                         <div className="community-title">
                             <span><Video size={16} /></span>
                             <span>Notre Contenu</span>
@@ -242,7 +242,7 @@ const Hero = ({ setActiveTab }) => {
                     </div>
 
                     {/* SECTION PARTENAIRE CRYPTO — BITUNIX */}
-                    <div className="partners-section">
+                    <div className="partners-section scroll-reveal">
                         <div className="partners-header">
                             <h2 className="partners-title"><Handshake size={22} /> NOTRE PARTENAIRE CRYPTO</h2>
                             <p className="partners-subtitle">Tradez sur l'exchange officiel de La Sphere et participez au concours hebdomadaire</p>
@@ -308,7 +308,7 @@ const Hero = ({ setActiveTab }) => {
                         </div>
                     </div>
 
-                    <div className="stats-community">
+                    <div className="stats-community scroll-reveal">
                         <div className="stat-box">
                             <div className="stat-number">10K+</div>
                             <div className="stat-label">Abonnés YouTube</div>
@@ -327,7 +327,7 @@ const Hero = ({ setActiveTab }) => {
                         </div>
                     </div>
 
-                    <div className="cta-ecosystem">
+                    <div className="cta-ecosystem scroll-reveal">
                         <div className="cta-eco-glow" />
                         <h3>Rejoignez la Communauté</h3>
                         <p>Choisissez votre niveau d'accès et passez au niveau superieur</p>

@@ -1,5 +1,5 @@
 
-import { useState, lazy, Suspense } from 'react'
+import { useState, useEffect, lazy, Suspense } from 'react'
 import './index.css'
 import './responsive.css'
 import Header from './components/Header'
@@ -37,6 +37,31 @@ function App() {
 
   // Exposer setActiveTab globalement pour ProtectedRoute
   window.activeTabSetter = setActiveTab
+
+  // Scroll reveal — IntersectionObserver Apple-style
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible')
+          }
+        })
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    )
+
+    const reveal = () => {
+      document.querySelectorAll('.scroll-reveal').forEach((el) => observer.observe(el))
+    }
+
+    reveal()
+    // Re-observe after tab change (new DOM elements)
+    const mo = new MutationObserver(reveal)
+    mo.observe(document.body, { childList: true, subtree: true })
+
+    return () => { observer.disconnect(); mo.disconnect() }
+  }, [activeTab])
 
   if (loading) {
     return <LoadingSpinner fullScreen />

@@ -39,7 +39,7 @@ const SubscriptionStatus = ({ setActiveTab }) => {
             premium: {
                 icon: <Star size={16} />,
                 text: 'PREMIUM',
-                color: '#BF5AF2',
+                color: '#A855F7',
                 description: 'Accès au contenu Premium'
             },
             vip: {

@@ -1,59 +1,61 @@
 /* ==========================================
-   LA SPHERE - Design Tokens (Marketing V4)
+   LA SPHERE - Design Tokens (Marketing V5)
    ========================================== */
 
 :root {
-  /* Background colors — soft rich dark */
-  --bg-primary: #06060B;
-  --bg-secondary: #0E0E15;
-  --bg-tertiary: #161620;
-  --bg-elevated: #1E1E2A;
+  /* Background colors — rich dark with depth */
+  --bg-primary: #07070E;
+  --bg-secondary: #0D0D18;
+  --bg-tertiary: #151522;
+  --bg-elevated: #1C1C2E;
 
-  /* Glass effect — Apple frosted */
-  --glass-bg: rgba(255, 255, 255, 0.04);
-  --glass-bg-hover: rgba(255, 255, 255, 0.08);
-  --glass-border: rgba(255, 255, 255, 0.06);
-  --glass-border-hover: rgba(255, 255, 255, 0.12);
+  /* Glass effect — visible presence */
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-bg-hover: rgba(255, 255, 255, 0.09);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-border-hover: rgba(255, 255, 255, 0.16);
   --glass-blur: 20px;
 
   /* Navbar frosted glass */
-  --nav-bg: rgba(12, 12, 18, 0.65);
-  --nav-bg-scrolled: rgba(12, 12, 18, 0.88);
+  --nav-bg: rgba(10, 10, 18, 0.7);
+  --nav-bg-scrolled: rgba(10, 10, 18, 0.92);
   --nav-border: rgba(255, 255, 255, 0.06);
   --nav-border-scrolled: rgba(255, 255, 255, 0.10);
   --nav-blur: saturate(180%) blur(20px);
 
   /* Text colors */
   --text-primary: #F5F5F7;
-  --text-secondary: #A1A1A6;
-  --text-tertiary: #6E6E73;
+  --text-secondary: #A1A1B5;
+  --text-tertiary: #6E6E80;
 
-  /* Accent colors — 3 roles only */
-  --accent-blue: #0A84FF;
-  --accent-cyan: #64D2FF;
-  --accent-purple: #BF5AF2;
-  --accent-indigo: #5856D6;
-  --accent-gold: #FFD60A;
-  --accent-green: #30D158;
-  --accent-red: #FF453A;
-  --accent-orange: #FF9F0A;
-  --accent-pink: #FF375F;
-  --accent-teal: #30B0C7;
+  /* Accent colors */
+  --accent-blue: #2E90FA;
+  --accent-cyan: #67E8F9;
+  --accent-purple: #A855F7;
+  --accent-indigo: #6366F1;
+  --accent-gold: #FBBF24;
+  --accent-green: #34D399;
+  --accent-red: #F87171;
+  --accent-orange: #FB923C;
+  --accent-pink: #F472B6;
+  --accent-teal: #2DD4BF;
 
-  /* Card surfaces — soft dark glass */
-  --card-surface: linear-gradient(135deg, rgba(16, 16, 26, 0.92) 0%, rgba(22, 22, 34, 0.92) 100%);
-  --card-surface-hover: linear-gradient(135deg, rgba(10, 132, 255, 0.06) 0%, rgba(191, 90, 242, 0.06) 100%);
-  --card-hero: linear-gradient(135deg, #0A84FF 0%, #5856D6 50%, #BF5AF2 100%);
+  /* Card surfaces — visible dark glass */
+  --card-surface: linear-gradient(145deg, rgba(18, 18, 32, 0.95) 0%, rgba(24, 24, 42, 0.95) 100%);
+  --card-surface-hover: linear-gradient(145deg, rgba(30, 30, 52, 0.95) 0%, rgba(36, 36, 58, 0.95) 100%);
+  --card-hero: linear-gradient(135deg, #2E90FA 0%, #6366F1 50%, #A855F7 100%);
 
-  /* Icon container backgrounds — 3 roles */
-  --icon-bg-primary: rgba(10, 132, 255, 0.15);
-  --icon-bg-secondary: rgba(191, 90, 242, 0.15);
-  --icon-bg-accent: rgba(255, 214, 10, 0.15);
+  /* Icon container backgrounds */
+  --icon-bg-primary: rgba(46, 144, 250, 0.15);
+  --icon-bg-secondary: rgba(168, 85, 247, 0.15);
+  --icon-bg-accent: rgba(251, 191, 36, 0.15);
 
-  /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #0A84FF, #BF5AF2);
-  --gradient-gold: linear-gradient(135deg, #FFD60A, #FF9F0A);
+  /* Gradients — vibrant */
+  --gradient-primary: linear-gradient(135deg, #2E90FA 0%, #A855F7 100%);
+  --gradient-hero-text: linear-gradient(135deg, #67E8F9 0%, #2E90FA 30%, #A855F7 70%, #F472B6 100%);
+  --gradient-gold: linear-gradient(135deg, #FBBF24, #FB923C);
   --gradient-surface: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+  --gradient-section: linear-gradient(180deg, transparent 0%, rgba(46, 144, 250, 0.03) 50%, transparent 100%);
 
   /* Typography */
   --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -81,7 +83,7 @@
   --space-3xl: 96px;
   --space-section: 120px;
 
-  /* Borders - iOS rounded */
+  /* Borders */
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
@@ -90,16 +92,16 @@
   --radius-icon: 14px;
   --radius-full: 9999px;
 
-  /* Shadows - iOS depth */
+  /* Shadows — vivid glows */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35);
   --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.4);
-  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.3);
-  --shadow-glow-blue: 0 4px 20px rgba(10, 132, 255, 0.25);
-  --shadow-glow-purple: 0 4px 20px rgba(191, 90, 242, 0.25);
-  --shadow-glow-gold: 0 4px 20px rgba(255, 214, 10, 0.25);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.04);
+  --shadow-glow-blue: 0 4px 25px rgba(46, 144, 250, 0.3);
+  --shadow-glow-purple: 0 4px 25px rgba(168, 85, 247, 0.3);
+  --shadow-glow-gold: 0 4px 25px rgba(251, 191, 36, 0.3);
 
-  /* Transitions - smooth iOS */
+  /* Transitions */
   --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);

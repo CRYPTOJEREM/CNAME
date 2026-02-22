@@ -67,8 +67,8 @@ const UserManagement = () => {
     const getStatusBadge = (status) => {
         const badges = {
             free: { icon: '🆓', color: '#888' },
-            premium: { icon: <Star size={16} />, color: '#FFD60A' },
-            vip: { icon: <Gem size={16} />, color: '#0A84FF' }
+            premium: { icon: <Star size={16} />, color: '#FBBF24' },
+            vip: { icon: <Gem size={16} />, color: '#2E90FA' }
         }
         const badge = badges[status] || badges.free
         return (

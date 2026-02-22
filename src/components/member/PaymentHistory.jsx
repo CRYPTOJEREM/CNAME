@@ -27,9 +27,9 @@ const PaymentHistory = () => {
 
     const getStatusBadge = (status) => {
         const badges = {
-            pending: { icon: <Loader2 size={14} />, text: 'En attente', color: '#FFD60A' },
+            pending: { icon: <Loader2 size={14} />, text: 'En attente', color: '#FBBF24' },
             completed: { icon: <CheckCircle2 size={14} />, text: 'Complété', color: '#64D2FF' },
-            failed: { icon: <XCircle size={14} />, text: 'Échoué', color: '#FF453A' }
+            failed: { icon: <XCircle size={14} />, text: 'Échoué', color: '#F87171' }
         };
         return badges[status] || badges.pending;
     };
@@ -232,7 +232,7 @@ const PaymentHistory = () => {
                                                 Mise à jour
                                             </p>
                                             <p style={{
-                                                color: '#FFD60A',
+                                                color: '#FBBF24',
                                                 fontSize: '14px',
                                                 fontWeight: '600',
                                                 margin: 0

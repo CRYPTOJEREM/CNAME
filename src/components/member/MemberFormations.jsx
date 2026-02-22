@@ -40,8 +40,8 @@ const MemberFormations = () => {
     const getLevelBadge = (level) => {
         const badges = {
             free: { icon: '🆓', label: 'GRATUIT', color: '#7B8BA8' },
-            premium: { icon: <Star size={16} />, label: 'PREMIUM', color: '#FFD60A' },
-            vip: { icon: <Gem size={16} />, label: 'VIP', color: '#0A84FF' }
+            premium: { icon: <Star size={16} />, label: 'PREMIUM', color: '#FBBF24' },
+            vip: { icon: <Gem size={16} />, label: 'VIP', color: '#2E90FA' }
         };
         return badges[level] || badges.free;
     };
@@ -58,7 +58,7 @@ const MemberFormations = () => {
                 <button
                     onClick={() => setSelectedFormation(null)}
                     style={{
-                        background: 'linear-gradient(135deg, #0A84FF, #BF5AF2)',
+                        background: 'linear-gradient(135deg, #2E90FA, #A855F7)',
                         border: 'none',
                         color: '#0C0C1D',
                         padding: '12px 24px',
@@ -120,7 +120,7 @@ const MemberFormations = () => {
                     {selectedFormation.modules && selectedFormation.modules.length > 0 && (
                         <div style={{ marginBottom: '30px' }}>
                             <h3 style={{
-                                color: '#0A84FF',
+                                color: '#2E90FA',
                                 fontSize: '20px',
                                 fontWeight: '700',
                                 marginBottom: '20px'
@@ -149,7 +149,7 @@ const MemberFormations = () => {
                                             width: '35px',
                                             height: '35px',
                                             borderRadius: '50%',
-                                            background: 'linear-gradient(135deg, #0A84FF, #BF5AF2)',
+                                            background: 'linear-gradient(135deg, #2E90FA, #A855F7)',
                                             display: 'flex',
                                             alignItems: 'center',
                                             justifyContent: 'center',
@@ -177,7 +177,7 @@ const MemberFormations = () => {
                     {selectedFormation.content && (
                         <div>
                             <h3 style={{
-                                color: '#0A84FF',
+                                color: '#2E90FA',
                                 fontSize: '20px',
                                 fontWeight: '700',
                                 marginBottom: '20px'
@@ -222,7 +222,7 @@ const MemberFormations = () => {
         <div>
             <div style={{ marginBottom: '30px' }}>
                 <h2 style={{
-                    color: '#0A84FF',
+                    color: '#2E90FA',
                     fontSize: '28px',
                     fontWeight: '900',
                     marginBottom: '10px',
@@ -350,7 +350,7 @@ const MemberFormations = () => {
                                         display: 'flex',
                                         alignItems: 'center',
                                         gap: '8px',
-                                        color: '#0A84FF',
+                                        color: '#2E90FA',
                                         fontSize: '14px',
                                         fontWeight: '600',
                                         marginBottom: '15px'
@@ -364,7 +364,7 @@ const MemberFormations = () => {
                                 <button style={{
                                     background: 'rgba(191, 90, 242, 0.2)',
                                     border: '2px solid rgba(191, 90, 242, 0.5)',
-                                    color: '#0A84FF',
+                                    color: '#2E90FA',
                                     padding: '10px 18px',
                                     borderRadius: '10px',
                                     fontWeight: '700',
@@ -375,13 +375,13 @@ const MemberFormations = () => {
                                 }}
                                     onMouseOver={(e) => {
                                         e.stopPropagation();
-                                        e.currentTarget.style.background = 'linear-gradient(135deg, #0A84FF, #BF5AF2)';
+                                        e.currentTarget.style.background = 'linear-gradient(135deg, #2E90FA, #A855F7)';
                                         e.currentTarget.style.color = '#0C0C1D';
                                     }}
                                     onMouseOut={(e) => {
                                         e.stopPropagation();
                                         e.currentTarget.style.background = 'rgba(191, 90, 242, 0.2)';
-                                        e.currentTarget.style.color = '#0A84FF';
+                                        e.currentTarget.style.color = '#2E90FA';
                                     }}
                                 >
                                     Commencer la formation →

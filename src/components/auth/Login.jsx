@@ -67,7 +67,7 @@ const Login = ({ setActiveTab }) => {
                         <button
                             onClick={handleResendVerification}
                             disabled={resendLoading}
-                            style={{ background: 'linear-gradient(135deg, #64D2FF, #BF5AF2)', color: 'white', border: 'none', padding: '8px 20px', borderRadius: '5px', cursor: 'pointer', fontSize: '14px' }}
+                            style={{ background: 'linear-gradient(135deg, #64D2FF, #A855F7)', color: 'white', border: 'none', padding: '8px 20px', borderRadius: '5px', cursor: 'pointer', fontSize: '14px' }}
                         >
                             {resendLoading ? 'Envoi en cours...' : <><Mail size={16} /> Renvoyer l'email de vérification</>}
                         </button>

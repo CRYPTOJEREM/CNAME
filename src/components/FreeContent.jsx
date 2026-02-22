@@ -67,7 +67,7 @@ const FreeContent = ({ setActiveTab }) => {
                         className="btn btn-back"
                         onClick={() => setSelectedContent(null)}
                         style={{
-                            background: 'linear-gradient(135deg, #64D2FF, #BF5AF2)',
+                            background: 'linear-gradient(135deg, #64D2FF, #A855F7)',
                             border: 'none',
                             padding: '12px 24px',
                             borderRadius: '12px',
@@ -217,7 +217,7 @@ const FreeContent = ({ setActiveTab }) => {
                                     setActiveTab('register');
                                 }}
                                 style={{
-                                    background: 'linear-gradient(135deg, #64D2FF, #BF5AF2)',
+                                    background: 'linear-gradient(135deg, #64D2FF, #A855F7)',
                                     border: 'none',
                                     padding: '15px',
                                     borderRadius: '12px',

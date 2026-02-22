@@ -70,7 +70,7 @@ const MemberProfile = () => {
     return (
         <div>
             <h2 style={{
-                color: '#0A84FF',
+                color: '#2E90FA',
                 fontSize: '28px',
                 fontWeight: '900',
                 marginBottom: '30px',
@@ -99,7 +99,7 @@ const MemberProfile = () => {
                         width: '80px',
                         height: '80px',
                         borderRadius: '50%',
-                        background: 'linear-gradient(135deg, #0A84FF, #BF5AF2)',
+                        background: 'linear-gradient(135deg, #2E90FA, #A855F7)',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
@@ -138,7 +138,7 @@ const MemberProfile = () => {
                         borderRadius: '12px',
                         padding: '15px 20px',
                         marginBottom: '25px',
-                        color: message.type === 'success' ? '#0A84FF' : '#FF453A',
+                        color: message.type === 'success' ? '#2E90FA' : '#F87171',
                         fontSize: '15px'
                     }}>
                         {message.text}
@@ -302,7 +302,7 @@ const MemberProfile = () => {
                                 type="button"
                                 onClick={() => setIsEditing(true)}
                                 style={{
-                                    background: 'linear-gradient(135deg, #0A84FF, #BF5AF2)',
+                                    background: 'linear-gradient(135deg, #2E90FA, #A855F7)',
                                     border: 'none',
                                     color: '#0C0C1D',
                                     padding: '14px 28px',
@@ -323,7 +323,7 @@ const MemberProfile = () => {
                                     type="submit"
                                     disabled={loading}
                                     style={{
-                                        background: 'linear-gradient(135deg, #0A84FF, #BF5AF2)',
+                                        background: 'linear-gradient(135deg, #2E90FA, #A855F7)',
                                         border: 'none',
                                         color: '#0C0C1D',
                                         padding: '14px 28px',
@@ -346,7 +346,7 @@ const MemberProfile = () => {
                                     style={{
                                         background: 'rgba(191, 90, 242, 0.2)',
                                         border: '2px solid rgba(191, 90, 242, 0.5)',
-                                        color: '#0A84FF',
+                                        color: '#2E90FA',
                                         padding: '14px 28px',
                                         borderRadius: '12px',
                                         fontWeight: '700',
@@ -380,7 +380,7 @@ const MemberProfile = () => {
                             Email vérifié
                         </p>
                         <p style={{
-                            color: user.emailVerified ? '#0A84FF' : '#FFD60A',
+                            color: user.emailVerified ? '#2E90FA' : '#FBBF24',
                             fontSize: '16px',
                             fontWeight: '700',
                             margin: 0

@@ -43,8 +43,8 @@ const MemberContent = () => {
     const getLevelBadge = (level) => {
         const badges = {
             free: { icon: '🆓', label: 'GRATUIT', color: '#7B8BA8' },
-            premium: { icon: <Star size={16} />, label: 'PREMIUM', color: '#FFD60A' },
-            vip: { icon: <Gem size={16} />, label: 'VIP', color: '#0A84FF' }
+            premium: { icon: <Star size={16} />, label: 'PREMIUM', color: '#FBBF24' },
+            vip: { icon: <Gem size={16} />, label: 'VIP', color: '#2E90FA' }
         };
         return badges[level] || badges.free;
     };
@@ -63,7 +63,7 @@ const MemberContent = () => {
                 <button
                     onClick={() => setSelectedContent(null)}
                     style={{
-                        background: 'linear-gradient(135deg, #0A84FF, #BF5AF2)',
+                        background: 'linear-gradient(135deg, #2E90FA, #A855F7)',
                         border: 'none',
                         color: '#0C0C1D',
                         padding: '12px 24px',
@@ -106,7 +106,7 @@ const MemberContent = () => {
     return (
         <div>
             <h2 style={{
-                color: '#0A84FF',
+                color: '#2E90FA',
                 fontSize: '28px',
                 fontWeight: '900',
                 marginBottom: '30px',
@@ -133,7 +133,7 @@ const MemberContent = () => {
                         onClick={() => setFilter(filterBtn.id)}
                         style={{
                             background: filter === filterBtn.id
-                                ? 'linear-gradient(135deg, #0A84FF, #BF5AF2)'
+                                ? 'linear-gradient(135deg, #2E90FA, #A855F7)'
                                 : 'rgba(20, 20, 40, 0.5)',
                             border: filter === filterBtn.id
                                 ? 'none'
@@ -258,7 +258,7 @@ const MemberContent = () => {
                                         display: 'flex',
                                         gap: '10px',
                                         fontSize: '13px',
-                                        color: '#0A84FF'
+                                        color: '#2E90FA'
                                     }}>
                                         <span>{getTypeIcon(item.type)} {item.type}</span>
                                         {item.modules && item.modules.length > 0 && (

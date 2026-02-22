@@ -170,14 +170,14 @@ const Learning = ({ setActiveTab }) => {
                                             >
                                                 <div style={{ textAlign: 'center', padding: '20px' }}>
                                                     <div style={{ fontSize: '48px', marginBottom: '15px' }}><Lock size={48} /></div>
-                                                    <h3 style={{ color: '#0A84FF', marginBottom: '10px', fontSize: '1.3rem' }}>
+                                                    <h3 style={{ color: '#2E90FA', marginBottom: '10px', fontSize: '1.3rem' }}>
                                                         Contenu Réservé aux Membres
                                                     </h3>
                                                     <p style={{ color: '#fff', marginBottom: '20px', fontSize: '1rem' }}>
                                                         Créez un compte gratuit pour accéder à toutes nos formations
                                                     </p>
                                                     <div style={{
-                                                        background: 'linear-gradient(135deg, #0A84FF 0%, #5856D6 100%)',
+                                                        background: 'linear-gradient(135deg, #2E90FA 0%, #6366F1 100%)',
                                                         color: '#000',
                                                         padding: '12px 30px',
                                                         borderRadius: '8px',
@@ -202,7 +202,7 @@ const Learning = ({ setActiveTab }) => {
                                         <div className="video-stats">
                                             <div className="video-stat"><Clock size={14} /> {video.duration}</div>
                                             {!isAuthenticated && (
-                                                <div className="video-stat" style={{ color: '#0A84FF' }}>
+                                                <div className="video-stat" style={{ color: '#2E90FA' }}>
                                                     <Lock size={16} /> Inscription requise
                                                 </div>
                                             )}

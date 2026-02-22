@@ -47,6 +47,11 @@
 
 /* === NAVIGATION MOBILE === */
 @media (max-width: 768px) {
+    /* Disable icon animations on mobile for performance */
+    .ecosystem-icon .icon-container {
+        animation: none !important;
+    }
+
     /* Afficher le bouton hamburger sur mobile */
     .mobile-menu-toggle {
         display: block;

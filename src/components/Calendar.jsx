@@ -170,7 +170,7 @@ const Calendar = () => {
     return (
         <div className="container">
             <div className="header">
-                <div className="date-badge"><span className="icon-container sm blue"><CalendarDays size={18} /></span> CALENDRIER ÉCONOMIQUE</div>
+                <div className="date-badge"><span className="icon-container sm primary"><CalendarDays size={18} /></span> CALENDRIER ÉCONOMIQUE</div>
                 <h1>News de la Semaine</h1>
                 <div className="subtitle">
                     Événements économiques majeurs (USA) - Source: Investing.com
@@ -212,7 +212,7 @@ const Calendar = () => {
                 Object.keys(eventsByDay).map(day => (
                     <div key={day} className="dashboard">
                         <div className="day-header">
-                            <div className="day-title"><span className="icon-container sm teal"><BarChart3 size={16} /></span> {day.charAt(0).toUpperCase() + day.slice(1)}</div>
+                            <div className="day-title"><span className="icon-container sm primary"><BarChart3 size={16} /></span> {day.charAt(0).toUpperCase() + day.slice(1)}</div>
                         </div>
 
                         <div className="events-grid">

@@ -1,9 +1,9 @@
 /* ==========================================
-   LA SPHERE - Design Tokens (iOS / App Store)
+   LA SPHERE - Design Tokens (Marketing V4)
    ========================================== */
 
 :root {
-  /* Background colors - deep dark blue (not dead black) */
+  /* Background colors - deep dark blue */
   --bg-primary: #0C0C1D;
   --bg-secondary: #141428;
   --bg-tertiary: #1C1C35;
@@ -21,7 +21,7 @@
   --text-secondary: #A1A1A6;
   --text-tertiary: #6E6E73;
 
-  /* iOS Accent colors - vibrant */
+  /* Accent colors — 3 roles only */
   --accent-blue: #0A84FF;
   --accent-cyan: #64D2FF;
   --accent-purple: #BF5AF2;
@@ -33,25 +33,15 @@
   --accent-pink: #FF375F;
   --accent-teal: #30B0C7;
 
-  /* Card gradient backgrounds - iOS vibrant */
-  --card-blue: linear-gradient(135deg, #0A84FF 0%, #0066CC 100%);
-  --card-purple: linear-gradient(135deg, #BF5AF2 0%, #9B30FF 100%);
-  --card-teal: linear-gradient(135deg, #64D2FF 0%, #30B0C7 100%);
-  --card-orange: linear-gradient(135deg, #FF9F0A 0%, #FF6B00 100%);
-  --card-pink: linear-gradient(135deg, #FF375F 0%, #FF2D55 100%);
-  --card-green: linear-gradient(135deg, #30D158 0%, #28A745 100%);
-  --card-indigo: linear-gradient(135deg, #5856D6 0%, #4B49B8 100%);
+  /* Card surfaces — unified dark glass */
+  --card-surface: linear-gradient(135deg, rgba(20, 20, 40, 0.9) 0%, rgba(28, 28, 53, 0.9) 100%);
+  --card-surface-hover: linear-gradient(135deg, rgba(10, 132, 255, 0.08) 0%, rgba(191, 90, 242, 0.08) 100%);
+  --card-hero: linear-gradient(135deg, #0A84FF 0%, #5856D6 50%, #BF5AF2 100%);
 
-  /* Icon container backgrounds */
-  --icon-bg-blue: rgba(10, 132, 255, 0.15);
-  --icon-bg-purple: rgba(191, 90, 242, 0.15);
-  --icon-bg-teal: rgba(100, 210, 255, 0.15);
-  --icon-bg-orange: rgba(255, 159, 10, 0.15);
-  --icon-bg-pink: rgba(255, 55, 95, 0.15);
-  --icon-bg-green: rgba(48, 209, 88, 0.15);
-  --icon-bg-indigo: rgba(88, 86, 214, 0.15);
-  --icon-bg-gold: rgba(255, 214, 10, 0.15);
-  --icon-bg-red: rgba(255, 69, 58, 0.15);
+  /* Icon container backgrounds — 3 roles */
+  --icon-bg-primary: rgba(10, 132, 255, 0.15);
+  --icon-bg-secondary: rgba(191, 90, 242, 0.15);
+  --icon-bg-accent: rgba(255, 214, 10, 0.15);
 
   /* Gradients */
   --gradient-primary: linear-gradient(135deg, #0A84FF, #BF5AF2);
@@ -109,4 +99,9 @@
   --transition-fast: 150ms var(--ease-out);
   --transition-normal: 250ms var(--ease-out);
   --transition-slow: 400ms var(--ease-in-out);
+
+  /* Animations */
+  --anim-float: 3s ease-in-out infinite;
+  --anim-pulse: 2s ease-in-out infinite;
+  --anim-breathe: 3s ease-in-out infinite;
 }

@@ -43,7 +43,7 @@
             transform: translateY(0);
         }
 
-        /* ===== iOS Icon Containers ===== */
+        /* ===== Icon Containers — 3 roles ===== */
         .icon-container {
             width: 48px;
             height: 48px;
@@ -52,19 +52,50 @@
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
+            transition: transform 0.3s var(--ease-spring), box-shadow 0.3s ease;
         }
         .icon-container.sm { width: 36px; height: 36px; }
         .icon-container.lg { width: 56px; height: 56px; }
 
-        .icon-container.blue { background: var(--icon-bg-blue); color: var(--accent-blue); }
-        .icon-container.purple { background: var(--icon-bg-purple); color: var(--accent-purple); }
-        .icon-container.teal { background: var(--icon-bg-teal); color: var(--accent-cyan); }
-        .icon-container.orange { background: var(--icon-bg-orange); color: var(--accent-orange); }
-        .icon-container.pink { background: var(--icon-bg-pink); color: var(--accent-pink); }
-        .icon-container.green { background: var(--icon-bg-green); color: var(--accent-green); }
-        .icon-container.indigo { background: var(--icon-bg-indigo); color: var(--accent-indigo); }
-        .icon-container.gold { background: var(--icon-bg-gold); color: var(--accent-gold); }
-        .icon-container.red { background: var(--icon-bg-red); color: var(--accent-red); }
+        .icon-container.primary { background: var(--icon-bg-primary); color: var(--accent-blue); }
+        .icon-container.secondary { background: var(--icon-bg-secondary); color: var(--accent-purple); }
+        .icon-container.accent { background: var(--icon-bg-accent); color: var(--accent-gold); }
+
+        /* Icon hover — scale + glow */
+        .icon-container:hover {
+            transform: scale(1.15);
+            box-shadow: 0 0 20px rgba(10, 132, 255, 0.3);
+        }
+
+        /* Float animation for ecosystem icons */
+        .ecosystem-icon .icon-container {
+            animation: icon-float var(--anim-float);
+        }
+
+        /* Pulse animation for active category */
+        .category-btn.active .icon-container {
+            animation: icon-pulse var(--anim-pulse);
+        }
+
+        @keyframes icon-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        @keyframes icon-pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.08); opacity: 0.85; }
+        }
+
+        @keyframes icon-glow {
+            0%, 100% { box-shadow: 0 0 0 rgba(10, 132, 255, 0); }
+            50% { box-shadow: 0 0 20px rgba(10, 132, 255, 0.4); }
+        }
+
+        @keyframes breathe {
+            0%, 100% { box-shadow: 0 4px 20px rgba(10, 132, 255, 0.25); }
+            50% { box-shadow: 0 4px 35px rgba(10, 132, 255, 0.55); }
+        }
 
         /* Navigation */
         nav {
@@ -372,6 +403,7 @@
             color: #fff;
             box-shadow: var(--shadow-glow-blue);
             font-weight: 700;
+            animation: breathe var(--anim-breathe);
         }
 
         .btn-primary:hover {
@@ -567,7 +599,7 @@
         }
 
         .day-header {
-            background: var(--card-blue);
+            background: linear-gradient(135deg, #0A84FF 0%, #0066CC 100%);
             border-left: none;
             padding: 18px 24px;
             margin-bottom: 20px;
@@ -591,7 +623,6 @@
         .day-subtitle {
             font-size: 13px;
             color: rgba(255, 255, 255, 0.8);
-            color: var(--text-tertiary);
             font-weight: 500;
         }
 
@@ -814,6 +845,20 @@
             max-width: 1400px;
             margin: 80px auto;
             padding: 0 40px;
+            position: relative;
+        }
+
+        .crypto-ecosystem::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(10, 132, 255, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
         }
 
         .ecosystem-container {
@@ -828,14 +873,16 @@
         }
 
         .ecosystem-card {
+            background: var(--card-surface);
             border-radius: var(--radius-card);
             padding: 35px 30px;
-            border: none;
+            border: 1px solid var(--glass-border);
+            border-top: 4px solid var(--accent-blue);
             transition: all 0.4s var(--ease-spring);
             position: relative;
             overflow: hidden;
-            color: #fff;
             box-shadow: var(--shadow-card);
+            backdrop-filter: blur(var(--glass-blur));
         }
 
         .ecosystem-card::before {
@@ -845,28 +892,28 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 60%);
+            background: linear-gradient(135deg, rgba(10, 132, 255, 0.03) 0%, transparent 60%);
             pointer-events: none;
         }
 
-        .ecosystem-card:nth-child(1) { background: var(--card-blue); }
-        .ecosystem-card:nth-child(2) { background: var(--card-teal); }
-        .ecosystem-card:nth-child(3) { background: var(--card-purple); }
-        .ecosystem-card:nth-child(4) { background: var(--card-orange); }
-        .ecosystem-card:nth-child(5) { background: var(--card-green); }
-        .ecosystem-card:nth-child(6) { background: var(--card-pink); }
-        .ecosystem-card:nth-child(7) { background: var(--card-indigo); }
-
         .ecosystem-card:hover {
             transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+            background: var(--card-surface-hover);
+            border-color: var(--glass-border-hover);
+            border-top-color: var(--accent-blue);
+            box-shadow: 0 25px 60px rgba(10, 132, 255, 0.15);
         }
 
         .main-card {
             grid-column: span 2;
-            background: linear-gradient(135deg, #0A84FF 0%, #5856D6 50%, #BF5AF2 100%) !important;
+            background: var(--card-hero) !important;
             border: none;
+            border-top: none;
             position: relative;
+        }
+
+        .main-card:hover {
+            background: var(--card-hero) !important;
         }
 
         .card-glow {
@@ -896,7 +943,7 @@
             margin-bottom: 20px;
         }
 
-        .ecosystem-card .icon-container {
+        .main-card .icon-container {
             background: rgba(255, 255, 255, 0.2) !important;
             color: #fff !important;
         }
@@ -905,19 +952,25 @@
             font-family: var(--font-display);
             font-weight: 700;
             font-size: 22px;
-            color: #fff;
+            color: var(--text-primary);
             margin-bottom: 15px;
         }
 
         .ecosystem-card p {
-            color: rgba(255, 255, 255, 0.85);
+            color: var(--text-secondary);
             line-height: 1.7;
             font-size: 14px;
         }
 
         .ecosystem-card p strong {
-            color: #fff;
+            color: var(--accent-blue);
             font-weight: 700;
+        }
+
+        .main-card h3,
+        .main-card p,
+        .main-card p strong {
+            color: #fff;
         }
 
         .roadmap-box {
@@ -2774,25 +2827,11 @@
             text-align: center;
         }
 
-        .category-btn:nth-child(1):hover,
-        .category-btn:nth-child(1).active {
-            background: linear-gradient(135deg, rgba(10, 132, 255, 0.15), rgba(0, 102, 204, 0.15));
+        .category-btn:hover,
+        .category-btn.active {
+            background: linear-gradient(135deg, rgba(10, 132, 255, 0.12), rgba(0, 102, 204, 0.12));
             border-color: var(--accent-blue);
             box-shadow: var(--shadow-glow-blue);
-        }
-
-        .category-btn:nth-child(2):hover,
-        .category-btn:nth-child(2).active {
-            background: linear-gradient(135deg, rgba(191, 90, 242, 0.15), rgba(155, 48, 255, 0.15));
-            border-color: var(--accent-purple);
-            box-shadow: var(--shadow-glow-purple);
-        }
-
-        .category-btn:nth-child(3):hover,
-        .category-btn:nth-child(3).active {
-            background: linear-gradient(135deg, rgba(255, 159, 10, 0.15), rgba(255, 107, 0, 0.15));
-            border-color: var(--accent-orange);
-            box-shadow: var(--shadow-glow-gold);
         }
 
         .category-btn:hover {
@@ -10148,12 +10187,7 @@
     backdrop-filter: blur(10px);
 }
 
-.value-item-clean:nth-child(1) { border-top: 3px solid var(--accent-blue); }
-.value-item-clean:nth-child(2) { border-top: 3px solid var(--accent-purple); }
-.value-item-clean:nth-child(3) { border-top: 3px solid var(--accent-teal); }
-.value-item-clean:nth-child(4) { border-top: 3px solid var(--accent-orange); }
-.value-item-clean:nth-child(5) { border-top: 3px solid var(--accent-green); }
-.value-item-clean:nth-child(6) { border-top: 3px solid var(--accent-pink); }
+.value-item-clean { border-top: 3px solid var(--accent-blue); }
 
 .value-item-clean::before {
     content: '';

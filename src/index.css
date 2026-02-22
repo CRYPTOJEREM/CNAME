@@ -97,25 +97,25 @@
             50% { box-shadow: 0 4px 35px rgba(10, 132, 255, 0.55); }
         }
 
-        /* Navigation */
+        /* Navigation — Apple frosted glass */
         nav {
-            background: rgba(15, 17, 23, 0.8);
-            backdrop-filter: blur(var(--glass-blur));
-            -webkit-backdrop-filter: blur(var(--glass-blur));
-            padding: 16px 0;
+            background: var(--nav-bg);
+            backdrop-filter: var(--nav-blur);
+            -webkit-backdrop-filter: var(--nav-blur);
+            padding: 14px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid var(--glass-border);
-            transition: all var(--transition-normal);
+            border-bottom: 1px solid var(--nav-border);
+            transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             will-change: transform;
         }
 
         nav.scrolled {
             padding: 10px 0;
-            background: rgba(15, 17, 23, 0.95);
-            box-shadow: var(--shadow-md);
-            border-bottom: 1px solid var(--glass-border-hover);
+            background: var(--nav-bg-scrolled);
+            box-shadow: 0 1px 12px rgba(0, 0, 0, 0.25);
+            border-bottom: 1px solid var(--nav-border-scrolled);
         }
 
         .nav-container {
@@ -148,7 +148,7 @@
         .logo-icon {
             font-size: 22px;
             display: inline-flex;
-            color: var(--accent-cyan);
+            color: var(--accent-blue);
         }
 
         .logo-text {
@@ -170,14 +170,15 @@
         .nav-links button {
             background: none;
             border: none;
-            color: var(--text-secondary);
+            color: var(--text-tertiary);
             font-family: var(--font-body);
-            font-weight: var(--font-weight-medium);
-            font-size: 14px;
+            font-weight: var(--font-weight-regular);
+            font-size: 13px;
+            letter-spacing: 0.01em;
             cursor: pointer;
-            transition: color var(--transition-normal);
+            transition: color 0.3s ease;
             position: relative;
-            padding: 8px 0;
+            padding: 8px 4px;
             display: flex;
             align-items: center;
             gap: 6px;
@@ -213,55 +214,54 @@
             content: '';
             position: absolute;
             bottom: 0;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
-            transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: var(--shadow-md);
+            background: var(--accent-blue);
+            border-radius: 1px;
+            transition: width 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        .nav-links button:hover::after,
+        .nav-links button:hover::after {
+            width: 60%;
+        }
+
         .nav-links button.active::after {
             width: 100%;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
         }
 
         .nav-links button.abonnements-btn {
-            background: linear-gradient(135deg, var(--accent-gold), var(--accent-orange));
-            color: var(--bg-primary);
-            padding: 10px 24px;
-            border-radius: var(--radius-md);
-            font-weight: 700;
+            background: rgba(10, 132, 255, 0.12);
+            color: var(--accent-blue);
+            padding: 8px 18px;
+            border-radius: var(--radius-full);
+            font-weight: var(--font-weight-semibold);
+            font-size: 13px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(255, 214, 10, 0.3);
+            border: 1px solid rgba(10, 132, 255, 0.25);
+            transition: all 0.3s ease;
         }
 
         .nav-links button.abonnements-btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .nav-links button.abonnements-btn:hover::before {
-            width: 300px;
-            height: 300px;
+            display: none;
         }
 
         .nav-links button.abonnements-btn:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 8px 30px rgba(255, 214, 10, 0.6);
+            background: rgba(10, 132, 255, 0.2);
+            border-color: rgba(10, 132, 255, 0.4);
+            transform: none;
+            box-shadow: 0 0 20px rgba(10, 132, 255, 0.15);
+        }
+
+        .nav-links button.abonnements-btn::after {
+            display: none;
         }
 
         .nav-links button.abonnements-btn .nav-icon {
-            
+            color: var(--accent-blue);
         }
 
         /* SystÃ¨me d'onglets */
@@ -4436,38 +4436,40 @@
         }
 
         .auth-btn {
-            padding: 10px 18px;
-            border-radius: 10px;
+            padding: 8px 16px;
+            border-radius: var(--radius-full);
             border: none;
             font-size: 13px;
-            font-weight: 600;
+            font-weight: var(--font-weight-medium);
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.3s ease;
             font-family: var(--font-body);
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
         }
 
         .login-btn {
-            background: rgba(191, 90, 242, 0.1);
-            color: var(--accent-purple);
-            border: 1px solid rgba(191, 90, 242, 0.3);
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--glass-border);
         }
 
         .login-btn:hover {
-            background: rgba(191, 90, 242, 0.2);
-            border-color: var(--accent-purple);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(191, 90, 242, 0.3);
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--text-primary);
+            border-color: var(--glass-border-hover);
         }
 
         .register-btn {
-            background: linear-gradient(135deg, var(--accent-purple) 0%, var(--accent-cyan) 100%);
-            color: var(--text-primary);
-            border: 1px solid transparent;
+            background: var(--accent-blue);
+            color: #fff;
+            border: none;
         }
 
         .register-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(100, 210, 255, 0.4);
+            background: #1a8fff;
+            box-shadow: 0 2px 12px rgba(10, 132, 255, 0.3);
         }
 
         .logout-btn {

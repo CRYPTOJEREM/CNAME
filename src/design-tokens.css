@@ -3,18 +3,25 @@
    ========================================== */
 
 :root {
-  /* Background colors - deep dark blue */
-  --bg-primary: #0C0C1D;
-  --bg-secondary: #141428;
-  --bg-tertiary: #1C1C35;
-  --bg-elevated: #252545;
+  /* Background colors — soft rich dark */
+  --bg-primary: #06060B;
+  --bg-secondary: #0E0E15;
+  --bg-tertiary: #161620;
+  --bg-elevated: #1E1E2A;
 
-  /* Glass effect */
-  --glass-bg: rgba(255, 255, 255, 0.06);
-  --glass-bg-hover: rgba(255, 255, 255, 0.10);
-  --glass-border: rgba(255, 255, 255, 0.10);
-  --glass-border-hover: rgba(255, 255, 255, 0.18);
+  /* Glass effect — Apple frosted */
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-bg-hover: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.06);
+  --glass-border-hover: rgba(255, 255, 255, 0.12);
   --glass-blur: 20px;
+
+  /* Navbar frosted glass */
+  --nav-bg: rgba(12, 12, 18, 0.65);
+  --nav-bg-scrolled: rgba(12, 12, 18, 0.88);
+  --nav-border: rgba(255, 255, 255, 0.06);
+  --nav-border-scrolled: rgba(255, 255, 255, 0.10);
+  --nav-blur: saturate(180%) blur(20px);
 
   /* Text colors */
   --text-primary: #F5F5F7;
@@ -33,9 +40,9 @@
   --accent-pink: #FF375F;
   --accent-teal: #30B0C7;
 
-  /* Card surfaces — unified dark glass */
-  --card-surface: linear-gradient(135deg, rgba(20, 20, 40, 0.9) 0%, rgba(28, 28, 53, 0.9) 100%);
-  --card-surface-hover: linear-gradient(135deg, rgba(10, 132, 255, 0.08) 0%, rgba(191, 90, 242, 0.08) 100%);
+  /* Card surfaces — soft dark glass */
+  --card-surface: linear-gradient(135deg, rgba(16, 16, 26, 0.92) 0%, rgba(22, 22, 34, 0.92) 100%);
+  --card-surface-hover: linear-gradient(135deg, rgba(10, 132, 255, 0.06) 0%, rgba(191, 90, 242, 0.06) 100%);
   --card-hero: linear-gradient(135deg, #0A84FF 0%, #5856D6 50%, #BF5AF2 100%);
 
   /* Icon container backgrounds — 3 roles */

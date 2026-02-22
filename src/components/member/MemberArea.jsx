@@ -35,7 +35,7 @@ const MemberArea = ({ setActiveTab }) => {
         const badges = {
             free: { icon: '🆓', label: 'FREE', color: '#7B8BA8' },
             premium: { icon: <Star size={16} />, label: 'PREMIUM', color: '#FFD60A' },
-            vip: { icon: <Gem size={16} />, label: 'VIP', color: '#64D2FF' }
+            vip: { icon: <Gem size={16} />, label: 'VIP', color: '#0A84FF' }
         };
         return badges[user.subscriptionStatus] || badges.free;
     };
@@ -45,7 +45,7 @@ const MemberArea = ({ setActiveTab }) => {
     return (
         <div style={{
             minHeight: '100vh',
-            background: '#111111',
+            background: '#0C0C1D',
             paddingTop: '100px'
         }}>
             <div style={{
@@ -55,7 +55,7 @@ const MemberArea = ({ setActiveTab }) => {
             }}>
                 {/* Header de bienvenue */}
                 <div style={{
-                    background: 'linear-gradient(135deg, #111111 0%, #1A1A1A 100%)',
+                    background: 'linear-gradient(135deg, #0C0C1D 0%, #141428 100%)',
                     borderRadius: '24px',
                     padding: '40px',
                     marginBottom: '40px',
@@ -70,7 +70,7 @@ const MemberArea = ({ setActiveTab }) => {
                         left: 0,
                         right: 0,
                         height: '4px',
-                        background: 'linear-gradient(90deg, #64D2FF 0%, #BF5AF2 50%, #FFD60A 100%)'
+                        background: 'linear-gradient(90deg, #0A84FF 0%, #BF5AF2 50%, #FFD60A 100%)'
                     }} />
 
                     <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '20px' }}>
@@ -87,7 +87,7 @@ const MemberArea = ({ setActiveTab }) => {
                             <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
                                 <span style={{
                                     background: `linear-gradient(135deg, ${badge.color}, #BF5AF2)`,
-                                    color: '#111111',
+                                    color: '#0C0C1D',
                                     padding: '6px 16px',
                                     borderRadius: '20px',
                                     fontWeight: '700',
@@ -99,7 +99,7 @@ const MemberArea = ({ setActiveTab }) => {
                                     {badge.icon} {badge.label}
                                 </span>
                                 {user.emailVerified && (
-                                    <span style={{ color: '#64D2FF', fontSize: '14px' }}>
+                                    <span style={{ color: '#0A84FF', fontSize: '14px' }}>
                                         ✓ Email vérifié
                                     </span>
                                 )}
@@ -109,8 +109,8 @@ const MemberArea = ({ setActiveTab }) => {
 
                     {daysRemaining !== null && user.subscriptionStatus !== 'free' && (
                         <div style={{
-                            background: 'rgba(100, 210, 255, 0.1)',
-                            border: '1px solid rgba(100, 210, 255, 0.3)',
+                            background: 'rgba(10, 132, 255, 0.1)',
+                            border: '1px solid rgba(10, 132, 255, 0.3)',
                             borderRadius: '12px',
                             padding: '15px 20px',
                             marginTop: '20px'
@@ -148,12 +148,12 @@ const MemberArea = ({ setActiveTab }) => {
                             onClick={() => setActiveSection(section.id)}
                             style={{
                                 background: activeSection === section.id
-                                    ? 'linear-gradient(135deg, #64D2FF, #BF5AF2)'
-                                    : 'rgba(26, 26, 26, 0.5)',
+                                    ? 'linear-gradient(135deg, #0A84FF, #BF5AF2)'
+                                    : 'rgba(20, 20, 40, 0.5)',
                                 border: activeSection === section.id
                                     ? 'none'
                                     : '2px solid rgba(191, 90, 242, 0.3)',
-                                color: activeSection === section.id ? '#111111' : '#FFFFFF',
+                                color: activeSection === section.id ? '#0C0C1D' : '#FFFFFF',
                                 padding: '15px 25px',
                                 borderRadius: '12px',
                                 fontSize: '15px',
@@ -173,7 +173,7 @@ const MemberArea = ({ setActiveTab }) => {
                             }}
                             onMouseOut={(e) => {
                                 if (activeSection !== section.id) {
-                                    e.target.style.background = 'rgba(26, 26, 26, 0.5)';
+                                    e.target.style.background = 'rgba(20, 20, 40, 0.5)';
                                     e.target.style.transform = 'translateY(0)';
                                 }
                             }}
@@ -188,11 +188,11 @@ const MemberArea = ({ setActiveTab }) => {
                 {activeSection === 'dashboard' && (
                     <div>
                         <h2 style={{
-                            color: '#64D2FF',
+                            color: '#0A84FF',
                             fontSize: '28px',
                             fontWeight: '900',
                             marginBottom: '30px',
-                            textShadow: '0 0 20px rgba(100, 210, 255, 0.5)'
+                            textShadow: '0 0 20px rgba(10, 132, 255, 0.5)'
                         }}>
                             <BarChart3 size={20} /> Tableau de Bord
                         </h2>
@@ -204,7 +204,7 @@ const MemberArea = ({ setActiveTab }) => {
                         }}>
                             {/* Card Abonnement */}
                             <div style={{
-                                background: 'linear-gradient(135deg, #111111 0%, #1A1A1A 100%)',
+                                background: 'linear-gradient(135deg, #0C0C1D 0%, #141428 100%)',
                                 border: `2px solid ${badge.color}40`,
                                 borderRadius: '20px',
                                 padding: '30px',
@@ -239,12 +239,12 @@ const MemberArea = ({ setActiveTab }) => {
                                 )}
                                 {daysRemaining !== null && daysRemaining > 0 && (
                                     <div style={{
-                                        background: 'rgba(100, 210, 255, 0.1)',
+                                        background: 'rgba(10, 132, 255, 0.1)',
                                         padding: '10px',
                                         borderRadius: '8px',
                                         marginBottom: '15px'
                                     }}>
-                                        <p style={{ color: '#64D2FF', fontSize: '13px', margin: 0 }}>
+                                        <p style={{ color: '#0A84FF', fontSize: '13px', margin: 0 }}>
                                             Expire le : {new Date(user.subscriptionExpiresAt).toLocaleDateString('fr-FR')}
                                         </p>
                                         <p style={{ color: '#FFFFFF', fontSize: '18px', fontWeight: '700', margin: '5px 0 0 0' }}>
@@ -256,9 +256,9 @@ const MemberArea = ({ setActiveTab }) => {
                                     <button
                                         onClick={() => setActiveTab('abonnements')}
                                         style={{
-                                            background: 'linear-gradient(135deg, #64D2FF, #BF5AF2)',
+                                            background: 'linear-gradient(135deg, #0A84FF, #BF5AF2)',
                                             border: 'none',
-                                            color: '#111111',
+                                            color: '#0C0C1D',
                                             padding: '12px 20px',
                                             borderRadius: '10px',
                                             fontWeight: '700',
@@ -274,7 +274,7 @@ const MemberArea = ({ setActiveTab }) => {
 
                             {/* Card Formations */}
                             <div style={{
-                                background: 'linear-gradient(135deg, #111111 0%, #1A1A1A 100%)',
+                                background: 'linear-gradient(135deg, #0C0C1D 0%, #141428 100%)',
                                 border: '2px solid rgba(191, 90, 242, 0.3)',
                                 borderRadius: '20px',
                                 padding: '30px'
@@ -291,7 +291,7 @@ const MemberArea = ({ setActiveTab }) => {
                                     style={{
                                         background: 'rgba(191, 90, 242, 0.2)',
                                         border: '2px solid rgba(191, 90, 242, 0.5)',
-                                        color: '#64D2FF',
+                                        color: '#0A84FF',
                                         padding: '12px 20px',
                                         borderRadius: '10px',
                                         fontWeight: '700',
@@ -306,7 +306,7 @@ const MemberArea = ({ setActiveTab }) => {
 
                             {/* Card Contenu Exclusif */}
                             <div style={{
-                                background: 'linear-gradient(135deg, #111111 0%, #1A1A1A 100%)',
+                                background: 'linear-gradient(135deg, #0C0C1D 0%, #141428 100%)',
                                 border: '2px solid rgba(191, 90, 242, 0.3)',
                                 borderRadius: '20px',
                                 padding: '30px'
@@ -323,7 +323,7 @@ const MemberArea = ({ setActiveTab }) => {
                                     style={{
                                         background: 'rgba(191, 90, 242, 0.2)',
                                         border: '2px solid rgba(191, 90, 242, 0.5)',
-                                        color: '#64D2FF',
+                                        color: '#0A84FF',
                                         padding: '12px 20px',
                                         borderRadius: '10px',
                                         fontWeight: '700',
@@ -339,8 +339,8 @@ const MemberArea = ({ setActiveTab }) => {
                             {/* Card Groupe Telegram */}
                             {user.subscriptionStatus !== 'free' && (
                                 <div style={{
-                                    background: 'linear-gradient(135deg, #111111 0%, #1A1A1A 100%)',
-                                    border: '2px solid rgba(100, 210, 255, 0.3)',
+                                    background: 'linear-gradient(135deg, #0C0C1D 0%, #141428 100%)',
+                                    border: '2px solid rgba(10, 132, 255, 0.3)',
                                     borderRadius: '20px',
                                     padding: '30px'
                                 }}>
@@ -353,7 +353,7 @@ const MemberArea = ({ setActiveTab }) => {
                                     </p>
                                     <button
                                         style={{
-                                            background: 'linear-gradient(135deg, #64D2FF, #0088cc)',
+                                            background: 'linear-gradient(135deg, #0A84FF, #0088cc)',
                                             border: 'none',
                                             color: '#FFFFFF',
                                             padding: '12px 20px',
@@ -371,7 +371,7 @@ const MemberArea = ({ setActiveTab }) => {
 
                             {/* Card Concours Hebdomadaire */}
                             <div style={{
-                                background: 'linear-gradient(135deg, #111111 0%, #1A1A1A 100%)',
+                                background: 'linear-gradient(135deg, #0C0C1D 0%, #141428 100%)',
                                 border: '2px solid rgba(255, 214, 10, 0.3)',
                                 borderRadius: '20px',
                                 padding: '30px',
@@ -403,12 +403,12 @@ const MemberArea = ({ setActiveTab }) => {
                                 </p>
                                 {user.bitunixUid ? (
                                     <div style={{
-                                        background: 'rgba(100, 210, 255, 0.1)',
-                                        border: '1px solid rgba(100, 210, 255, 0.3)',
+                                        background: 'rgba(10, 132, 255, 0.1)',
+                                        border: '1px solid rgba(10, 132, 255, 0.3)',
                                         borderRadius: '10px',
                                         padding: '12px 15px'
                                     }}>
-                                        <p style={{ color: '#64D2FF', fontSize: '14px', fontWeight: '700', margin: 0 }}>
+                                        <p style={{ color: '#0A84FF', fontSize: '14px', fontWeight: '700', margin: 0 }}>
                                             ✓ Vous participez automatiquement !
                                         </p>
                                         <p style={{ color: '#7B8BA8', fontSize: '12px', margin: '5px 0 0 0' }}>
@@ -433,7 +433,7 @@ const MemberArea = ({ setActiveTab }) => {
                                             style={{
                                                 background: 'linear-gradient(135deg, #FFD60A, #FF6B00)',
                                                 border: 'none',
-                                                color: '#111111',
+                                                color: '#0C0C1D',
                                                 padding: '10px 16px',
                                                 borderRadius: '8px',
                                                 fontWeight: '700',

@@ -23,7 +23,7 @@ const Subscriptions = () => {
             currency: 'EUR',
             period: 'À vie',
             badge: 'Communauté',
-            badgeColor: 'rgba(100, 210, 255, 0.2)',
+            badgeColor: 'rgba(10, 132, 255, 0.2)',
             features: [
                 { included: true, text: 'Accès au Dashboard Crypto en temps réel' },
                 { included: true, text: 'Calendrier économique US' },
@@ -303,7 +303,7 @@ const Subscriptions = () => {
 
                 <div className="value-list-clean">
                     <div className="value-item-clean">
-                        <span className="value-icon-clean"><BarChart3 size={24} /></span>
+                        <span className="value-icon-clean"><span className="icon-container blue"><BarChart3 size={24} /></span></span>
                         <div className="value-content-clean">
                             <h3>Analyses quotidiennes</h3>
                             <p>Décryptage complet du marché avec niveaux clés et opportunités chaque matin.</p>
@@ -311,7 +311,7 @@ const Subscriptions = () => {
                     </div>
 
                     <div className="value-item-clean">
-                        <span className="value-icon-clean"><Bell size={24} /></span>
+                        <span className="value-icon-clean"><span className="icon-container purple"><Bell size={24} /></span></span>
                         <div className="value-content-clean">
                             <h3>Alertes temps réel</h3>
                             <p>Notifications instantanées sur les mouvements importants directement sur votre téléphone.</p>
@@ -319,7 +319,7 @@ const Subscriptions = () => {
                     </div>
 
                     <div className="value-item-clean">
-                        <span className="value-icon-clean"><MessageCircle size={24} /></span>
+                        <span className="value-icon-clean"><span className="icon-container teal"><MessageCircle size={24} /></span></span>
                         <div className="value-content-clean">
                             <h3>Groupe privé actif</h3>
                             <p>Communauté de traders qui partagent positions, analyses et s'entraident au quotidien.</p>
@@ -327,7 +327,7 @@ const Subscriptions = () => {
                     </div>
 
                     <div className="value-item-clean">
-                        <span className="value-icon-clean"><GraduationCap size={24} /></span>
+                        <span className="value-icon-clean"><span className="icon-container orange"><GraduationCap size={24} /></span></span>
                         <div className="value-content-clean">
                             <h3>Formations complètes</h3>
                             <p>Parcours structuré du débutant au trader confirmé : analyse technique, gestion du risque.</p>
@@ -335,7 +335,7 @@ const Subscriptions = () => {
                     </div>
 
                     <div className="value-item-clean">
-                        <span className="value-icon-clean"><BookOpen size={24} /></span>
+                        <span className="value-icon-clean"><span className="icon-container green"><BookOpen size={24} /></span></span>
                         <div className="value-content-clean">
                             <h3>Bibliothèque de ressources</h3>
                             <p>Templates, outils et analyses passées au même endroit pour progresser vite.</p>
@@ -343,7 +343,7 @@ const Subscriptions = () => {
                     </div>
 
                     <div className="value-item-clean">
-                        <span className="value-icon-clean"><Target size={24} /></span>
+                        <span className="value-icon-clean"><span className="icon-container pink"><Target size={24} /></span></span>
                         <div className="value-content-clean">
                             <h3>Support réactif</h3>
                             <p>Une question ? Notre équipe vous répond rapidement pour vous débloquer.</p>
@@ -400,10 +400,10 @@ const Subscriptions = () => {
 
             {/* Barre de garanties horizontale */}
             <div className="guarantees-bar">
-                <div className="guarantee-pill"><Shield size={18} /> Satisfait ou remboursé 7j</div>
-                <div className="guarantee-pill"><Lock size={18} /> Paiement sécurisé</div>
-                <div className="guarantee-pill"><Zap size={18} /> Accès immédiat</div>
-                <div className="guarantee-pill"><LogOut size={18} /> Sans engagement</div>
+                <div className="guarantee-pill"><span className="icon-container sm green"><Shield size={16} /></span> Satisfait ou remboursé 7j</div>
+                <div className="guarantee-pill"><span className="icon-container sm purple"><Lock size={16} /></span> Paiement sécurisé</div>
+                <div className="guarantee-pill"><span className="icon-container sm blue"><Zap size={16} /></span> Accès immédiat</div>
+                <div className="guarantee-pill"><span className="icon-container sm orange"><LogOut size={16} /></span> Sans engagement</div>
             </div>
 
             {/* Section finale - Compact */}

@@ -44,7 +44,7 @@ const MemberContent = () => {
         const badges = {
             free: { icon: '🆓', label: 'GRATUIT', color: '#7B8BA8' },
             premium: { icon: <Star size={16} />, label: 'PREMIUM', color: '#FFD60A' },
-            vip: { icon: <Gem size={16} />, label: 'VIP', color: '#64D2FF' }
+            vip: { icon: <Gem size={16} />, label: 'VIP', color: '#0A84FF' }
         };
         return badges[level] || badges.free;
     };
@@ -63,9 +63,9 @@ const MemberContent = () => {
                 <button
                     onClick={() => setSelectedContent(null)}
                     style={{
-                        background: 'linear-gradient(135deg, #64D2FF, #BF5AF2)',
+                        background: 'linear-gradient(135deg, #0A84FF, #BF5AF2)',
                         border: 'none',
-                        color: '#111111',
+                        color: '#0C0C1D',
                         padding: '12px 24px',
                         borderRadius: '12px',
                         fontWeight: '700',
@@ -77,7 +77,7 @@ const MemberContent = () => {
                 </button>
 
                 <div style={{
-                    background: 'linear-gradient(135deg, #111111 0%, #1A1A1A 100%)',
+                    background: 'linear-gradient(135deg, #0C0C1D 0%, #141428 100%)',
                     borderRadius: '24px',
                     padding: '40px',
                     border: '2px solid rgba(191, 90, 242, 0.3)'
@@ -106,11 +106,11 @@ const MemberContent = () => {
     return (
         <div>
             <h2 style={{
-                color: '#64D2FF',
+                color: '#0A84FF',
                 fontSize: '28px',
                 fontWeight: '900',
                 marginBottom: '30px',
-                textShadow: '0 0 20px rgba(100, 210, 255, 0.5)'
+                textShadow: '0 0 20px rgba(10, 132, 255, 0.5)'
             }}>
                 <BookOpen size={16} /> Contenu Exclusif
             </h2>
@@ -133,12 +133,12 @@ const MemberContent = () => {
                         onClick={() => setFilter(filterBtn.id)}
                         style={{
                             background: filter === filterBtn.id
-                                ? 'linear-gradient(135deg, #64D2FF, #BF5AF2)'
-                                : 'rgba(26, 26, 26, 0.5)',
+                                ? 'linear-gradient(135deg, #0A84FF, #BF5AF2)'
+                                : 'rgba(20, 20, 40, 0.5)',
                             border: filter === filterBtn.id
                                 ? 'none'
                                 : '2px solid rgba(191, 90, 242, 0.3)',
-                            color: filter === filterBtn.id ? '#111111' : '#FFFFFF',
+                            color: filter === filterBtn.id ? '#0C0C1D' : '#FFFFFF',
                             padding: '10px 20px',
                             borderRadius: '10px',
                             fontSize: '14px',
@@ -158,7 +158,7 @@ const MemberContent = () => {
             {/* Grid de contenu */}
             {filteredContent.length === 0 ? (
                 <div style={{
-                    background: 'rgba(26, 26, 26, 0.5)',
+                    background: 'rgba(20, 20, 40, 0.5)',
                     border: '2px dashed rgba(191, 90, 242, 0.3)',
                     borderRadius: '20px',
                     padding: '60px 40px',
@@ -182,7 +182,7 @@ const MemberContent = () => {
                                 key={item.id}
                                 onClick={() => setSelectedContent(item)}
                                 style={{
-                                    background: 'linear-gradient(135deg, #111111 0%, #1A1A1A 100%)',
+                                    background: 'linear-gradient(135deg, #0C0C1D 0%, #141428 100%)',
                                     border: '2px solid rgba(191, 90, 242, 0.3)',
                                     borderRadius: '20px',
                                     padding: '0',
@@ -192,7 +192,7 @@ const MemberContent = () => {
                                 }}
                                 onMouseOver={(e) => {
                                     e.currentTarget.style.transform = 'translateY(-5px)';
-                                    e.currentTarget.style.border = '2px solid rgba(100, 210, 255, 0.5)';
+                                    e.currentTarget.style.border = '2px solid rgba(10, 132, 255, 0.5)';
                                 }}
                                 onMouseOut={(e) => {
                                     e.currentTarget.style.transform = 'translateY(0)';
@@ -204,7 +204,7 @@ const MemberContent = () => {
                                     width: '100%',
                                     paddingTop: '56.25%',
                                     position: 'relative',
-                                    background: 'linear-gradient(135deg, rgba(100, 210, 255, 0.1), rgba(191, 90, 242, 0.1))',
+                                    background: 'linear-gradient(135deg, rgba(10, 132, 255, 0.1), rgba(191, 90, 242, 0.1))',
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'center'
@@ -223,7 +223,7 @@ const MemberContent = () => {
                                         top: '15px',
                                         right: '15px',
                                         background: badge.color,
-                                        color: '#111111',
+                                        color: '#0C0C1D',
                                         padding: '6px 12px',
                                         borderRadius: '20px',
                                         fontSize: '12px',
@@ -258,7 +258,7 @@ const MemberContent = () => {
                                         display: 'flex',
                                         gap: '10px',
                                         fontSize: '13px',
-                                        color: '#64D2FF'
+                                        color: '#0A84FF'
                                     }}>
                                         <span>{getTypeIcon(item.type)} {item.type}</span>
                                         {item.modules && item.modules.length > 0 && (

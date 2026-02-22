@@ -1,19 +1,19 @@
 /* ==========================================
-   LA SPHERE - Design Tokens (Apple-inspired Dark)
+   LA SPHERE - Design Tokens (iOS / App Store)
    ========================================== */
 
 :root {
-  /* Background colors - black theme */
-  --bg-primary: #111111;
-  --bg-secondary: #1A1A1A;
-  --bg-tertiary: #222222;
-  --bg-elevated: #2A2A2A;
+  /* Background colors - deep dark blue (not dead black) */
+  --bg-primary: #0C0C1D;
+  --bg-secondary: #141428;
+  --bg-tertiary: #1C1C35;
+  --bg-elevated: #252545;
 
   /* Glass effect */
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --glass-bg-hover: rgba(255, 255, 255, 0.08);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --glass-border-hover: rgba(255, 255, 255, 0.15);
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-bg-hover: rgba(255, 255, 255, 0.10);
+  --glass-border: rgba(255, 255, 255, 0.10);
+  --glass-border-hover: rgba(255, 255, 255, 0.18);
   --glass-blur: 20px;
 
   /* Text colors */
@@ -21,18 +21,41 @@
   --text-secondary: #A1A1A6;
   --text-tertiary: #6E6E73;
 
-  /* Accent colors - Apple refined */
-  --accent-primary: #2997FF;
+  /* iOS Accent colors - vibrant */
+  --accent-blue: #0A84FF;
   --accent-cyan: #64D2FF;
   --accent-purple: #BF5AF2;
+  --accent-indigo: #5856D6;
   --accent-gold: #FFD60A;
   --accent-green: #30D158;
   --accent-red: #FF453A;
   --accent-orange: #FF9F0A;
+  --accent-pink: #FF375F;
+  --accent-teal: #30B0C7;
+
+  /* Card gradient backgrounds - iOS vibrant */
+  --card-blue: linear-gradient(135deg, #0A84FF 0%, #0066CC 100%);
+  --card-purple: linear-gradient(135deg, #BF5AF2 0%, #9B30FF 100%);
+  --card-teal: linear-gradient(135deg, #64D2FF 0%, #30B0C7 100%);
+  --card-orange: linear-gradient(135deg, #FF9F0A 0%, #FF6B00 100%);
+  --card-pink: linear-gradient(135deg, #FF375F 0%, #FF2D55 100%);
+  --card-green: linear-gradient(135deg, #30D158 0%, #28A745 100%);
+  --card-indigo: linear-gradient(135deg, #5856D6 0%, #4B49B8 100%);
+
+  /* Icon container backgrounds */
+  --icon-bg-blue: rgba(10, 132, 255, 0.15);
+  --icon-bg-purple: rgba(191, 90, 242, 0.15);
+  --icon-bg-teal: rgba(100, 210, 255, 0.15);
+  --icon-bg-orange: rgba(255, 159, 10, 0.15);
+  --icon-bg-pink: rgba(255, 55, 95, 0.15);
+  --icon-bg-green: rgba(48, 209, 88, 0.15);
+  --icon-bg-indigo: rgba(88, 86, 214, 0.15);
+  --icon-bg-gold: rgba(255, 214, 10, 0.15);
+  --icon-bg-red: rgba(255, 69, 58, 0.15);
 
   /* Gradients */
-  --gradient-primary: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
-  --gradient-gold: linear-gradient(135deg, var(--accent-gold), var(--accent-orange));
+  --gradient-primary: linear-gradient(135deg, #0A84FF, #BF5AF2);
+  --gradient-gold: linear-gradient(135deg, #FFD60A, #FF9F0A);
   --gradient-surface: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
 
   /* Typography */
@@ -61,22 +84,28 @@
   --space-3xl: 96px;
   --space-section: 120px;
 
-  /* Borders */
+  /* Borders - iOS rounded */
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
-  --radius-xl: 24px;
+  --radius-xl: 20px;
+  --radius-card: 20px;
+  --radius-icon: 14px;
   --radius-full: 9999px;
 
-  /* Shadows - Apple-style subtle */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.25);
-  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.3);
-  --shadow-glow: 0 0 20px rgba(41, 151, 255, 0.15);
+  /* Shadows - iOS depth */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.3);
+  --shadow-glow-blue: 0 4px 20px rgba(10, 132, 255, 0.25);
+  --shadow-glow-purple: 0 4px 20px rgba(191, 90, 242, 0.25);
+  --shadow-glow-gold: 0 4px 20px rgba(255, 214, 10, 0.25);
 
-  /* Transitions - Apple-style smooth */
+  /* Transitions - smooth iOS */
   --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   --transition-fast: 150ms var(--ease-out);
   --transition-normal: 250ms var(--ease-out);
   --transition-slow: 400ms var(--ease-in-out);

@@ -147,7 +147,7 @@ const CarouselManagement = () => {
                                     <tr key={video.id}>
                                         <td>
                                             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                                <span style={{ fontWeight: 'bold', color: '#64D2FF' }}>#{video.order}</span>
+                                                <span style={{ fontWeight: 'bold', color: '#0A84FF' }}>#{video.order}</span>
                                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
                                                     <button
                                                         onClick={() => handleMoveUp(video)}

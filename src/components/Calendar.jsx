@@ -1,6 +1,6 @@
 
-import React, { useState, useEffect } from 'react'
-import { BarChart3, CalendarDays, CheckCircle2, Clock, RefreshCw, XCircle } from 'lucide-react';
+import { useState, useEffect } from 'react'
+import { BarChart3, CalendarDays, Clock, RefreshCw } from 'lucide-react';
 
 const Calendar = () => {
     const [eventsByDay, setEventsByDay] = useState({})
@@ -32,52 +32,48 @@ const Calendar = () => {
     const fetchCalendarData = async () => {
         setRefreshing(true)
         try {
-            // Utiliser des données statiques pour la semaine du 9-15 février 2026
-            console.log('📡 Utilisation des données statiques pour la semaine du 9-15 février 2026');
+            // Données statiques pour la semaine du 22-28 février 2026
+            console.log('📡 Utilisation des données statiques pour la semaine du 22-28 février 2026');
             const staticEvents = [
-                // Lundi 9 février 2026
-                { Date: '2026-02-09T15:00:00', Event: 'Indice NFIB Optimisme PME', Actual: '-', Forecast: '92.5', Previous: '92.1', Importance: 2, Country: 'United States' },
-                { Date: '2026-02-09T17:00:00', Event: 'Crédit à la Consommation', Actual: '-', Forecast: '$12.0B', Previous: '$19.2B', Importance: 2, Country: 'United States' },
+                // Lundi 23 février 2026
+                { Date: '2026-02-23T15:45:00', Event: 'PMI Manufacturier S&P Global (Prelim.)', Actual: '-', Forecast: '51.5', Previous: '51.2', Importance: 2, Country: 'United States' },
+                { Date: '2026-02-23T15:45:00', Event: 'PMI Services S&P Global (Prelim.)', Actual: '-', Forecast: '53.0', Previous: '52.9', Importance: 2, Country: 'United States' },
+                { Date: '2026-02-23T15:45:00', Event: 'PMI Composite S&P Global (Prelim.)', Actual: '-', Forecast: '52.4', Previous: '52.7', Importance: 2, Country: 'United States' },
+                { Date: '2026-02-23T16:00:00', Event: 'Ventes de Logements Existants', Actual: '-', Forecast: '4.15M', Previous: '4.24M', Importance: 2, Country: 'United States' },
 
-                // Mardi 10 février 2026
-                { Date: '2026-02-10T14:30:00', Event: 'Indice des Prix à la Consommation (IPC) m/m', Actual: '-', Forecast: '0.3%', Previous: '0.4%', Importance: 3, Country: 'United States' },
-                { Date: '2026-02-10T14:30:00', Event: 'Indice des Prix à la Consommation (IPC) a/a', Actual: '-', Forecast: '2.9%', Previous: '2.9%', Importance: 3, Country: 'United States' },
-                { Date: '2026-02-10T14:30:00', Event: 'IPC Core m/m', Actual: '-', Forecast: '0.3%', Previous: '0.2%', Importance: 3, Country: 'United States' },
-                { Date: '2026-02-10T14:30:00', Event: 'IPC Core a/a', Actual: '-', Forecast: '3.2%', Previous: '3.2%', Importance: 3, Country: 'United States' },
-                { Date: '2026-02-10T16:00:00', Event: 'JOLTS - Offres d\'Emploi', Actual: '-', Forecast: '7.74M', Previous: '7.86M', Importance: 2, Country: 'United States' },
-                { Date: '2026-02-10T20:00:00', Event: 'Discours du Membre FOMC Williams', Actual: '-', Forecast: '-', Previous: '-', Importance: 2, Country: 'United States' },
+                // Mardi 24 février 2026
+                { Date: '2026-02-24T15:00:00', Event: 'Indice S&P/CS des Prix Immobiliers (20 villes) a/a', Actual: '-', Forecast: '4.5%', Previous: '4.3%', Importance: 2, Country: 'United States' },
+                { Date: '2026-02-24T15:00:00', Event: 'Indice des Prix Immobiliers FHFA m/m', Actual: '-', Forecast: '0.3%', Previous: '0.3%', Importance: 2, Country: 'United States' },
+                { Date: '2026-02-24T16:00:00', Event: 'Confiance des Consommateurs (Conference Board)', Actual: '-', Forecast: '103.5', Previous: '104.1', Importance: 3, Country: 'United States' },
+                { Date: '2026-02-24T16:00:00', Event: 'Indice Manufacturier Fed de Richmond', Actual: '-', Forecast: '-3', Previous: '-4', Importance: 2, Country: 'United States' },
+                { Date: '2026-02-24T16:00:00', Event: 'Ventes de Logements Neufs', Actual: '-', Forecast: '680K', Previous: '698K', Importance: 2, Country: 'United States' },
 
-                // Mercredi 11 février 2026
-                { Date: '2026-02-11T14:30:00', Event: 'Indice des Prix à la Production (IPP) m/m', Actual: '-', Forecast: '0.3%', Previous: '0.2%', Importance: 2, Country: 'United States' },
-                { Date: '2026-02-11T14:30:00', Event: 'IPP a/a', Actual: '-', Forecast: '3.3%', Previous: '3.3%', Importance: 2, Country: 'United States' },
-                { Date: '2026-02-11T14:30:00', Event: 'IPP Core m/m', Actual: '-', Forecast: '0.2%', Previous: '0.1%', Importance: 2, Country: 'United States' },
-                { Date: '2026-02-11T14:30:00', Event: 'IPP Core a/a', Actual: '-', Forecast: '3.2%', Previous: '3.3%', Importance: 2, Country: 'United States' },
-                { Date: '2026-02-11T16:30:00', Event: 'Stocks de Pétrole Brut EIA', Actual: '-', Forecast: '-', Previous: '-1.0M', Importance: 2, Country: 'United States' },
-                { Date: '2026-02-11T20:00:00', Event: 'Procès-Verbal FOMC (Minutes)', Actual: '-', Forecast: '-', Previous: '-', Importance: 3, Country: 'United States' },
+                // Mercredi 25 février 2026
+                { Date: '2026-02-25T14:30:00', Event: 'PIB (2ème estimation) q/q', Actual: '-', Forecast: '2.3%', Previous: '2.3%', Importance: 3, Country: 'United States' },
+                { Date: '2026-02-25T14:30:00', Event: 'Indice des Prix du PIB (2ème estimation)', Actual: '-', Forecast: '2.2%', Previous: '2.2%', Importance: 2, Country: 'United States' },
+                { Date: '2026-02-25T14:30:00', Event: 'Commandes de Biens Durables m/m', Actual: '-', Forecast: '-1.5%', Previous: '-2.2%', Importance: 3, Country: 'United States' },
+                { Date: '2026-02-25T14:30:00', Event: 'Commandes de Biens Durables Core m/m', Actual: '-', Forecast: '0.2%', Previous: '0.3%', Importance: 2, Country: 'United States' },
+                { Date: '2026-02-25T16:30:00', Event: 'Stocks de Pétrole Brut EIA', Actual: '-', Forecast: '-', Previous: '+4.6M', Importance: 2, Country: 'United States' },
 
-                // Jeudi 12 février 2026
-                { Date: '2026-02-12T14:30:00', Event: 'Demandes d\'Allocations Chômage', Actual: '-', Forecast: '215K', Previous: '221K', Importance: 2, Country: 'United States' },
-                { Date: '2026-02-12T14:30:00', Event: 'Demandes d\'Allocations Continues', Actual: '-', Forecast: '1.86M', Previous: '1.89M', Importance: 2, Country: 'United States' },
-                { Date: '2026-02-12T14:30:00', Event: 'Ventes au Détail m/m', Actual: '-', Forecast: '0.4%', Previous: '0.4%', Importance: 3, Country: 'United States' },
-                { Date: '2026-02-12T14:30:00', Event: 'Ventes au Détail Core m/m', Actual: '-', Forecast: '0.3%', Previous: '0.4%', Importance: 3, Country: 'United States' },
-                { Date: '2026-02-12T14:30:00', Event: 'Indice Empire State Manufacturing', Actual: '-', Forecast: '12.5', Previous: '13.0', Importance: 2, Country: 'United States' },
-                { Date: '2026-02-12T14:30:00', Event: 'Indice des Prix à l\'Exportation m/m', Actual: '-', Forecast: '0.2%', Previous: '-0.3%', Importance: 2, Country: 'United States' },
-                { Date: '2026-02-12T15:15:00', Event: 'Production Industrielle m/m', Actual: '-', Forecast: '0.3%', Previous: '0.9%', Importance: 2, Country: 'United States' },
-                { Date: '2026-02-12T15:15:00', Event: 'Taux d\'Utilisation des Capacités', Actual: '-', Forecast: '77.8%', Previous: '77.6%', Importance: 2, Country: 'United States' },
-                { Date: '2026-02-12T16:00:00', Event: 'Stocks Entreprises m/m', Actual: '-', Forecast: '0.2%', Previous: '0.1%', Importance: 2, Country: 'United States' },
-                { Date: '2026-02-12T16:00:00', Event: 'Indice NAHB du Marché Immobilier', Actual: '-', Forecast: '47', Previous: '46', Importance: 2, Country: 'United States' },
+                // Jeudi 26 février 2026
+                { Date: '2026-02-26T14:30:00', Event: 'Indice des Prix PCE Core m/m', Actual: '-', Forecast: '0.3%', Previous: '0.2%', Importance: 3, Country: 'United States' },
+                { Date: '2026-02-26T14:30:00', Event: 'Indice des Prix PCE Core a/a', Actual: '-', Forecast: '2.6%', Previous: '2.8%', Importance: 3, Country: 'United States' },
+                { Date: '2026-02-26T14:30:00', Event: 'Indice des Prix PCE m/m', Actual: '-', Forecast: '0.3%', Previous: '0.3%', Importance: 2, Country: 'United States' },
+                { Date: '2026-02-26T14:30:00', Event: 'Demandes d\'Allocations Chômage', Actual: '-', Forecast: '218K', Previous: '219K', Importance: 2, Country: 'United States' },
+                { Date: '2026-02-26T14:30:00', Event: 'Demandes d\'Allocations Continues', Actual: '-', Forecast: '1.87M', Previous: '1.87M', Importance: 2, Country: 'United States' },
+                { Date: '2026-02-26T14:30:00', Event: 'Dépenses de Consommation m/m', Actual: '-', Forecast: '0.2%', Previous: '0.7%', Importance: 3, Country: 'United States' },
+                { Date: '2026-02-26T14:30:00', Event: 'Revenus des Ménages m/m', Actual: '-', Forecast: '0.4%', Previous: '0.4%', Importance: 2, Country: 'United States' },
+                { Date: '2026-02-26T16:00:00', Event: 'Ventes de Logements en Attente m/m', Actual: '-', Forecast: '1.5%', Previous: '-5.5%', Importance: 2, Country: 'United States' },
 
-                // Vendredi 13 février 2026
-                { Date: '2026-02-13T14:30:00', Event: 'Indice des Prix à l\'Importation m/m', Actual: '-', Forecast: '0.2%', Previous: '0.1%', Importance: 2, Country: 'United States' },
-                { Date: '2026-02-13T14:30:00', Event: 'Indice des Prix à l\'Importation a/a', Actual: '-', Forecast: '1.3%', Previous: '1.0%', Importance: 2, Country: 'United States' },
-                { Date: '2026-02-13T15:45:00', Event: 'Indice Manufacturier Fed de New York', Actual: '-', Forecast: '55.2', Previous: '55.0', Importance: 2, Country: 'United States' },
-                { Date: '2026-02-13T16:00:00', Event: 'Indice de Confiance des Consommateurs Prelim. (Université du Michigan)', Actual: '-', Forecast: '74.5', Previous: '74.4', Importance: 2, Country: 'United States' },
-                { Date: '2026-02-13T16:00:00', Event: 'Anticipations d\'Inflation à 1 an (Université du Michigan)', Actual: '-', Forecast: '3.3%', Previous: '3.3%', Importance: 2, Country: 'United States' },
-                { Date: '2026-02-13T16:00:00', Event: 'Anticipations d\'Inflation à 5 ans (Université du Michigan)', Actual: '-', Forecast: '3.0%', Previous: '2.9%', Importance: 2, Country: 'United States' },
-                { Date: '2026-02-13T16:00:00', Event: 'Indice des Conditions Actuelles (Université du Michigan)', Actual: '-', Forecast: '77.2', Previous: '77.0', Importance: 2, Country: 'United States' },
-                { Date: '2026-02-13T16:00:00', Event: 'Indice des Anticipations (Université du Michigan)', Actual: '-', Forecast: '72.5', Previous: '72.6', Importance: 2, Country: 'United States' },
+                // Vendredi 27 février 2026
+                { Date: '2026-02-27T14:30:00', Event: 'Balance Commerciale des Biens (Prelim.)', Actual: '-', Forecast: '-$88.5B', Previous: '-$87.0B', Importance: 2, Country: 'United States' },
+                { Date: '2026-02-27T14:30:00', Event: 'Stocks de Gros m/m (Prelim.)', Actual: '-', Forecast: '0.2%', Previous: '0.0%', Importance: 2, Country: 'United States' },
+                { Date: '2026-02-27T15:45:00', Event: 'PMI de Chicago', Actual: '-', Forecast: '40.5', Previous: '39.5', Importance: 2, Country: 'United States' },
+                { Date: '2026-02-27T16:00:00', Event: 'Indice de Confiance des Consommateurs (Université du Michigan - Final)', Actual: '-', Forecast: '67.8', Previous: '71.1', Importance: 3, Country: 'United States' },
+                { Date: '2026-02-27T16:00:00', Event: 'Anticipations d\'Inflation à 1 an (Michigan - Final)', Actual: '-', Forecast: '4.3%', Previous: '3.3%', Importance: 3, Country: 'United States' },
+                { Date: '2026-02-27T16:00:00', Event: 'Anticipations d\'Inflation à 5 ans (Michigan - Final)', Actual: '-', Forecast: '3.3%', Previous: '3.2%', Importance: 2, Country: 'United States' },
 
-                // Samedi 14 et Dimanche 15 février 2026 - Pas d'événements (weekend)
+                // Samedi 28 et Dimanche 1er mars 2026 - Pas d'événements (weekend)
             ];
 
             // Utiliser les données statiques au lieu de l'API
@@ -174,7 +170,7 @@ const Calendar = () => {
     return (
         <div className="container">
             <div className="header">
-                <div className="date-badge"><CalendarDays size={22} /> CALENDRIER ÉCONOMIQUE</div>
+                <div className="date-badge"><span className="icon-container sm blue"><CalendarDays size={18} /></span> CALENDRIER ÉCONOMIQUE</div>
                 <h1>News de la Semaine</h1>
                 <div className="subtitle">
                     Événements économiques majeurs (USA) - Source: Investing.com
@@ -216,7 +212,7 @@ const Calendar = () => {
                 Object.keys(eventsByDay).map(day => (
                     <div key={day} className="dashboard">
                         <div className="day-header">
-                            <div className="day-title"><BarChart3 size={20} /> {day.charAt(0).toUpperCase() + day.slice(1)}</div>
+                            <div className="day-title"><span className="icon-container sm teal"><BarChart3 size={16} /></span> {day.charAt(0).toUpperCase() + day.slice(1)}</div>
                         </div>
 
                         <div className="events-grid">

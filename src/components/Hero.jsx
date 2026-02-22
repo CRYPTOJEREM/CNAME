@@ -114,7 +114,7 @@ const Hero = ({ setActiveTab }) => {
                     <div className="ecosystem-grid">
                         <div className="ecosystem-card main-card">
                             <div className="card-glow"></div>
-                            <span className="ecosystem-icon"><Target size={24} /></span>
+                            <span className="ecosystem-icon"><span className="icon-container lg blue"><Target size={28} /></span></span>
                             <h3>La Vision</h3>
                             <p>
                                 <strong>La Sphere</strong> est une communauté de passionnés de crypto et de finance ! Nous
@@ -125,7 +125,7 @@ const Hero = ({ setActiveTab }) => {
                         </div>
 
                         <div className="ecosystem-card">
-                            <span className="ecosystem-icon"><BarChart3 size={24} /></span>
+                            <span className="ecosystem-icon"><span className="icon-container teal"><BarChart3 size={24} /></span></span>
                             <h3>Données en Temps Réel</h3>
                             <p>
                                 Suivez les prix, volumes et capitalisations des top cryptomonnaies avec des mises à jour
@@ -134,7 +134,7 @@ const Hero = ({ setActiveTab }) => {
                         </div>
 
                         <div className="ecosystem-card">
-                            <span className="ecosystem-icon"><CalendarDays size={24} /></span>
+                            <span className="ecosystem-icon"><span className="icon-container purple"><CalendarDays size={24} /></span></span>
                             <h3>Calendrier Économique</h3>
                             <p>
                                 Ne manquez plus aucun événement économique majeur. Notre calendrier s'actualise
@@ -144,7 +144,7 @@ const Hero = ({ setActiveTab }) => {
                         </div>
 
                         <div className="ecosystem-card">
-                            <span className="ecosystem-icon"><Target size={24} /></span>
+                            <span className="ecosystem-icon"><span className="icon-container orange"><Target size={24} /></span></span>
                             <h3>Analyses Expertes</h3>
                             <p>
                                 Bénéficiez d'analyses approfondies sur les tendances du marché, les mouvements de capitaux
@@ -153,7 +153,7 @@ const Hero = ({ setActiveTab }) => {
                         </div>
 
                         <div className="ecosystem-card">
-                            <span className="ecosystem-icon"><Bell size={24} /></span>
+                            <span className="ecosystem-icon"><span className="icon-container green"><Bell size={24} /></span></span>
                             <h3>Contenu Quotidien</h3>
                             <p>
                                 Vidéos YouTube, lives Twitch, posts Twitter et contenus éducatifs publiés régulièrement pour
@@ -162,7 +162,7 @@ const Hero = ({ setActiveTab }) => {
                         </div>
 
                         <div className="ecosystem-card">
-                            <span className="ecosystem-icon"><Handshake size={24} /></span>
+                            <span className="ecosystem-icon"><span className="icon-container pink"><Handshake size={24} /></span></span>
                             <h3>Communauté Active</h3>
                             <p>
                                 Rejoignez des milliers de membres sur Discord et Telegram. Échangez, apprenez et partagez
@@ -278,22 +278,22 @@ const Hero = ({ setActiveTab }) => {
                             {/* Petits carres droite — Details */}
                             <div className="bitunix-info-grid">
                                 <div className="bitunix-info-card">
-                                    <div className="bitunix-info-icon"><TrendingUp size={22} /></div>
+                                    <div className="bitunix-info-icon"><span className="icon-container green"><TrendingUp size={22} /></span></div>
                                     <h4 className="bitunix-info-title">Trading Avance</h4>
                                     <p className="bitunix-info-text">Leverage jusqu'a 125x sur les futures. Outils pro : TradingView integre, ordres avances, stop-loss.</p>
                                 </div>
                                 <div className="bitunix-info-card">
-                                    <div className="bitunix-info-icon"><Users size={22} /></div>
+                                    <div className="bitunix-info-icon"><span className="icon-container blue"><Users size={22} /></span></div>
                                     <h4 className="bitunix-info-title">Copy Trading</h4>
                                     <p className="bitunix-info-text">Copiez les meilleurs traders automatiquement. Suivez leurs positions en temps reel sans effort.</p>
                                 </div>
                                 <div className="bitunix-info-card">
-                                    <div className="bitunix-info-icon"><Lock size={22} /></div>
+                                    <div className="bitunix-info-icon"><span className="icon-container purple"><Lock size={22} /></span></div>
                                     <h4 className="bitunix-info-title">Securite Maximale</h4>
                                     <p className="bitunix-info-text">Cold storage, authentification 2FA, audits reguliers. Vos fonds sont proteges en permanence.</p>
                                 </div>
                                 <div className="bitunix-info-card bitunix-contest-card">
-                                    <div className="bitunix-info-icon"><Trophy size={22} /></div>
+                                    <div className="bitunix-info-icon"><span className="icon-container gold"><Trophy size={22} /></span></div>
                                     <h4 className="bitunix-info-title">Concours $1,000</h4>
                                     <p className="bitunix-info-text">Chaque semaine, un membre gagne $1,000 de coupon trading. Inscrivez-vous avec votre UID pour participer gratuitement !</p>
                                 </div>

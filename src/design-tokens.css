@@ -1,61 +1,94 @@
 /* ==========================================
-   LA SPHERE - Design Tokens (Marketing V5)
+   LA SPHERE - Design Tokens (Light/Dark)
    ========================================== */
 
 :root {
-  /* Background colors — rich dark with depth */
-  --bg-primary: #07070E;
-  --bg-secondary: #0D0D18;
-  --bg-tertiary: #151522;
-  --bg-elevated: #1C1C2E;
+  /* ===== LIGHT THEME (default) ===== */
 
-  /* Glass effect — visible presence */
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --glass-bg-hover: rgba(255, 255, 255, 0.09);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --glass-border-hover: rgba(255, 255, 255, 0.16);
+  /* Background colors — warm Apple beige */
+  --bg-primary: #EDEAE4;
+  --bg-secondary: #F5F3EF;
+  --bg-tertiary: #FFFFFF;
+  --bg-elevated: #FFFFFF;
+
+  /* Glass effect — subtle dark on light */
+  --glass-bg: rgba(0, 0, 0, 0.03);
+  --glass-bg-hover: rgba(0, 0, 0, 0.06);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-border-hover: rgba(0, 0, 0, 0.14);
   --glass-blur: 20px;
 
   /* Navbar frosted glass */
-  --nav-bg: rgba(10, 10, 18, 0.7);
-  --nav-bg-scrolled: rgba(10, 10, 18, 0.92);
-  --nav-border: rgba(255, 255, 255, 0.06);
-  --nav-border-scrolled: rgba(255, 255, 255, 0.10);
+  --nav-bg: rgba(237, 234, 228, 0.7);
+  --nav-bg-scrolled: rgba(237, 234, 228, 0.92);
+  --nav-border: rgba(0, 0, 0, 0.06);
+  --nav-border-scrolled: rgba(0, 0, 0, 0.10);
   --nav-blur: saturate(180%) blur(20px);
 
-  /* Text colors */
-  --text-primary: #F5F5F7;
-  --text-secondary: #A1A1B5;
-  --text-tertiary: #6E6E80;
+  /* Text colors — deep charcoal */
+  --text-primary: #1A1A18;
+  --text-secondary: #6B6B6B;
+  --text-tertiary: #999999;
+  --text-on-accent: #FFFFFF;
 
-  /* Accent colors */
+  /* Accent colors — adapted for light backgrounds */
   --accent-blue: #2E90FA;
-  --accent-cyan: #67E8F9;
-  --accent-purple: #A855F7;
-  --accent-indigo: #6366F1;
-  --accent-gold: #FBBF24;
-  --accent-green: #34D399;
-  --accent-red: #F87171;
-  --accent-orange: #FB923C;
-  --accent-pink: #F472B6;
-  --accent-teal: #2DD4BF;
+  --accent-cyan: #0891B2;
+  --accent-purple: #9333EA;
+  --accent-indigo: #4F46E5;
+  --accent-gold: #D97706;
+  --accent-green: #16A34A;
+  --accent-red: #EF4444;
+  --accent-orange: #EA580C;
+  --accent-pink: #DB2777;
+  --accent-teal: #0D9488;
 
-  /* Card surfaces — visible dark glass */
-  --card-surface: linear-gradient(145deg, rgba(18, 18, 32, 0.95) 0%, rgba(24, 24, 42, 0.95) 100%);
-  --card-surface-hover: linear-gradient(145deg, rgba(30, 30, 52, 0.95) 0%, rgba(36, 36, 58, 0.95) 100%);
+  /* Card surfaces — clean white */
+  --card-surface: #FFFFFF;
+  --card-surface-hover: #FFFFFF;
   --card-hero: linear-gradient(135deg, #2E90FA 0%, #6366F1 50%, #A855F7 100%);
 
   /* Icon container backgrounds */
-  --icon-bg-primary: rgba(46, 144, 250, 0.15);
-  --icon-bg-secondary: rgba(168, 85, 247, 0.15);
-  --icon-bg-accent: rgba(251, 191, 36, 0.15);
+  --icon-bg-primary: rgba(46, 144, 250, 0.10);
+  --icon-bg-secondary: rgba(147, 51, 234, 0.10);
+  --icon-bg-accent: rgba(217, 119, 6, 0.12);
 
-  /* Gradients — vibrant */
-  --gradient-primary: linear-gradient(135deg, #2E90FA 0%, #A855F7 100%);
-  --gradient-hero-text: linear-gradient(135deg, #67E8F9 0%, #2E90FA 30%, #A855F7 70%, #F472B6 100%);
-  --gradient-gold: linear-gradient(135deg, #FBBF24, #FB923C);
+  /* Surface overlays */
+  --surface-overlay: rgba(0, 0, 0, 0.03);
+  --surface-overlay-hover: rgba(0, 0, 0, 0.06);
+  --surface-footer: #F5F3EF;
+  --surface-mobile-nav: rgba(237, 234, 228, 0.98);
+  --surface-input: #F5F3EF;
+
+  /* Accent alpha variants — blue */
+  --accent-blue-subtle: rgba(46, 144, 250, 0.06);
+  --accent-blue-light: rgba(46, 144, 250, 0.10);
+  --accent-blue-medium: rgba(46, 144, 250, 0.15);
+  --accent-blue-strong: rgba(46, 144, 250, 0.25);
+
+  /* Accent alpha variants — purple */
+  --accent-purple-subtle: rgba(147, 51, 234, 0.06);
+  --accent-purple-light: rgba(147, 51, 234, 0.10);
+  --accent-purple-medium: rgba(147, 51, 234, 0.15);
+  --accent-purple-strong: rgba(147, 51, 234, 0.25);
+
+  /* Accent alpha variants — gold */
+  --accent-gold-subtle: rgba(217, 119, 6, 0.06);
+  --accent-gold-light: rgba(217, 119, 6, 0.10);
+  --accent-gold-medium: rgba(217, 119, 6, 0.15);
+  --accent-gold-strong: rgba(217, 119, 6, 0.25);
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #2E90FA 0%, #9333EA 100%);
+  --gradient-hero-text: linear-gradient(135deg, #2E90FA 0%, #4F46E5 50%, #9333EA 100%);
+  --gradient-gold: linear-gradient(135deg, #D97706, #EA580C);
   --gradient-surface: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
   --gradient-section: linear-gradient(180deg, transparent 0%, rgba(46, 144, 250, 0.03) 50%, transparent 100%);
+
+  /* Aurora background */
+  --aurora-1: rgba(46, 144, 250, 0.04);
+  --aurora-2: rgba(147, 51, 234, 0.03);
+  --aurora-3: rgba(79, 70, 229, 0.03);
 
   /* Typography */
   --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -92,14 +125,14 @@
   --radius-icon: 14px;
   --radius-full: 9999px;
 
-  /* Shadows — vivid glows */
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35);
-  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.4);
-  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.04);
-  --shadow-glow-blue: 0 4px 25px rgba(46, 144, 250, 0.3);
-  --shadow-glow-purple: 0 4px 25px rgba(168, 85, 247, 0.3);
-  --shadow-glow-gold: 0 4px 25px rgba(251, 191, 36, 0.3);
+  /* Shadows — soft for light */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.10);
+  --shadow-card: 0 2px 20px rgba(0, 0, 0, 0.07), 0 0 0 1px rgba(0, 0, 0, 0.04);
+  --shadow-glow-blue: 0 4px 25px rgba(46, 144, 250, 0.20);
+  --shadow-glow-purple: 0 4px 25px rgba(147, 51, 234, 0.20);
+  --shadow-glow-gold: 0 4px 25px rgba(217, 119, 6, 0.20);
 
   /* Transitions */
   --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -113,4 +146,118 @@
   --anim-float: 3s ease-in-out infinite;
   --anim-pulse: 2s ease-in-out infinite;
   --anim-breathe: 3s ease-in-out infinite;
+
+  /* Scrollbar */
+  --scrollbar-track: rgba(0, 0, 0, 0.03);
+  --scrollbar-thumb: rgba(0, 0, 0, 0.15);
+  --scrollbar-thumb-hover: rgba(0, 0, 0, 0.25);
+
+  /* Misc semantic */
+  --star-empty: #D1D5DB;
+  --event-title-color: #4B5563;
+  --divider: rgba(0, 0, 0, 0.08);
+}
+
+
+/* ===== DARK THEME ===== */
+[data-theme="dark"] {
+  /* Background colors — rich dark with depth */
+  --bg-primary: #07070E;
+  --bg-secondary: #0D0D18;
+  --bg-tertiary: #151522;
+  --bg-elevated: #1C1C2E;
+
+  /* Glass effect — light on dark */
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-bg-hover: rgba(255, 255, 255, 0.09);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-border-hover: rgba(255, 255, 255, 0.16);
+
+  /* Navbar frosted glass */
+  --nav-bg: rgba(10, 10, 18, 0.7);
+  --nav-bg-scrolled: rgba(10, 10, 18, 0.92);
+  --nav-border: rgba(255, 255, 255, 0.06);
+  --nav-border-scrolled: rgba(255, 255, 255, 0.10);
+
+  /* Text colors */
+  --text-primary: #F5F5F7;
+  --text-secondary: #A1A1B5;
+  --text-tertiary: #6E6E80;
+  --text-on-accent: #FFFFFF;
+
+  /* Accent colors — bright on dark */
+  --accent-blue: #2E90FA;
+  --accent-cyan: #67E8F9;
+  --accent-purple: #A855F7;
+  --accent-indigo: #6366F1;
+  --accent-gold: #FBBF24;
+  --accent-green: #34D399;
+  --accent-red: #F87171;
+  --accent-orange: #FB923C;
+  --accent-pink: #F472B6;
+  --accent-teal: #2DD4BF;
+
+  /* Card surfaces — dark glass */
+  --card-surface: linear-gradient(145deg, rgba(18, 18, 32, 0.95) 0%, rgba(24, 24, 42, 0.95) 100%);
+  --card-surface-hover: linear-gradient(145deg, rgba(30, 30, 52, 0.95) 0%, rgba(36, 36, 58, 0.95) 100%);
+
+  /* Icon container backgrounds */
+  --icon-bg-primary: rgba(46, 144, 250, 0.15);
+  --icon-bg-secondary: rgba(168, 85, 247, 0.15);
+  --icon-bg-accent: rgba(251, 191, 36, 0.15);
+
+  /* Surface overlays */
+  --surface-overlay: rgba(20, 20, 40, 0.4);
+  --surface-overlay-hover: rgba(20, 20, 40, 0.7);
+  --surface-footer: rgba(15, 17, 23, 0.8);
+  --surface-mobile-nav: rgba(12, 12, 29, 0.98);
+  --surface-input: rgba(255, 255, 255, 0.06);
+
+  /* Accent alpha variants — blue */
+  --accent-blue-subtle: rgba(46, 144, 250, 0.06);
+  --accent-blue-light: rgba(46, 144, 250, 0.10);
+  --accent-blue-medium: rgba(46, 144, 250, 0.15);
+  --accent-blue-strong: rgba(46, 144, 250, 0.25);
+
+  /* Accent alpha variants — purple */
+  --accent-purple-subtle: rgba(168, 85, 247, 0.06);
+  --accent-purple-light: rgba(168, 85, 247, 0.10);
+  --accent-purple-medium: rgba(168, 85, 247, 0.15);
+  --accent-purple-strong: rgba(168, 85, 247, 0.25);
+
+  /* Accent alpha variants — gold */
+  --accent-gold-subtle: rgba(251, 191, 36, 0.06);
+  --accent-gold-light: rgba(251, 191, 36, 0.10);
+  --accent-gold-medium: rgba(251, 191, 36, 0.15);
+  --accent-gold-strong: rgba(251, 191, 36, 0.25);
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #2E90FA 0%, #A855F7 100%);
+  --gradient-hero-text: linear-gradient(135deg, #67E8F9 0%, #2E90FA 30%, #A855F7 70%, #F472B6 100%);
+  --gradient-gold: linear-gradient(135deg, #FBBF24, #FB923C);
+  --gradient-surface: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+
+  /* Aurora background */
+  --aurora-1: rgba(46, 144, 250, 0.08);
+  --aurora-2: rgba(168, 85, 247, 0.06);
+  --aurora-3: rgba(99, 102, 241, 0.05);
+
+  /* Shadows — deeper for dark */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.04);
+  --shadow-glow-blue: 0 4px 25px rgba(46, 144, 250, 0.3);
+  --shadow-glow-purple: 0 4px 25px rgba(168, 85, 247, 0.3);
+  --shadow-glow-gold: 0 4px 25px rgba(251, 191, 36, 0.3);
+
+  /* Scrollbar */
+  --scrollbar-track: rgba(255, 255, 255, 0.03);
+  --scrollbar-thumb: rgba(255, 255, 255, 0.12);
+  --scrollbar-thumb-hover: rgba(255, 255, 255, 0.2);
+
+  /* Misc semantic */
+  --star-empty: #2A2F4A;
+  --event-title-color: #E0E6F0;
+  --divider: rgba(255, 255, 255, 0.08);
 }

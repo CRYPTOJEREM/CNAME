@@ -33,19 +33,19 @@ const SubscriptionStatus = ({ setActiveTab }) => {
             free: {
                 icon: '🆓',
                 text: 'FREE',
-                color: '#6c757d',
+                color: 'var(--text-tertiary)',
                 description: 'Accès au contenu gratuit'
             },
             premium: {
                 icon: <Star size={16} />,
                 text: 'PREMIUM',
-                color: '#A855F7',
+                color: 'var(--accent-purple)',
                 description: 'Accès au contenu Premium'
             },
             vip: {
                 icon: <Gem size={16} />,
                 text: 'VIP',
-                color: '#64D2FF',
+                color: 'var(--accent-cyan)',
                 description: 'Accès complet à tout le contenu'
             }
         };

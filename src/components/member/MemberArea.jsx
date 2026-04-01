@@ -33,9 +33,9 @@ const MemberArea = ({ setActiveTab }) => {
     // Badge selon le niveau d'abonnement
     const getSubscriptionBadge = () => {
         const badges = {
-            free: { icon: '🆓', label: 'FREE', color: '#7B8BA8' },
-            premium: { icon: <Star size={16} />, label: 'PREMIUM', color: '#FBBF24' },
-            vip: { icon: <Gem size={16} />, label: 'VIP', color: '#2E90FA' }
+            free: { icon: '🆓', label: 'FREE', color: 'var(--text-secondary)' },
+            premium: { icon: <Star size={16} />, label: 'PREMIUM', color: 'var(--accent-gold)' },
+            vip: { icon: <Gem size={16} />, label: 'VIP', color: 'var(--accent-blue)' }
         };
         return badges[user.subscriptionStatus] || badges.free;
     };
@@ -45,7 +45,7 @@ const MemberArea = ({ setActiveTab }) => {
     return (
         <div style={{
             minHeight: '100vh',
-            background: '#0C0C1D',
+            background: 'var(--text-on-accent)',
             paddingTop: '100px'
         }}>
             <div style={{
@@ -77,7 +77,7 @@ const MemberArea = ({ setActiveTab }) => {
                         <div style={{ fontSize: '60px' }}><User size={16} /></div>
                         <div>
                             <h1 style={{
-                                color: '#FFFFFF',
+                                color: 'var(--text-primary)',
                                 fontSize: '32px',
                                 fontWeight: '900',
                                 marginBottom: '10px'
@@ -87,7 +87,7 @@ const MemberArea = ({ setActiveTab }) => {
                             <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
                                 <span style={{
                                     background: `linear-gradient(135deg, ${badge.color}, #A855F7)`,
-                                    color: '#0C0C1D',
+                                    color: 'var(--text-on-accent)',
                                     padding: '6px 16px',
                                     borderRadius: '20px',
                                     fontWeight: '700',
@@ -99,7 +99,7 @@ const MemberArea = ({ setActiveTab }) => {
                                     {badge.icon} {badge.label}
                                 </span>
                                 {user.emailVerified && (
-                                    <span style={{ color: '#2E90FA', fontSize: '14px' }}>
+                                    <span style={{ color: 'var(--accent-blue)', fontSize: '14px' }}>
                                         ✓ Email vérifié
                                     </span>
                                 )}
@@ -117,7 +117,7 @@ const MemberArea = ({ setActiveTab }) => {
                         }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                                 <span style={{ fontSize: '20px' }}>⏰</span>
-                                <span style={{ color: '#FFFFFF', fontSize: '15px' }}>
+                                <span style={{ color: 'var(--text-primary)', fontSize: '15px' }}>
                                     {daysRemaining > 0
                                         ? `Votre abonnement expire dans ${daysRemaining} jour${daysRemaining > 1 ? 's' : ''}`
                                         : 'Votre abonnement a expiré'
@@ -153,7 +153,7 @@ const MemberArea = ({ setActiveTab }) => {
                                 border: activeSection === section.id
                                     ? 'none'
                                     : '2px solid rgba(191, 90, 242, 0.3)',
-                                color: activeSection === section.id ? '#0C0C1D' : '#FFFFFF',
+                                color: activeSection === section.id ? 'var(--text-on-accent)' : 'var(--text-primary)',
                                 padding: '15px 25px',
                                 borderRadius: '12px',
                                 fontSize: '15px',
@@ -188,7 +188,7 @@ const MemberArea = ({ setActiveTab }) => {
                 {activeSection === 'dashboard' && (
                     <div>
                         <h2 style={{
-                            color: '#2E90FA',
+                            color: 'var(--accent-blue)',
                             fontSize: '28px',
                             fontWeight: '900',
                             marginBottom: '30px',
@@ -217,7 +217,7 @@ const MemberArea = ({ setActiveTab }) => {
                                 }}>
                                     {badge.icon}
                                 </div>
-                                <h3 style={{ color: '#FFFFFF', fontSize: '20px', fontWeight: '700', marginBottom: '10px' }}>
+                                <h3 style={{ color: 'var(--text-primary)', fontSize: '20px', fontWeight: '700', marginBottom: '10px' }}>
                                     Mon Abonnement
                                 </h3>
                                 <p style={{
@@ -229,11 +229,11 @@ const MemberArea = ({ setActiveTab }) => {
                                     {badge.label}
                                 </p>
                                 {user.subscriptionStatus === 'free' ? (
-                                    <p style={{ color: '#7B8BA8', fontSize: '14px', marginBottom: '20px' }}>
+                                    <p style={{ color: 'var(--text-secondary)', fontSize: '14px', marginBottom: '20px' }}>
                                         Accès limité au contenu gratuit
                                     </p>
                                 ) : (
-                                    <p style={{ color: '#7B8BA8', fontSize: '14px', marginBottom: '20px' }}>
+                                    <p style={{ color: 'var(--text-secondary)', fontSize: '14px', marginBottom: '20px' }}>
                                         Accès complet à tout le contenu {user.subscriptionStatus === 'vip' ? 'VIP et Premium' : 'Premium'}
                                     </p>
                                 )}
@@ -244,10 +244,10 @@ const MemberArea = ({ setActiveTab }) => {
                                         borderRadius: '8px',
                                         marginBottom: '15px'
                                     }}>
-                                        <p style={{ color: '#2E90FA', fontSize: '13px', margin: 0 }}>
+                                        <p style={{ color: 'var(--accent-blue)', fontSize: '13px', margin: 0 }}>
                                             Expire le : {new Date(user.subscriptionExpiresAt).toLocaleDateString('fr-FR')}
                                         </p>
-                                        <p style={{ color: '#FFFFFF', fontSize: '18px', fontWeight: '700', margin: '5px 0 0 0' }}>
+                                        <p style={{ color: 'var(--text-primary)', fontSize: '18px', fontWeight: '700', margin: '5px 0 0 0' }}>
                                             {daysRemaining} jours restants
                                         </p>
                                     </div>
@@ -258,7 +258,7 @@ const MemberArea = ({ setActiveTab }) => {
                                         style={{
                                             background: 'linear-gradient(135deg, #2E90FA, #A855F7)',
                                             border: 'none',
-                                            color: '#0C0C1D',
+                                            color: 'var(--text-on-accent)',
                                             padding: '12px 20px',
                                             borderRadius: '10px',
                                             fontWeight: '700',
@@ -280,10 +280,10 @@ const MemberArea = ({ setActiveTab }) => {
                                 padding: '30px'
                             }}>
                                 <div style={{ fontSize: '40px', marginBottom: '15px' }}><GraduationCap size={16} /></div>
-                                <h3 style={{ color: '#FFFFFF', fontSize: '20px', fontWeight: '700', marginBottom: '10px' }}>
+                                <h3 style={{ color: 'var(--text-primary)', fontSize: '20px', fontWeight: '700', marginBottom: '10px' }}>
                                     Mes Formations
                                 </h3>
-                                <p style={{ color: '#7B8BA8', fontSize: '14px', marginBottom: '20px' }}>
+                                <p style={{ color: 'var(--text-secondary)', fontSize: '14px', marginBottom: '20px' }}>
                                     Accédez à toutes vos formations et suivez votre progression
                                 </p>
                                 <button
@@ -291,7 +291,7 @@ const MemberArea = ({ setActiveTab }) => {
                                     style={{
                                         background: 'rgba(191, 90, 242, 0.2)',
                                         border: '2px solid rgba(191, 90, 242, 0.5)',
-                                        color: '#2E90FA',
+                                        color: 'var(--accent-blue)',
                                         padding: '12px 20px',
                                         borderRadius: '10px',
                                         fontWeight: '700',
@@ -312,10 +312,10 @@ const MemberArea = ({ setActiveTab }) => {
                                 padding: '30px'
                             }}>
                                 <div style={{ fontSize: '40px', marginBottom: '15px' }}><BookOpen size={16} /></div>
-                                <h3 style={{ color: '#FFFFFF', fontSize: '20px', fontWeight: '700', marginBottom: '10px' }}>
+                                <h3 style={{ color: 'var(--text-primary)', fontSize: '20px', fontWeight: '700', marginBottom: '10px' }}>
                                     Contenu Exclusif
                                 </h3>
-                                <p style={{ color: '#7B8BA8', fontSize: '14px', marginBottom: '20px' }}>
+                                <p style={{ color: 'var(--text-secondary)', fontSize: '14px', marginBottom: '20px' }}>
                                     Découvrez le contenu réservé aux membres {user.subscriptionStatus === 'vip' ? 'VIP' : user.subscriptionStatus}
                                 </p>
                                 <button
@@ -323,7 +323,7 @@ const MemberArea = ({ setActiveTab }) => {
                                     style={{
                                         background: 'rgba(191, 90, 242, 0.2)',
                                         border: '2px solid rgba(191, 90, 242, 0.5)',
-                                        color: '#2E90FA',
+                                        color: 'var(--accent-blue)',
                                         padding: '12px 20px',
                                         borderRadius: '10px',
                                         fontWeight: '700',
@@ -345,17 +345,17 @@ const MemberArea = ({ setActiveTab }) => {
                                     padding: '30px'
                                 }}>
                                     <div style={{ fontSize: '40px', marginBottom: '15px' }}><Smartphone size={16} /></div>
-                                    <h3 style={{ color: '#FFFFFF', fontSize: '20px', fontWeight: '700', marginBottom: '10px' }}>
+                                    <h3 style={{ color: 'var(--text-primary)', fontSize: '20px', fontWeight: '700', marginBottom: '10px' }}>
                                         Groupe Telegram VIP
                                     </h3>
-                                    <p style={{ color: '#7B8BA8', fontSize: '14px', marginBottom: '20px' }}>
+                                    <p style={{ color: 'var(--text-secondary)', fontSize: '14px', marginBottom: '20px' }}>
                                         Rejoignez notre communauté privée pour des signaux exclusifs
                                     </p>
                                     <button
                                         style={{
                                             background: 'linear-gradient(135deg, #2E90FA, #2563EB)',
                                             border: 'none',
-                                            color: '#FFFFFF',
+                                            color: 'var(--text-primary)',
                                             padding: '12px 20px',
                                             borderRadius: '10px',
                                             fontWeight: '700',
@@ -387,18 +387,18 @@ const MemberArea = ({ setActiveTab }) => {
                                     background: 'linear-gradient(90deg, #FBBF24, #FF6B00)'
                                 }} />
                                 <div style={{ fontSize: '40px', marginBottom: '15px' }}><Gift size={16} /></div>
-                                <h3 style={{ color: '#FFFFFF', fontSize: '20px', fontWeight: '700', marginBottom: '10px' }}>
+                                <h3 style={{ color: 'var(--text-primary)', fontSize: '20px', fontWeight: '700', marginBottom: '10px' }}>
                                     Concours Hebdomadaire
                                 </h3>
                                 <p style={{
-                                    color: '#FBBF24',
+                                    color: 'var(--accent-gold)',
                                     fontSize: '28px',
                                     fontWeight: '900',
                                     marginBottom: '15px'
                                 }}>
                                     $1,000
                                 </p>
-                                <p style={{ color: '#7B8BA8', fontSize: '14px', marginBottom: '10px' }}>
+                                <p style={{ color: 'var(--text-secondary)', fontSize: '14px', marginBottom: '10px' }}>
                                     Coupon de trading Bitunix - Participation 100% gratuite !
                                 </p>
                                 {user.bitunixUid ? (
@@ -408,10 +408,10 @@ const MemberArea = ({ setActiveTab }) => {
                                         borderRadius: '10px',
                                         padding: '12px 15px'
                                     }}>
-                                        <p style={{ color: '#2E90FA', fontSize: '14px', fontWeight: '700', margin: 0 }}>
+                                        <p style={{ color: 'var(--accent-blue)', fontSize: '14px', fontWeight: '700', margin: 0 }}>
                                             ✓ Vous participez automatiquement !
                                         </p>
-                                        <p style={{ color: '#7B8BA8', fontSize: '12px', margin: '5px 0 0 0' }}>
+                                        <p style={{ color: 'var(--text-secondary)', fontSize: '12px', margin: '5px 0 0 0' }}>
                                             Tirage chaque semaine. Votre compte Bitunix doit etre actif (trading) pour etre eligible.
                                         </p>
                                     </div>
@@ -422,10 +422,10 @@ const MemberArea = ({ setActiveTab }) => {
                                         borderRadius: '10px',
                                         padding: '12px 15px'
                                     }}>
-                                        <p style={{ color: '#FBBF24', fontSize: '14px', fontWeight: '700', margin: 0 }}>
+                                        <p style={{ color: 'var(--accent-gold)', fontSize: '14px', fontWeight: '700', margin: 0 }}>
                                             Ajoutez votre Bitunix UID
                                         </p>
-                                        <p style={{ color: '#7B8BA8', fontSize: '12px', margin: '5px 0 0 0' }}>
+                                        <p style={{ color: 'var(--text-secondary)', fontSize: '12px', margin: '5px 0 0 0' }}>
                                             Renseignez votre UID dans votre profil pour participer au tirage.
                                         </p>
                                         <button
@@ -433,7 +433,7 @@ const MemberArea = ({ setActiveTab }) => {
                                             style={{
                                                 background: 'linear-gradient(135deg, #FBBF24, #FF6B00)',
                                                 border: 'none',
-                                                color: '#0C0C1D',
+                                                color: 'var(--text-on-accent)',
                                                 padding: '10px 16px',
                                                 borderRadius: '8px',
                                                 fontWeight: '700',

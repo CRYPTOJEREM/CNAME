@@ -170,7 +170,7 @@ const Learning = ({ setActiveTab }) => {
                                             >
                                                 <div style={{ textAlign: 'center', padding: '20px' }}>
                                                     <div style={{ fontSize: '48px', marginBottom: '15px' }}><Lock size={48} /></div>
-                                                    <h3 style={{ color: '#2E90FA', marginBottom: '10px', fontSize: '1.3rem' }}>
+                                                    <h3 style={{ color: 'var(--accent-blue)', marginBottom: '10px', fontSize: '1.3rem' }}>
                                                         Contenu Réservé aux Membres
                                                     </h3>
                                                     <p style={{ color: '#fff', marginBottom: '20px', fontSize: '1rem' }}>
@@ -202,7 +202,7 @@ const Learning = ({ setActiveTab }) => {
                                         <div className="video-stats">
                                             <div className="video-stat"><Clock size={14} /> {video.duration}</div>
                                             {!isAuthenticated && (
-                                                <div className="video-stat" style={{ color: '#2E90FA' }}>
+                                                <div className="video-stat" style={{ color: 'var(--accent-blue)' }}>
                                                     <Lock size={16} /> Inscription requise
                                                 </div>
                                             )}

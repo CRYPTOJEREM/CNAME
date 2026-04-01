@@ -1,10 +1,11 @@
 
 import { useState, useEffect } from 'react'
 import { useAuth } from '../contexts/AuthContext'
+import { useTheme } from '../contexts/ThemeContext'
 import {
     Globe, Home, Newspaper, CalendarDays, BarChart3,
     GraduationCap, Gem, MessageCircle, Shield, Lock,
-    Sparkles, Star, User, LogOut, ChevronDown
+    Sparkles, Star, User, LogOut, ChevronDown, Sun, Moon
 } from 'lucide-react'
 
 const Header = ({ activeTab, setActiveTab }) => {
@@ -12,6 +13,7 @@ const Header = ({ activeTab, setActiveTab }) => {
     const [userMenuOpen, setUserMenuOpen] = useState(false)
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
     const { user, isAuthenticated, logout } = useAuth()
+    const { theme, toggleTheme } = useTheme()
 
     useEffect(() => {
         let ticking = false
@@ -138,6 +140,18 @@ const Header = ({ activeTab, setActiveTab }) => {
                             </button>
                         </li>
                     )}
+
+                    {/* Toggle Theme */}
+                    <li className="theme-toggle-li">
+                        <button
+                            className="theme-toggle-btn"
+                            onClick={toggleTheme}
+                            aria-label={theme === 'light' ? 'Passer en mode sombre' : 'Passer en mode clair'}
+                            title={theme === 'light' ? 'Mode sombre' : 'Mode clair'}
+                        >
+                            {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
+                        </button>
+                    </li>
 
                     {/* Section Authentification */}
                     <li className="auth-section">

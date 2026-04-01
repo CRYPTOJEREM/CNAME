@@ -27,9 +27,9 @@ const PaymentHistory = () => {
 
     const getStatusBadge = (status) => {
         const badges = {
-            pending: { icon: <Loader2 size={14} />, text: 'En attente', color: '#FBBF24' },
-            completed: { icon: <CheckCircle2 size={14} />, text: 'Complété', color: '#64D2FF' },
-            failed: { icon: <XCircle size={14} />, text: 'Échoué', color: '#F87171' }
+            pending: { icon: <Loader2 size={14} />, text: 'En attente', color: 'var(--accent-gold)' },
+            completed: { icon: <CheckCircle2 size={14} />, text: 'Complété', color: 'var(--accent-cyan)' },
+            failed: { icon: <XCircle size={14} />, text: 'Échoué', color: 'var(--accent-red)' }
         };
         return badges[status] || badges.pending;
     };
@@ -52,14 +52,14 @@ const PaymentHistory = () => {
     };
 
     if (loading) {
-        return <div style={{ color: '#FFFFFF', textAlign: 'center', padding: '40px' }}>Chargement...</div>;
+        return <div style={{ color: 'var(--text-primary)', textAlign: 'center', padding: '40px' }}>Chargement...</div>;
     }
 
     return (
         <div>
             <div style={{ marginBottom: '30px' }}>
                 <h2 style={{
-                    color: '#64D2FF',
+                    color: 'var(--accent-cyan)',
                     fontSize: '28px',
                     fontWeight: '900',
                     marginBottom: '10px',
@@ -68,7 +68,7 @@ const PaymentHistory = () => {
                     <CreditCard size={16} /> Historique des Paiements
                 </h2>
                 <p style={{
-                    color: '#7B8BA8',
+                    color: 'var(--text-secondary)',
                     fontSize: '15px',
                     margin: 0
                 }}>
@@ -85,10 +85,10 @@ const PaymentHistory = () => {
                     textAlign: 'center'
                 }}>
                     <div style={{ fontSize: '60px', marginBottom: '20px' }}><CreditCard size={16} /></div>
-                    <h3 style={{ color: '#FFFFFF', fontSize: '20px', marginBottom: '10px' }}>
+                    <h3 style={{ color: 'var(--text-primary)', fontSize: '20px', marginBottom: '10px' }}>
                         Aucun paiement
                     </h3>
-                    <p style={{ color: '#7B8BA8', fontSize: '16px', margin: 0 }}>
+                    <p style={{ color: 'var(--text-secondary)', fontSize: '16px', margin: 0 }}>
                         Vous n'avez pas encore effectué de paiement
                     </p>
                 </div>
@@ -128,7 +128,7 @@ const PaymentHistory = () => {
                                 }}>
                                     <div>
                                         <h3 style={{
-                                            color: '#FFFFFF',
+                                            color: 'var(--text-primary)',
                                             fontSize: '20px',
                                             fontWeight: '700',
                                             marginBottom: '6px'
@@ -136,7 +136,7 @@ const PaymentHistory = () => {
                                             {payment.planName}
                                         </h3>
                                         <p style={{
-                                            color: '#7B8BA8',
+                                            color: 'var(--text-secondary)',
                                             fontSize: '14px',
                                             margin: 0
                                         }}>
@@ -145,7 +145,7 @@ const PaymentHistory = () => {
                                     </div>
                                     <div style={{
                                         background: statusBadge.color,
-                                        color: '#111111',
+                                        color: 'var(--text-on-accent)',
                                         padding: '8px 16px',
                                         borderRadius: '20px',
                                         fontSize: '14px',
@@ -173,14 +173,14 @@ const PaymentHistory = () => {
                                         padding: '15px'
                                     }}>
                                         <p style={{
-                                            color: '#7B8BA8',
+                                            color: 'var(--text-secondary)',
                                             fontSize: '13px',
                                             marginBottom: '6px'
                                         }}>
                                             Montant
                                         </p>
                                         <p style={{
-                                            color: '#64D2FF',
+                                            color: 'var(--accent-cyan)',
                                             fontSize: '24px',
                                             fontWeight: '900',
                                             margin: 0
@@ -197,14 +197,14 @@ const PaymentHistory = () => {
                                         padding: '15px'
                                     }}>
                                         <p style={{
-                                            color: '#7B8BA8',
+                                            color: 'var(--text-secondary)',
                                             fontSize: '13px',
                                             marginBottom: '6px'
                                         }}>
                                             ID de transaction
                                         </p>
                                         <p style={{
-                                            color: '#FFFFFF',
+                                            color: 'var(--text-primary)',
                                             fontSize: '14px',
                                             fontFamily: 'monospace',
                                             fontWeight: '600',
@@ -225,14 +225,14 @@ const PaymentHistory = () => {
                                             padding: '15px'
                                         }}>
                                             <p style={{
-                                                color: '#7B8BA8',
+                                                color: 'var(--text-secondary)',
                                                 fontSize: '13px',
                                                 marginBottom: '6px'
                                             }}>
                                                 Mise à jour
                                             </p>
                                             <p style={{
-                                                color: '#FBBF24',
+                                                color: 'var(--accent-gold)',
                                                 fontSize: '14px',
                                                 fontWeight: '600',
                                                 margin: 0

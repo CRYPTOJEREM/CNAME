@@ -77,14 +77,14 @@
         top: 70px;
         left: 0;
         right: 0;
-        background: rgba(12, 12, 29, 0.98);
+        background: var(--surface-mobile-nav);
         backdrop-filter: blur(20px);
         flex-direction: column;
         padding: 20px;
         max-height: calc(100vh - 70px);
         overflow-y: auto;
-        border-top: 2px solid rgba(100, 210, 255, 0.3);
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        border-top: 2px solid var(--accent-blue-strong);
+        box-shadow: 0 10px 40px var(--shadow-lg);
         transform: translateX(-100%);
         opacity: 0;
         transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55),
@@ -120,12 +120,19 @@
         font-size: 16px;
     }
 
+    /* Theme toggle mobile */
+    .theme-toggle-li {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+    }
+
     /* Boutons d'authentification mobile */
     .auth-section {
         width: 100%;
         margin-top: 20px;
         padding-top: 20px;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-top: 1px solid var(--divider);
     }
 
     .auth-btn {
@@ -145,7 +152,7 @@
         width: 100%;
         text-align: center;
         padding: 12px;
-        background: rgba(100, 210, 255, 0.1);
+        background: var(--accent-blue-light);
         border-radius: 8px;
     }
 }
@@ -584,7 +591,7 @@
         width: 100% !important;
         justify-content: space-between;
         padding: 12px 0 !important;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        border-bottom: 1px solid var(--glass-bg);
     }
 
     .stat-item:last-child {
@@ -1011,7 +1018,7 @@
 @media (prefers-color-scheme: dark) {
     /* Le site est déjà dark par défaut, mais on peut ajouter des ajustements */
     body {
-        background: linear-gradient(135deg, #050812 0%, var(--bg-primary) 100%);
+        background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-primary) 100%);
     }
 }
 
@@ -1049,17 +1056,17 @@
 .cgu-container {
     max-width: 900px;
     margin: 0 auto;
-    background: rgba(12, 12, 29, 0.8);
+    background: var(--surface-mobile-nav);
     border-radius: 24px;
     padding: 40px;
-    border: 1px solid rgba(100, 210, 255, 0.2);
+    border: 1px solid var(--accent-blue-medium);
 }
 
 .cgu-header {
     text-align: center;
     margin-bottom: 40px;
     padding-bottom: 30px;
-    border-bottom: 2px solid rgba(100, 210, 255, 0.3);
+    border-bottom: 2px solid var(--accent-blue-strong);
 }
 
 .cgu-header h1 {
@@ -1073,19 +1080,19 @@
 }
 
 .cgu-update {
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--text-tertiary);
     font-size: 14px;
 }
 
 .cgu-content {
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--text-primary);
     line-height: 1.8;
 }
 
 .cgu-article {
     margin-bottom: 40px;
     padding-bottom: 30px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid var(--glass-border);
 }
 
 .cgu-article:last-child {
@@ -1102,7 +1109,7 @@
 .cgu-article h3 {
     font-size: 18px;
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.95);
+    color: var(--text-primary);
     margin-top: 25px;
     margin-bottom: 15px;
 }
@@ -1119,7 +1126,7 @@
 .cgu-article a {
     color: var(--accent-cyan);
     text-decoration: none;
-    border-bottom: 1px solid rgba(100, 210, 255, 0.3);
+    border-bottom: 1px solid var(--accent-blue-strong);
     transition: all 0.3s ease;
 }
 
@@ -1150,7 +1157,7 @@
 }
 
 .cgu-note {
-    background: rgba(100, 210, 255, 0.1);
+    background: var(--accent-blue-light);
     border-left: 4px solid var(--accent-cyan);
     padding: 15px 20px;
     margin: 20px 0;
@@ -1166,7 +1173,7 @@
 }
 
 .cgu-warning {
-    background: rgba(255, 107, 107, 0.1);
+    background: rgba(239, 68, 68, 0.1);
     border-left: 4px solid var(--accent-red);
     padding: 15px 20px;
     margin: 20px 0;
@@ -1182,7 +1189,7 @@
 }
 
 .cgu-contact {
-    background: rgba(100, 210, 255, 0.05);
+    background: var(--accent-blue-subtle);
     border-radius: 12px;
     padding: 20px;
     margin: 20px 0;
@@ -1193,7 +1200,7 @@
     align-items: center;
     gap: 15px;
     padding: 12px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--glass-bg);
 }
 
 .contact-item:last-child {
@@ -1207,17 +1214,17 @@
 .cgu-footer {
     margin-top: 40px;
     padding-top: 30px;
-    border-top: 2px solid rgba(100, 210, 255, 0.3);
+    border-top: 2px solid var(--accent-blue-strong);
     text-align: center;
 }
 
 .cgu-footer p {
     margin-bottom: 10px;
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--text-secondary);
 }
 
 .cgu-disclaimer {
-    background: rgba(255, 107, 107, 0.1);
+    background: rgba(239, 68, 68, 0.1);
     padding: 15px;
     border-radius: 8px;
     margin-top: 20px;

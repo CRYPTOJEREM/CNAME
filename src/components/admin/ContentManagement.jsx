@@ -102,9 +102,9 @@ const ContentManagement = () => {
 
     const getLevelBadge = (level) => {
         const badges = {
-            free: { icon: '🆓', color: '#888' },
-            premium: { icon: <Star size={16} />, color: '#FBBF24' },
-            vip: { icon: <Gem size={16} />, color: '#2E90FA' }
+            free: { icon: '🆓', color: 'var(--text-tertiary)' },
+            premium: { icon: <Star size={16} />, color: 'var(--accent-gold)' },
+            vip: { icon: <Gem size={16} />, color: 'var(--accent-blue)' }
         }
         const badge = badges[level] || badges.free
         return (

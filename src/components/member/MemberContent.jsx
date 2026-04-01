@@ -42,9 +42,9 @@ const MemberContent = () => {
 
     const getLevelBadge = (level) => {
         const badges = {
-            free: { icon: '🆓', label: 'GRATUIT', color: '#7B8BA8' },
-            premium: { icon: <Star size={16} />, label: 'PREMIUM', color: '#FBBF24' },
-            vip: { icon: <Gem size={16} />, label: 'VIP', color: '#2E90FA' }
+            free: { icon: '🆓', label: 'GRATUIT', color: 'var(--text-secondary)' },
+            premium: { icon: <Star size={16} />, label: 'PREMIUM', color: 'var(--accent-gold)' },
+            vip: { icon: <Gem size={16} />, label: 'VIP', color: 'var(--accent-blue)' }
         };
         return badges[level] || badges.free;
     };
@@ -54,7 +54,7 @@ const MemberContent = () => {
         : content.filter(item => item.type === filter);
 
     if (loading) {
-        return <div style={{ color: '#FFFFFF', textAlign: 'center', padding: '40px' }}>Chargement...</div>;
+        return <div style={{ color: 'var(--text-primary)', textAlign: 'center', padding: '40px' }}>Chargement...</div>;
     }
 
     if (selectedContent) {
@@ -65,7 +65,7 @@ const MemberContent = () => {
                     style={{
                         background: 'linear-gradient(135deg, #2E90FA, #A855F7)',
                         border: 'none',
-                        color: '#0C0C1D',
+                        color: 'var(--text-on-accent)',
                         padding: '12px 24px',
                         borderRadius: '12px',
                         fontWeight: '700',
@@ -96,8 +96,8 @@ const MemberContent = () => {
                             }}
                         />
                     )}
-                    <h2 style={{ color: '#FFFFFF', marginBottom: '15px' }}>{selectedContent.title}</h2>
-                    <p style={{ color: '#7B8BA8' }}>{selectedContent.description}</p>
+                    <h2 style={{ color: 'var(--text-primary)', marginBottom: '15px' }}>{selectedContent.title}</h2>
+                    <p style={{ color: 'var(--text-secondary)' }}>{selectedContent.description}</p>
                 </div>
             </div>
         );
@@ -106,7 +106,7 @@ const MemberContent = () => {
     return (
         <div>
             <h2 style={{
-                color: '#2E90FA',
+                color: 'var(--accent-blue)',
                 fontSize: '28px',
                 fontWeight: '900',
                 marginBottom: '30px',
@@ -138,7 +138,7 @@ const MemberContent = () => {
                             border: filter === filterBtn.id
                                 ? 'none'
                                 : '2px solid rgba(191, 90, 242, 0.3)',
-                            color: filter === filterBtn.id ? '#0C0C1D' : '#FFFFFF',
+                            color: filter === filterBtn.id ? 'var(--text-on-accent)' : 'var(--text-primary)',
                             padding: '10px 20px',
                             borderRadius: '10px',
                             fontSize: '14px',
@@ -165,7 +165,7 @@ const MemberContent = () => {
                     textAlign: 'center'
                 }}>
                     <div style={{ fontSize: '60px', marginBottom: '20px' }}>📭</div>
-                    <p style={{ color: '#7B8BA8', fontSize: '16px' }}>
+                    <p style={{ color: 'var(--text-secondary)', fontSize: '16px' }}>
                         Aucun contenu disponible dans cette catégorie
                     </p>
                 </div>
@@ -223,7 +223,7 @@ const MemberContent = () => {
                                         top: '15px',
                                         right: '15px',
                                         background: badge.color,
-                                        color: '#0C0C1D',
+                                        color: 'var(--text-on-accent)',
                                         padding: '6px 12px',
                                         borderRadius: '20px',
                                         fontSize: '12px',
@@ -239,7 +239,7 @@ const MemberContent = () => {
                                 {/* Contenu */}
                                 <div style={{ padding: '20px' }}>
                                     <h3 style={{
-                                        color: '#FFFFFF',
+                                        color: 'var(--text-primary)',
                                         fontSize: '18px',
                                         fontWeight: '700',
                                         marginBottom: '10px'
@@ -247,7 +247,7 @@ const MemberContent = () => {
                                         {item.title}
                                     </h3>
                                     <p style={{
-                                        color: '#7B8BA8',
+                                        color: 'var(--text-secondary)',
                                         fontSize: '14px',
                                         marginBottom: '15px',
                                         lineHeight: '1.5'
@@ -258,7 +258,7 @@ const MemberContent = () => {
                                         display: 'flex',
                                         gap: '10px',
                                         fontSize: '13px',
-                                        color: '#2E90FA'
+                                        color: 'var(--accent-blue)'
                                     }}>
                                         <span>{getTypeIcon(item.type)} {item.type}</span>
                                         {item.modules && item.modules.length > 0 && (

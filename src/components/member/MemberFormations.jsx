@@ -39,15 +39,15 @@ const MemberFormations = () => {
 
     const getLevelBadge = (level) => {
         const badges = {
-            free: { icon: '🆓', label: 'GRATUIT', color: '#7B8BA8' },
-            premium: { icon: <Star size={16} />, label: 'PREMIUM', color: '#FBBF24' },
-            vip: { icon: <Gem size={16} />, label: 'VIP', color: '#2E90FA' }
+            free: { icon: '🆓', label: 'GRATUIT', color: 'var(--text-secondary)' },
+            premium: { icon: <Star size={16} />, label: 'PREMIUM', color: 'var(--accent-gold)' },
+            vip: { icon: <Gem size={16} />, label: 'VIP', color: 'var(--accent-blue)' }
         };
         return badges[level] || badges.free;
     };
 
     if (loading) {
-        return <div style={{ color: '#FFFFFF', textAlign: 'center', padding: '40px' }}>Chargement...</div>;
+        return <div style={{ color: 'var(--text-primary)', textAlign: 'center', padding: '40px' }}>Chargement...</div>;
     }
 
     // Vue détaillée d'une formation
@@ -60,7 +60,7 @@ const MemberFormations = () => {
                     style={{
                         background: 'linear-gradient(135deg, #2E90FA, #A855F7)',
                         border: 'none',
-                        color: '#0C0C1D',
+                        color: 'var(--text-on-accent)',
                         padding: '12px 24px',
                         borderRadius: '12px',
                         fontWeight: '700',
@@ -89,20 +89,20 @@ const MemberFormations = () => {
                     }}>
                         <div>
                             <h2 style={{
-                                color: '#FFFFFF',
+                                color: 'var(--text-primary)',
                                 fontSize: '28px',
                                 fontWeight: '900',
                                 marginBottom: '10px'
                             }}>
                                 {selectedFormation.title}
                             </h2>
-                            <p style={{ color: '#7B8BA8', fontSize: '16px', margin: 0 }}>
+                            <p style={{ color: 'var(--text-secondary)', fontSize: '16px', margin: 0 }}>
                                 {selectedFormation.description}
                             </p>
                         </div>
                         <div style={{
                             background: badge.color,
-                            color: '#0C0C1D',
+                            color: 'var(--text-on-accent)',
                             padding: '8px 16px',
                             borderRadius: '20px',
                             fontSize: '14px',
@@ -120,7 +120,7 @@ const MemberFormations = () => {
                     {selectedFormation.modules && selectedFormation.modules.length > 0 && (
                         <div style={{ marginBottom: '30px' }}>
                             <h3 style={{
-                                color: '#2E90FA',
+                                color: 'var(--accent-blue)',
                                 fontSize: '20px',
                                 fontWeight: '700',
                                 marginBottom: '20px'
@@ -153,7 +153,7 @@ const MemberFormations = () => {
                                             display: 'flex',
                                             alignItems: 'center',
                                             justifyContent: 'center',
-                                            color: '#0C0C1D',
+                                            color: 'var(--text-on-accent)',
                                             fontWeight: '900',
                                             fontSize: '14px',
                                             flexShrink: 0
@@ -161,7 +161,7 @@ const MemberFormations = () => {
                                             {index + 1}
                                         </div>
                                         <div style={{
-                                            color: '#FFFFFF',
+                                            color: 'var(--text-primary)',
                                             fontSize: '15px',
                                             fontWeight: '600'
                                         }}>
@@ -177,7 +177,7 @@ const MemberFormations = () => {
                     {selectedFormation.content && (
                         <div>
                             <h3 style={{
-                                color: '#2E90FA',
+                                color: 'var(--accent-blue)',
                                 fontSize: '20px',
                                 fontWeight: '700',
                                 marginBottom: '20px'
@@ -204,7 +204,7 @@ const MemberFormations = () => {
                                     border: '2px solid rgba(191, 90, 242, 0.3)',
                                     borderRadius: '12px',
                                     padding: '20px',
-                                    color: '#FFFFFF',
+                                    color: 'var(--text-primary)',
                                     lineHeight: '1.6'
                                 }}>
                                     {selectedFormation.content}
@@ -222,7 +222,7 @@ const MemberFormations = () => {
         <div>
             <div style={{ marginBottom: '30px' }}>
                 <h2 style={{
-                    color: '#2E90FA',
+                    color: 'var(--accent-blue)',
                     fontSize: '28px',
                     fontWeight: '900',
                     marginBottom: '10px',
@@ -231,7 +231,7 @@ const MemberFormations = () => {
                     <GraduationCap size={16} /> Mes Formations
                 </h2>
                 <p style={{
-                    color: '#7B8BA8',
+                    color: 'var(--text-secondary)',
                     fontSize: '15px',
                     margin: 0
                 }}>
@@ -253,10 +253,10 @@ const MemberFormations = () => {
                     textAlign: 'center'
                 }}>
                     <div style={{ fontSize: '60px', marginBottom: '20px' }}><GraduationCap size={16} /></div>
-                    <h3 style={{ color: '#FFFFFF', fontSize: '20px', marginBottom: '10px' }}>
+                    <h3 style={{ color: 'var(--text-primary)', fontSize: '20px', marginBottom: '10px' }}>
                         Aucune formation disponible
                     </h3>
-                    <p style={{ color: '#7B8BA8', fontSize: '16px', margin: 0 }}>
+                    <p style={{ color: 'var(--text-secondary)', fontSize: '16px', margin: 0 }}>
                         Il n'y a pas encore de formations pour votre niveau d'abonnement
                     </p>
                 </div>
@@ -297,7 +297,7 @@ const MemberFormations = () => {
                                     top: '20px',
                                     right: '20px',
                                     background: badge.color,
-                                    color: '#0C0C1D',
+                                    color: 'var(--text-on-accent)',
                                     padding: '6px 12px',
                                     borderRadius: '20px',
                                     fontSize: '12px',
@@ -326,7 +326,7 @@ const MemberFormations = () => {
 
                                 {/* Titre */}
                                 <h3 style={{
-                                    color: '#FFFFFF',
+                                    color: 'var(--text-primary)',
                                     fontSize: '20px',
                                     fontWeight: '700',
                                     marginBottom: '12px'
@@ -336,7 +336,7 @@ const MemberFormations = () => {
 
                                 {/* Description */}
                                 <p style={{
-                                    color: '#7B8BA8',
+                                    color: 'var(--text-secondary)',
                                     fontSize: '14px',
                                     lineHeight: '1.6',
                                     marginBottom: '20px'
@@ -350,7 +350,7 @@ const MemberFormations = () => {
                                         display: 'flex',
                                         alignItems: 'center',
                                         gap: '8px',
-                                        color: '#2E90FA',
+                                        color: 'var(--accent-blue)',
                                         fontSize: '14px',
                                         fontWeight: '600',
                                         marginBottom: '15px'
@@ -364,7 +364,7 @@ const MemberFormations = () => {
                                 <button style={{
                                     background: 'rgba(191, 90, 242, 0.2)',
                                     border: '2px solid rgba(191, 90, 242, 0.5)',
-                                    color: '#2E90FA',
+                                    color: 'var(--accent-blue)',
                                     padding: '10px 18px',
                                     borderRadius: '10px',
                                     fontWeight: '700',
@@ -376,12 +376,12 @@ const MemberFormations = () => {
                                     onMouseOver={(e) => {
                                         e.stopPropagation();
                                         e.currentTarget.style.background = 'linear-gradient(135deg, #2E90FA, #A855F7)';
-                                        e.currentTarget.style.color = '#0C0C1D';
+                                        e.currentTarget.style.color = 'var(--text-on-accent)';
                                     }}
                                     onMouseOut={(e) => {
                                         e.stopPropagation();
                                         e.currentTarget.style.background = 'rgba(191, 90, 242, 0.2)';
-                                        e.currentTarget.style.color = '#2E90FA';
+                                        e.currentTarget.style.color = 'var(--accent-blue)';
                                     }}
                                 >
                                     Commencer la formation →

@@ -70,7 +70,7 @@ const MemberProfile = () => {
     return (
         <div>
             <h2 style={{
-                color: '#2E90FA',
+                color: 'var(--accent-blue)',
                 fontSize: '28px',
                 fontWeight: '900',
                 marginBottom: '30px',
@@ -105,13 +105,13 @@ const MemberProfile = () => {
                         justifyContent: 'center',
                         fontSize: '32px',
                         fontWeight: '900',
-                        color: '#0C0C1D'
+                        color: 'var(--text-on-accent)'
                     }}>
                         {user.firstName?.charAt(0)}{user.lastName?.charAt(0)}
                     </div>
                     <div>
                         <h3 style={{
-                            color: '#FFFFFF',
+                            color: 'var(--text-primary)',
                             fontSize: '24px',
                             fontWeight: '700',
                             marginBottom: '8px'
@@ -119,7 +119,7 @@ const MemberProfile = () => {
                             {user.firstName} {user.lastName}
                         </h3>
                         <p style={{
-                            color: '#7B8BA8',
+                            color: 'var(--text-secondary)',
                             fontSize: '15px',
                             margin: 0
                         }}>
@@ -138,7 +138,7 @@ const MemberProfile = () => {
                         borderRadius: '12px',
                         padding: '15px 20px',
                         marginBottom: '25px',
-                        color: message.type === 'success' ? '#2E90FA' : '#F87171',
+                        color: message.type === 'success' ? 'var(--accent-blue)' : 'var(--accent-red)',
                         fontSize: '15px'
                     }}>
                         {message.text}
@@ -151,7 +151,7 @@ const MemberProfile = () => {
                     <div style={{ marginBottom: '25px' }}>
                         <label style={{
                             display: 'block',
-                            color: '#FFFFFF',
+                            color: 'var(--text-primary)',
                             fontSize: '14px',
                             fontWeight: '600',
                             marginBottom: '10px'
@@ -168,14 +168,14 @@ const MemberProfile = () => {
                                 background: 'rgba(20, 20, 40, 0.3)',
                                 border: '2px solid rgba(191, 90, 242, 0.2)',
                                 borderRadius: '12px',
-                                color: '#7B8BA8',
+                                color: 'var(--text-secondary)',
                                 fontSize: '15px',
                                 cursor: 'not-allowed'
                             }}
                         />
                         <small style={{
                             display: 'block',
-                            color: '#7B8BA8',
+                            color: 'var(--text-secondary)',
                             fontSize: '12px',
                             marginTop: '6px'
                         }}>
@@ -193,7 +193,7 @@ const MemberProfile = () => {
                         <div>
                             <label style={{
                                 display: 'block',
-                                color: '#FFFFFF',
+                                color: 'var(--text-primary)',
                                 fontSize: '14px',
                                 fontWeight: '600',
                                 marginBottom: '10px'
@@ -215,7 +215,7 @@ const MemberProfile = () => {
                                         ? '2px solid rgba(10, 132, 255, 0.5)'
                                         : '2px solid rgba(191, 90, 242, 0.2)',
                                     borderRadius: '12px',
-                                    color: '#FFFFFF',
+                                    color: 'var(--text-primary)',
                                     fontSize: '15px',
                                     outline: 'none'
                                 }}
@@ -224,7 +224,7 @@ const MemberProfile = () => {
                         <div>
                             <label style={{
                                 display: 'block',
-                                color: '#FFFFFF',
+                                color: 'var(--text-primary)',
                                 fontSize: '14px',
                                 fontWeight: '600',
                                 marginBottom: '10px'
@@ -246,7 +246,7 @@ const MemberProfile = () => {
                                         ? '2px solid rgba(10, 132, 255, 0.5)'
                                         : '2px solid rgba(191, 90, 242, 0.2)',
                                     borderRadius: '12px',
-                                    color: '#FFFFFF',
+                                    color: 'var(--text-primary)',
                                     fontSize: '15px',
                                     outline: 'none'
                                 }}
@@ -258,7 +258,7 @@ const MemberProfile = () => {
                     <div style={{ marginBottom: '30px' }}>
                         <label style={{
                             display: 'block',
-                            color: '#FFFFFF',
+                            color: 'var(--text-primary)',
                             fontSize: '14px',
                             fontWeight: '600',
                             marginBottom: '10px'
@@ -280,14 +280,14 @@ const MemberProfile = () => {
                                     ? '2px solid rgba(10, 132, 255, 0.5)'
                                     : '2px solid rgba(191, 90, 242, 0.2)',
                                 borderRadius: '12px',
-                                color: '#FFFFFF',
+                                color: 'var(--text-primary)',
                                 fontSize: '15px',
                                 outline: 'none'
                             }}
                         />
                         <small style={{
                             display: 'block',
-                            color: '#7B8BA8',
+                            color: 'var(--text-secondary)',
                             fontSize: '12px',
                             marginTop: '6px'
                         }}>
@@ -304,7 +304,7 @@ const MemberProfile = () => {
                                 style={{
                                     background: 'linear-gradient(135deg, #2E90FA, #A855F7)',
                                     border: 'none',
-                                    color: '#0C0C1D',
+                                    color: 'var(--text-on-accent)',
                                     padding: '14px 28px',
                                     borderRadius: '12px',
                                     fontWeight: '700',
@@ -325,7 +325,7 @@ const MemberProfile = () => {
                                     style={{
                                         background: 'linear-gradient(135deg, #2E90FA, #A855F7)',
                                         border: 'none',
-                                        color: '#0C0C1D',
+                                        color: 'var(--text-on-accent)',
                                         padding: '14px 28px',
                                         borderRadius: '12px',
                                         fontWeight: '700',
@@ -346,7 +346,7 @@ const MemberProfile = () => {
                                     style={{
                                         background: 'rgba(191, 90, 242, 0.2)',
                                         border: '2px solid rgba(191, 90, 242, 0.5)',
-                                        color: '#2E90FA',
+                                        color: 'var(--accent-blue)',
                                         padding: '14px 28px',
                                         borderRadius: '12px',
                                         fontWeight: '700',
@@ -373,14 +373,14 @@ const MemberProfile = () => {
                 }}>
                     <div>
                         <p style={{
-                            color: '#7B8BA8',
+                            color: 'var(--text-secondary)',
                             fontSize: '13px',
                             marginBottom: '6px'
                         }}>
                             Email vérifié
                         </p>
                         <p style={{
-                            color: user.emailVerified ? '#2E90FA' : '#FBBF24',
+                            color: user.emailVerified ? 'var(--accent-blue)' : 'var(--accent-gold)',
                             fontSize: '16px',
                             fontWeight: '700',
                             margin: 0
@@ -390,14 +390,14 @@ const MemberProfile = () => {
                     </div>
                     <div>
                         <p style={{
-                            color: '#7B8BA8',
+                            color: 'var(--text-secondary)',
                             fontSize: '13px',
                             marginBottom: '6px'
                         }}>
                             Membre depuis
                         </p>
                         <p style={{
-                            color: '#FFFFFF',
+                            color: 'var(--text-primary)',
                             fontSize: '16px',
                             fontWeight: '700',
                             margin: 0

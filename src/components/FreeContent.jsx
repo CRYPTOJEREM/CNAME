@@ -71,7 +71,7 @@ const FreeContent = ({ setActiveTab }) => {
                             border: 'none',
                             padding: '12px 24px',
                             borderRadius: '12px',
-                            color: '#111111',
+                            color: 'var(--text-on-accent)',
                             fontWeight: '700',
                             cursor: 'pointer',
                             marginBottom: '20px'
@@ -148,7 +148,7 @@ const FreeContent = ({ setActiveTab }) => {
                                 right: '15px',
                                 background: 'transparent',
                                 border: 'none',
-                                color: '#7B8BA8',
+                                color: 'var(--text-secondary)',
                                 fontSize: '24px',
                                 cursor: 'pointer'
                             }}
@@ -158,14 +158,14 @@ const FreeContent = ({ setActiveTab }) => {
                         <div style={{ textAlign: 'center', marginBottom: '30px' }}>
                             <div style={{ fontSize: '60px', marginBottom: '20px' }}><Lock size={16} /></div>
                             <h2 style={{
-                                color: '#64D2FF',
+                                color: 'var(--accent-cyan)',
                                 fontSize: '28px',
                                 fontWeight: '900',
                                 marginBottom: '15px'
                             }}>
                                 Créez un compte gratuit
                             </h2>
-                            <p style={{ color: '#7B8BA8', fontSize: '16px' }}>
+                            <p style={{ color: 'var(--text-secondary)', fontSize: '16px' }}>
                                 Pour accéder à ce contenu gratuit, vous devez créer un compte.
                                 C'est rapide et 100% gratuit !
                             </p>
@@ -179,7 +179,7 @@ const FreeContent = ({ setActiveTab }) => {
                                 padding: '10px 0'
                             }}>
                                 <span style={{ fontSize: '20px' }}><CheckCircle2 size={16} /></span>
-                                <span style={{ color: '#FFFFFF' }}>Accès à tout le contenu gratuit</span>
+                                <span style={{ color: 'var(--text-primary)' }}>Accès à tout le contenu gratuit</span>
                             </div>
                             <div style={{
                                 display: 'flex',
@@ -188,7 +188,7 @@ const FreeContent = ({ setActiveTab }) => {
                                 padding: '10px 0'
                             }}>
                                 <span style={{ fontSize: '20px' }}><CheckCircle2 size={16} /></span>
-                                <span style={{ color: '#FFFFFF' }}>Dashboard crypto en temps réel</span>
+                                <span style={{ color: 'var(--text-primary)' }}>Dashboard crypto en temps réel</span>
                             </div>
                             <div style={{
                                 display: 'flex',
@@ -197,7 +197,7 @@ const FreeContent = ({ setActiveTab }) => {
                                 padding: '10px 0'
                             }}>
                                 <span style={{ fontSize: '20px' }}><CheckCircle2 size={16} /></span>
-                                <span style={{ color: '#FFFFFF' }}>Calendrier économique</span>
+                                <span style={{ color: 'var(--text-primary)' }}>Calendrier économique</span>
                             </div>
                             <div style={{
                                 display: 'flex',
@@ -206,7 +206,7 @@ const FreeContent = ({ setActiveTab }) => {
                                 padding: '10px 0'
                             }}>
                                 <span style={{ fontSize: '20px' }}><CheckCircle2 size={16} /></span>
-                                <span style={{ color: '#FFFFFF' }}>Actualités quotidiennes</span>
+                                <span style={{ color: 'var(--text-primary)' }}>Actualités quotidiennes</span>
                             </div>
                         </div>
 
@@ -221,7 +221,7 @@ const FreeContent = ({ setActiveTab }) => {
                                     border: 'none',
                                     padding: '15px',
                                     borderRadius: '12px',
-                                    color: '#111111',
+                                    color: 'var(--text-on-accent)',
                                     fontWeight: '700',
                                     fontSize: '16px',
                                     cursor: 'pointer',
@@ -242,7 +242,7 @@ const FreeContent = ({ setActiveTab }) => {
                                     border: '2px solid rgba(191, 90, 242, 0.5)',
                                     padding: '15px',
                                     borderRadius: '12px',
-                                    color: '#64D2FF',
+                                    color: 'var(--accent-cyan)',
                                     fontWeight: '700',
                                     fontSize: '16px',
                                     cursor: 'pointer',

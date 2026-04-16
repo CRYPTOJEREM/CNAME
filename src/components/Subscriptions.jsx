@@ -225,47 +225,50 @@ const Subscriptions = () => {
 
     return (
         <section className="partners-section">
-            {/* Vidéo ultra-wide en haut */}
-            <div className="video-hero-centered">
-                <div className="video-container-ultrawide">
-                    <iframe
-                        className="hero-video-main"
-                        src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
-                        title="Présentation La Sphere"
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                    ></iframe>
+            {/* Hero Section - Clean & Direct */}
+            <div className="subscription-hero-clean scroll-reveal">
+                <div className="hero-badge-clean">
+                    <Rocket size={16} /> REJOIGNEZ LA COMMUNAUTÉ
+                </div>
+                <h1 className="hero-title-clean">
+                    Tradez avec Confiance.<br />
+                    <span className="gradient-text">Rejoignez La Sphere.</span>
+                </h1>
+                <p className="hero-subtitle-clean">
+                    Analyses quotidiennes, signaux en temps réel et une communauté de traders actifs 24/7.<br />
+                    Tout ce dont vous avez besoin pour progresser en trading crypto.
+                </p>
+
+                {/* Stats inline */}
+                <div className="hero-stats-inline">
+                    <div className="stat-inline">
+                        <span className="stat-number-inline">2K</span>
+                        <span className="stat-label-inline">Membres actifs</span>
+                    </div>
+                    <div className="stat-divider-inline"></div>
+                    <div className="stat-inline">
+                        <span className="stat-number-inline">24/7</span>
+                        <span className="stat-label-inline">Support</span>
+                    </div>
+                    <div className="stat-divider-inline"></div>
+                    <div className="stat-inline">
+                        <span className="stat-number-inline">50+</span>
+                        <span className="stat-label-inline">Lives réalisés</span>
+                    </div>
                 </div>
 
-                {/* Stats live sous la vidéo */}
-                <div className="hero-stats-bar">
-                    <div className="stat-item">
-                        <span className="stat-value">Quotidien</span>
-                        <span className="stat-label">Analyses marché</span>
-                    </div>
-                    <div className="stat-item">
-                        <span className="stat-value">24/7</span>
-                        <span className="stat-label">Support actif</span>
-                    </div>
-                    <div className="stat-item">
-                        <span className="stat-value">Temps réel</span>
-                        <span className="stat-label">Signaux trading</span>
-                    </div>
-                </div>
-
-                {/* Bouton CTA principal */}
-                <button className="cta-main-centered" onClick={() => {
+                {/* CTA principal */}
+                <button className="cta-hero-primary" onClick={() => {
                     document.querySelector('.plans-section').scrollIntoView({ behavior: 'smooth' });
                 }}>
-                    Accéder maintenant
+                    <Rocket size={18} /> Voir les Plans
                 </button>
 
                 {/* Trust badges */}
-                <div className="trust-badges-line">
-                    <span className="trust-item">✓ Paiement sécurisé</span>
-                    <span className="trust-item">✓ Accès immédiat</span>
-                    <span className="trust-item">✓ Garantie 7 jours</span>
+                <div className="trust-badges-clean">
+                    <span className="trust-badge-item"><CheckCircle2 size={14} /> Satisfait ou remboursé 7j</span>
+                    <span className="trust-badge-item"><CheckCircle2 size={14} /> Accès immédiat</span>
+                    <span className="trust-badge-item"><CheckCircle2 size={14} /> Sans engagement</span>
                 </div>
             </div>
 
@@ -361,38 +364,61 @@ const Subscriptions = () => {
                 </div>
             </div>
 
-            {/* Abonnement unique - Design simple et centré */}
+            {/* Plans Section - Design 3 colonnes */}
             <div className="plans-section">
-                <h2 className="clean-title">Rejoignez La Sphere aujourd'hui</h2>
+                <h2 className="clean-title">Choisissez votre niveau d'accès</h2>
                 <p className="clean-subtitle">
-                    Accès immédiat à toute la communauté et tous les outils
+                    Tous les plans incluent l'accès à la communauté et aux outils essentiels
                 </p>
 
-                <div className="single-plan-centered">
-                    {subscriptionPlans.filter(plan => plan.id === 'premium').map((plan) => (
-                        <div key={plan.id} className="plan-card-clean">
-                            <div className="plan-price-clean">
-                                <span className="price-amount">{plan.price}€</span>
-                                <span className="price-period-clean">/mois</span>
+                <div className="plans-grid-three">
+                    {subscriptionPlans.map((plan) => (
+                        <div key={plan.id} className={`plan-card-modern ${plan.popular ? 'plan-popular' : ''} ${plan.id === 'free' ? 'plan-free' : ''}`}>
+                            {plan.popular && <div className="plan-badge-popular">⭐ POPULAIRE</div>}
+
+                            <div className="plan-header-modern">
+                                <div className="plan-name-modern">
+                                    {plan.nameIcon && <span className="plan-icon-modern">{plan.nameIcon}</span>}
+                                    <span>{plan.name}</span>
+                                </div>
+                                <div className="plan-price-modern">
+                                    {plan.price === 0 ? (
+                                        <span className="price-free">GRATUIT</span>
+                                    ) : (
+                                        <>
+                                            <span className="price-amount-modern">{plan.price}€</span>
+                                            <span className="price-period-modern">/mois</span>
+                                        </>
+                                    )}
+                                </div>
                             </div>
 
-                            <div className="plan-features-clean">
+                            <div className="plan-features-modern">
                                 {plan.features.map((feature, index) => (
-                                    <div key={index} className={`feature-line-clean ${!feature.included ? 'feature-excluded' : ''}`}>
-                                        {feature.included ? <CheckCircle2 size={18} /> : <XCircle size={18} />}
+                                    <div key={index} className={`feature-line-modern ${!feature.included ? 'feature-excluded' : ''}`}>
+                                        {feature.included ? (
+                                            <CheckCircle2 size={16} className="feature-check-icon" />
+                                        ) : (
+                                            <XCircle size={16} className="feature-cross-icon" />
+                                        )}
                                         <span>{feature.text}</span>
                                     </div>
                                 ))}
                             </div>
 
                             <button
-                                className="plan-btn-clean"
+                                className={`plan-btn-modern ${plan.id === 'free' ? 'btn-free' : plan.popular ? 'btn-popular' : ''}`}
                                 onClick={() => handleSubscribe(plan)}
+                                disabled={plan.disabled}
                             >
-                                Rejoindre maintenant
+                                {plan.buttonText}
                             </button>
 
-                            <p className="plan-guarantee">Satisfait ou remboursé sous 7 jours</p>
+                            {plan.price > 0 && (
+                                <p className="plan-guarantee-modern">
+                                    <Shield size={14} /> Garantie satisfait ou remboursé 7 jours
+                                </p>
+                            )}
                         </div>
                     ))}
                 </div>

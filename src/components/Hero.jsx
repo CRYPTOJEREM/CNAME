@@ -310,15 +310,15 @@ const Hero = ({ setActiveTab }) => {
 
                     <div className="stats-community scroll-reveal">
                         <div className="stat-box">
-                            <div className="stat-number">10K+</div>
+                            <div className="stat-number">2K</div>
                             <div className="stat-label">Abonnés YouTube</div>
                         </div>
                         <div className="stat-box">
-                            <div className="stat-number">5K+</div>
+                            <div className="stat-number">300</div>
                             <div className="stat-label">Membres Discord</div>
                         </div>
                         <div className="stat-box">
-                            <div className="stat-number">500+</div>
+                            <div className="stat-number">50+</div>
                             <div className="stat-label">Lives réalisés</div>
                         </div>
                         <div className="stat-box">
@@ -354,7 +354,7 @@ const Hero = ({ setActiveTab }) => {
                                 <div className="telegram-card-top vip-top" />
                                 <div className="telegram-badge vip-badge"><Crown size={18} /> VIP</div>
                                 <h4>Acces VIP Premium</h4>
-                                <p className="telegram-price-text"><span className="price-amount">$49.99</span>/mois</p>
+                                <p className="telegram-price-text"><span className="price-amount">$29.99</span>/mois</p>
                                 <ul className="telegram-features">
                                     <li><span className="feature-check vip-check">✓</span> Tout le plan gratuit inclus</li>
                                     <li><span className="feature-check vip-check">✓</span> Signaux de trading exclusifs</li>

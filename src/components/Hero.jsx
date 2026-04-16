@@ -1,8 +1,9 @@
 
-import { useState, useEffect } from 'react'
-import axios from 'axios'
-import { AlertTriangle, BarChart3, Bell, CalendarDays, Crown, Eye, Gamepad2, Gem, Globe, GraduationCap, Handshake, Heart, Lock, MessageCircle, Monitor, Music, Play, Rocket, Smartphone, Target, TrendingUp, Trophy, Users, Video } from 'lucide-react';
+// import { useState, useEffect } from 'react'
+// import axios from 'axios'
+import { AlertTriangle, BarChart3, Bell, CalendarDays, Crown, /* Eye, Gamepad2, */ Gem, Globe, GraduationCap, Handshake, /* Heart, */ Lock, MessageCircle, /* Monitor, */ Music, /* Play, */ Rocket, Smartphone, Target, TrendingUp, Trophy, Users /* , Video */ } from 'lucide-react';
 
+/* Carousel désactivé - Variables et fonctions commentées
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api'
 
 const FALLBACK_VIDEOS = [
@@ -32,7 +33,9 @@ const getVideoUrl = (video) => {
     const videoId = getTwitchVideoId(video.embedUrl)
     return videoId ? `https://www.twitch.tv/videos/${videoId}` : video.embedUrl
 }
+*/
 
+/* VideoCard temporairement désactivé
 const VideoCard = ({ video }) => (
     <a href={getVideoUrl(video)} target="_blank" rel="noopener noreferrer" className="video-card" style={{ textDecoration: 'none', color: 'inherit' }}>
         <div className="video-thumbnail">
@@ -58,8 +61,10 @@ const VideoCard = ({ video }) => (
         </div>
     </a>
 )
+*/
 
 const Hero = ({ setActiveTab }) => {
+    /* Carousel désactivé temporairement
     const [videos, setVideos] = useState(FALLBACK_VIDEOS)
 
     useEffect(() => {
@@ -74,6 +79,7 @@ const Hero = ({ setActiveTab }) => {
 
     // Dupliquer pour effet boucle infinie
     const carouselVideos = [...videos, ...videos.slice(0, 2)]
+    */
 
     return (
         <>
@@ -87,8 +93,8 @@ const Hero = ({ setActiveTab }) => {
                 </div>
             </section>
 
-            {/* CARROUSEL VIDÉOS YOUTUBE/TWITCH */}
-            <section className="carousel-section scroll-reveal">
+            {/* CARROUSEL VIDÉOS YOUTUBE/TWITCH - Masqué temporairement */}
+            {/* <section className="carousel-section scroll-reveal">
                 <div className="carousel-header">
                     <h2 className="carousel-title"><Video size={22} /> NOS DERNIERS CONTENUS</h2>
                     <p className="carousel-subtitle">Analyses, lives, tutos et actualités crypto en continu</p>
@@ -101,7 +107,7 @@ const Hero = ({ setActiveTab }) => {
                         ))}
                     </div>
                 </div>
-            </section>
+            </section> */}
 
             {/* SECTION PROJET ÉCOSYSTÈME CRYPTO */}
             <section className="crypto-ecosystem">

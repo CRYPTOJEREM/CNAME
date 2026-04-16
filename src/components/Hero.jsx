@@ -1,7 +1,7 @@
 
 // import { useState, useEffect } from 'react'
 // import axios from 'axios'
-import { AlertTriangle, BarChart3, Bell, CalendarDays, Crown, /* Eye, Gamepad2, */ Gem, Globe, GraduationCap, Handshake, /* Heart, */ Lock, MessageCircle, /* Monitor, */ Music, /* Play, */ Rocket, Smartphone, Target, TrendingUp, Trophy, Users, Video } from 'lucide-react';
+import { AlertTriangle, BarChart3, Bell, CalendarDays, Crown, /* Eye, Gamepad2, */ Gem, Globe, GraduationCap, Handshake, /* Heart, */ Lock, MessageCircle, Monitor, Music, /* Play, */ Rocket, Smartphone, Target, TrendingUp, Trophy, Users, Video } from 'lucide-react';
 
 /* Carousel désactivé - Variables et fonctions commentées
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api'

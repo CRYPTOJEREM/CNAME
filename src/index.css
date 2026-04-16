@@ -11639,12 +11639,12 @@
     color: var(--accent-green);
 }
 
-/* Plans Grid Three Columns */
+/* Plans Grid Two Columns */
 .plans-grid-three {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 30px;
-    max-width: 1200px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 0 20px;
 }

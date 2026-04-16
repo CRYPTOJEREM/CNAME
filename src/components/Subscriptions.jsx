@@ -372,7 +372,7 @@ const Subscriptions = () => {
                 </p>
 
                 <div className="plans-grid-three">
-                    {subscriptionPlans.map((plan) => (
+                    {subscriptionPlans.filter(plan => plan.id !== 'vip').map((plan) => (
                         <div key={plan.id} className={`plan-card-modern ${plan.popular ? 'plan-popular' : ''} ${plan.id === 'free' ? 'plan-free' : ''}`}>
                             {plan.popular && <div className="plan-badge-popular">⭐ POPULAIRE</div>}
 

@@ -3,8 +3,8 @@ import { useState, useEffect } from 'react'
 import { useAuth } from '../contexts/AuthContext'
 import { useTheme } from '../contexts/ThemeContext'
 import {
-    Globe, Home, Newspaper, CalendarDays, BarChart3,
-    GraduationCap, Gem, MessageCircle, Shield, Lock,
+    Globe, Home, /* Newspaper, CalendarDays, BarChart3, GraduationCap, */
+    Gem, MessageCircle, Shield, Lock,
     Sparkles, Star, User, LogOut, ChevronDown, Sun, Moon
 } from 'lucide-react'
 
@@ -91,30 +91,30 @@ const Header = ({ activeTab, setActiveTab }) => {
                             <span className="nav-text">Accueil</span>
                         </button>
                     </li>
-                    <li>
+                    {/* <li>
                         <button onClick={() => handleTabClick('actualites')} className={activeTab === 'actualites' ? 'active' : ''}>
                             <span className="nav-icon"><Newspaper size={18} /></span>
                             <span className="nav-text">Actualités</span>
                         </button>
-                    </li>
-                    <li>
+                    </li> */}
+                    {/* <li>
                         <button onClick={() => handleTabClick('calendrier')} className={activeTab === 'calendrier' ? 'active' : ''}>
                             <span className="nav-icon"><CalendarDays size={18} /></span>
                             <span className="nav-text">Calendrier</span>
                         </button>
-                    </li>
-                    <li>
+                    </li> */}
+                    {/* <li>
                         <button onClick={() => handleTabClick('dashboard')} className={activeTab === 'dashboard' ? 'active' : ''}>
                             <span className="nav-icon"><BarChart3 size={18} /></span>
                             <span className="nav-text">Dashboard</span>
                         </button>
-                    </li>
-                    <li>
+                    </li> */}
+                    {/* <li>
                         <button onClick={() => handleTabClick('apprentissage')} className={activeTab === 'apprentissage' ? 'active' : ''}>
                             <span className="nav-icon"><GraduationCap size={18} /></span>
                             <span className="nav-text">Formation</span>
                         </button>
-                    </li>
+                    </li> */}
                     <li>
                         <button
                             onClick={() => handleTabClick('abonnements')}

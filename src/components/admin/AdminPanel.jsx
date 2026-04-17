@@ -6,6 +6,7 @@ import ContentManagement from './ContentManagement'
 import PaymentsDashboard from './PaymentsDashboard'
 import ReviewsManagement from './ReviewsManagement'
 import CarouselManagement from './CarouselManagement'
+import DailyVideoManagement from './DailyVideoManagement'
 import ContestManagement from './ContestManagement'
 import api from '../../services/api'
 import { Ban, BarChart3, BookOpen, CheckCircle2, Gem, Gift, Loader2, Mail, RefreshCw, Shield, Star, Target, TrendingUp, Users, Video, Wallet, XCircle } from 'lucide-react';
@@ -102,6 +103,13 @@ const AdminPanel = () => {
                     >
                         <span className="nav-icon"><Video size={16} /></span>
                         <span>Carrousel</span>
+                    </button>
+                    <button
+                        className={`admin-nav-btn ${activeSection === 'daily-video' ? 'active' : ''}`}
+                        onClick={() => setActiveSection('daily-video')}
+                    >
+                        <span className="nav-icon"><TrendingUp size={16} /></span>
+                        <span>Analyse du Jour</span>
                     </button>
                     <button
                         className={`admin-nav-btn ${activeSection === 'reviews' ? 'active' : ''}`}
@@ -237,6 +245,7 @@ const AdminPanel = () => {
                     {activeSection === 'content' && <ContentManagement />}
                     {activeSection === 'payments' && <PaymentsDashboard />}
                     {activeSection === 'carousel' && <CarouselManagement />}
+                    {activeSection === 'daily-video' && <DailyVideoManagement />}
                     {activeSection === 'reviews' && <ReviewsManagement />}
                     {activeSection === 'contest' && <ContestManagement />}
                 </div>

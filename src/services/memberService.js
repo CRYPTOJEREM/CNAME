@@ -89,6 +89,35 @@ export async function getPaymentHistory() {
     return response.data;
 }
 
+// ==========================================
+// ANALYSE DU JOUR
+// ==========================================
+
+export async function getDailyVideoToday() {
+    const response = await api.get('/daily-analysis/today');
+    return response.data;
+}
+
+export async function getDailyVideos() {
+    const response = await api.get('/daily-analysis/videos');
+    return response.data;
+}
+
+export async function getDailyVideoComments(videoId) {
+    const response = await api.get(`/daily-analysis/videos/${videoId}/comments`);
+    return response.data;
+}
+
+export async function postDailyVideoComment(videoId, content) {
+    const response = await api.post(`/daily-analysis/videos/${videoId}/comments`, { content });
+    return response.data;
+}
+
+export async function deleteDailyVideoComment(commentId) {
+    const response = await api.delete(`/daily-analysis/comments/${commentId}`);
+    return response.data;
+}
+
 const memberService = {
     getProfile,
     updateProfile,
@@ -97,7 +126,12 @@ const memberService = {
     getFormations,
     getFormationById,
     getSubscription,
-    getPaymentHistory
+    getPaymentHistory,
+    getDailyVideoToday,
+    getDailyVideos,
+    getDailyVideoComments,
+    postDailyVideoComment,
+    deleteDailyVideoComment
 };
 
 export default memberService;

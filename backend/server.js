@@ -101,6 +101,13 @@ const adminRoutes = require('./routes/admin.routes');
 app.use('/api/admin', adminRoutes);
 
 // ==========================================
+// ROUTES ANALYSE DU JOUR
+// ==========================================
+
+const dailyAnalysisRoutes = require('./routes/dailyAnalysis.routes');
+app.use('/api/daily-analysis', dailyAnalysisRoutes);
+
+// ==========================================
 // ROUTES REVIEWS (AVIS CLIENTS)
 // ==========================================
 

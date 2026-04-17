@@ -22,6 +22,7 @@ const Register = lazy(() => import('./components/auth/Register'))
 const EmailVerification = lazy(() => import('./components/auth/EmailVerification'))
 const ProtectedRoute = lazy(() => import('./components/common/ProtectedRoute'))
 const MemberArea = lazy(() => import('./components/member/MemberArea'))
+const DailyAnalysis = lazy(() => import('./components/DailyAnalysis'))
 const AdminPanel = lazy(() => import('./components/admin/AdminPanel'))
 
 function getInitialTab() {
@@ -156,6 +157,15 @@ function App() {
             <div id="membre" className="tab-content active">
               <ProtectedRoute>
                 <MemberArea setActiveTab={setActiveTab} />
+              </ProtectedRoute>
+            </div>
+          )}
+
+          {/* Analyse du Jour (Premium/VIP) */}
+          {activeTab === 'analyse' && (
+            <div id="analyse" className="tab-content active">
+              <ProtectedRoute requireSubscription="premium">
+                <DailyAnalysis />
               </ProtectedRoute>
             </div>
           )}

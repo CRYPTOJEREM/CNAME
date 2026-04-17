@@ -4,7 +4,7 @@ import { useAuth } from '../contexts/AuthContext'
 import { useTheme } from '../contexts/ThemeContext'
 import {
     Globe, Home, /* Newspaper, CalendarDays, BarChart3, GraduationCap, */
-    Gem, MessageCircle, Shield, Lock,
+    Gem, MessageCircle, Shield, Lock, TrendingUp,
     Sparkles, Star, User, LogOut, ChevronDown, Sun, Moon
 } from 'lucide-react'
 
@@ -124,6 +124,15 @@ const Header = ({ activeTab, setActiveTab }) => {
                             <span className="nav-text">Abonnements</span>
                         </button>
                     </li>
+                    {/* Analyse du Jour (premium/vip uniquement) */}
+                    {isAuthenticated && (user?.subscriptionStatus === 'premium' || user?.subscriptionStatus === 'vip') && (
+                        <li>
+                            <button onClick={() => handleTabClick('analyse')} className={activeTab === 'analyse' ? 'active' : ''}>
+                                <span className="nav-icon"><TrendingUp size={18} /></span>
+                                <span className="nav-text">Analyse du Jour</span>
+                            </button>
+                        </li>
+                    )}
                     <li>
                         <button onClick={() => handleTabClick('assistance')} className={activeTab === 'assistance' ? 'active' : ''}>
                             <span className="nav-icon"><MessageCircle size={18} /></span>

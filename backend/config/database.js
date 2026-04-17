@@ -25,7 +25,9 @@ function loadDB() {
             emailVerifications: [],
             refreshTokens: [],
             memberContent: [],
-            newsletterSubscribers: []
+            newsletterSubscribers: [],
+            dailyVideos: [],
+            dailyComments: []
         };
     }
 }

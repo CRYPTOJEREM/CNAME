@@ -72,15 +72,10 @@ if (process.env.FRONTEND_URL) {
 
 app.use(cors({
     origin: function (origin, callback) {
-        // Autoriser les requêtes sans origin uniquement en développement
-        if (!origin && !isProduction) {
+        // Autoriser les requêtes sans origin (curl, healthchecks, server-to-server)
+        // Exemples: curl depuis le serveur, monitoring tools, scripts internes
+        if (!origin) {
             return callback(null, true);
-        }
-
-        // En production, bloquer les requêtes sans origin
-        if (!origin && isProduction) {
-            console.log('❌ CORS bloqué: requête sans origin en production');
-            return callback(new Error('Origin header required'));
         }
 
         // Vérifier si l'origin est dans la liste autorisée (whitelist stricte)

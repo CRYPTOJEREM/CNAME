@@ -27,7 +27,8 @@ function loadDB() {
             memberContent: [],
             newsletterSubscribers: [],
             dailyVideos: [],
-            dailyComments: []
+            dailyComments: [],
+            userProgress: []
         };
     }
 }

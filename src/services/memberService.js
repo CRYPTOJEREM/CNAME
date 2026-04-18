@@ -65,6 +65,14 @@ export async function getFormationById(formationId) {
     return response.data;
 }
 
+/**
+ * Marquer un module comme complete
+ */
+export async function completeFormationModule(formationId, moduleId) {
+    const response = await api.post(`/member/formations/${formationId}/modules/${moduleId}/complete`);
+    return response.data;
+}
+
 // ==========================================
 // ABONNEMENT
 // ==========================================
@@ -125,6 +133,7 @@ const memberService = {
     getContentById,
     getFormations,
     getFormationById,
+    completeFormationModule,
     getSubscription,
     getPaymentHistory,
     getDailyVideoToday,

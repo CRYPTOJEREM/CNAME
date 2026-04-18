@@ -12,7 +12,9 @@ const {
     getContentByLevel,
     getFormationsByLevel,
     getFormationById,
-    getContentById
+    getFormationWithProgress,
+    getContentById,
+    completeModule
 } = require('../services/contentService');
 const { readDatabase } = require('../config/database');
 
@@ -173,10 +175,31 @@ router.get('/formations', authMiddleware, async (req, res) => {
         const userLevel = req.user.subscriptionStatus || 'free';
         const formations = getFormationsByLevel(userLevel);
 
+        // Enrichir chaque formation avec la progression
+        const db = readDatabase();
+        const userProgressRecords = (db.userProgress || []).filter(p => p.userId === req.user.id);
+
+        const enrichedFormations = formations.map(f => {
+            const modules = (f.modules || []).map((mod, index) => {
+                if (typeof mod === 'string') return { id: `legacy-${index}`, title: mod, order: index };
+                return mod;
+            });
+            const moduleCount = modules.length;
+            const completedCount = userProgressRecords.filter(p => p.formationId === f.id).length;
+            return {
+                ...f,
+                progress: {
+                    completed: Math.min(completedCount, moduleCount),
+                    total: moduleCount,
+                    percentage: moduleCount > 0 ? Math.round((Math.min(completedCount, moduleCount) / moduleCount) * 100) : 0
+                }
+            };
+        });
+
         res.json({
             success: true,
             userLevel: userLevel,
-            formations: formations
+            formations: enrichedFormations
         });
     } catch (error) {
         console.error('Erreur récupération formations:', error);
@@ -193,7 +216,7 @@ router.get('/formations', authMiddleware, async (req, res) => {
 router.get('/formations/:id', authMiddleware, async (req, res) => {
     try {
         const userLevel = req.user.subscriptionStatus || 'free';
-        const formation = getFormationById(req.params.id, userLevel);
+        const formation = getFormationWithProgress(req.params.id, req.user.id, userLevel);
 
         if (!formation) {
             return res.status(404).json({
@@ -208,6 +231,46 @@ router.get('/formations/:id', authMiddleware, async (req, res) => {
         });
     } catch (error) {
         console.error('Erreur récupération formation:', error);
+        res.status(500).json({
+            success: false,
+            error: 'Erreur serveur'
+        });
+    }
+});
+
+// ==========================================
+// POST /api/member/formations/:formationId/modules/:moduleId/complete
+// ==========================================
+router.post('/formations/:formationId/modules/:moduleId/complete', authMiddleware, async (req, res) => {
+    try {
+        const userLevel = req.user.subscriptionStatus || 'free';
+
+        const formation = getFormationById(req.params.formationId, userLevel);
+        if (!formation) {
+            return res.status(404).json({
+                success: false,
+                error: 'Formation introuvable ou accès refusé'
+            });
+        }
+
+        const result = completeModule(req.user.id, req.params.formationId, req.params.moduleId);
+
+        if (!result.success) {
+            return res.status(400).json({
+                success: false,
+                error: result.error
+            });
+        }
+
+        const updatedFormation = getFormationWithProgress(req.params.formationId, req.user.id, userLevel);
+
+        res.json({
+            success: true,
+            message: result.alreadyCompleted ? 'Module déjà complété' : 'Module complété avec succès',
+            formation: updatedFormation
+        });
+    } catch (error) {
+        console.error('Erreur complétion module:', error);
         res.status(500).json({
             success: false,
             error: 'Erreur serveur'

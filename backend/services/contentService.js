@@ -199,13 +199,141 @@ function deleteContent(contentId) {
     return true;
 }
 
+/**
+ * Obtenir la progression d'un utilisateur sur une formation
+ */
+function getUserFormationProgress(userId, formationId) {
+    const db = readDatabase();
+    const progress = db.userProgress || [];
+    return progress.filter(p => p.userId === userId && p.formationId === formationId);
+}
+
+/**
+ * Marquer un module comme complete (avec validation progressive)
+ */
+function completeModule(userId, formationId, moduleId) {
+    const db = readDatabase();
+
+    const formation = db.memberContent.find(
+        c => c.id === formationId && c.type === 'formation'
+    );
+    if (!formation) {
+        return { success: false, error: 'Formation introuvable' };
+    }
+
+    // Normaliser les modules (compatibilite ancien format string)
+    const modules = (formation.modules || []).map((mod, index) => {
+        if (typeof mod === 'string') {
+            return { id: `legacy-${index}`, title: mod, videoUrl: '', order: index };
+        }
+        return mod;
+    });
+
+    const moduleIndex = modules.findIndex(m => m.id === moduleId);
+    if (moduleIndex === -1) {
+        return { success: false, error: 'Module introuvable' };
+    }
+
+    const targetModule = modules[moduleIndex];
+
+    if (!db.userProgress) db.userProgress = [];
+    const alreadyCompleted = db.userProgress.find(
+        p => p.userId === userId && p.formationId === formationId && p.moduleId === moduleId
+    );
+    if (alreadyCompleted) {
+        return { success: true, alreadyCompleted: true };
+    }
+
+    // Validation progressive : le module precedent doit etre complete
+    if (targetModule.order > 0) {
+        const previousModule = modules.find(m => m.order === targetModule.order - 1);
+        if (previousModule) {
+            const prevCompleted = db.userProgress.find(
+                p => p.userId === userId && p.formationId === formationId && p.moduleId === previousModule.id
+            );
+            if (!prevCompleted) {
+                return { success: false, error: 'Vous devez completer le module precedent d\'abord' };
+            }
+        }
+    }
+
+    const { v4: uuidv4 } = require('uuid');
+    const progressRecord = {
+        id: `progress-${uuidv4()}`,
+        userId,
+        formationId,
+        moduleId,
+        completedAt: new Date().toISOString()
+    };
+
+    db.userProgress.push(progressRecord);
+    writeDatabase(db);
+
+    return { success: true, progress: progressRecord };
+}
+
+/**
+ * Obtenir une formation enrichie avec la progression utilisateur
+ */
+function getFormationWithProgress(formationId, userId, userLevel) {
+    const formation = getFormationById(formationId, userLevel);
+    if (!formation) return null;
+
+    const progress = getUserFormationProgress(userId, formationId);
+    const completedModuleIds = new Set(progress.map(p => p.moduleId));
+
+    // Normaliser et trier les modules
+    const sortedModules = (formation.modules || []).map((mod, index) => {
+        if (typeof mod === 'string') {
+            return { id: `legacy-${index}`, title: mod, videoUrl: '', order: index };
+        }
+        return mod;
+    }).sort((a, b) => a.order - b.order);
+
+    const enrichedModules = sortedModules.map((mod, index) => {
+        const isCompleted = completedModuleIds.has(mod.id);
+        let isUnlocked = false;
+
+        if (mod.order === 0) {
+            isUnlocked = true;
+        } else {
+            const prevModule = sortedModules[index - 1];
+            if (prevModule) {
+                isUnlocked = completedModuleIds.has(prevModule.id);
+            }
+        }
+
+        return {
+            ...mod,
+            completed: isCompleted,
+            unlocked: isUnlocked || isCompleted,
+            videoUrl: (isUnlocked || isCompleted) ? mod.videoUrl : null
+        };
+    });
+
+    return {
+        ...formation,
+        modules: enrichedModules,
+        progress: {
+            completed: completedModuleIds.size,
+            total: sortedModules.length,
+            percentage: sortedModules.length > 0
+                ? Math.round((completedModuleIds.size / sortedModules.length) * 100)
+                : 0
+        }
+    };
+}
+
 module.exports = {
     getContentByLevel,
     getFormationsByLevel,
     getFormationById,
+    getFormationWithProgress,
     getContentById,
     getContentStats,
     createContent,
     updateContent,
-    deleteContent
+    deleteContent,
+    getUserFormationProgress,
+    completeModule
 };

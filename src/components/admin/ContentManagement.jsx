@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import api from '../../services/api'
-import { BookOpen, CheckCircle2, Clock, Gem, Star, XCircle } from 'lucide-react';
+import { BookOpen, CheckCircle2, Clock, Gem, Plus, Star, Trash2, XCircle } from 'lucide-react';
 
 const ContentManagement = () => {
     const [contents, setContents] = useState([])
@@ -312,6 +312,105 @@ const ContentManagement = () => {
                                     />
                                 </div>
                             </div>
+
+                            {/* Modules - uniquement pour les formations */}
+                            {editingContent.type === 'formation' && (
+                                <div className="form-group" style={{ marginBottom: '20px' }}>
+                                    <label style={{ marginBottom: '8px', display: 'block', fontWeight: '700' }}>
+                                        <BookOpen size={14} style={{ marginRight: '6px' }} />
+                                        Modules de la formation
+                                    </label>
+                                    <p style={{ color: 'var(--text-secondary, #888)', fontSize: '13px', marginBottom: '12px', marginTop: 0 }}>
+                                        Chaque module a un titre et une URL YouTube embed. L'ordre determine la progression.
+                                    </p>
+
+                                    {(editingContent.modules || []).map((mod, index) => {
+                                        const modTitle = typeof mod === 'string' ? mod : (mod.title || '');
+                                        const modVideoUrl = typeof mod === 'string' ? '' : (mod.videoUrl || '');
+
+                                        return (
+                                            <div key={index} style={{
+                                                display: 'flex',
+                                                gap: '8px',
+                                                marginBottom: '8px',
+                                                alignItems: 'center'
+                                            }}>
+                                                <span style={{
+                                                    color: 'var(--accent-blue, #2E90FA)',
+                                                    fontWeight: '800',
+                                                    minWidth: '28px',
+                                                    fontSize: '14px',
+                                                    textAlign: 'center'
+                                                }}>
+                                                    #{index + 1}
+                                                </span>
+                                                <input
+                                                    type="text"
+                                                    value={modTitle}
+                                                    onChange={(e) => {
+                                                        const newModules = [...(editingContent.modules || [])];
+                                                        if (typeof newModules[index] === 'string') {
+                                                            newModules[index] = { id: `mod-${Date.now()}-${index}`, title: e.target.value, videoUrl: '', order: index };
+                                                        } else {
+                                                            newModules[index] = { ...newModules[index], title: e.target.value };
+                                                        }
+                                                        setEditingContent({ ...editingContent, modules: newModules });
+                                                    }}
+                                                    className="form-input"
+                                                    placeholder="Titre du module"
+                                                    style={{ flex: 1 }}
+                                                />
+                                                <input
+                                                    type="text"
+                                                    value={modVideoUrl}
+                                                    onChange={(e) => {
+                                                        const newModules = [...(editingContent.modules || [])];
+                                                        if (typeof newModules[index] === 'string') {
+                                                            newModules[index] = { id: `mod-${Date.now()}-${index}`, title: newModules[index], videoUrl: e.target.value, order: index };
+                                                        } else {
+                                                            newModules[index] = { ...newModules[index], videoUrl: e.target.value };
+                                                        }
+                                                        setEditingContent({ ...editingContent, modules: newModules });
+                                                    }}
+                                                    className="form-input"
+                                                    placeholder="https://www.youtube.com/embed/..."
+                                                    style={{ flex: 1 }}
+                                                />
+                                                <button
+                                                    type="button"
+                                                    onClick={() => {
+                                                        const newModules = (editingContent.modules || []).filter((_, i) => i !== index);
+                                                        newModules.forEach((m, i) => { if (typeof m !== 'string') m.order = i; });
+                                                        setEditingContent({ ...editingContent, modules: newModules });
+                                                    }}
+                                                    className="btn-delete"
+                                                    style={{ padding: '8px', minWidth: '36px' }}
+                                                >
+                                                    <Trash2 size={14} />
+                                                </button>
+                                            </div>
+                                        );
+                                    })}
+
+                                    <button
+                                        type="button"
+                                        onClick={() => {
+                                            const newModules = [...(editingContent.modules || [])];
+                                            newModules.push({
+                                                id: `mod-${Date.now()}`,
+                                                title: '',
+                                                videoUrl: '',
+                                                order: newModules.length
+                                            });
+                                            setEditingContent({ ...editingContent, modules: newModules });
+                                        }}
+                                        className="btn-edit"
+                                        style={{ marginTop: '8px', display: 'flex', alignItems: 'center', gap: '6px' }}
+                                    >
+                                        <Plus size={14} /> Ajouter un module
+                                    </button>
+                                </div>
+                            )}
 
                             <div className="form-row">
                                 <div className="form-group">

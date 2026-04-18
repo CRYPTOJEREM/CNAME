@@ -237,9 +237,9 @@
       "description": "Maîtrisez les indicateurs techniques pour le trading",
       "content": "https://www.youtube.com/embed/dQw4w9WgXcQ",
       "modules": [
-        "Module 1: RSI et MACD",
-        "Module 2: Fibonacci et Supports/Résistances",
-        "Module 3: Patterns de chandeliers japonais"
+        { "id": "mod-p1-1", "title": "RSI et MACD", "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ", "order": 0 },
+        { "id": "mod-p1-2", "title": "Fibonacci et Supports/Resistances", "videoUrl": "", "order": 1 },
+        { "id": "mod-p1-3", "title": "Patterns de chandeliers japonais", "videoUrl": "", "order": 2 }
       ],
       "createdAt": "2026-02-07T00:00:00.000Z",
       "published": true
@@ -265,10 +265,10 @@
       "description": "Créez vos propres bots de trading",
       "content": "https://www.youtube.com/embed/dQw4w9WgXcQ",
       "modules": [
-        "Module 1: Introduction au trading algo",
-        "Module 2: Backtesting de stratégies",
-        "Module 3: Déploiement de bots",
-        "Module 4: Gestion des risques"
+        { "id": "mod-v1-1", "title": "Introduction au trading algo", "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ", "order": 0 },
+        { "id": "mod-v1-2", "title": "Backtesting de strategies", "videoUrl": "", "order": 1 },
+        { "id": "mod-v1-3", "title": "Deploiement de bots", "videoUrl": "", "order": 2 },
+        { "id": "mod-v1-4", "title": "Gestion des risques", "videoUrl": "", "order": 3 }
       ],
       "createdAt": "2026-02-07T00:00:00.000Z",
       "published": true
@@ -362,5 +362,6 @@
     }
   ],
   "telegramSurveys": [],
-  "contestWinners": []
+  "contestWinners": [],
+  "userProgress": []
 }

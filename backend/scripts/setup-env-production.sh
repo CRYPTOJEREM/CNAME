@@ -55,7 +55,7 @@ NODE_ENV="production"
 # ==========================================
 
 FRONTEND_URL="https://lasphere.xyz"
-BACKEND_URL="http://194.87.45.209:3001"
+BACKEND_URL="http://localhost:3001"
 PORT=3001
 
 # ==========================================

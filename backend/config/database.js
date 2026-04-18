@@ -140,12 +140,15 @@ async function seedAdmin() {
 
     // Valider la force du mot de passe en production
     if (isProduction && adminPassword) {
-        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{12,}$/;
+        // Regex assouplie : accepte N'IMPORTE QUEL caractère spécial
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d]).{12,}$/;
         if (!passwordRegex.test(adminPassword)) {
             console.error('❌ ERREUR FATALE: ADMIN_PASSWORD trop faible');
             console.error('   Le mot de passe doit contenir au minimum:');
             console.error('   - 12 caractères');
-            console.error('   - 1 majuscule, 1 minuscule, 1 chiffre, 1 caractère spécial');
+            console.error('   - 1 majuscule, 1 minuscule');
+            console.error('   - 1 chiffre, 1 caractère spécial (n\'importe lequel)');
+            console.error(`   Votre mot de passe actuel: ${adminPassword.substring(0, 3)}... (${adminPassword.length} chars)`);
             process.exit(1);
         }
     }

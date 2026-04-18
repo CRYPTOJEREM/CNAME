@@ -3,6 +3,7 @@ const router = express.Router();
 const { v4: uuidv4 } = require('uuid');
 const { readDatabase, writeDatabase } = require('../config/database');
 const { authMiddleware, requireSubscription, requireAdmin } = require('../middleware/auth');
+const { sanitizeInput } = require('../utils/sanitize');
 
 // ==========================================
 // HELPER: Parser YouTube URL
@@ -66,8 +67,8 @@ router.post('/admin/videos', authMiddleware, requireAdmin, async (req, res) => {
 
         const newVideo = {
             id: uuidv4(),
-            title,
-            description: description || '',
+            title: sanitizeInput(title),
+            description: sanitizeInput(description || ''),
             youtubeUrl,
             embedUrl: `https://www.youtube.com/embed/${videoId}`,
             thumbnailUrl: `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
@@ -228,9 +229,9 @@ router.post('/videos/:id/comments', authMiddleware, requireSubscription('premium
             id: uuidv4(),
             dailyVideoId: req.params.id,
             userId: req.user.id,
-            userName: `${req.user.firstName} ${req.user.lastName?.charAt(0) || ''}.`,
+            userName: `${sanitizeInput(req.user.firstName)} ${req.user.lastName?.charAt(0) || ''}.`,
             userSubscription: req.user.subscriptionStatus,
-            content: content.trim(),
+            content: sanitizeInput(content.trim()),
             createdAt: new Date().toISOString()
         };
 

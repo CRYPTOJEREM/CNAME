@@ -5,9 +5,11 @@ import axios from 'axios';
 // En production: https://api.lasphere.xyz/api
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 
-// DEBUG: Afficher l'URL utilisée dans la console
-console.log('🔧 API_URL configurée:', API_URL);
-console.log('🔧 VITE_API_URL depuis env:', import.meta.env.VITE_API_URL);
+// DEBUG: Afficher l'URL utilisée dans la console (développement uniquement)
+if (import.meta.env.DEV) {
+    console.log('🔧 API_URL configurée:', API_URL);
+    console.log('🔧 VITE_API_URL depuis env:', import.meta.env.VITE_API_URL);
+}
 
 // Instance Axios avec configuration
 const api = axios.create({

@@ -114,12 +114,25 @@ router.put('/profile',
 router.get('/content', authMiddleware, async (req, res) => {
     try {
         const userLevel = req.user.subscriptionStatus || 'free';
-        const content = getContentByLevel(userLevel);
+        const allContent = getContentByLevel(userLevel);
+
+        // Pagination
+        const page = parseInt(req.query.page) || 1;
+        const limit = parseInt(req.query.limit) || 20;
+        const offset = (page - 1) * limit;
+
+        const paginatedContent = allContent.slice(offset, offset + limit);
 
         res.json({
             success: true,
             userLevel: userLevel,
-            content: content
+            content: paginatedContent,
+            pagination: {
+                total: allContent.length,
+                page,
+                limit,
+                totalPages: Math.ceil(allContent.length / limit)
+            }
         });
     } catch (error) {
         console.error('Erreur récupération contenu:', error);

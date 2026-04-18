@@ -1,6 +1,23 @@
 // Charger les variables d'environnement en premier
 require('dotenv').config();
 
+// ==========================================
+// SÉCURITÉ - Vérifications au démarrage
+// ==========================================
+
+const isProduction = process.env.NODE_ENV === 'production';
+
+// JWT_SECRET obligatoire en production
+if (isProduction && !process.env.JWT_SECRET) {
+    console.error('❌ ERREUR FATALE: JWT_SECRET non défini en production');
+    console.error('   Veuillez définir la variable d\'environnement JWT_SECRET');
+    process.exit(1);
+}
+
+if (!process.env.JWT_SECRET) {
+    console.warn('⚠️  WARNING: JWT_SECRET non défini - utilisez une clé forte en production');
+}
+
 const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
@@ -55,25 +72,34 @@ if (process.env.FRONTEND_URL) {
 
 app.use(cors({
     origin: function (origin, callback) {
-        // Autoriser les requêtes sans origin (mobile apps, curl, etc.)
-        if (!origin) return callback(null, true);
-
-        // Autoriser tous les sous-domaines vercel.app
-        if (origin.includes('.vercel.app')) {
+        // Autoriser les requêtes sans origin uniquement en développement
+        if (!origin && !isProduction) {
             return callback(null, true);
         }
 
-        // Vérifier si l'origin est dans la liste autorisée
+        // En production, bloquer les requêtes sans origin
+        if (!origin && isProduction) {
+            console.log('❌ CORS bloqué: requête sans origin en production');
+            return callback(new Error('Origin header required'));
+        }
+
+        // Vérifier si l'origin est dans la liste autorisée (whitelist stricte)
         if (allowedOrigins.indexOf(origin) !== -1) {
             callback(null, true);
         } else {
             console.log('❌ CORS bloqué pour:', origin);
+            console.log('   Origins autorisés:', allowedOrigins.join(', '));
             callback(new Error('Not allowed by CORS'));
         }
     },
     credentials: true
 }));
-app.use(express.json());
+
+// Compression gzip/brotli pour optimiser la taille des réponses
+const compression = require('compression');
+app.use(compression());
+
+app.use(express.json({ limit: '10mb' })); // Limite taille body
 app.use(cookieParser());
 
 // Servir les fichiers statiques (page de test Telegram)
@@ -253,7 +279,23 @@ app.get('/', (req, res) => {
             auth: '/api/auth/*',
             member: '/api/member/*',
             public: '/api/public/*',
-            payments: '/api/*'
+            payments: '/api/*',
+            health: '/health'
+        }
+    });
+});
+
+// Health check endpoint pour monitoring
+app.get('/health', (req, res) => {
+    const db = readDatabase();
+    res.json({
+        status: 'ok',
+        uptime: process.uptime(),
+        timestamp: new Date().toISOString(),
+        environment: process.env.NODE_ENV || 'development',
+        database: {
+            users: db.users?.length || 0,
+            payments: db.payments?.length || 0
         }
     });
 });
@@ -429,10 +471,41 @@ app.post('/api/nowpayments-webhook', async (req, res) => {
     }
 });
 
-// Liste des paiements (pour admin)
-app.get('/api/payments', (req, res) => {
-    const db = readDatabase();
-    res.json(db.payments);
+// Liste des paiements (pour admin uniquement - PROTÉGÉ)
+app.get('/api/payments', authMiddleware, async (req, res) => {
+    try {
+        // Vérifier que l'utilisateur est admin
+        if (req.user.role !== 'admin') {
+            return res.status(403).json({
+                success: false,
+                error: 'Accès refusé - Réservé aux administrateurs'
+            });
+        }
+
+        const db = readDatabase();
+
+        // Pagination
+        const page = parseInt(req.query.page) || 1;
+        const limit = parseInt(req.query.limit) || 50;
+        const offset = (page - 1) * limit;
+
+        const payments = db.payments || [];
+        const paginatedPayments = payments.slice(offset, offset + limit);
+
+        res.json({
+            success: true,
+            data: paginatedPayments,
+            pagination: {
+                total: payments.length,
+                page,
+                limit,
+                totalPages: Math.ceil(payments.length / limit)
+            }
+        });
+    } catch (error) {
+        console.error('Erreur récupération paiements:', error);
+        res.status(500).json({ success: false, error: 'Erreur serveur' });
+    }
 });
 
 // ==========================================
@@ -500,6 +573,39 @@ app.get('/api/public/content/:id', (req, res) => {
             error: 'Erreur serveur'
         });
     }
+});
+
+// ==========================================
+// GESTION GLOBALE DES ERREURS
+// ==========================================
+
+// 404 handler - Route non trouvée
+app.use((req, res, next) => {
+    res.status(404).json({
+        success: false,
+        error: 'Route non trouvée',
+        path: req.path
+    });
+});
+
+// Global error handler - Doit être en dernier
+app.use((err, req, res, next) => {
+    console.error('❌ Erreur non gérée:', {
+        message: err.message,
+        stack: isProduction ? undefined : err.stack,
+        path: req.path,
+        method: req.method
+    });
+
+    // Ne pas exposer les détails d'erreur en production
+    const statusCode = err.statusCode || 500;
+    const message = isProduction ? 'Erreur serveur interne' : err.message;
+
+    res.status(statusCode).json({
+        success: false,
+        error: message,
+        ...(isProduction ? {} : { stack: err.stack })
+    });
 });
 
 // ==========================================

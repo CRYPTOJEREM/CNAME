@@ -20,6 +20,10 @@ backend/.env.local
 
 # Database (local development only)
 backend/database.json
+backend/database.production.json
+backend/database.*.json
+backend/*.backup*.json
+backend/backups/
 
 # Editor directories and files
 .vscode/*

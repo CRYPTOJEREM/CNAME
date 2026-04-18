@@ -1,6 +1,29 @@
 const express = require('express');
 const { v4: uuidv4 } = require('uuid');
 const router = express.Router();
+const rateLimit = require('express-rate-limit');
+
+// Rate limiting pour les routes d'authentification
+const authLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 5, // 5 tentatives max
+    message: {
+        success: false,
+        error: 'Trop de tentatives, veuillez réessayer dans 15 minutes'
+    },
+    standardHeaders: true,
+    legacyHeaders: false
+});
+
+// Rate limiting plus permissif pour l'inscription
+const registerLimiter = rateLimit({
+    windowMs: 60 * 60 * 1000, // 1 heure
+    max: 3, // 3 inscriptions max par IP
+    message: {
+        success: false,
+        error: 'Trop d\'inscriptions depuis cette adresse IP, réessayez plus tard'
+    }
+});
 
 // Services
 const {
@@ -41,7 +64,7 @@ const {
  * POST /api/auth/register
  * Inscription d'un nouvel utilisateur
  */
-router.post('/register', registerValidation, async (req, res) => {
+router.post('/register', registerLimiter, registerValidation, async (req, res) => {
     try {
         const { email, password, firstName, lastName, telegramUsername, bitunixUid, newsletterOptIn } = req.body;
 
@@ -109,7 +132,7 @@ router.post('/register', registerValidation, async (req, res) => {
  * POST /api/auth/login
  * Connexion utilisateur
  */
-router.post('/login', loginValidation, async (req, res) => {
+router.post('/login', authLimiter, loginValidation, async (req, res) => {
     try {
         const { email, password } = req.body;
 
@@ -337,7 +360,7 @@ router.get('/verify-email', async (req, res) => {
  * POST /api/auth/resend-verification
  * Renvoyer l'email de vérification
  */
-router.post('/resend-verification', async (req, res) => {
+router.post('/resend-verification', authLimiter, async (req, res) => {
     try {
         const { email } = req.body;
 

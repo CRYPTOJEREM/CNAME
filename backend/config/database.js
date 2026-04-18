@@ -129,7 +129,29 @@ async function seedAdmin() {
     const { v4: uuidv4 } = require('uuid');
 
     const adminEmail = process.env.ADMIN_EMAIL || 'admin@lasphere.com';
-    const adminPassword = process.env.ADMIN_PASSWORD || 'Admin@2026!';
+    const adminPassword = process.env.ADMIN_PASSWORD;
+
+    // En production, le mot de passe admin DOIT être défini
+    if (isProduction && !adminPassword) {
+        console.error('❌ ERREUR FATALE: ADMIN_PASSWORD non défini en production');
+        console.error('   Veuillez définir une variable d\'environnement ADMIN_PASSWORD forte');
+        process.exit(1);
+    }
+
+    // Valider la force du mot de passe en production
+    if (isProduction && adminPassword) {
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{12,}$/;
+        if (!passwordRegex.test(adminPassword)) {
+            console.error('❌ ERREUR FATALE: ADMIN_PASSWORD trop faible');
+            console.error('   Le mot de passe doit contenir au minimum:');
+            console.error('   - 12 caractères');
+            console.error('   - 1 majuscule, 1 minuscule, 1 chiffre, 1 caractère spécial');
+            process.exit(1);
+        }
+    }
+
+    // Fallback sécurisé en développement uniquement
+    const finalPassword = adminPassword || 'Admin@2026!DevOnly!';
 
     const db = loadDB();
     if (!db.users) db.users = [];
@@ -137,7 +159,7 @@ async function seedAdmin() {
     const existingAdmin = db.users.find(u => u.email === adminEmail);
 
     if (!existingAdmin) {
-        const hash = await bcrypt.hash(adminPassword, 10);
+        const hash = await bcrypt.hash(finalPassword, 10);
         db.users.push({
             id: uuidv4(),
             email: adminEmail,
@@ -155,7 +177,7 @@ async function seedAdmin() {
         saveDB(db);
         console.log(`✅ Compte admin créé : ${adminEmail}`);
     } else {
-        const hash = await bcrypt.hash(adminPassword, 10);
+        const hash = await bcrypt.hash(finalPassword, 10);
         existingAdmin.passwordHash = hash;
         existingAdmin.updatedAt = new Date().toISOString();
         saveDB(db);

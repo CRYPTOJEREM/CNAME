@@ -148,27 +148,113 @@ async function verifyEmailConfig() {
 }
 
 /**
- * Template HTML de base pour les emails
+ * Template HTML moderne et professionnel pour les emails
+ * Design responsive, compatible tous clients email
  */
-function getEmailTemplate(content) {
+function getEmailTemplate(content, ctaText = '', ctaLink = '') {
+    const currentYear = new Date().getFullYear();
+
     return `<!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>La Sphere</title>
+    <!--[if mso]>
+    <style type="text/css">
+        body, table, td {font-family: Arial, Helvetica, sans-serif !important;}
+    </style>
+    <![endif]-->
 </head>
-<body style="font-family: Arial, Helvetica, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9;">
-<table width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px; margin: 0 auto;">
-<tr><td style="text-align: center; padding: 20px 0;">
-<strong style="font-size: 22px; color: #0a0e27;">LA SPHERE</strong>
-</td></tr>
-<tr><td style="background: #ffffff; padding: 30px; border-radius: 8px; border: 1px solid #e0e0e0;">
-${content}
-</td></tr>
-<tr><td style="text-align: center; padding: 15px 0; font-size: 12px; color: #999;">
-<p>La Sphere - lasphere.xyz</p>
-</td></tr>
-</table>
+<body style="margin: 0; padding: 0; background-color: #f4f7fa; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
+    <!-- Wrapper complet -->
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #f4f7fa; padding: 40px 20px;">
+        <tr>
+            <td align="center">
+                <!-- Container principal -->
+                <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="max-width: 600px; width: 100%; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+
+                    <!-- Header avec gradient -->
+                    <tr>
+                        <td style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px 30px; text-align: center;">
+                            <h1 style="margin: 0; color: #ffffff; font-size: 32px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;">
+                                LA SPHERE
+                            </h1>
+                            <p style="margin: 10px 0 0 0; color: rgba(255,255,255,0.9); font-size: 14px; font-weight: 300; letter-spacing: 1px;">
+                                Crypto Trading Premium
+                            </p>
+                        </td>
+                    </tr>
+
+                    <!-- Contenu principal -->
+                    <tr>
+                        <td style="padding: 50px 40px; color: #2d3748; font-size: 16px; line-height: 1.8;">
+                            ${content}
+                        </td>
+                    </tr>
+
+                    ${ctaText && ctaLink ? `
+                    <!-- Call to Action -->
+                    <tr>
+                        <td style="padding: 0 40px 50px 40px; text-align: center;">
+                            <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin: 0 auto;">
+                                <tr>
+                                    <td style="border-radius: 8px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);">
+                                        <a href="${ctaLink}" target="_blank" style="display: inline-block; padding: 16px 48px; color: #ffffff; text-decoration: none; font-weight: 600; font-size: 16px; letter-spacing: 0.5px;">
+                                            ${ctaText}
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    ` : ''}
+
+                    <!-- Divider -->
+                    <tr>
+                        <td style="padding: 0 40px;">
+                            <div style="border-top: 1px solid #e2e8f0;"></div>
+                        </td>
+                    </tr>
+
+                    <!-- Footer -->
+                    <tr>
+                        <td style="padding: 30px 40px; text-align: center; background-color: #f8fafc;">
+                            <p style="margin: 0 0 15px 0; color: #718096; font-size: 14px; line-height: 1.6;">
+                                <strong style="color: #4a5568;">La Sphere</strong><br>
+                                Votre plateforme de trading crypto premium
+                            </p>
+                            <p style="margin: 0 0 15px 0;">
+                                <a href="https://lasphere.xyz" target="_blank" style="color: #667eea; text-decoration: none; font-weight: 500; font-size: 14px;">
+                                    lasphere.xyz
+                                </a>
+                            </p>
+                            <p style="margin: 0; color: #a0aec0; font-size: 12px;">
+                                © ${currentYear} La Sphere. Tous droits réservés.
+                            </p>
+                            <p style="margin: 10px 0 0 0; color: #cbd5e0; font-size: 11px;">
+                                Vous recevez cet email car vous êtes inscrit sur La Sphere
+                            </p>
+                        </td>
+                    </tr>
+
+                </table>
+
+                <!-- Spacer après le container -->
+                <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="max-width: 600px; width: 100%;">
+                    <tr>
+                        <td style="padding: 20px 0; text-align: center;">
+                            <p style="margin: 0; color: #a0aec0; font-size: 12px;">
+                                Problème d'affichage ? <a href="${process.env.FRONTEND_URL}" target="_blank" style="color: #667eea; text-decoration: none;">Voir dans le navigateur</a>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+
+            </td>
+        </tr>
+    </table>
 </body>
 </html>`;
 }

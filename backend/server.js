@@ -31,6 +31,9 @@ const { authMiddleware } = require('./middleware/auth');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// Trust proxy pour rate limiting derrière Nginx
+app.set('trust proxy', 1);
+
 // ==========================================
 // CONFIGURATION - Maintenant dans .env
 // ==========================================

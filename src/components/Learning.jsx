@@ -139,13 +139,41 @@ const Learning = ({ setActiveTab }) => {
                         <div className="videos-grid">
                             {module.videos.map((video, videoIndex) => (
                                 <div key={videoIndex} className="video-module-card">
-                                    <div className="video-container" style={{ position: 'relative' }}>
-                                        <iframe
-                                            src={`https://www.youtube.com/embed/${video.id}`}
-                                            allowFullScreen
-                                            title={video.title}
-                                            style={!isAuthenticated ? { filter: 'blur(10px)', pointerEvents: 'none' } : {}}
-                                        ></iframe>
+                                    <div className="video-container" style={{ position: 'relative', cursor: isAuthenticated ? 'pointer' : 'default' }}
+                                         onClick={() => isAuthenticated && window.open(`https://www.youtube.com/watch?v=${video.id}`, '_blank')}>
+                                        {/* Thumbnail YouTube au lieu d'iframe pour éviter erreurs WebGL */}
+                                        <img
+                                            src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
+                                            alt={video.title}
+                                            style={{
+                                                width: '100%',
+                                                height: '100%',
+                                                objectFit: 'cover',
+                                                filter: !isAuthenticated ? 'blur(10px)' : 'none'
+                                            }}
+                                        />
+                                        {/* Play button */}
+                                        {isAuthenticated && (
+                                            <div style={{
+                                                position: 'absolute',
+                                                top: '50%',
+                                                left: '50%',
+                                                transform: 'translate(-50%, -50%)',
+                                                width: '68px',
+                                                height: '48px',
+                                                background: 'rgba(255, 0, 0, 0.9)',
+                                                borderRadius: '12px',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                transition: 'all 0.2s'
+                                            }}>
+                                                <svg height="100%" version="1.1" viewBox="0 0 68 48" width="100%">
+                                                    <path d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#f00"></path>
+                                                    <path d="M 45,24 27,14 27,34" fill="#fff"></path>
+                                                </svg>
+                                            </div>
+                                        )}
                                         {!isAuthenticated && (
                                             <div
                                                 className="video-overlay"

@@ -1,98 +1,81 @@
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useAuth } from '../contexts/AuthContext'
 import { BarChart3, Brain, Clock, Flame, Gem, Globe, GraduationCap, Lock, Sparkles, Target, TrendingUp, Zap } from 'lucide-react';
+import memberService from '../services/memberService';
 
 const Learning = ({ setActiveTab }) => {
     const [category, setCategory] = useState('trading')
-    const { isAuthenticated } = useAuth()
+    const [formations, setFormations] = useState([])
+    const [loading, setLoading] = useState(true)
+    const { isAuthenticated, user } = useAuth()
 
-    const tradingModules = [
-        {
-            icon: <span className="icon-container primary"><BarChart3 size={22} /></span>, title: "Module 1 : Les Bases de l'Analyse Technique",
-            videos: [
-                { id: "dQw4w9WgXcQ", title: "Supports et Résistances", desc: "Apprenez à identifier et tracer vos niveaux clés pour anticiper les mouvements de prix.", level: "debutant", duration: "15:30" },
-                { id: "dQw4w9WgXcQ", title: "Les Figures Chartistes", desc: "Comprendre les patterns classiques : triangles, drapeaux, têtes-épaules.", level: "debutant", duration: "22:45" },
-                { id: "dQw4w9WgXcQ", title: "Les Moyennes Mobiles", desc: "Utiliser les MM20, MM50, MM200 pour identifier les tendances.", level: "intermediaire", duration: "18:20" }
-            ]
-        },
-        {
-            icon: <span className="icon-container primary"><TrendingUp size={22} /></span>, title: "Module 2 : Indicateurs Techniques Avancés",
-            videos: [
-                { id: "dQw4w9WgXcQ", title: "RSI et Divergences", desc: "Maîtriser le RSI pour détecter les sur-achats et sur-ventes.", level: "intermediaire", duration: "25:10" },
-                { id: "dQw4w9WgXcQ", title: "MACD et Signaux", desc: "Utiliser le MACD pour confirmer les tendances et les retournements.", level: "intermediaire", duration: "20:35" },
-                { id: "dQw4w9WgXcQ", title: "Ichimoku Cloud", desc: "Analyser les tendances avec l'indicateur japonais Ichimoku.", level: "avance", duration: "30:15" }
-            ]
-        },
-        {
-            icon: <span className="icon-container primary"><Target size={22} /></span>, title: "Module 3 : Stratégies de Trading",
-            videos: [
-                { id: "dQw4w9WgXcQ", title: "Stratégie Swing Trading", desc: "Capturer les mouvements de plusieurs jours avec le swing trading.", level: "intermediaire", duration: "28:40" },
-                { id: "dQw4w9WgXcQ", title: "Day Trading Crypto", desc: "Techniques pour trader intraday sur les crypto-monnaies.", level: "avance", duration: "35:20" },
-                { id: "dQw4w9WgXcQ", title: "Gestion du Risque", desc: "Risk/Reward, stop-loss, et taille de position optimale.", level: "intermediaire", duration: "22:50" }
-            ]
-        }
-    ]
+    // Charger les formations depuis l'API
+    useEffect(() => {
+        const loadFormations = async () => {
+            try {
+                if (isAuthenticated) {
+                    const response = await memberService.getFormations();
+                    setFormations(response.formations || []);
+                }
+            } catch (error) {
+                console.error('Erreur chargement formations:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
 
-    const defiModules = [
-        {
-            icon: <span className="icon-container secondary"><Globe size={22} /></span>, title: "Module 1 : Introduction à la DeFi",
-            videos: [
-                { id: "dQw4w9WgXcQ", title: "Qu'est-ce que la DeFi ?", desc: "Comprendre les bases de la finance décentralisée.", level: "debutant", duration: "12:30" },
-                { id: "dQw4w9WgXcQ", title: "Wallets et Sécurité", desc: "Configurer MetaMask et sécuriser vos fonds.", level: "debutant", duration: "18:45" },
-                { id: "dQw4w9WgXcQ", title: "Les DEX Expliqués", desc: "Utiliser Uniswap, PancakeSwap et autres DEX.", level: "intermediaire", duration: "25:10" }
-            ]
-        },
-        {
-            icon: <span className="icon-container accent"><Gem size={22} /></span>, title: "Module 2 : Staking et Yield Farming",
-            videos: [
-                { id: "dQw4w9WgXcQ", title: "Le Staking Expliqué", desc: "Comment staker vos cryptos et gagner des récompenses.", level: "intermediaire", duration: "20:30" },
-                { id: "dQw4w9WgXcQ", title: "Yield Farming Basics", desc: "Fournir de la liquidité et optimiser vos rendements.", level: "intermediaire", duration: "28:15" },
-                { id: "dQw4w9WgXcQ", title: "Impermanent Loss", desc: "Comprendre et gérer la perte impermanente.", level: "avance", duration: "22:40" }
-            ]
-        },
-        {
-            icon: <span className="icon-container primary"><Lock size={22} /></span>, title: "Module 3 : Protocoles DeFi Avancés",
-            videos: [
-                { id: "dQw4w9WgXcQ", title: "Lending et Borrowing", desc: "Prêter et emprunter avec Aave et Compound.", level: "avance", duration: "30:20" },
-                { id: "dQw4w9WgXcQ", title: "Options et Dérivés DeFi", desc: "Trader des options on-chain avec dYdX.", level: "avance", duration: "35:50" },
-                { id: "dQw4w9WgXcQ", title: "Bridge et Cross-Chain", desc: "Transférer vos actifs entre différentes blockchains.", level: "avance", duration: "24:15" }
-            ]
-        }
-    ]
+        loadFormations();
+    }, [isAuthenticated])
 
-    const psychoModules = [
-        {
-            icon: <span className="icon-container primary"><Brain size={22} /></span>, title: "Module 1 : Psychologie du Trader",
-            videos: [
-                { id: "dQw4w9WgXcQ", title: "Contrôler ses Émotions", desc: "Gérer la peur et la cupidité en trading.", level: "debutant", duration: "16:30" },
-                { id: "dQw4w9WgXcQ", title: "Discipline et Routine", desc: "Créer une routine de trading efficace.", level: "debutant", duration: "14:20" },
-                { id: "dQw4w9WgXcQ", title: "Gérer les Pertes", desc: "Accepter et apprendre de ses erreurs.", level: "intermediaire", duration: "19:45" }
-            ]
-        },
-        {
-            icon: <span className="icon-container primary"><Flame size={22} /></span>, title: "Module 2 : Mindset Gagnant",
-            videos: [
-                { id: "dQw4w9WgXcQ", title: "Patience et Long Terme", desc: "Adopter une vision long terme dans ses investissements.", level: "intermediaire", duration: "18:30" },
-                { id: "dQw4w9WgXcQ", title: "Éviter le FOMO", desc: "Ne pas succomber à la peur de rater une opportunité.", level: "intermediaire", duration: "15:40" },
-                { id: "dQw4w9WgXcQ", title: "Confiance en soi", desc: "Développer la confiance dans ses analyses.", level: "avance", duration: "21:25" }
-            ]
-        },
-        {
-            icon: <span className="icon-container primary"><Zap size={22} /></span>, title: "Module 3 : Gestion du Capital",
-            videos: [
-                { id: "dQw4w9WgXcQ", title: "Money Management", desc: "Principes fondamentaux de gestion de capital.", level: "intermediaire", duration: "23:10" },
-                { id: "dQw4w9WgXcQ", title: "Diversification", desc: "Construire un portefeuille équilibré.", level: "intermediaire", duration: "20:35" },
-                { id: "dQw4w9WgXcQ", title: "Position Sizing", desc: "Calculer la taille optimale de vos positions.", level: "avance", duration: "26:50" }
-            ]
-        }
-    ]
-
+    // Grouper les formations par catégorie et les transformer en modules
     const getModules = () => {
-        if (category === 'trading') return tradingModules
-        if (category === 'defi') return defiModules
-        if (category === 'psycho') return psychoModules
-        return []
+        if (!formations.length) return [];
+
+        const categoryMap = {
+            'trading': 'trading',
+            'defi': 'defi',
+            'psycho': 'psychologie'
+        };
+
+        const targetCategory = categoryMap[category];
+        const categoryFormations = formations.filter(f => f.category === targetCategory);
+
+        // Icônes par catégorie
+        const iconMap = {
+            'trading': [
+                <span className="icon-container primary" key="icon-1"><BarChart3 size={22} /></span>,
+                <span className="icon-container primary" key="icon-2"><TrendingUp size={22} /></span>,
+                <span className="icon-container primary" key="icon-3"><Target size={22} /></span>,
+                <span className="icon-container primary" key="icon-4"><Zap size={22} /></span>
+            ],
+            'defi': [
+                <span className="icon-container secondary" key="icon-1"><Globe size={22} /></span>,
+                <span className="icon-container accent" key="icon-2"><Gem size={22} /></span>,
+                <span className="icon-container primary" key="icon-3"><Lock size={22} /></span>
+            ],
+            'psychologie': [
+                <span className="icon-container primary" key="icon-1"><Brain size={22} /></span>,
+                <span className="icon-container primary" key="icon-2"><Flame size={22} /></span>,
+                <span className="icon-container primary" key="icon-3"><Zap size={22} /></span>
+            ]
+        };
+
+        // Transformer les formations en modules avec vidéos
+        return categoryFormations.map((formation, index) => ({
+            icon: iconMap[targetCategory]?.[index % iconMap[targetCategory].length] || <span className="icon-container primary"><GraduationCap size={22} /></span>,
+            title: formation.title,
+            formationId: formation.id,
+            level: formation.level,
+            progress: formation.progress,
+            videos: formation.modules?.map(mod => ({
+                id: mod.videoUrl?.split('/').pop() || 'dQw4w9WgXcQ',
+                title: mod.title,
+                desc: formation.description,
+                level: formation.level === 'free' ? 'debutant' : formation.level === 'premium' ? 'intermediaire' : 'avance',
+                duration: mod.duration || '20:00'
+            })) || []
+        }));
     }
 
     return (

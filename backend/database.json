@@ -229,22 +229,6 @@
       "published": true
     },
     {
-      "id": "premium-1",
-      "title": "Analyse Technique Avancée",
-      "type": "formation",
-      "level": "premium",
-      "category": "trading",
-      "description": "Maîtrisez les indicateurs techniques pour le trading",
-      "content": "https://www.youtube.com/embed/dQw4w9WgXcQ",
-      "modules": [
-        { "id": "mod-p1-1", "title": "RSI et MACD", "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ", "order": 0 },
-        { "id": "mod-p1-2", "title": "Fibonacci et Supports/Resistances", "videoUrl": "", "order": 1 },
-        { "id": "mod-p1-3", "title": "Patterns de chandeliers japonais", "videoUrl": "", "order": 2 }
-      ],
-      "createdAt": "2026-02-07T00:00:00.000Z",
-      "published": true
-    },
-    {
       "id": "premium-2",
       "title": "Signaux de Trading Hebdomadaires",
       "type": "signal",
@@ -253,23 +237,6 @@
       "description": "Recevez 5-10 signaux par semaine",
       "content": "Signaux disponibles dans le groupe Telegram Premium",
       "modules": [],
-      "createdAt": "2026-02-07T00:00:00.000Z",
-      "published": true
-    },
-    {
-      "id": "vip-1",
-      "title": "Stratégies de Trading Algorithmique",
-      "type": "formation",
-      "level": "vip",
-      "category": "trading",
-      "description": "Créez vos propres bots de trading",
-      "content": "https://www.youtube.com/embed/dQw4w9WgXcQ",
-      "modules": [
-        { "id": "mod-v1-1", "title": "Introduction au trading algo", "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ", "order": 0 },
-        { "id": "mod-v1-2", "title": "Backtesting de strategies", "videoUrl": "", "order": 1 },
-        { "id": "mod-v1-3", "title": "Deploiement de bots", "videoUrl": "", "order": 2 },
-        { "id": "mod-v1-4", "title": "Gestion des risques", "videoUrl": "", "order": 3 }
-      ],
       "createdAt": "2026-02-07T00:00:00.000Z",
       "published": true
     },
@@ -284,6 +251,598 @@
       "modules": [],
       "createdAt": "2026-02-07T00:00:00.000Z",
       "published": true
+    },
+    {
+      "id": "formation-1a24af27-9cfe-41b6-97e7-c54a0763ad89",
+      "title": "Analyse Technique Débutant",
+      "slug": "analyse-technique-debutant",
+      "type": "formation",
+      "level": "free",
+      "category": "trading",
+      "description": "Apprenez les bases de l'analyse technique pour comprendre les graphiques et anticiper les mouvements de prix. Formation gratuite accessible à tous.",
+      "thumbnail": "",
+      "duration": "3h30",
+      "published": true,
+      "createdAt": "2026-04-19T09:58:07.891Z",
+      "updatedAt": "2026-04-19T09:58:07.891Z",
+      "modules": [
+        {
+          "id": "mod-4a73d087-cd49-431e-8c42-3f5a5286ee1c",
+          "title": "Introduction à l'Analyse Technique",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 0,
+          "duration": "15:30"
+        },
+        {
+          "id": "mod-ee06945b-5110-45e6-b25b-caca99d8f60f",
+          "title": "Supports et Résistances",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 1,
+          "duration": "22:45"
+        },
+        {
+          "id": "mod-6de9e7b6-a83b-4ae7-a203-b719232bca6a",
+          "title": "Les Figures Chartistes Classiques",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 2,
+          "duration": "18:20"
+        },
+        {
+          "id": "mod-5054076a-9bea-444c-bb03-19447165a7d3",
+          "title": "Les Moyennes Mobiles (MM20, MM50, MM200)",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 3,
+          "duration": "25:10"
+        },
+        {
+          "id": "mod-2ffb3806-f519-4a1e-b635-d12e917978d0",
+          "title": "Les Tendances et Canaux",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 4,
+          "duration": "20:35"
+        },
+        {
+          "id": "mod-f6197f5f-3281-466a-80ab-191af9efb6e1",
+          "title": "Volume et Indicateurs de Volume",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 5,
+          "duration": "19:15"
+        },
+        {
+          "id": "mod-590ef042-175a-434a-9a9c-f575e9f46271",
+          "title": "Timeframes: Quelle Unité de Temps Choisir?",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 6,
+          "duration": "17:40"
+        }
+      ]
+    },
+    {
+      "id": "formation-1fd01ccf-9da5-4e50-a4c2-08ad69ac557f",
+      "title": "Trading Avancé - Indicateurs & Stratégies",
+      "slug": "trading-avance",
+      "type": "formation",
+      "level": "premium",
+      "category": "trading",
+      "description": "Maîtrisez les indicateurs techniques avancés et développez vos propres stratégies de trading gagnantes. Formation réservée aux membres Premium.",
+      "thumbnail": "",
+      "duration": "5h45",
+      "published": true,
+      "createdAt": "2026-04-19T09:58:07.892Z",
+      "updatedAt": "2026-04-19T09:58:07.892Z",
+      "modules": [
+        {
+          "id": "mod-850f502d-b2e4-43dd-bc34-9d2316a9df69",
+          "title": "RSI - Relative Strength Index",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 0,
+          "duration": "25:10"
+        },
+        {
+          "id": "mod-99dafed5-5852-46c1-bebf-86536a7dff86",
+          "title": "MACD - Moving Average Convergence Divergence",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 1,
+          "duration": "28:30"
+        },
+        {
+          "id": "mod-fc535f5c-cbf8-4bb2-bd14-1c7ccbe42db6",
+          "title": "Bollinger Bands et Volatilité",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 2,
+          "duration": "22:15"
+        },
+        {
+          "id": "mod-374d7047-8eef-48f2-a8a5-3e84a7a84172",
+          "title": "Ichimoku Cloud - Indicateur Complet",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 3,
+          "duration": "35:20"
+        },
+        {
+          "id": "mod-4553f3af-a19d-4b99-a0a1-a3c9ce2e6f84",
+          "title": "Fibonacci Retracements et Extensions",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 4,
+          "duration": "30:45"
+        },
+        {
+          "id": "mod-ae417e0a-586b-4d5a-ad9a-2633109e9af7",
+          "title": "Divergences: RSI, MACD, Volume",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 5,
+          "duration": "27:10"
+        },
+        {
+          "id": "mod-6c96e969-640a-425f-a48d-7ab4a2cf210d",
+          "title": "Stratégie Swing Trading",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 6,
+          "duration": "32:50"
+        }
+      ]
+    },
+    {
+      "id": "formation-545cd121-8d7b-422e-bcf1-ce4b7c23b46e",
+      "title": "Stratégies Professionnelles",
+      "slug": "strategies-professionnelles",
+      "type": "formation",
+      "level": "vip",
+      "category": "trading",
+      "description": "Les stratégies avancées utilisées par les traders professionnels. Scalping, arbitrage, market making. Formation exclusive VIP.",
+      "thumbnail": "",
+      "duration": "8h20",
+      "published": true,
+      "createdAt": "2026-04-19T09:58:07.892Z",
+      "updatedAt": "2026-04-19T09:58:07.892Z",
+      "modules": [
+        {
+          "id": "mod-6aa13238-6b8c-4d0d-9463-dd8c6a376ac3",
+          "title": "Introduction au Trading Professionnel",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 0,
+          "duration": "18:30"
+        },
+        {
+          "id": "mod-fc729658-c85f-4e74-965f-e06a419503cb",
+          "title": "Scalping: Stratégies Court Terme",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 1,
+          "duration": "42:15"
+        },
+        {
+          "id": "mod-82c99075-6608-4afb-b743-0abc99a206f8",
+          "title": "Day Trading: Ouvrir et Fermer dans la Journée",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 2,
+          "duration": "38:50"
+        },
+        {
+          "id": "mod-38eeeeef-095c-4e6c-a563-e231809ed7ca",
+          "title": "Position Trading: Vision Long Terme",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 3,
+          "duration": "35:20"
+        },
+        {
+          "id": "mod-ee13dc5c-2e90-4979-a8a0-bafdee51bf40",
+          "title": "Arbitrage entre Exchanges",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 4,
+          "duration": "45:10"
+        },
+        {
+          "id": "mod-3ef7d683-c4a9-4a19-8a85-f919248b1122",
+          "title": "Market Making et Liquidité",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 5,
+          "duration": "40:25"
+        },
+        {
+          "id": "mod-fc74bbe9-1f20-4f48-ba39-c9e81ac87d1a",
+          "title": "Trading Algorithmique - Introduction",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 6,
+          "duration": "48:30"
+        },
+        {
+          "id": "mod-3c8fc975-55aa-4544-b0ab-f60e0f18784a",
+          "title": "Backtesting: Tester vos Stratégies",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 7,
+          "duration": "35:40"
+        },
+        {
+          "id": "mod-3f136d31-51c1-40dc-8576-1dd6f7d713cd",
+          "title": "Gestion Avancée du Risque",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 8,
+          "duration": "32:15"
+        },
+        {
+          "id": "mod-0de2f591-c1af-48a0-965b-1e0bcb7d0284",
+          "title": "Psychologie du Trader Pro",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 9,
+          "duration": "28:45"
+        }
+      ]
+    },
+    {
+      "id": "formation-25c697d1-2fc8-4f3c-940e-70604c87eeb2",
+      "title": "Scalping & Day Trading Expert",
+      "slug": "scalping-day-trading",
+      "type": "formation",
+      "level": "vip",
+      "category": "trading",
+      "description": "Devenez un expert du scalping et du day trading. Techniques avancées, outils professionnels, gestion du stress. VIP uniquement.",
+      "thumbnail": "",
+      "duration": "7h15",
+      "published": true,
+      "createdAt": "2026-04-19T09:58:07.893Z",
+      "updatedAt": "2026-04-19T09:58:07.893Z",
+      "modules": [
+        {
+          "id": "mod-3762c4a9-443e-47f8-8696-e536ea052b2b",
+          "title": "Mindset du Scalper",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 0,
+          "duration": "22:30"
+        },
+        {
+          "id": "mod-e95885f6-0e20-4760-bee6-e480b8e483b8",
+          "title": "Outils et Plateformes pour Scalper",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 1,
+          "duration": "35:20"
+        },
+        {
+          "id": "mod-65f8a4d5-b806-4303-bf12-f2be9d567304",
+          "title": "Scalping 1-Minute Charts",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 2,
+          "duration": "42:15"
+        },
+        {
+          "id": "mod-d5b4a775-506a-453b-8ec2-0d94b5a44457",
+          "title": "Scalping 5-Minute Charts",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 3,
+          "duration": "38:50"
+        },
+        {
+          "id": "mod-3b2f58ee-4b71-4d5e-8556-d836b5db418d",
+          "title": "Order Flow et Carnet d'Ordres",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 4,
+          "duration": "45:40"
+        },
+        {
+          "id": "mod-e3646991-8f63-425b-bf0c-653f1e36a1f5",
+          "title": "Lecture de la Tape (Time & Sales)",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 5,
+          "duration": "40:25"
+        },
+        {
+          "id": "mod-ae9f5699-6df0-4225-87f2-b90c08073773",
+          "title": "Day Trading: Stratégies Intraday",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 6,
+          "duration": "48:30"
+        },
+        {
+          "id": "mod-61cadd07-252c-4689-9b16-78f0ef444111",
+          "title": "Gestion des Émotions en Scalping",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 7,
+          "duration": "28:45"
+        }
+      ]
+    },
+    {
+      "id": "formation-9d1321d6-57dc-42db-a0d5-2db2ede9ebc2",
+      "title": "Bases DeFi - Finance Décentralisée",
+      "slug": "bases-defi",
+      "type": "formation",
+      "level": "free",
+      "category": "defi",
+      "description": "Découvrez la finance décentralisée (DeFi): wallets, DEX, tokens. Formation gratuite pour démarrer dans la DeFi en toute sécurité.",
+      "thumbnail": "",
+      "duration": "3h15",
+      "published": true,
+      "createdAt": "2026-04-19T09:58:07.893Z",
+      "updatedAt": "2026-04-19T09:58:07.893Z",
+      "modules": [
+        {
+          "id": "mod-caead1cd-8d40-4207-b070-c8e19854308e",
+          "title": "Qu'est-ce que la DeFi?",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 0,
+          "duration": "16:30"
+        },
+        {
+          "id": "mod-07492b25-fee0-47e1-a77c-9606826f0ef4",
+          "title": "Wallets: MetaMask, Trust Wallet",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 1,
+          "duration": "25:45"
+        },
+        {
+          "id": "mod-70a09d0d-8569-4cd7-a25d-e291a417e5ed",
+          "title": "Sécurité: Seed Phrases et Private Keys",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 2,
+          "duration": "22:30"
+        },
+        {
+          "id": "mod-44f3f42b-1963-4f0d-989a-a2ffbc4df626",
+          "title": "DEX Expliqués: Uniswap, PancakeSwap",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 3,
+          "duration": "28:15"
+        },
+        {
+          "id": "mod-b7d49980-0d3a-414e-9586-1fda5c60804d",
+          "title": "Swapper des Tokens",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 4,
+          "duration": "20:10"
+        },
+        {
+          "id": "mod-ce39dcd9-dd6c-436b-920c-17f075d0e010",
+          "title": "Gas Fees et Optimisation",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 5,
+          "duration": "18:40"
+        },
+        {
+          "id": "mod-2aa367b3-381d-439f-a9b9-245245428c2d",
+          "title": "Éviter les Scams dans la DeFi",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 6,
+          "duration": "24:25"
+        }
+      ]
+    },
+    {
+      "id": "formation-d2d5e0d0-e3e6-49c5-81ed-228f2d6e78f4",
+      "title": "Yield Farming & Staking Avancé",
+      "slug": "yield-farming-staking",
+      "type": "formation",
+      "level": "premium",
+      "category": "defi",
+      "description": "Maîtrisez le yield farming et le staking pour générer des revenus passifs. Stratégies, risques, optimisation. Premium.",
+      "thumbnail": "",
+      "duration": "4h50",
+      "published": true,
+      "createdAt": "2026-04-19T09:58:07.893Z",
+      "updatedAt": "2026-04-19T09:58:07.893Z",
+      "modules": [
+        {
+          "id": "mod-ad88eee1-5d7d-4e19-8658-f4a5a09caf47",
+          "title": "Introduction au Staking",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 0,
+          "duration": "20:30"
+        },
+        {
+          "id": "mod-a66cada3-8b25-4b29-9235-12be0e66d853",
+          "title": "Staking ETH 2.0",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 1,
+          "duration": "28:15"
+        },
+        {
+          "id": "mod-a6e5666e-4ec2-4006-89bd-a02bebe07476",
+          "title": "Liquid Staking: Lido, Rocket Pool",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 2,
+          "duration": "32:40"
+        },
+        {
+          "id": "mod-adc4ae29-17af-4f0b-b7ab-05874107910a",
+          "title": "Yield Farming: Concepts et Stratégies",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 3,
+          "duration": "35:20"
+        },
+        {
+          "id": "mod-e2e74af8-dfff-40f3-9486-8dd545e47cfd",
+          "title": "Fournir de la Liquidité (LP Tokens)",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 4,
+          "duration": "30:15"
+        },
+        {
+          "id": "mod-8c0f41c5-679e-41e7-aa53-06900c718968",
+          "title": "Impermanent Loss - Comprendre et Gérer",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 5,
+          "duration": "28:50"
+        }
+      ]
+    },
+    {
+      "id": "formation-9beb44dd-c599-4aa0-a0ee-2d874e1f63a3",
+      "title": "DeFi Avancé - Protocoles Complexes",
+      "slug": "defi-avance",
+      "type": "formation",
+      "level": "vip",
+      "category": "defi",
+      "description": "Protocoles DeFi avancés: lending, borrowing, options, dérivés. Pour utilisateurs expérimentés. VIP uniquement.",
+      "thumbnail": "",
+      "duration": "6h40",
+      "published": true,
+      "createdAt": "2026-04-19T09:58:07.893Z",
+      "updatedAt": "2026-04-19T09:58:07.893Z",
+      "modules": [
+        {
+          "id": "mod-8be5501d-46af-4a42-a601-df2159a55d38",
+          "title": "Lending & Borrowing: Aave, Compound",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 0,
+          "duration": "35:20"
+        },
+        {
+          "id": "mod-8d7148fb-c0b9-44a7-a933-43d0c5c97cc6",
+          "title": "Flash Loans: Arbitrages Instantanés",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 1,
+          "duration": "42:15"
+        },
+        {
+          "id": "mod-c780b08d-7fd4-4af8-968c-5fc379052eaf",
+          "title": "Options DeFi: Hegic, Dopex",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 2,
+          "duration": "38:50"
+        },
+        {
+          "id": "mod-ea47cba5-179d-4b72-b50b-1b07b6a05944",
+          "title": "Perpetuals: dYdX, GMX",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 3,
+          "duration": "45:30"
+        },
+        {
+          "id": "mod-5ebfb954-68e6-4142-afe1-e80cdcfd384d",
+          "title": "Bridges Cross-Chain: Sécurité et Risques",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 4,
+          "duration": "32:40"
+        },
+        {
+          "id": "mod-2936b7ff-caf8-49d2-8e1d-2914dab845c4",
+          "title": "Layer 2 Solutions: Optimism, Arbitrum",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 5,
+          "duration": "40:15"
+        },
+        {
+          "id": "mod-894e6a96-85b1-4152-87fa-3e52b63f6866",
+          "title": "Real Yield vs Ponzinomics",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 6,
+          "duration": "28:30"
+        },
+        {
+          "id": "mod-d5a7a39c-4489-4104-a87e-189ecbb1fa99",
+          "title": "Smart Contract Audits: Lire et Comprendre",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 7,
+          "duration": "37:20"
+        }
+      ]
+    },
+    {
+      "id": "formation-408c367e-9bde-46af-b613-1be93e6cd7e2",
+      "title": "Psychologie du Trader - Fondamentaux",
+      "slug": "psychologie-trader",
+      "type": "formation",
+      "level": "free",
+      "category": "psychologie",
+      "description": "Maîtrisez vos émotions et développez le mindset gagnant du trader. Discipline, gestion du stress, routine. Gratuit.",
+      "thumbnail": "",
+      "duration": "2h45",
+      "published": true,
+      "createdAt": "2026-04-19T09:58:07.893Z",
+      "updatedAt": "2026-04-19T09:58:07.893Z",
+      "modules": [
+        {
+          "id": "mod-e8c6ee17-eb7b-4d12-ad35-c0858ee4dccb",
+          "title": "Les Émotions du Trader: Peur et Cupidité",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 0,
+          "duration": "18:30"
+        },
+        {
+          "id": "mod-9d4cecea-21db-47db-b6c5-606c4637924f",
+          "title": "Créer une Routine de Trading",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 1,
+          "duration": "22:15"
+        },
+        {
+          "id": "mod-f2d184f2-6372-4ed8-becc-a771ae23d265",
+          "title": "Gérer les Pertes et Drawdowns",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 2,
+          "duration": "25:40"
+        },
+        {
+          "id": "mod-424e40b7-2dbe-4f99-acc2-02533ebb3056",
+          "title": "Éviter le FOMO (Fear Of Missing Out)",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 3,
+          "duration": "20:35"
+        },
+        {
+          "id": "mod-b90c42e7-0133-416b-94ad-feb860a11dbd",
+          "title": "Patience et Vision Long Terme",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 4,
+          "duration": "19:20"
+        },
+        {
+          "id": "mod-56c8d102-b423-45e0-9399-bf1fe3a428a3",
+          "title": "Journal de Trading: Documenter vos Trades",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 5,
+          "duration": "24:45"
+        }
+      ]
+    },
+    {
+      "id": "formation-067c4a2b-1e82-4d56-b17d-8de569a7472e",
+      "title": "Discipline & Money Management",
+      "slug": "discipline-money-management",
+      "type": "formation",
+      "level": "premium",
+      "category": "psychologie",
+      "description": "Gestion du capital, position sizing, risk management. Devenez un trader discipliné et rentable. Premium.",
+      "thumbnail": "",
+      "duration": "4h10",
+      "published": true,
+      "createdAt": "2026-04-19T09:58:07.893Z",
+      "updatedAt": "2026-04-19T09:58:07.893Z",
+      "modules": [
+        {
+          "id": "mod-0129e1dd-2c0d-4d51-8d71-ff674e262b4f",
+          "title": "Money Management: Les Bases",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 0,
+          "duration": "28:30"
+        },
+        {
+          "id": "mod-e9f58ab5-1208-400f-a409-d90c2709f9f4",
+          "title": "Position Sizing: Combien Investir?",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 1,
+          "duration": "32:15"
+        },
+        {
+          "id": "mod-798ae8a8-afb6-49f8-8117-3258ef5095c5",
+          "title": "Risk/Reward Ratio Optimal",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 2,
+          "duration": "25:40"
+        },
+        {
+          "id": "mod-d0c3e874-e761-43a2-b2ee-6892c0ecf1d1",
+          "title": "Diversification de Portefeuille",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 3,
+          "duration": "30:20"
+        },
+        {
+          "id": "mod-c7f325e1-845d-4cdc-bb32-15b5cbc6b5f1",
+          "title": "Discipline: Respecter son Plan de Trading",
+          "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "order": 4,
+          "duration": "23:25"
+        }
+      ]
     }
   ],
   "reviews": [],

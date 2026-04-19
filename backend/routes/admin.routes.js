@@ -647,7 +647,7 @@ router.get('/reviews', async (req, res) => {
         const db = readDatabase();
 
         // Retourner tous les avis avec infos utilisateur
-        const reviewsWithUserInfo = db.reviews.map(review => {
+        const reviewsWithUserInfo = (db.reviews || []).map(review => {
             const user = db.users.find(u => u.id === review.userId);
             return {
                 ...review,

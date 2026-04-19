@@ -34,8 +34,8 @@ const MemberArea = ({ setActiveTab }) => {
     const getSubscriptionBadge = () => {
         const badges = {
             free: { icon: '🆓', label: 'FREE', color: 'var(--text-secondary)' },
-            premium: { icon: <Star size={16} />, label: 'PREMIUM', color: 'var(--accent-gold)' },
-            vip: { icon: <Gem size={16} />, label: 'VIP', color: 'var(--accent-blue)' }
+            premium: { icon: <Star size={18} />, label: 'PREMIUM', color: 'var(--accent-gold)' },
+            vip: { icon: <Gem size={18} />, label: 'VIP', color: 'var(--accent-blue)' }
         };
         return badges[user.subscriptionStatus] || badges.free;
     };
@@ -74,7 +74,17 @@ const MemberArea = ({ setActiveTab }) => {
                     }} />
 
                     <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '20px' }}>
-                        <div style={{ fontSize: '60px' }}><User size={16} /></div>
+                        <div style={{
+                            width: '70px',
+                            height: '70px',
+                            borderRadius: '50%',
+                            background: 'linear-gradient(135deg, #2E90FA, #A855F7)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                        }}>
+                            <User size={36} color="white" />
+                        </div>
                         <div>
                             <h1 style={{
                                 color: 'var(--text-primary)',
@@ -212,10 +222,17 @@ const MemberArea = ({ setActiveTab }) => {
                                 overflow: 'hidden'
                             }}>
                                 <div style={{
-                                    fontSize: '40px',
-                                    marginBottom: '15px'
+                                    width: '60px',
+                                    height: '60px',
+                                    borderRadius: '12px',
+                                    background: `linear-gradient(135deg, ${badge.color}, #A855F7)`,
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    marginBottom: '15px',
+                                    fontSize: '32px'
                                 }}>
-                                    {badge.icon}
+                                    {typeof badge.icon === 'string' ? badge.icon : <span style={{ color: 'white' }}>{badge.icon}</span>}
                                 </div>
                                 <h3 style={{ color: 'var(--text-primary)', fontSize: '20px', fontWeight: '700', marginBottom: '10px' }}>
                                     Mon Abonnement
@@ -279,7 +296,18 @@ const MemberArea = ({ setActiveTab }) => {
                                 borderRadius: '20px',
                                 padding: '30px'
                             }}>
-                                <div style={{ fontSize: '40px', marginBottom: '15px' }}><GraduationCap size={16} /></div>
+                                <div style={{
+                                    width: '60px',
+                                    height: '60px',
+                                    borderRadius: '12px',
+                                    background: 'linear-gradient(135deg, #2E90FA, #A855F7)',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    marginBottom: '15px'
+                                }}>
+                                    <GraduationCap size={28} color="white" />
+                                </div>
                                 <h3 style={{ color: 'var(--text-primary)', fontSize: '20px', fontWeight: '700', marginBottom: '10px' }}>
                                     Mes Formations
                                 </h3>
@@ -311,7 +339,18 @@ const MemberArea = ({ setActiveTab }) => {
                                 borderRadius: '20px',
                                 padding: '30px'
                             }}>
-                                <div style={{ fontSize: '40px', marginBottom: '15px' }}><BookOpen size={16} /></div>
+                                <div style={{
+                                    width: '60px',
+                                    height: '60px',
+                                    borderRadius: '12px',
+                                    background: 'linear-gradient(135deg, #A855F7, #BF5AF2)',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    marginBottom: '15px'
+                                }}>
+                                    <BookOpen size={28} color="white" />
+                                </div>
                                 <h3 style={{ color: 'var(--text-primary)', fontSize: '20px', fontWeight: '700', marginBottom: '10px' }}>
                                     Contenu Exclusif
                                 </h3>
@@ -344,7 +383,18 @@ const MemberArea = ({ setActiveTab }) => {
                                     borderRadius: '20px',
                                     padding: '30px'
                                 }}>
-                                    <div style={{ fontSize: '40px', marginBottom: '15px' }}><Smartphone size={16} /></div>
+                                    <div style={{
+                                        width: '60px',
+                                        height: '60px',
+                                        borderRadius: '12px',
+                                        background: 'linear-gradient(135deg, #2E90FA, #2563EB)',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        marginBottom: '15px'
+                                    }}>
+                                        <Smartphone size={28} color="white" />
+                                    </div>
                                     <h3 style={{ color: 'var(--text-primary)', fontSize: '20px', fontWeight: '700', marginBottom: '10px' }}>
                                         Groupe Telegram VIP
                                     </h3>
@@ -386,7 +436,18 @@ const MemberArea = ({ setActiveTab }) => {
                                     height: '3px',
                                     background: 'linear-gradient(90deg, #FBBF24, #FF6B00)'
                                 }} />
-                                <div style={{ fontSize: '40px', marginBottom: '15px' }}><Gift size={16} /></div>
+                                <div style={{
+                                    width: '60px',
+                                    height: '60px',
+                                    borderRadius: '12px',
+                                    background: 'linear-gradient(135deg, #FBBF24, #FF6B00)',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    marginBottom: '15px'
+                                }}>
+                                    <Gift size={28} color="white" />
+                                </div>
                                 <h3 style={{ color: 'var(--text-primary)', fontSize: '20px', fontWeight: '700', marginBottom: '10px' }}>
                                     Concours Hebdomadaire
                                 </h3>

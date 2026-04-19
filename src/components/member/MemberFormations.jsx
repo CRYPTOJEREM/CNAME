@@ -23,6 +23,14 @@ const MemberFormations = () => {
         try {
             const response = await memberService.getFormations();
             setFormations(response.formations || []);
+
+            // Auto-ouvrir la formation si elle vient de Learning.jsx
+            const formationIdToOpen = sessionStorage.getItem('openFormationId');
+            if (formationIdToOpen) {
+                sessionStorage.removeItem('openFormationId');
+                // Attendre un peu que les formations soient chargées
+                setTimeout(() => handleFormationClick(formationIdToOpen), 100);
+            }
         } catch (error) {
             console.error('Erreur chargement formations:', error);
         } finally {

@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react'
 import { useAuth } from '../contexts/AuthContext'
-import { BarChart3, Brain, Clock, Flame, Gem, Globe, GraduationCap, Lock, Sparkles, Target, TrendingUp, Zap } from 'lucide-react';
+import { BarChart3, Brain, Flame, Gem, Globe, GraduationCap, Target, TrendingUp, Zap } from 'lucide-react';
 import memberService from '../services/memberService';
 
 const Learning = ({ setActiveTab }) => {
@@ -112,116 +112,106 @@ const Learning = ({ setActiveTab }) => {
 
             <div className="category-content scroll-reveal">
                 {getModules().map((module, moduleIndex) => (
-                    <div key={moduleIndex} className="module-section">
-                        <div className="module-title">
-                            <span>{module.icon} {module.title}</span>
-                        </div>
-                        <div className="module-subtitle">
-                            {module.videos.length} vidéos • Niveau {module.videos[0].level}
-                        </div>
-                        <div className="videos-grid">
-                            {module.videos.map((video, videoIndex) => (
-                                <div key={videoIndex} className="video-module-card">
-                                    <div className="video-container" style={{ position: 'relative', cursor: isAuthenticated ? 'pointer' : 'default' }}
-                                         onClick={() => isAuthenticated && window.open(`https://www.youtube.com/watch?v=${video.id}`, '_blank')}>
-                                        {/* Thumbnail YouTube au lieu d'iframe pour éviter erreurs WebGL */}
-                                        <img
-                                            src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
-                                            alt={video.title}
-                                            style={{
-                                                width: '100%',
-                                                height: '100%',
-                                                objectFit: 'cover',
-                                                filter: !isAuthenticated ? 'blur(10px)' : 'none'
-                                            }}
-                                        />
-                                        {/* Play button */}
-                                        {isAuthenticated && (
-                                            <div style={{
-                                                position: 'absolute',
-                                                top: '50%',
-                                                left: '50%',
-                                                transform: 'translate(-50%, -50%)',
-                                                width: '68px',
-                                                height: '48px',
-                                                background: 'rgba(255, 0, 0, 0.9)',
-                                                borderRadius: '12px',
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                justifyContent: 'center',
-                                                transition: 'all 0.2s'
-                                            }}>
-                                                <svg height="100%" version="1.1" viewBox="0 0 68 48" width="100%">
-                                                    <path d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#f00"></path>
-                                                    <path d="M 45,24 27,14 27,34" fill="#fff"></path>
-                                                </svg>
-                                            </div>
-                                        )}
-                                        {!isAuthenticated && (
-                                            <div
-                                                className="video-overlay"
-                                                onClick={() => setActiveTab('register')}
-                                                style={{
-                                                    position: 'absolute',
-                                                    top: 0,
-                                                    left: 0,
-                                                    width: '100%',
-                                                    height: '100%',
-                                                    background: 'rgba(0, 0, 0, 0.85)',
-                                                    display: 'flex',
-                                                    flexDirection: 'column',
-                                                    alignItems: 'center',
-                                                    justifyContent: 'center',
-                                                    cursor: 'pointer',
-                                                    borderRadius: '12px',
-                                                    transition: 'all 0.3s ease'
-                                                }}
-                                                onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(0, 0, 0, 0.95)'}
-                                                onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(0, 0, 0, 0.85)'}
-                                            >
-                                                <div style={{ textAlign: 'center', padding: '20px' }}>
-                                                    <div style={{ fontSize: '48px', marginBottom: '15px' }}><Lock size={48} /></div>
-                                                    <h3 style={{ color: 'var(--accent-blue)', marginBottom: '10px', fontSize: '1.3rem' }}>
-                                                        Contenu Réservé aux Membres
-                                                    </h3>
-                                                    <p style={{ color: '#fff', marginBottom: '20px', fontSize: '1rem' }}>
-                                                        Créez un compte gratuit pour accéder à toutes nos formations
-                                                    </p>
-                                                    <div style={{
-                                                        background: 'linear-gradient(135deg, #2E90FA 0%, #6366F1 100%)',
-                                                        color: '#000',
-                                                        padding: '12px 30px',
-                                                        borderRadius: '8px',
-                                                        fontWeight: 'bold',
-                                                        display: 'inline-block',
-                                                        fontSize: '1rem'
-                                                    }}>
-                                                        <Sparkles size={18} /> Créer un Compte Gratuit
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        )}
-                                    </div>
-                                    <div className="video-module-info">
-                                        <span className={`video-level level-${video.level}`}>
-                                            {video.level === 'debutant' ? '🟢 Débutant' :
-                                             video.level === 'intermediaire' ? '🟡 Intermédiaire' :
-                                             '🔴 Avancé'}
+                    <div
+                        key={moduleIndex}
+                        className="formation-card-clickable"
+                        style={{
+                            background: 'linear-gradient(135deg, #0C0C1D 0%, #141428 100%)',
+                            border: '2px solid rgba(191, 90, 242, 0.3)',
+                            borderRadius: '16px',
+                            padding: '30px',
+                            cursor: 'pointer',
+                            transition: 'all 0.3s ease',
+                            marginBottom: '25px'
+                        }}
+                        onClick={() => {
+                            if (isAuthenticated) {
+                                sessionStorage.setItem('openFormationId', module.formationId);
+                                setActiveTab('membre');
+                            } else {
+                                setActiveTab('register');
+                            }
+                        }}
+                        onMouseEnter={(e) => {
+                            e.currentTarget.style.transform = 'translateY(-5px)';
+                            e.currentTarget.style.boxShadow = '0 10px 30px rgba(191, 90, 242, 0.3)';
+                        }}
+                        onMouseLeave={(e) => {
+                            e.currentTarget.style.transform = 'translateY(0)';
+                            e.currentTarget.style.boxShadow = 'none';
+                        }}
+                    >
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '20px' }}>
+                            <div style={{ fontSize: '48px' }}>{module.icon}</div>
+                            <div style={{ flex: 1 }}>
+                                <h3 style={{ color: 'var(--text-primary)', marginBottom: '8px', fontSize: '22px', fontWeight: '700' }}>
+                                    {module.title}
+                                </h3>
+                                <div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
+                                    <span style={{
+                                        background: module.level === 'free' ? 'rgba(34, 197, 94, 0.2)' :
+                                                   module.level === 'premium' ? 'rgba(251, 191, 36, 0.2)' :
+                                                   'rgba(168, 85, 247, 0.2)',
+                                        color: module.level === 'free' ? '#22C55E' :
+                                               module.level === 'premium' ? '#FBBF24' :
+                                               '#A855F7',
+                                        padding: '6px 14px',
+                                        borderRadius: '12px',
+                                        fontSize: '13px',
+                                        fontWeight: '700',
+                                        textTransform: 'uppercase'
+                                    }}>
+                                        {module.level === 'free' ? '🆓 Gratuit' :
+                                         module.level === 'premium' ? '⭐ Premium' :
+                                         '💎 VIP'}
+                                    </span>
+                                    <span style={{ color: 'var(--text-secondary)', fontSize: '14px' }}>
+                                        {module.videos.length} module{module.videos.length > 1 ? 's' : ''}
+                                    </span>
+                                    {module.progress > 0 && (
+                                        <span style={{ color: 'var(--accent-blue)', fontSize: '14px', fontWeight: '600' }}>
+                                            {Math.round(module.progress)}% complété
                                         </span>
-                                        <div className="video-module-title">{video.title}</div>
-                                        <div className="video-module-description">{video.desc}</div>
-                                        <div className="video-stats">
-                                            <div className="video-stat"><Clock size={14} /> {video.duration}</div>
-                                            {!isAuthenticated && (
-                                                <div className="video-stat" style={{ color: 'var(--accent-blue)' }}>
-                                                    <Lock size={16} /> Inscription requise
-                                                </div>
-                                            )}
-                                        </div>
-                                    </div>
+                                    )}
                                 </div>
-                            ))}
+                            </div>
+                            <div style={{
+                                color: 'var(--accent-blue)',
+                                fontSize: '36px',
+                                transition: 'transform 0.3s'
+                            }}>
+                                →
+                            </div>
                         </div>
+
+                        {module.progress > 0 && (
+                            <div style={{ marginBottom: '20px' }}>
+                                <div style={{
+                                    background: 'rgba(191, 90, 242, 0.1)',
+                                    borderRadius: '8px',
+                                    height: '8px',
+                                    overflow: 'hidden'
+                                }}>
+                                    <div style={{
+                                        background: 'linear-gradient(90deg, #2E90FA, #A855F7)',
+                                        height: '100%',
+                                        width: `${module.progress}%`,
+                                        transition: 'width 0.5s ease'
+                                    }} />
+                                </div>
+                            </div>
+                        )}
+
+                        <p style={{
+                            color: 'var(--text-secondary)',
+                            fontSize: '15px',
+                            marginBottom: 0,
+                            lineHeight: '1.6'
+                        }}>
+                            {isAuthenticated ?
+                                `Cliquez pour commencer cette formation et accéder aux ${module.videos.length} modules →` :
+                                'Créez un compte gratuit pour accéder à cette formation'}
+                        </p>
                     </div>
                 ))}
             </div>

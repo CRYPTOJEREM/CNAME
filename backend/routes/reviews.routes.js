@@ -103,7 +103,7 @@ router.get('/', async (req, res) => {
 router.get('/stats', async (req, res) => {
     try {
         const db = readDatabase();
-        const approvedReviews = db.reviews.filter(r => r.approved === true);
+        const approvedReviews = (db.reviews || []).filter(r => r.approved === true);
 
         if (approvedReviews.length === 0) {
             return res.json({

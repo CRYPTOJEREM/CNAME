@@ -34,7 +34,15 @@ const MemberFormations = () => {
         try {
             const response = await memberService.getFormationById(formationId);
             setSelectedFormation(response.formation);
-            setActiveModule(null);
+
+            // Auto-sélectionner le premier module disponible
+            const modules = response.formation.modules || [];
+            const firstUnlocked = modules.find(m => m.unlocked && !m.completed);
+            const firstModule = firstUnlocked || modules.find(m => m.unlocked) || modules[0];
+
+            if (firstModule) {
+                setActiveModule(firstModule.id);
+            }
         } catch (error) {
             console.error('Erreur chargement formation:', error);
         }
